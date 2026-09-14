@@ -1,0 +1,1682 @@
+<div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">temporalDataObjects</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">organizationId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">applicationId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">sourceId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">programId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">scheduledJobId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">sampleMedia</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a> = <span class="graphiql-doc-explorer-default-value">false</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">includePublic</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a> = <span class="graphiql-doc-explorer-default-value">false</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orderBy</span>: <a class="graphiql-doc-explorer-type-name" href="#">TemporalDataObjectOrderBy</a> = <span class="graphiql-doc-explorer-default-value">startDateTime</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orderDirection</span>: <a class="graphiql-doc-explorer-type-name" href="#">OrderDirection</a> = <span class="graphiql-doc-explorer-default-value">desc</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">dateTimeFilter</span>: [<a class="graphiql-doc-explorer-type-name" href="#">TemporalDataObjectDateTimeFilter</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">mentionId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">TDOList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a list of temporal data objects.<br>
+Example:<br>
+Request:<br>
+query {<br>
+temporalDataObjects(<br>
+organizationId: "35521"){<br>
+records{name}<br>
+offset<br>
+limit<br>
+count<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"temporalDataObjects": {<br>
+"records": [<br>
+{<br>
+"name": "example"<br>
+},<br>
+{<br>
+"name": "example"<br>
+},<br>
+],<br>
+"offset": 0,<br>
+"limit": 30,<br>
+"count": 8<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">temporalDataObject</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">TemporalDataObject</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a single temporal data object<br>
+Example:<br>
+Request:<br>
+query {<br>
+temporalDataObject(<br>
+id: 1570654874) {<br>
+id<br>
+name<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"temporalDataObject": {<br>
+"id": "1570654874",<br>
+"name": "example"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">asset</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Asset</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a single Asset<br>
+Example:<br>
+Request:<br>
+query {<br>
+asset(<br>
+id: "1570654874_4hJtNKSUXD") {<br>
+id<br>
+name<br>
+description<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"asset": {<br>
+"id": "1570654874_4hJtNKSUXD",<br>
+"name": "example",<br>
+"description": "example"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">assets</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">contentTypes</span>: [<a class="graphiql-doc-explorer-type-name" href="#">String</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">assetTypes</span>: [<a class="graphiql-doc-explorer-type-name" href="#">String</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">sourceEngineIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">String</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">createdDateFilter</span>: <a class="graphiql-doc-explorer-type-name" href="#">TemporalDataObjectDateTimeFilter</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">scrollId</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">AssetScrollList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve multiple assets<br>
+Example:<br>
+Request:<br>
+query {<br>
+assets(<br>
+ids:["1570654874_4hJtNKSUXD"],<br>
+contentTypes:[],<br>
+assetTypes:["text"],<br>
+sourceEngineIds:[],<br>
+createdDateFilter:null,<br>
+scrollId: null){<br>
+assets{<br>
+records{id}<br>
+count<br>
+}<br>
+scrollId<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"assets": {<br>
+"assets": {<br>
+"records": [],<br>
+"count": 0<br>
+},<br>
+"scrollId": ""<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">widget</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Widget</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a single Widget<br>
+Example:<br>
+Request:<br>
+query {<br>
+widget(<br>
+id: "KOIFUT_rT_Oy3Ev9zfKT6A") {<br>
+collection{<br>
+id<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"widget": {<br>
+"collection": {<br>
+"id": "243625"<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">cloneRequests</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">applicationId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">CloneRequestList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve clone job entries<br>
+Example:<br>
+Request:<br>
+query {<br>
+cloneRequests {<br>
+records{<br>
+id<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"cloneRequests": {<br>
+"records": []<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">recentBuilds</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">buildStatus</span>: [<a class="graphiql-doc-explorer-type-name" href="#">BuildStatus</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orderBy</span>: [<a class="graphiql-doc-explorer-type-name" href="#">EngineBuildOrderBy</a>!]</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">BuildList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve most recent builds<br>
+Example:<br>
+Request:<br>
+query {<br>
+recentBuilds(limit:2) {<br>
+records{<br>
+id<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"recentBuilds": {<br>
+"records": [<br>
+{<br>
+"id": "44193f81-57b4-47dd-9fe0-be95000776d9",<br>
+"name": "example Version 5"<br>
+},<br>
+{<br>
+"id": "bae12129-2724-40c3-abd2-6bb4021f21ae",<br>
+"name": "example Version 4"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">engineOverview</a>: <a class="graphiql-doc-explorer-type-name" href="#">EngineOverview</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve engine overview<br>
+Example:<br>
+Request:<br>
+query {<br>
+engineOverview {<br>
+ready<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"engineOverview": {<br>
+"ready": 7<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">engines</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">categoryId</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">category</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">state</span>: [<a class="graphiql-doc-explorer-type-name" href="#">EngineState</a>]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">owned</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a> = <span class="graphiql-doc-explorer-default-value">false</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">libraryRequired</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">createsTDO</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">filter</span>: <a class="graphiql-doc-explorer-type-name" href="#">EngineFilter</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orderBy</span>: [<a class="graphiql-doc-explorer-type-name" href="#">EngineSortField</a>]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">edgeVersion</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">EngineList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve engines<br>
+Example:<br>
+Request:<br>
+query {<br>
+engines(limit:2) {<br>
+records{<br>
+id<br>
+state<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"engines": {<br>
+"records": [<br>
+{<br>
+"id": "2",<br>
+"state": "pending"<br>
+},<br>
+{<br>
+"id": "1",<br>
+"state": "pending"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">engine</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Engine</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a single engine by ID<br>
+Example:<br>
+Request:<br>
+query {<br>
+engine(id:1) {<br>
+name<br>
+state<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"engine": {<br>
+"name": "example",<br>
+"state": "pending"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">engineBuild</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Build</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve an engine build<br>
+Example:<br>
+Request:<br>
+query {<br>
+engineBuild(id: "2a1a1b58-6983-4002-b9ed-7b7f325f621a"){<br>
+name<br>
+engineId<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"engineBuild": {<br>
+"name": "example Version 1",<br>
+"engineId": "1"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">engineCategories</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">name</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">type</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">EngineCategoryList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve engine categories<br>
+Example:<br>
+Request:<br>
+query {<br>
+engineCategories(limit:2) {<br>
+records {<br>
+id<br>
+type {<br>
+name<br>
+}<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"engineCategories": {<br>
+"records": [<br>
+{<br>
+"id": "581dbb32-ea5b-4458-bd15-8094942345e3",<br>
+"type": {<br>
+"name": "Cognition"<br>
+},<br>
+"name": "Transcode"<br>
+},<br>
+{<br>
+"id": "67cd4dd0-2f75-445d-a6f0-2f297d6cd182",<br>
+"type": {<br>
+"name": "Cognition"<br>
+},<br>
+"name": "Transcription"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">engineCategory</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">EngineCategory</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a specific engine category<br>
+Example:<br>
+Request:<br>
+query {<br>
+engineCategory(id: "581dbb32-ea5b-4458-bd15-8094942345e3") {<br>
+name<br>
+type{<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"engineCategory": {<br>
+"name": "Transcode",<br>
+"type": {<br>
+"name": "Cognition"<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">jobs</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">hasTargetTDO</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">status</span>: [<a class="graphiql-doc-explorer-type-name" href="#">JobStatusFilter</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">applicationStatus</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">applicationId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">targetId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">clusterId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">scheduledJobIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">hasScheduledJobId</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orderBy</span>: [<a class="graphiql-doc-explorer-type-name" href="#">JobSortField</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">dateTimeFilter</span>: [<a class="graphiql-doc-explorer-type-name" href="#">JobDateTimeFilter</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">applicationIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">engineIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">engineCategoryIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">dagTemplateIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>]</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">JobList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve jobs<br>
+Example:<br>
+Request:<br>
+query {<br>
+jobs(limit:2) {<br>
+records{<br>
+id<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"jobs": {<br>
+"records": []<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">job</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Job</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a single job by ID</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">task</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Task</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a single task by ID</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">entityIdentifierTypes</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">EntityIdentifierTypeList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve entity identifier types<br>
+Example:<br>
+Request:<br>
+query {<br>
+entityIdentifierTypes(limit:2) {<br>
+records{<br>
+id<br>
+label<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"entityIdentifierTypes": {<br>
+"records": [<br>
+{<br>
+"id": "face",<br>
+"label": "Face"<br>
+},<br>
+{<br>
+"id": "audio-recording",<br>
+"label": "audio file"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">entityIdentifierType</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">EntityIdentifierType</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve an entity identifier type<br>
+Example:<br>
+Request:<br>
+query {<br>
+entityIdentifierType(id:"face") {<br>
+label<br>
+entityIdentifierItems {<br>
+libraryTypeId<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"entityIdentifierType": {<br>
+"label": "Face",<br>
+"entityIdentifierItems": [<br>
+{<br>
+"libraryTypeId": "people"<br>
+},<br>
+{<br>
+"libraryTypeId": "suspect"<br>
+},<br>
+{<br>
+"libraryTypeId": "people-known-offender"<br>
+},<br>
+{<br>
+"libraryTypeId": "people-of-interest"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">libraryTypes</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">LibraryTypeList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve all library types<br>
+Example:<br>
+Request:<br>
+query {<br>
+libraryTypes(limit:2) {<br>
+records{<br>
+id<br>
+entityTypeName<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"libraryTypes": {<br>
+"records": [<br>
+{<br>
+"id": "people-known-offender",<br>
+"entityTypeName": "known offender"<br>
+},<br>
+{<br>
+"id": "dataset",<br>
+"entityTypeName": "dataset"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">libraryType</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">LibraryType</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a single library type<br>
+Example:<br>
+Request:<br>
+query {<br>
+libraryType(id: "people-known-offender") {<br>
+entityTypeName<br>
+label<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"libraryType": {<br>
+"entityTypeName": "known offender",<br>
+"label": "IDentify - Known Offender"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">libraries</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">name</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">type</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">entityIdentifierTypeIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">String</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">includeOwnedOnly</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a> = <span class="graphiql-doc-explorer-default-value">false</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orderBy</span>: <a class="graphiql-doc-explorer-type-name" href="#">LibraryOrderBy</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orderDirection</span>: <a class="graphiql-doc-explorer-type-name" href="#">OrderDirection</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">LibraryList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve libraries and entities<br>
+Example:<br>
+Request:<br>
+query {<br>
+libraries(limit:2) {<br>
+records {<br>
+id<br>
+name<br>
+libraryTypeId<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"libraries": {<br>
+"records": [<br>
+{<br>
+"id": "e0a6e5ad-dec8-49a1-ad33-3f1194c2e599",<br>
+"name": "example",<br>
+"libraryTypeId": "123"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">library</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Library</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a specific library<br>
+Example:<br>
+Request:<br>
+query {<br>
+library(id: "e0a6e5ad-dec8-49a1-ad33-3f1194c2e599") {<br>
+name<br>
+organizationId<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"library": {<br>
+"name": "example",<br>
+"organizationId": "35521"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">libraryEngineModel</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">LibraryEngineModel</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a specific library engine model<br>
+Example:<br>
+Request:<br>
+query {<br>
+libraryEngineModel(id: "87714ca6-8dbd-4da0-9dc0-d9233927b00d") {<br>
+trainStatus<br>
+engineId<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"libraryEngineModel": {<br>
+"trainStatus": "pending",<br>
+"engineId": "1"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">entity</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Entity</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a specific entity<br>
+Example:<br>
+Request:<br>
+query {<br>
+entity(id: "85b700fa-f327-4fea-b94b-ed83054170db") {<br>
+name<br>
+libraryId<br>
+isPublished<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"entity": {<br>
+"name": "example",<br>
+"libraryId": "e0a6e5ad-dec8-49a1-ad33-3f1194c2e599",<br>
+"isPublished": false<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">entities</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">libraryIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">isPublished</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">identifierTypeId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">name</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orderBy</span>: <a class="graphiql-doc-explorer-type-name" href="#">LibraryEntityOrderBy</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orderDirection</span>: <a class="graphiql-doc-explorer-type-name" href="#">OrderDirection</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">EntityList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a list of entities across libraries<br>
+Example:<br>
+Request:<br>
+query {<br>
+entities(libraryIds: "e0a6e5ad-dec8-49a1-ad33-3f1194c2e599") {<br>
+records {<br>
+id<br>
+name<br>
+isPublished<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"entities": {<br>
+"records": [<br>
+{<br>
+"id": "85b700fa-f327-4fea-b94b-ed83054170db",<br>
+"name": "example",<br>
+"isPublished": false<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">libraryConfiguration</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">LibraryConfiguration</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve library configuration<br>
+Example:<br>
+Request:<br>
+query {<br>
+libraryConfiguration(id:"7396e71b-db5a-4c4c-bf6f-4fc66a5a07f7") {<br>
+confidence{<br>
+min<br>
+max<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"libraryConfiguration": {<br>
+"confidence": {<br>
+"min": 0,<br>
+"max": 100<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">applications</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">status</span>: <a class="graphiql-doc-explorer-type-name" href="#">ApplicationStatus</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orgId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">isPublic</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">excludeViewOnly</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a> = <span class="graphiql-doc-explorer-default-value">true</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">filter</span>: <a class="graphiql-doc-explorer-type-name" href="#">ApplicationFilter</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orderBy</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ApplicationSortField</a>]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">accessScope</span>: [<a class="graphiql-doc-explorer-type-name" href="#">AccessScope</a>!]</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">ApplicationList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve applications. These are custom applications integrated into<br>
+the Veritone platform using the VDA framework.<br>
+Example:<br>
+Request:<br>
+query {<br>
+applications(limit:2) {<br>
+records {<br>
+id<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"applications": {<br>
+"records": [<br>
+{<br>
+"id": "47bd3e25-f4ea-435f-b69b-13cb4f9dd60a",<br>
+"name": "appexamplebill"<br>
+},<br>
+{<br>
+"id": "5908703b-51b4-4291-9787-b54bada73b0a",<br>
+"name": "appexample2"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">organizations</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">kvpProperty</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">kvpValue</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">name</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">status</span>: <a class="graphiql-doc-explorer-type-name" href="#">OrganizationStatus</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">nameMatch</span>: <a class="graphiql-doc-explorer-type-name" href="#">StringMatch</a> = <span class="graphiql-doc-explorer-default-value">startsWith</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">isHubManaged</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">OrganizationList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve organizations<br>
+Example:<br>
+Request:<br>
+query {<br>
+organizations(limit:2) {<br>
+records {<br>
+id<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"organizations": {<br>
+"records": [<br>
+{<br>
+"id": "35521",<br>
+"name": "WTS API Docs Org"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">organization</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Organization</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a single organization<br>
+Example:<br>
+Request:<br>
+query {<br>
+organization(id: "35521") {<br>
+status<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"organization": {<br>
+"status": "active"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">myOrganizations</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">status</span>: <a class="graphiql-doc-explorer-type-name" href="#">OrganizationStatus</a> = <span class="graphiql-doc-explorer-default-value">active</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">OrganizationInfoList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve basic organization info about the organizations to which the user belongs<br>
+Example:<br>
+Request:<br>
+query {<br>
+myOrganizations {<br>
+records {<br>
+id<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"myOrganizations": {<br>
+"records": [<br>
+{<br>
+"id": "35521",<br>
+"name": "WTS API Docs Org"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">loginConfiguration</a>(<span><span><span class="graphiql-doc-explorer-argument-name">slug</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">LoginConfiguration</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve the login configuration for an organization<br>
+Example:<br>
+Request:<br>
+query {<br>
+loginConfiguration(slug: "my-organization") {<br>
+organizationInfo {<br>
+id<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"loginConfiguration": {<br>
+"organizationInfo": {<br>
+"id": "12345",<br>
+"name": "My Organization"<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">instanceLoginConfigurations</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">LoginConfigurationList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve all login configurations for the Instance<br>
+Example:<br>
+Request:<br>
+query {<br>
+instanceLoginConfigurations {<br>
+records {<br>
+slug<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"instanceLoginConfigurations": {<br>
+records: [<br>
+{<br>
+"slug": "instance-slug",<br>
+},<br>
+{<br>
+"slug": "other-instance-slug",<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">registrationConfiguration</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">RegistrationConfiguration</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a single registration configuration</p>
+<p>Example:<br>
+Request:<br>
+query {<br>
+registrationConfiguration(id: "12345") {<br>
+slug<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"registrationConfiguration": {<br>
+"slug": "test"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">registrationConfigurationInfo</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">slug</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">RegistrationConfigurationInfo</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a single registration configuration by id:</p>
+<p>Example:<br>
+Request:<br>
+query {<br>
+registrationConfiguration(id: "12345") {<br>
+slug<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"registrationConfiguration": {<br>
+"slug": "test"<br>
+}<br>
+}<br>
+}</p>
+<p>Retrieve a registration configuration info by slug:</p>
+<p>Request:<br>
+query {<br>
+registrationConfigurationInfo(slug: "test") {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"registrationConfigurationInfo": {<br>
+"id": "12345"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">permissions</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">name</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">PermissionList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve permissions<br>
+Example:<br>
+Request:<br>
+query {<br>
+permissions(limit:5) {<br>
+records {<br>
+id<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"permissions": {<br>
+"records": [<br>
+{<br>
+"id": "2",<br>
+"name": "admin.access"<br>
+},<br>
+{<br>
+"id": "9",<br>
+"name": "admin.group.create"<br>
+},<br>
+{<br>
+"id": "12",<br>
+"name": "admin.group.delete"<br>
+},<br>
+{<br>
+"id": "10",<br>
+"name": "admin.group.read"<br>
+},<br>
+{<br>
+"id": "11",<br>
+"name": "admin.group.update"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">users</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">name</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">organizationIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">includeAllOrgUsers</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">dateTimeFilter</span>: [<a class="graphiql-doc-explorer-type-name" href="#">UsersDateTimeFilter</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">status</span>: <a class="graphiql-doc-explorer-type-name" href="#">UserStatus</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">statuses</span>: [<a class="graphiql-doc-explorer-type-name" href="#">UserStatus</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">roleIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>]</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">UserList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve users<br>
+Example:<br>
+Request:<br>
+query {<br>
+users(<br>
+organizationIds:"35521",<br>
+limit: 2) {<br>
+records {<br>
+id<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"users": {<br>
+"records": [<br>
+{<br>
+"id": "267de7e1-efb2-444a-a524-210328b78503",<br>
+"name": "example"<br>
+},<br>
+{<br>
+"id": "d8304ba1-0d4c-4268-a82c-8c62fd455066",<br>
+"name": "example1"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">user</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">organizationIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>]</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">User</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve an individual user<br>
+Example:<br>
+Request:<br>
+query {<br>
+user(id: "267de7e1-efb2-444a-a524-210328b78503") {<br>
+name<br>
+status<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"user": {<br>
+"name": "example",<br>
+"status": "deleted"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">tokens</a>: [<a class="graphiql-doc-explorer-type-name" href="#">Token</a>]</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve user's organization API tokens<br>
+Example:<br>
+Request:<br>
+query {<br>
+tokens {<br>
+id<br>
+applicationId<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"tokens": []<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">me</a>: <a class="graphiql-doc-explorer-type-name" href="#">User</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve information for the current logged-in user<br>
+Example:<br>
+Request:<br>
+query {<br>
+me {<br>
+id<br>
+organizationId<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"me": {<br>
+"id": "59cb4e74-7c31-4267-b91e-d4600bc08008",<br>
+"organizationId": "35521"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">groups</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">name</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">organizationIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">GroupList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve groups<br>
+Example:<br>
+Request:<br>
+query {<br>
+groups {<br>
+records {<br>
+id<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"groups": {<br>
+"records": [<br>
+{<br>
+"id": "8db639c1-c926-4f83-90de-d86c2ae5973d",<br>
+"name": "WTS API Docs Org"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">mention</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">mentionId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">25</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">userId</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">Mention</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a single mention</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">sharedMention</a>(<span><span><span class="graphiql-doc-explorer-argument-name">shareId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">SharedMention</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a shared mention</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">searchMentions</a>(<span><span><span class="graphiql-doc-explorer-argument-name">search</span>: <a class="graphiql-doc-explorer-type-name" href="#">JSONData</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">SearchResult</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Search for mentions across an index.<br>
+This query requires a user token.<br>
+Known Issues:</p>
+<ul>
+<li>Offset can not go past 10,000.  To get around this, the best practice is to keep updating the start time of the query based on the last mention you have processed.<br>
+Example:<br>
+Request:<br>
+query{<br>
+searchMentions(search:{<br>
+offset: 0<br>
+limit: 1<br>
+index: ["mine"]<br>
+query:{<br>
+operator: "and"<br>
+conditions: [{<br>
+operator: "term"<br>
+field: "trackingUnitName"<br>
+value: "Dallas Cowboys Super Bowl"<br>
+},<br>
+{<br>
+operator: "term"<br>
+field: "mentionStatusId"<br>
+value: "1"<br>
+}]<br>
+}<br>
+}) {<br>
+jsondata<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"searchMentions": {<br>
+"jsondata": {<br>
+"results": [<br>
+{<br>
+"id": 47569938,<br>
+"programFormatName": "Information and News",<br>
+"mentionDate": "2017-01-31T07:59:18.000Z",<br>
+"mediaStartTime": "2017-01-31T07:45:01.000Z",<br>
+"mediaId": 20017455,<br>
+"metadata": {<br>
+"filename": "AM-RADIO",<br>
+"veritone-file": {<br>
+"size": 0,<br>
+"filename": "AM-RADIO",<br>
+"mimetype": "audio/mpeg"<br>
+},<br>
+"veritone-media-source": {<br>
+"mediaSourceId": "14326",<br>
+"mediaSourceTypeId": "1"<br>
+},<br>
+"veritone-program": {<br>
+"programId": "3828",<br>
+"programName": "AM-RADIO Morning Talk",<br>
+"programImage": "<a href="https://s3.amazonaws.com/prod-veritone-ugc/cb5e59d4-a986-4e2b-b525-482319df3350%2FbrdProgram%2F2uGsLVKsQeiKN3UuHufC_941478_10151455644772706_951533539_n.jpg">https://s3.amazonaws.com/prod-veritone-ugc/cb5e59d4-a986-4e2b-b525-482319df3350%2FbrdProgram%2F2uGsLVKsQeiKN3UuHufC_941478_10151455644772706_951533539_n.jpg</a>",<br>
+"programLiveImage": "<a href="https://s3.amazonaws.com/prod-veritone-ugc/cb5e59d4-a986-4e2b-b525-482319df3350%2FbrdProgram%2FwwEn3Ya9RgmMQwUEGoD1_LUkKlgZQS36ncUbY8Iz7_2520to%2520live2.JPG">https://s3.amazonaws.com/prod-veritone-ugc/cb5e59d4-a986-4e2b-b525-482319df3350%2FbrdProgram%2FwwEn3Ya9RgmMQwUEGoD1_LUkKlgZQS36ncUbY8Iz7_2520to%2520live2.JPG</a>"<br>
+}<br>
+},<br>
+"fileLocation": "<a href="https://inspirent.s3.amazonaws.com/recordings/9605ea97-87df-428e-6740-720df8b8691c_original.mp3?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=EXAMPLE_AWS_ACCESS_KEY_ID%2F20171215%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20171215T205111Z&amp;X-Amz-Expires=604800&amp;X-Amz-Signature=00f62a6e2367c109320c98b9aea190cd28d82ac347eeeca030f42810b7ab75e3&amp;X-Amz-SignedHeaders=host">https://inspirent.s3.amazonaws.com/recordings/9605ea97-87df-428e-6740-720df8b8691c_original.mp3?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=EXAMPLE_AWS_ACCESS_KEY_ID%2F20171215%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20171215T205111Z&amp;X-Amz-Expires=604800&amp;X-Amz-Signature=00f62a6e2367c109320c98b9aea190cd28d82ac347eeeca030f42810b7ab75e3&amp;X-Amz-SignedHeaders=host</a>",<br>
+"fileType": "audio/mpeg",<br>
+"snippets": [<br>
+{<br>
+"startTime": 857.62,<br>
+"endTime": 887.33,<br>
+"text": "eighty first women's Australian Open final Monica Seles beat Steffi Graf four six six three six two in one thousand nine hundred twenty eight the Dallas Cowboys beat the Buffalo Bills thirty to thirteen in Atlanta running back Emmitt Smith wins the M.V.P. and fourth consecutive Super Bowl game loss to the Cowboys twenty sixteen at the one hundred fourth women's Australian Open final six three six six four that time capsule your",<br>
+"hits": [<br>
+{<br>
+"startTime": 865.7,<br>
+"endTime": 865.929,<br>
+"queryTerm": "Dallas"<br>
+},<br>
+{<br>
+"startTime": 865.93,<br>
+"endTime": 866.07,<br>
+"queryTerm": "Cowboys"<br>
+},<br>
+{<br>
+"startTime": 872.74,<br>
+"endTime": 873.31,<br>
+"queryTerm": "Super"<br>
+},<br>
+{<br>
+"startTime": 873.31,<br>
+"endTime": 873.43,<br>
+"queryTerm": "Bowl"<br>
+}<br>
+]<br>
+}<br>
+],<br>
+"userSnippets": null,<br>
+"advertiserId": 0,<br>
+"advertiserName": "",<br>
+"brandId": 0,<br>
+"brandImage": "",<br>
+"brandName": "",<br>
+"campaignId": 0,<br>
+"campaignName": "",<br>
+"organizationId": 7295,<br>
+"organizationName": "Demo Organization",<br>
+"trackingUnitId": 10032,<br>
+"trackingUnitName": "Dallas Cowboys Super Bowl",<br>
+"mentionStatusId": 1,<br>
+"mediaSourceTypeId": 1,<br>
+"mediaSourceTypeName": "Audio",<br>
+"mediaSourceId": 14326,<br>
+"mediaSourceName": "AM-RADIO Morning Talk",<br>
+"isNational": true,<br>
+"spotTypeId": null,<br>
+"spotTypeName": null,<br>
+"programId": 3828,<br>
+"programName": "AM-RADIO",<br>
+"programImage": "<a href="https://s3.amazonaws.com/prod-veritone-ugc/cb5e59d4-a986-4e2b-b525-482319df3350%2FbrdProgram%2F2uGsLVKsQeiKN3UuHufC_941478_10151455644772706_951533539_n.jpg">https://s3.amazonaws.com/prod-veritone-ugc/cb5e59d4-a986-4e2b-b525-482319df3350%2FbrdProgram%2F2uGsLVKsQeiKN3UuHufC_941478_10151455644772706_951533539_n.jpg</a>",<br>
+"programLiveImage": "<a href="https://s3.amazonaws.com/prod-veritone-ugc/cb5e52b4-a986-4e2b-b525-482319df3350%2FbrdProgram%2FwwEn3Ya9RgmMQwUEGoD1_LUkKlgZQS36ncUbY8Iz7_2520to%2520live2.JPG">https://s3.amazonaws.com/prod-veritone-ugc/cb5e52b4-a986-4e2b-b525-482319df3350%2FbrdProgram%2FwwEn3Ya9RgmMQwUEGoD1_LUkKlgZQS36ncUbY8Iz7_2520to%2520live2.JPG</a>",<br>
+"impressions": 1894,<br>
+"audience": [<br>
+{<br>
+"gender": "men",<br>
+"age_group": "35-44",<br>
+"audience": 11,<br>
+"isTargetMatch": true<br>
+},<br>
+{<br>
+"gender": "men",<br>
+"age_group": "45-49",<br>
+"audience": 121,<br>
+"isTargetMatch": true<br>
+},<br>
+{<br>
+"gender": "men",<br>
+"age_group": "50-54",<br>
+"audience": 474,<br>
+"isTargetMatch": true<br>
+},<br>
+{<br>
+"gender": "men",<br>
+"age_group": "65+",<br>
+"audience": 95,<br>
+"isTargetMatch": true<br>
+},<br>
+{<br>
+"gender": "women",<br>
+"age_group": "50-54",<br>
+"audience": 19,<br>
+"isTargetMatch": false<br>
+},<br>
+{<br>
+"gender": "women",<br>
+"age_group": "65+",<br>
+"audience": 693,<br>
+"isTargetMatch": false<br>
+},<br>
+{<br>
+"gender": "men",<br>
+"age_group": "55-64",<br>
+"audience": 481,<br>
+"isTargetMatch": true<br>
+}<br>
+],<br>
+"targetAudience": {<br>
+"gender": 1,<br>
+"genderName": "M",<br>
+"ageGroup": [<br>
+0,<br>
+5<br>
+],<br>
+"ageGroupMin": 18,<br>
+"ageGroupMax": 0,<br>
+"impressions": 1182<br>
+},<br>
+"audienceMarketCount": 3,<br>
+"audienceAffiliateCount": 1,<br>
+"rating": null,<br>
+"ratings": null,<br>
+"comments": null,<br>
+"markets": [<br>
+{<br>
+"marketId": 54,<br>
+"marketName": "Des Moines-Ames, IA"<br>
+}<br>
+],<br>
+"marketId": null,<br>
+"marketName": null,<br>
+"hourOfDay": 7,<br>
+"dayOfWeek": 2,<br>
+"dayOfMonth": 31,<br>
+"month": 1,<br>
+"year": 2017,<br>
+"isMatch": true,<br>
+"mentionStatusName": "Pending Verification",<br>
+"complianceStatusId": null,<br>
+"cognitiveEngineResults": null,<br>
+"hits": 4<br>
+}<br>
+],<br>
+"totalResults": 579,<br>
+"limit": 1,<br>
+"from": 0,<br>
+"to": 0,<br>
+"searchToken": "ae882400-e1d9-11e7-947b-339cddca931e",<br>
+"timestamp": 1513371071<br>
+}<br>
+}<br>
+}<br>
+}</li>
+</ul>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">searchMedia</a>(<span><span><span class="graphiql-doc-explorer-argument-name">search</span>: <a class="graphiql-doc-explorer-type-name" href="#">JSONData</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">SearchResult</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Search for media across an index.<br>
+This query requires a user token.<br>
+Example:<br>
+Request:<br>
+query{<br>
+searchMedia(search:{<br>
+offset: 0<br>
+limit: 1<br>
+index: ["mine"]<br>
+query:{<br>
+operator: "query_string"<br>
+field: "transcript.transcript"<br>
+value: "paris NOT "las vegas""<br>
+}<br>
+}) {<br>
+jsondata<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"searchMedia": {<br>
+"jsondata": {<br>
+"results": [<br>
+{<br>
+"recording": {<br>
+"recordingId": "43033727",<br>
+"fileLocation": "<a href="https://inspirent.s3.amazonaws.com/assets/43033727/ea9d9845-775b-48cd-aada-16fa56894ba0.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=EXAMPLE_AWS_ACCESS_KEY_ID%2F20171215%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20171215T181255Z&amp;X-Amz-Expires=604800&amp;X-Amz-Signature=2fd918d5ac20979bd27d365bfa455904cf1726307fddbd362a28a8bd9a0a81a8&amp;X-Amz-SignedHeaders=host">https://inspirent.s3.amazonaws.com/assets/43033727/ea9d9845-775b-48cd-aada-16fa56894ba0.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=EXAMPLE_AWS_ACCESS_KEY_ID%2F20171215%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20171215T181255Z&amp;X-Amz-Expires=604800&amp;X-Amz-Signature=2fd918d5ac20979bd27d365bfa455904cf1726307fddbd362a28a8bd9a0a81a8&amp;X-Amz-SignedHeaders=host</a>",<br>
+"fileType": "video/mp4",<br>
+"programId": "-1",<br>
+"programName": "Weekly Talkshow",<br>
+"programLiveImage": "<a href="https://inspirent.s3.amazonaws.com/assets/43033727/fe693b30-18ae-47c7-984f-530eab61d7.jpeg">https://inspirent.s3.amazonaws.com/assets/43033727/fe693b30-18ae-47c7-984f-530eab61d7.jpeg</a>",<br>
+"mediaSourceId": "-1",<br>
+"mediaSourceTypeId": "5",<br>
+"sliceTime": 1512682022,<br>
+"mediaStartTime": 1512681992,<br>
+"aibDuration": 90,<br>
+"isOwn": true,<br>
+"hitStartTime": 1512682022,<br>
+"hitEndTime": 1512682082<br>
+},<br>
+"startDateTime": 1512682022,<br>
+"stopDateTime": 1512682082,<br>
+"hits": [<br>
+{<br>
+"veritone-file": {<br>
+"filename": "Veritone_v06.mp4",<br>
+"mimetype": "video/mp4",<br>
+"size": 162533502<br>
+}<br>
+}<br>
+]<br>
+}<br>
+],<br>
+"totalResults": 733275,<br>
+"limit": 1,<br>
+"from": 0,<br>
+"to": 0,<br>
+"searchToken": "930f0960-e1c3-11e7-9e94-eba5f6b5faf7",<br>
+"timestamp": 1513361576<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">rootFolders</a>(<span><span><span class="graphiql-doc-explorer-argument-name">type</span>: <a class="graphiql-doc-explorer-type-name" href="#">RootFolderType</a></span></span>): [<a class="graphiql-doc-explorer-type-name" href="#">Folder</a>]</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve the root folders for an organization<br>
+Example:<br>
+Request:<br>
+query {<br>
+rootFolders {<br>
+id<br>
+typeId<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"rootFolders": [<br>
+{<br>
+"id": "2ac28573-917a-4c4b-be91-a0ac64cbc982",<br>
+"typeId": 4<br>
+},<br>
+{<br>
+"id": "d3e27eb3-7d4a-47ab-af64-bf1529390f4e",<br>
+"typeId": 4<br>
+}<br>
+]<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">folder</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Folder</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a single folder. Used to navigate the folder tree structure.<br>
+Example:<br>
+Request:<br>
+query {<br>
+folder(id: "2ac28573-917a-4c4b-be91-a0ac64cbc982") {<br>
+typeId<br>
+id<br>
+childFolders{<br>
+records{<br>
+id<br>
+}<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"folder": {<br>
+"typeId": 4,<br>
+"id": "3104f61f-4bd1-4175-9fe6-27436d591c54",<br>
+"childFolders": {<br>
+"records": [<br>
+{<br>
+"id": "9d639f1b-a0d4-47b0-8149-3568f048f320"<br>
+},<br>
+{<br>
+"id": "a347319d-72da-43a2-93fc-e677876aca80"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">platformInfo</a>: <a class="graphiql-doc-explorer-type-name" href="#">PlatformInfo</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve the current platform information.<br>
+Example:<br>
+Request:<br>
+query {<br>
+platformInfo {<br>
+properties<br>
+aiWAREVersion {<br>
+currentVersion {<br>
+version<br>
+}<br>
+previousVersion {<br>
+version<br>
+}<br>
+nextVersion {<br>
+version<br>
+}<br>
+}<br>
+aiWAREVersionHistory(offset: 0, limit: 30) {<br>
+platformVersion {<br>
+id<br>
+version<br>
+}<br>
+id<br>
+},<br>
+aiWAREVersionList (orderBy: version, orderDirection: desc) {<br>
+count<br>
+records {<br>
+id<br>
+version<br>
+}<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"platformInfo": {<br>
+"properties": {<br>
+"Environment": "US West",<br>
+"ClusterSize": "small"<br>
+}<br>
+"aiWAREVersion": {<br>
+"currentVersion": {<br>
+"version": "1.1.0"<br>
+},<br>
+"previousVersion": {<br>
+"version": "1.0.0"<br>
+},<br>
+"nextVersion": {<br>
+"version": "1.2.0"<br>
+}<br>
+},<br>
+"aiWAREVersionHistory": [<br>
+{<br>
+platformVersion:<br>
+{<br>
+"id": "c7a91281-6a1e-46d4-9f2c-7f8b4a1fc493",<br>
+"version": "1.3.0"<br>
+},<br>
+"id": "30c9c2a2-ae6a-4be2-b80c-6893d8b56780"<br>
+},<br>
+{<br>
+platformVersion:<br>
+{<br>
+"id": "f785bc56-2d43-472e-8629-99f9b9a5c57e",<br>
+"version": "1.3.0"<br>
+},<br>
+"id": "7b8a2ab2-00de-4f1b-9fb1-99e7a9cd108f"<br>
+},<br>
+{<br>
+platformVersion:<br>
+{<br>
+"id": "3c4c0b46-1a61-45ab-9f3e-b8f7a14bfaa7",<br>
+"version": "1.3.0"<br>
+},<br>
+"id": "d3499a78-efc7-4a72-a12d-852f53231e33"<br>
+}<br>
+],<br>
+"aiWAREVersionList": {<br>
+"count": 3,<br>
+"records": [<br>
+{<br>
+"id": "799150bb-8d67-4cd1-b204-d9346e012588",<br>
+"version": "1.0.11"<br>
+},<br>
+{<br>
+"id": "2892e80d-e0bf-4ffc-be17-4bb173d6ad29",<br>
+"version": "1.0.2"<br>
+},<br>
+{<br>
+"id": "095b9558-6fc1-4775-9696-082b9f098c47",<br>
+"version": "1.0.1"<br>
+},<br>
+]<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">auditEvents</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">query</span>: <a class="graphiql-doc-explorer-type-name" href="#">JSONData</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orderDirection</span>: <a class="graphiql-doc-explorer-type-name" href="#">OrderDirection</a> = <span class="graphiql-doc-explorer-default-value">desc</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">application</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">terms</span>: [<a class="graphiql-doc-explorer-type-name" href="#">JSONData</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">AuditEventList</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Example:<br>
+Request:<br>
+query {<br>
+auditEvents(limit: 2) {<br>
+records {<br>
+id<br>
+application<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"auditEvents": {<br>
+"records": [<br>
+{<br>
+"id": "fdc7b3a3-ab23-4866-a330-c0ad910cd64f",<br>
+"application": ""<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">folderOverview</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">rootFolderType</span>: <a class="graphiql-doc-explorer-type-name" href="#">RootFolderType</a> = <span class="graphiql-doc-explorer-default-value">watchlist</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">FolderOverview</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a folder overview<br>
+Example:<br>
+Request:<br>
+query {<br>
+folderOverview(ids:"3104f61f-4bd1-4175-9fe6-27436d591c54") {<br>
+childFoldersCount<br>
+childNonFolderObjectsCount<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"folderOverview": {<br>
+"childFoldersCount": 3,<br>
+"childNonFolderObjectsCount": 0<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">folderSummaryDetails</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">rootFolderType</span>: <a class="graphiql-doc-explorer-type-name" href="#">RootFolderType</a> = <span class="graphiql-doc-explorer-default-value">watchlist</span></span></div></span>): [<a class="graphiql-doc-explorer-type-name" href="#">FolderSummaryDetail</a>]</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Example:<br>
+Request:<br>
+query {<br>
+folderSummaryDetails(ids: "3104f61f-4bd1-4175-9fe6-27436d591c54") {<br>
+id<br>
+typeId<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"folderSummaryDetails": [<br>
+{<br>
+"id": "1580701928",<br>
+"typeId": 5<br>
+},<br>
+{<br>
+"id": "1580388995",<br>
+"typeId": 5<br>
+},<br>
+{<br>
+"id": "2ac28573-917a-4c4b-be91-a0ac64cbc982",<br>
+"typeId": 4<br>
+},<br>
+{<br>
+"id": "243625",<br>
+"typeId": 3<br>
+},<br>
+{<br>
+"id": "242599",<br>
+"typeId": 3<br>
+},<br>
+{<br>
+"id": "d551fbd6-7354-4b0e-abfb-654ab8583be2",<br>
+"typeId": 1<br>
+},<br>
+{<br>
+"id": "a347319d-72da-43a2-93fc-e677876aca80",<br>
+"typeId": 1<br>
+},<br>
+{<br>
+"id": "9d639f1b-a0d4-47b0-8149-3568f048f320",<br>
+"typeId": 1<br>
+}<br>
+]<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">applicationConfig</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">appId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orgId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">userId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">includeDefaults</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a> = <span class="graphiql-doc-explorer-default-value">true</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">configKeyRegexp</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">ApplicationConfigList</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve configs for a given application<br>
+Example:<br>
+Request:<br>
+query {<br>
+applicationConfig(applicationId: "47bd3e25-f4ea-435f-b69b-13cb4f9dd60a") {<br>
+records: {<br>
+configType<br>
+configLevel<br>
+}<br>
+offset: 0<br>
+limit: 1<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"applicationConfig": {<br>
+"records": {<br>
+"configType": "String",<br>
+"configLevel": "Organization"<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">applicationConfigDefinition</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">appId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">configKey</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">ApplicationConfigDefinitionList</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve config definitions for a given application<br>
+Example:<br>
+Request:<br>
+query {<br>
+applicationConfigDefinition(applicationId: "47bd3e25-f4ea-435f-b69b-13cb4f9dd60a", configKey: 'dark mode') {<br>
+records: {<br>
+configType<br>
+defaultValue<br>
+}<br>
+offset: 0<br>
+limit: 1<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"applicationConfigDefinition": {<br>
+"records": [{<br>
+"configType": Boolean,<br>
+"defaultValue": true,<br>
+}]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">application</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">excludeViewOnly</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a> = <span class="graphiql-doc-explorer-default-value">true</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">Application</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a single application<br>
+Example:<br>
+Request:<br>
+query {<br>
+application(id: "47bd3e25-f4ea-435f-b69b-13cb4f9dd60a") {<br>
+name<br>
+key<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"application": {<br>
+"name": "appexamplebill",<br>
+"key": "appexamplebill"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">applicationHeaderbar</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">appId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orgId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">ApplicationHeaderbar</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve headerbar information for an application<br>
+Example:<br>
+Request:<br>
+query {<br>
+applicationHeaderbar(id: "47bd3e25-f4ea-435f-b69b-13cb4f9dd60a") {<br>
+name<br>
+config {<br>
+title<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"applicationHeaderbar": {<br>
+"name": "APP_BAR",<br>
+"config": {<br>
+"title": "Library"<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">schemas</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">dataRegistryId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">status</span>: [<a class="graphiql-doc-explorer-type-name" href="#">SchemaStatus</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">majorVersion</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">name</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">nameMatch</span>: <a class="graphiql-doc-explorer-type-name" href="#">StringMatch</a> = <span class="graphiql-doc-explorer-default-value">startsWith</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">accessScope</span>: [<a class="graphiql-doc-explorer-type-name" href="#">AccessScope</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orderBy</span>: [<a class="graphiql-doc-explorer-type-name" href="#">SchemaOrder</a>]</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">SchemaList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a list of schemas for structured data ingestions<br>
+Example:<br>
+Request:<br>
+query {<br>
+schemas(limit: 2) {<br>
+records {<br>
+id<br>
+organizationId<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"schemas": {<br>
+"records": [<br>
+{<br>
+"id": "21a08123-45dc-497e-b329-360d9f3fcaac",<br>
+"organizationId": "35521"<br>
+},<br>
+{<br>
+"id": "57aa1618-344d-4d35-9980-5fe1ec6c3112",<br>
+"organizationId": "35521"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">schema</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Schema</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a schema for structured data ingestions<br>
+Example:<br>
+Request:<br>
+query {<br>
+schema(id: "21a08123-45dc-497e-b329-360d9f3fcaac") {<br>
+definition<br>
+status<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"schema": {<br>
+"definition": {<br>
+"example": "example value"<br>
+},<br>
+"status": "draft"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">schemaProperties</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">dataRegistryVersion</span>: [<a class="graphiql-doc-explorer-type-name" href="#">DataRegistryVersion</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">search</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">SchemaPropertyList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Example:<br>
+Request:<br>
+query {<br>
+schemaProperties(limit: 2) {<br>
+records {<br>
+type<br>
+dataRegistryId<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"schemaProperties": {<br>
+"records": [<br>
+{<br>
+"type": "string",<br>
+"dataRegistryId": "c3c9fa66-15b2-4bc4-b37f-c790e3ea0db6"<br>
+},<br>
+{<br>
+"type": "string",<br>
+"dataRegistryId": "dbfa78af-f935-4ace-8a70-f70ca36ce49c"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">structuredData</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">schemaId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">StructuredData</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a structured data object<br>
+Example:<br>
+Request:<br>
+query {<br>
+structuredData(<br>
+id: "bbc0d388-b7ed-4073-9760-cb7701130eaf",<br>
+schemaId: "acab8bd9-a4d4-44de-ad4b-cc949d696cf9") {<br>
+data<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"structuredData": {<br>
+"data": {<br>
+"example": "example"<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">structuredDataObject</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">schemaId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">StructuredData</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a structured data object<br>
+Example:<br>
+Request:<br>
+query {<br>
+structuredDataObject(<br>
+id: "bbc0d388-b7ed-4073-9760-cb7701130eaf",<br>
+schemaId: "acab8bd9-a4d4-44de-ad4b-cc949d696cf9") {<br>
+data<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"structuredDataObject": {<br>
+"data": {<br>
+"example": "example"<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">structuredDataObjects</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">schemaId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orderBy</span>: [<a class="graphiql-doc-explorer-type-name" href="#">StructuredDataOrderBy</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">limit</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">30</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">offset</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a> = <span class="graphiql-doc-explorer-default-value">0</span></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">owned</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">filter</span>: <a class="graphiql-doc-explorer-type-name" href="#">JSONData</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">dateTimeFilter</span>: <a class="graphiql-doc-explorer-type-name" href="#">SdoDateTimeFilter</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">StructuredDataList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a paginated list of structured data object<br>
+Example:<br>
+Request:<br>
+query {<br>
+structuredDataObjects(schemaId: "acab8bd9-a4d4-44de-ad4b-cc949d696cf9") {<br>
+records {<br>
+id<br>
+data<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"structuredDataObjects": {<br>
+"records": [<br>
+{<br>
+"id": "bbc0d388-b7ed-4073-9760-cb7701130eaf",<br>
+"data": {<br>
+"example": "example"<br>
+}<br>
+},<br>
+{<br>
+"id": "f914eafe-ed9b-46b1-a48d-effd5575764a",<br>
+"data": {<br>
+"example": "example"<br>
+}<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">graphqlServiceInfo</a>: <a class="graphiql-doc-explorer-type-name" href="#">GraphQLServiceInfo</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Returns information about the GraphQL server, useful<br>
+for diagnostics. This data is primarily used by Veritone<br>
+development, and some fields may be restricted to Veritone administrators.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">getSignedWritableUrl</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">key</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">type</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">path</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">expiresInSeconds</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">organizationId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">WritableUrlInfo</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Returns a signed writable S3 URL. A client can then<br>
+upload to this URL with an HTTP PUT without providing<br>
+any additional authorization (<em>note</em>: it must be a PUT.<br>
+A POST will fail.)<br>
+Example:<br>
+Request:<br>
+query {<br>
+getSignedWritableUrl(type: "preview") {<br>
+bucket<br>
+key<br>
+url<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"getSignedWritableUrl": {<br>
+"bucket": "<a href="http://prod-api.veritone.com">prod-api.veritone.com</a>",<br>
+"key": "35521/preview/2021/5/5/_/19-50-374_ed2c10a7-6f96-4d7c-a498-7bedeb383c7e",<br>
+"url": "<a href="https://s3.amazonaws.com/prod-api.veritone.com/35521/preview/2021/5/5/_/19-50-374_ed2c10a7-6f96-4d7c-a498-7bedeb383c7e?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAQMR5VATUHU3MEGOA%2F20210618%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20210618T194850Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=44857350a7f0b7311d4b911b557f4171a6ffe126c76e3d26f6e5cd532f645e53&amp;X-Amz-SignedHeaders=host">https://s3.amazonaws.com/prod-api.veritone.com/35521/preview/2021/5/5/_/19-50-374_ed2c10a7-6f96-4d7c-a498-7bedeb383c7e?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAQMR5VATUHU3MEGOA%2F20210618%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20210618T194850Z&amp;X-Amz-Expires=86400&amp;X-Amz-Signature=44857350a7f0b7311d4b911b557f4171a6ffe126c76e3d26f6e5cd532f645e53&amp;X-Amz-SignedHeaders=host</a>"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">getSignedWritableAssetUrl</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">assetId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">expiresInSeconds</span>: <a class="graphiql-doc-explorer-type-name" href="#">Int</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">SignedWritableAssetUrlInfo</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Issue a short-lived signed PUT URL to overwrite an EXISTING asset in place.<br>
+The destination bucket + key are derived server-side from the persisted asset<br>
+(never from client input) and confined to buckets managed by this service, so<br>
+the URL can only overwrite that specific asset object. Intended for internal<br>
+platform components (e.g. core-eventing) to flush asset content without holding<br>
+S3 credentials of their own. The returned <code>contentType</code> and, when non-null,<br>
+<code>serverSideEncryption</code> are baked into the signature — the caller MUST send<br>
+matching <code>Content-Type</code> and <code>x-amz-server-side-encryption</code> headers on the PUT.<br>
+Restricted to internal service tokens and (currently) media-mdp assets.</p>
+</div></div>

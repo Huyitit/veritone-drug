@@ -1,0 +1,1791 @@
+<div class="graphiql-doc-explorer-section-title"><svg height="1em" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg"><title> icon</title><rect x="0.6" y="1.1" width="10.8" height="10.8" rx="2.4" stroke="currentColor" stroke-width="1.2"></rect><rect x="5" y="5.5" width="2" height="2" rx="1" fill="currentColor"></rect></svg>Fields</div><div class="graphiql-doc-explorer-section-content"><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">setCurrentPlatformVersion</a>(<span><span><span class="graphiql-doc-explorer-argument-name">version</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">PlatformVersion</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Set the current PlatformVersion<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+setCurrentPlatformVersion(input: {<br>
+version: "1.2.0"<br>
+}) {<br>
+id<br>
+version<br>
+manifestUrl<br>
+changeLogUrl<br>
+highlightsUrl<br>
+createdAt,<br>
+createdBy,<br>
+installedAt,<br>
+installedBy<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"setCurrentPlatformVersion": {<br>
+"id": "6c6e0f59-5fb5-4179-9f5b-c5f5933d6f9a",<br>
+"version": "1.2.0",<br>
+"manifestUrl": "<a href="https://s3.example.com/aiware/versions/1.2.0/manifest.yaml">https://s3.example.com/aiware/versions/1.2.0/manifest.yaml</a>"<br>
+"changeLogUrl": "<a href="https://s3.example.com/aiware/versions/1.2.0/changelog.txt">https://s3.example.com/aiware/versions/1.2.0/changelog.txt</a>"<br>
+"highlightsUrl": "<a href="https://s3.example.com/aiware/versions/1.2.0/highlights.txt">https://s3.example.com/aiware/versions/1.2.0/highlights.txt</a>"<br>
+"createAt": "2023-05-10",<br>
+"createdBy": "1c2e7692-8206-4118-bd38-bb61aa3fb248",<br>
+"installedAt": "2023-05-15",<br>
+"installedBy": "1c2e7692-8206-4118-bd38-bb61aa3fb248"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">setPlatformProperties</a>(<span><span><span class="graphiql-doc-explorer-argument-name">properties</span>: <a class="graphiql-doc-explorer-type-name" href="#">JSONData</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">JSONData</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Set the platform properties.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+setPlatformProperties(<br>
+properties: {<br>
+Environment: "US West",<br>
+ClusterSize: "small" }<br>
+)<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"setPlatformProperties": {<br>
+"properties": {<br>
+"Environment": "US West",<br>
+"ClusterSize": "small"<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateFolder</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateFolder</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Folder</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update an existing folder<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateFolder(input: {<br>
+id: "d551fbd6-7354-4b0e-abfb-654ab8583be2",<br>
+name: "new name"}) {<br>
+name<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"updateFolder": {<br>
+"name": "new name"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">moveFolder</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">MoveFolder</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Folder</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Move a folder from one parent folder to another.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+moveFolder(input: {<br>
+folderId: "68a5833a-f573-41fe-840a-adb5f6888e2d",<br>
+fromFolderId: "3104f61f-4bd1-4175-9fe6-27436d591c54",<br>
+toFolderId: "ad7839a7-d088-4202-9db1-5ed4992f915d"<br>
+}) {<br>
+parentFolderId<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"moveFolder": {<br>
+"parentFolderId": "ad7839a7-d088-4202-9db1-5ed4992f915d",<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">moveFolders</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">MoveFolders</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">MoveFoldersPayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Move bulk folders to another.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+moveFolders(input: {<br>
+folderIds: ["0c4c2765-1817-40a7-bd6d-bf6362a384ba", "183f64e7-d519-4948-99d9-977657cce0c8"]<br>
+newParentFolderId: "22d2c53a-d33e-47d8-a77e-f64f5c3db7c8"<br>
+rootFolderType: cms<br>
+}) {<br>
+id<br>
+name<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"moveFolders": {<br>
+"organizationId": "7682",<br>
+"newParentFolderId: "22d2c53a-d33e-47d8-a77e-f64f5c3db7c8",<br>
+"validFolderIds": [<br>
+"0c4c2765-1817-40a7-bd6d-bf6362a384ba",<br>
+"183f64e7-d519-4948-99d9-977657cce0c8"<br>
+]<br>
+"invalidFolderIds": [],<br>
+"message": "Successfully move all input folders to the parent folder."<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteFolder</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">DeleteFolder</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a folder<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+deleteFolder(input: {<br>
+id:"d551fbd6-7354-4b0e-abfb-654ab8583be2",<br>
+orderIndex: 1}) {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"deleteFolder": {<br>
+"message": null<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createMentionComment</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateMentionComment</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">MentionComment</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a mention comment</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateMentionComment</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateMentionComment</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">MentionComment</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a mention comment</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteMentionComment</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">DeleteMentionComment</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a mention comment</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createMentionRating</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateMentionRating</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">MentionRating</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a mention rating</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateMentionRating</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateMentionRating</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">MentionRating</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a mention rating</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteMentionRating</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">DeleteMentionRating</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a mention rating</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">userLogin</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UserLogin</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">LoginInfo</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Login as a user. This mutation does not require an existing authentication<br>
+context (via <code>Authorization</code> header with bearer token, cookie, etc.).<br>
+Instead, the client supplies credentials to this mutation, which then<br>
+authenticates the user and sets up the authentication context.<br>
+The returned tokens can be used to authenticate future requests.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+userLogin(input: {<br>
+userName: "example1",<br>
+password: "example1"}) {<br>
+apiToken<br>
+lastLoggedIn<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"userLogin": {<br>
+"apiToken": null,<br>
+"lastLoggedIn": "2021-06-15T02:04:52.000Z",<br>
+"token": "a0bbdb23-058c-4b44-901f-aa3efc056a3a"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">userLogout</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">token</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">sessionExpired</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a> = <span class="graphiql-doc-explorer-default-value">false</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Logout user and invalidate user token<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+userLogout(<br>
+token: "a5610058-260d-46ac-aa3e-ee529c4feaab")<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"userLogout": null<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">refreshToken</a>(<span><span><span class="graphiql-doc-explorer-argument-name">token</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">LoginInfo</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Refreshes the session user from database to reflect the latest changes. It does not extend session timeout.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+refreshToken(<br>
+token: "32abe146-4e07-4f5e-8e1e-f7f2e0142cf7") {<br>
+hasPassword<br>
+user{id}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"refreshToken": {<br>
+"hasPassword": true,<br>
+"user": {<br>
+"id": "d8304ba1-0d4c-4268-a82c-8c62fd455066"<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">extendToken</a>(<span><span><span class="graphiql-doc-explorer-argument-name">token</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">LoginInfo</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Refresh a user token, returning a fresh token so that the client<br>
+can continue to authenticate to the API.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+extendToken(<br>
+token: "32abe146-4e07-4f5e-8e1e-f7f2e0142cf7") {<br>
+hasPassword<br>
+user{id}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"extendToken": {<br>
+"hasPassword": true,<br>
+"user": {<br>
+"id": "d8304ba1-0d4c-4268-a82c-8c62fd455066"<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">validateToken</a>(<span><span><span class="graphiql-doc-explorer-argument-name">token</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">LoginInfo</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Validate a user token. This mutation is used by services to determine<br>
+if the token provided by a given client is valid.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+validateToken(<br>
+token: "32abe146-4e07-4f5e-8e1e-f7f2e0142cf7") {<br>
+hasPassword<br>
+user{id}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"validateToken": {<br>
+"hasPassword": true,<br>
+"user": {<br>
+"id": "d8304ba1-0d4c-4268-a82c-8c62fd455066"<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createMention</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateMention</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Mention</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a mention object</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateMention</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateMention</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Mention</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a mention object</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateMentions</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateMentions</a>!</span></span>): [<a class="graphiql-doc-explorer-type-name" href="#">Mention</a>]</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a set of mentions</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createRootFolders</a>(<span><span><span class="graphiql-doc-explorer-argument-name">rootFolderType</span>: <a class="graphiql-doc-explorer-type-name" href="#">RootFolderType</a> = <span class="graphiql-doc-explorer-default-value">watchlist</span></span></span>): [<a class="graphiql-doc-explorer-type-name" href="#">Folder</a>]</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create root folder for an organization<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createRootFolders {<br>
+id<br>
+rootFolderTypeId<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createRootFolders": [<br>
+{<br>
+"id": "2ac28573-917a-4c4b-be91-a0ac64cbc982",<br>
+"rootFolderTypeId": 1<br>
+},<br>
+{<br>
+"id": "d3e27eb3-7d4a-47ab-af64-bf1529390f4e",<br>
+"rootFolderTypeId": 1<br>
+}<br>
+]<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">bulkUpdateWatchlist</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">filter</span>: <a class="graphiql-doc-explorer-type-name" href="#">BulkUpdateWatchlistFilter</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">BulkUpdateWatchlist</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">WatchlistList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Apply bulk updates to watchlists.<br>
+This mutation is currently available only to Veritone operations.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">fileTemporalDataObject</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">FileTemporalDataObject</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">TemporalDataObject</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>File a TemporalDataObject in a folder. A given TemporalDataObject can<br>
+be filed in any number of folders, or none. Filing causes the TemporalDataObject<br>
+and its assets to be visible within the folder.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+fileTemporalDataObject(input:{<br>
+tdoId: "1580388995",<br>
+folderId: "9d639f1b-a0d4-47b0-8149-3568f048f320"}) {<br>
+id<br>
+folders{<br>
+id<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"fileTemporalDataObject": {<br>
+"id": "1580388995",<br>
+"folders": [<br>
+{<br>
+"id": "9d639f1b-a0d4-47b0-8149-3568f048f320"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">unfileTemporalDataObject</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UnfileTemporalDataObject</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">TemporalDataObject</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Unfile a TemporalDataObject from a folder. This causes the TemporalDataObject<br>
+and its assets to disappear from the folder, but does not otherwise affect<br>
+either the TDO or the folder and does not change access controls.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+unfileTemporalDataObject(input: {<br>
+tdoId: "1580388995",<br>
+folderId: "9d639f1b-a0d4-47b0-8149-3568f048f320"}) {<br>
+id<br>
+description<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"unfileTemporalDataObject": {<br>
+"id": "1580388995",<br>
+"description": null<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">moveTemporalDataObject</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">MoveTemporalDataObject</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">TemporalDataObject</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Moves a TemporalDataObject from one parent folder to another.<br>
+Any other folders the TemporalDataObject is filed in are unaffected.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+moveTemporalDataObject(input: {<br>
+tdoId: "1580388995",<br>
+oldFolderId: "9d639f1b-a0d4-47b0-8149-3568f048f320",<br>
+newFolderId: "2ac28573-917a-4c4b-be91-a0ac64cbc982"}) {<br>
+id<br>
+folders{<br>
+folderPath{id}<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"moveTemporalDataObject": {<br>
+"id": "1580388995",<br>
+"folders": [<br>
+{<br>
+"folderPath": [<br>
+{<br>
+"id": "2ac28573-917a-4c4b-be91-a0ac64cbc982"<br>
+}<br>
+]<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">uploadEngineResult</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UploadEngineResult</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Asset</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Upload and store an engine result. The result will be stored as an<br>
+asset associated with the target TemporalDataObject and the<br>
+task will be updated accordingly.<br>
+Use a multipart form POST to all this mutation.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createWatchlist</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateWatchlist</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Watchlist</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a watchlist<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createWatchlist(input: {<br>
+stopDateTime: 1623851655,<br>
+name: "example",<br>
+searchIndex: mine,<br>
+parentFolderId: "9d639f1b-a0d4-47b0-8149-3568f048f320",<br>
+cognitiveSearches: [],<br>
+subscriptions: [],<br>
+details: {<br>
+example: "example"}}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createWatchlist": {<br>
+"id": "325783"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">bulkCreateWatchlist</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">BulkCreateWatchlist</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">WatchlistList</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateWatchlist</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateWatchlist</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Watchlist</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a watchlist<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateWatchlist(input: {<br>
+id: "325783"<br>
+name: "new name"<br>
+details: {<br>
+example: "new details"}}) {<br>
+id<br>
+name<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"updateWatchlist": {<br>
+"id": "325783",<br>
+"name": "new name"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteWatchlist</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a watchlist<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+deleteWatchlist(<br>
+id:"325783") {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"deleteWatchlist": {<br>
+"message": "Watchlist deleted along with 0 subscriptions, 0 cognitive search profiles, 0 mention comments, and 0 mention ratings."<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateCognitiveSearch</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateCognitiveSearch</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">CognitiveSearch</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createCognitiveSearch</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateCognitiveSearch</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">CognitiveSearch</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteCognitiveSearch</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">fileWatchlist</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">FileWatchlist</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Watchlist</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">unfileWatchlist</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UnfileWatchlist</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Watchlist</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Unfile a watchlist from a folder<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+unfileWatchlist(input: {<br>
+watchlistId:"325786",<br>
+folderId: "9d639f1b-a0d4-47b0-8149-3568f048f320"}) {<br>
+id<br>
+folders{<br>
+folderPath{<br>
+id<br>
+}<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"unfileWatchlist": {<br>
+"id": "325786",<br>
+"folders": []<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">shareFolder</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">ShareFolderInput</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Folder</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Share a folder with other organizations<br>
+Requires superadmin</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createTDOWithAsset</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateTDOWithAsset</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">TemporalDataObject</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a TDO and an asset with a single call<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createTDOWithAsset(input: {<br>
+startDateTime: 1623841655,<br>
+stopDateTime: 1623851655,<br>
+contentType: "video/mp4",<br>
+assetType: "media",<br>
+addToIndex: false,<br>
+uri: "<a href="https://s3.amazonaws.com/hold4fisher/s3Test.mp4">https://s3.amazonaws.com/hold4fisher/s3Test.mp4</a>"}) {<br>
+id<br>
+status<br>
+assets {<br>
+records {<br>
+id<br>
+assetType<br>
+contentType<br>
+signedUri<br>
+}<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createTDOWithAsset": {<br>
+"id": "1580507556",<br>
+"status": "recorded",<br>
+"assets": {<br>
+"records": [<br>
+{<br>
+"id": "1580507556_DQ2nU8cTDh",<br>
+"assetType": "media",<br>
+"contentType": "video/mp4",<br>
+"signedUri": "<a href="https://s3.amazonaws.com/hold4fisher/s3Test.mp4">https://s3.amazonaws.com/hold4fisher/s3Test.mp4</a>"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createSubscription</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateSubscription</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Subscription</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a subscription<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createSubscription(input: {<br>
+targetId: "325791",<br>
+contact: {<br>
+emailAddress: "example email"},<br>
+scheduledDay: Friday}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createSubscription": {<br>
+"id": "274939"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateSubscription</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateSubscription</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Subscription</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a subscription<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateSubscription(input: {<br>
+id: "274939"}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+mutation {<br>
+updateSubscription(input: {<br>
+id: "274939"}) {<br>
+id<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteSubscription</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a subscription<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+deleteSubscription(<br>
+id: "274939") {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+mutation {<br>
+deleteSubscription(<br>
+id: "274939") {<br>
+message<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createTriggers</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateTriggers</a>!</span></span>): [<a class="graphiql-doc-explorer-type-name" href="#">Trigger</a>]</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create trigger for events or types.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createTriggers(input: {<br>
+events: "*",<br>
+targets: {<br>
+name: Email,<br>
+params: {<br>
+address: "<a href="mailto:example@veritone.com">example@veritone.com</a>"}}}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createTriggers": [<br>
+{<br>
+"id": "2936"<br>
+}<br>
+]<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteTrigger</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a registed trigger by ID.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+deleteTrigger(<br>
+id: "2936") {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"deleteTrigger": {<br>
+"message": "Trigger 2936 has been removed from organization 35521"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">validateEngineOutput</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">JSONData</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Validates if an engine output conforms to the engine output guidelines<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+validateEngineOutput(input:<br>
+{<br>
+schemaId: "<a href="https://docs.veritone.com/schemas/vtn-standard/master.json">https://docs.veritone.com/schemas/vtn-standard/master.json</a>",<br>
+validationContracts: [<br>
+"structured-data"<br>
+],<br>
+series: [<br>
+{<br>
+startTimeMs: 0,<br>
+stopTimeMs: 10000,<br>
+structuredData: {<br>
+exampleschemaid: {<br>
+key: "value",<br>
+any: "data you'd like",<br>
+as_long: "as it conforms to the schema"<br>
+}<br>
+}<br>
+}<br>
+]<br>
+}<br>
+)<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"validateEngineOutput": true<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">getEngineJWT</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">getEngineJWT</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">JWTTokenInfo</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>JWT tokens with a more limited scoped token to specific<br>
+resources to the recording, task, and job<br>
+and also has no organization association.<br>
+Note: Restricted administrative permissions (e.g. superadmin) are explicitly filtered and cannot be requested.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+getEngineJWT(input: {<br>
+engineId: "1",<br>
+resource:{<br>
+tdoId: "1580701928"<br>
+}}) {<br>
+token<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"getEngineJWT": {<br>
+"token": "eyJh...Tw_z3BKRA"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">getSourceJWT</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">sourceId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">access</span>: <a class="graphiql-doc-explorer-type-name" href="#">JWTAccess</a> = <span class="graphiql-doc-explorer-default-value">readwrite</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">SourceJWTTokenInfo</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Retrieve a JWT token scoped to a source. This token<br>
+will provide enough rights to read/write ingest slugs<br>
+that are owned by the source.<br>
+Note: Restricted administrative permissions (e.g. superadmin) are explicitly filtered and cannot be included.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+getSourceJWT(sourceId: "123") {<br>
+token<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"getSourceJWT": {<br>
+"token": "eyJh...Tw_z3BKRA"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">verifyJWT</a>(<span><span><span class="graphiql-doc-explorer-argument-name">jwtToken</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">VerifyJWTPayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Verify JWT token<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+verifyJWT(jwtToken:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW<br>
+50QXBwbGljYXRpb25JZCI6IjQ5YTRjYmJjLTVlODMtNGM0Mi1iOWEzLWJlNmVjMDczMmY<br>
+wOSIsImNvbnRlbnRPcmdhbml6YXRpb25JZCI6MzU1MjEsImVuZ2luZUlkIjoiMSIsInVzZ<br>
+XJJZCI6IjU5Y2I0ZTc0LTdjMzEtNDI2Ny1iOTFlLWQ0NjAwYmMwODAwOCIsInNjb3BlIjpb<br>
+eyJhY3Rpb25zIjpbImFzc2V0OnVyaSIsImFzc2V0OmFsbCIsInJlY29yZGluZzpyZWFkIiw<br>
+icmVjb3JkaW5nOnVwZGF0ZSJdLCJyZXNvdXJjZXMiOnsicmVjb3JkaW5nSWRzIjpbIjE1OD<br>
+A3MDE5MjgiXX19LHsiYWN0aW9ucyI6WyJ0YXNrOnVwZGF0ZSJdLCJyZXNvdXJjZXMiOnsia<br>
+m9iSWRzIjpbXSwidGFza0lkcyI6W10sInNvdXJjZUlkcyI6W119fV0sImlhdCI6MTYyNDAz<br>
+NjEyMiwiZXhwIjoxNjI0NjQwOTIyLCJzdWIiOiJlbmdpbmUtcnVuIiwianRpIjoiMTViYjI<br>
+3YzAtNGI1Yy00NjNhLWFkMTgtOWFkNDI0ODFiMTMzIn0.R7qYdPkA1wjJUiTdb1ryvTnZASPN9FEuGATw_z3BKRA") {<br>
+payload<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"verifyJWT": {<br>
+"payload": {<br>
+"contentApplicationId": "49a4cbbc-5e83-4c42-b9a3-be6ec0732f09",<br>
+"contentOrganizationId": 35521,<br>
+"engineId": "1",<br>
+"userId": "59cb4e74-7c31-4267-b91e-d4600bc08008",<br>
+"scope": [<br>
+{<br>
+"actions": [<br>
+"asset:uri",<br>
+"asset:all",<br>
+"recording:read",<br>
+"recording:update"<br>
+],<br>
+"resources": {<br>
+"recordingIds": [<br>
+"1580701928"<br>
+]<br>
+}<br>
+},<br>
+{<br>
+"actions": [<br>
+"task:update"<br>
+],<br>
+"resources": {<br>
+"jobIds": [],<br>
+"taskIds": [],<br>
+"sourceIds": []<br>
+}<br>
+}<br>
+],<br>
+"iat": 1624036122,<br>
+"exp": 1624640922,<br>
+"sub": "engine-run",<br>
+"jti": "15bb27c0-4b5c-463a-ad18-9ad42481b133"<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createSavedSearch</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateSavedSearch</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">SavedSearch</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a new Saved Search<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createSavedSearch(input: {<br>
+name: "example",<br>
+csp: {<br>
+example: "example"}}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createSavedSearch": {<br>
+"id": "a29f2255-e509-4454-89ec-e425390ca4ca"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteSavedSearch</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a saved search<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+deleteSavedSearch(<br>
+id:"a29f2255-e509-4454-89ec-e425390ca4ca") {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"deleteSavedSearch": {<br>
+"message": null<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">replaceSavedSearch</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">ReplaceSavedSearch</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">SavedSearch</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Mark existing saved search profile as deleted<br>
+Create new saved search profile<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+replaceSavedSearch(input: {<br>
+id: "3d4f04c5-7855-4b9c-ba65-9bd6c2932a7e",<br>
+name: "example",<br>
+csp: {<br>
+example: "new csp"}}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+mutation {<br>
+replaceSavedSearch(input: {<br>
+id: "3d4f04c5-7855-4b9c-ba65-9bd6c2932a7e",<br>
+name: "example",<br>
+csp: {<br>
+example: "new csp"}}) {<br>
+id<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">sendEmail</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">SendEmail</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Send a basic email. Mutation returns true for a success message.<br>
+The email from field will be automatically set the default platform email address<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+sendEmail(input: {<br>
+to: "<a href="mailto:example@veritone.com">example@veritone.com</a>"<br>
+subject: "example"<br>
+message: "email body"<br>
+replyTo: "<a href="mailto:example@veritone.com">example@veritone.com</a>"<br>
+})<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"sendEmail": true<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createFolderContentTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateFolderContentTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">FolderContentTemplate</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create new content template into a folder</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateFolderContentTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateFolderContentTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">FolderContentTemplate</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update existing content template by folderContentTemplateId</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteFolderContentTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete existing folder content template by folderContentTemplateId</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createExportRequest</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateExportRequest</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ExportRequest</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create an export request. The requested TDO data, possibly including<br>
+TDO media and engine results, will be exported offline.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createExportRequest(input: {<br>
+tdoData: {<br>
+tdoId: "1580388995",<br>
+}}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createExportRequest": {<br>
+"id": "938b2d64-6df1-486b-b6ea-29d33dee49ad"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateExportRequest</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateExportRequest</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ExportRequest</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update an export request<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateExportRequest(input: {<br>
+id: "938b2d64-6df1-486b-b6ea-29d33dee49ad",<br>
+status: complete}) {<br>
+id<br>
+status<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"updateExportRequest": {<br>
+"id": "938b2d64-6df1-486b-b6ea-29d33dee49ad",<br>
+"status": "complete"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createMentions</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateMentions</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">MentionList</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create Mention in bulk. The input should be an array of createMentions</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createMediaShare</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateMediaShare</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">CreatedMediaShare</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create Media Share. Returning the url of the share</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createEvent</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateEvent</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Event</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a new event<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createEvent(input: {<br>
+eventName: "example",<br>
+eventType: "example",<br>
+application: ""<br>
+description: "example"}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createEvent": {<br>
+"id": "55fc7c51-1521-4043-902f-f0f3a357da6d"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateEvent</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateEvent</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Event</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update an event<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateEvent(input: {<br>
+id: "55fc7c51-1521-4043-902f-f0f3a357da6d",<br>
+description: "new example description"}) {<br>
+id<br>
+description<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"updateEvent": {<br>
+"id": "55fc7c51-1521-4043-902f-f0f3a357da6d",<br>
+"description": "new example description"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">subscribeEvent</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">SubscribeEvent</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Subscribe to an event<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+subscribeEvent(input: {<br>
+eventName: "example",<br>
+eventType: "example",<br>
+application: "",<br>
+delivery: {<br>
+name: CreateJob,<br>
+params: {<br>
+targetId: "1580701928"<br>
+engineId: "1"<br>
+}<br>
+}<br>
+})<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"subscribeEvent": "a0d04eeb-c32d-4852-9273-bb0acda970b9"<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">unsubscribeEvent</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">UnsubscribeEvent</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Unsubscribe to an event<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+unsubscribeEvent(<br>
+id: "a0d04eeb-c32d-4852-9273-bb0acda970b9") {<br>
+id<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"unsubscribeEvent": {<br>
+"id": "a0d04eeb-c32d-4852-9273-bb0acda970b9",<br>
+"message": "Unsubscribed from event"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">emitEvent</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">EmitEvent</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">EmitEventResponse</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Emit an event<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+emitEvent(input: {<br>
+eventName: "example",<br>
+eventType: "example",<br>
+application: "",<br>
+payload: ""}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"emitEvent": {<br>
+"id": "0952fe68-5652-4804-857d-26e21ef3d7e8"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createEventActionTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateEventActionTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">EventActionTemplate</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a new event trigger template<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createEventActionTemplate(input: {<br>
+name: "example"<br>
+inputType: event<br>
+inputValidation: {<br>
+example: "example"<br>
+}<br>
+inputAttributes:  {<br>
+example: "example"<br>
+}<br>
+actionType: job<br>
+actionValidation: {<br>
+example: "example"<br>
+}<br>
+actionDestination: "1"<br>
+actionAttributes: {<br>
+example: "example"<br>
+}}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createEventActionTemplate": {<br>
+"id": "d02522d7-ef5f-448f-981a-d2cfc7603d92"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateEventActionTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateEventActionTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">EventActionTemplate</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update an event trigger template<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateEventActionTemplate(input: {<br>
+id: "d02522d7-ef5f-448f-981a-d2cfc7603d92",<br>
+name: "example",<br>
+actionValidation: {<br>
+example: "new validation"}}) {<br>
+id<br>
+actionValidation<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"updateEventActionTemplate": {<br>
+"id": "d02522d7-ef5f-448f-981a-d2cfc7603d92",<br>
+"actionValidation": {<br>
+"example": "new validation"<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createEventCustomRule</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateEventCustomRule</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">EventCustomRule</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a new event custom rule<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createEventCustomRule(input: {<br>
+name: "example"<br>
+eventType: "example"<br>
+eventName: "example"<br>
+description: "example description"<br>
+actions:[]<br>
+params: {<br>
+example: "example"<br>
+}}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createEventCustomRule": {<br>
+"id": "0a0d3ec8-b4fb-48fc-bd39-c47a22b2173b"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateEventCustomRule</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateEventCustomRule</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">EventCustomRule</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update an event custom rule<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateEventCustomRule(input: {<br>
+id: "0a0d3ec8-b4fb-48fc-bd39-c47a22b2173b",<br>
+name: "example",<br>
+status: inactive,<br>
+description: "new description"}) {<br>
+id<br>
+description<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"updateEventCustomRule": {<br>
+"id": "0a0d3ec8-b4fb-48fc-bd39-c47a22b2173b",<br>
+"description": "new description"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteEventCustomRule</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete an event custom rule<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+deleteEventCustomRule(<br>
+id: "0a0d3ec8-b4fb-48fc-bd39-c47a22b2173b") {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"deleteEventCustomRule": {<br>
+"message": "Deleted event custom rule"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createProcessTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateProcessTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ProcessTemplate</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a processTemplate in CMS<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createProcessTemplate(input: {<br>
+name: "example",<br>
+taskList: {<br>
+example: "task"<br>
+}}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createProcessTemplate": {<br>
+"id": "746"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateProcessTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateProcessTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ProcessTemplate</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a processTemplate by ID in CMS<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateProcessTemplate(input: {<br>
+id: "746",<br>
+taskList: {<br>
+example: "task",<br>
+new: "new task"<br>
+}}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"updateProcessTemplate": {<br>
+"id": "746"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteProcessTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a processTemplate by ID in CMS<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+deleteProcessTemplate(<br>
+id: "746") {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"deleteProcessTemplate": {<br>
+"message": null<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createMentionExportRequest</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateMentionExportRequest</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ExportRequest</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a mention export request. The requested mentionFilters including<br>
+The mention export file csv will be exported offline.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createMentionExportRequest(input: {<br>
+mentionFilters: {<br>
+watchlistIds: ["123"]}}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createMentionExportRequest": {<br>
+"id": "400c98c2-faa8-44e4-b5d8-daf2fb43445e"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateMentionExportRequest</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateMentionExportRequest</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ExportRequest</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update status or assetURI of a mentionExportRequest<br>
+Often use when the file export was completed or downloaded<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateMentionExportRequest(input: {<br>
+id: "400c98c2-faa8-44e4-b5d8-daf2fb43445e"<br>
+status: incomplete,<br>
+assetUri: "<a href="http://www.veritone.com">www.veritone.com</a>",<br>
+sqlQueries:""}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"updateMentionExportRequest": {<br>
+"id": "400c98c2-faa8-44e4-b5d8-daf2fb43445e"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createCreative</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateCreative</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Creative</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a creative<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createCreative(input: {<br>
+name: "example"<br>
+keywords: "example keywords"<br>
+brandId: null<br>
+advertiserId: null}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createCreative": {<br>
+"id": "25208"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateCreative</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateCreative</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Creative</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a creative<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateCreative(input: {<br>
+id: "25208",<br>
+name: "example",<br>
+keywords: "new keywords",<br>
+brandId: null,<br>
+advertiserId: null}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"updateCreative": {<br>
+"id": "25208"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteCreative</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a creative<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+deleteCreative(<br>
+id: "25208") {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"deleteCreative": {<br>
+"message": null<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">emitSystemEvent</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">EmitSystemEvent</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">SystemEventInfo</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Emit a system-level emit. This mutation is used only by<br>
+Veritone platform components.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">emitAuditEvent</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">EmitAuditEvent</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">AuditEvent</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Creates an immutable audit log event with the given payload<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+emitAuditEvent(input: {<br>
+application: ""<br>
+payload: {<br>
+example: "example"<br>
+}}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"emitAuditEvent": {<br>
+"id": "fdc7b3a3-ab23-4866-a330-c0ad910cd64f"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createContextMenuExtension</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateContextMenuExtension</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ContextMenuExtension</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a context menu extension<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createContextMenuExtension(input: {<br>
+id: "80354999-d633-4595-9578-d82f59a5134f"<br>
+label: "example"<br>
+url: "<a href="http://www.veritone.com">www.veritone.com</a>"<br>
+type: tdo}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createContextMenuExtension": {<br>
+"id": "cdf19d46-4d89-4b5b-a6bf-ae12c17f2746"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateContextMenuExtension</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateContextMenuExtension</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ContextMenuExtension</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a context menu extension<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateContextMenuExtension(input: {<br>
+id: "cdf19d46-4d89-4b5b-a6bf-ae12c17f2746",<br>
+label: "new label",<br>
+url: "<a href="http://www.veritone.com">www.veritone.com</a>"}) {<br>
+label<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"updateContextMenuExtension": {<br>
+"label": "new label"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteContextMenuExtension</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">DeleteContextMenuExtension</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a context menu extension<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+deleteContextMenuExtension(input: {<br>
+id: "cdf19d46-4d89-4b5b-a6bf-ae12c17f2746"}) {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"deleteContextMenuExtension": {<br>
+"message": null<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">setOrganizationIntegrationConfig</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">SetOrganizationIntegrationConfig</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">IntegrationConfig</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Add or update an organization integration config by<br>
+organization id and integration id. Requires superadmin.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteOrganizationIntegrationConfig</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">DeleteOrganizationIntegrationConfig</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeleteIntegrationConfigPayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete an integration config. Requires superadmin.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createInstanceLoginConfiguration</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateInstanceLoginConfiguration</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">LoginConfiguration</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create customized Login Configuration for the Instance</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateInstanceLoginConfiguration</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">querySlug</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">SetLoginConfiguration</a>!</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">LoginConfiguration</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update customized Login Configuration for the Instance by Slug.</p>
+<p><em><strong>Requires superadmin.</strong></em></p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteLoginConfiguration</a>(<span><span><span class="graphiql-doc-explorer-argument-name">organizationId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete the login configuration for the organization.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteInstanceLoginConfiguration</a>(<span><span><span class="graphiql-doc-explorer-argument-name">slug</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete an instance-level login configuration by slug.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createRegistrationConfiguration</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateRegistrationConfigurationInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">RegistrationConfiguration</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Mutation to create a new registration configuration.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateRegistrationConfiguration</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateRegistrationConfiguration</a>!</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">RegistrationConfiguration</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Mutation to update an existing registration configuration for an organization.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteRegistrationConfiguration</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Mutation to delete an existing registration configuration for an organization.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateUserStatus</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateUserStatus</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">User</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update the status of a user<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateUserStatus(input: {<br>
+id: "9728eeef-4ccc-423c-8c98-ffa37313a98d",<br>
+status: deleted}) {<br>
+status<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"updateUserStatus": {<br>
+"status": "deleted"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createCustomDashboard</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateCustomDashboard</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">CustomDashboard</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a custom dashboard<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createCustomDashboard(input: {<br>
+hostAppId: "80354999-d633-4595-9578-d82f59a5134f",<br>
+name: "example",<br>
+description: "example",<br>
+data: {<br>
+example: "example jsondata"}}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createCustomDashboard": {<br>
+"id": "60141fc5-8d31-487d-9847-c47f990e4537"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateCustomDashboard</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateCustomDashboard</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">CustomDashboard</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a custom dashboard<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateCustomDashboard(input: {<br>
+id: "60141fc5-8d31-487d-9847-c47f990e4537",<br>
+name: "new name"}) {<br>
+name<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"updateCustomDashboard": {<br>
+"name": "new name"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteCustomDashboard</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a custom dashboard<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+deleteCustomDashboard(<br>
+id: "60141fc5-8d31-487d-9847-c47f990e4537") {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"deleteCustomDashboard": {<br>
+"message": "Custom dashboard deleted"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createDataset</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">DatasetInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Dataset</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a Dataset<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createDataset(input: {<br>
+name: "example",<br>
+description: "example",<br>
+schemaId: "acab8bd9-a4d4-44de-ad4b-cc949d696cf9",<br>
+tags: {<br>
+name: "example",<br>
+value: "example value"}}) {<br>
+datasetId<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createDataset": {<br>
+"datasetId": "47c831ea-f4f6-4eeb-9e39-8c1cd0a1eb95"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createDatasetSchema</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateDatasetSchema</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Dataset</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a Dataset Schema<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createDatasetSchema(input: {<br>
+name: "example"<br>
+description: "example"<br>
+schema: {<br>
+example: "example value"<br>
+}<br>
+tags: {<br>
+name: "example",<br>
+value: "example value"}}) {<br>
+schema{<br>
+id<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createDatasetSchema": null<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateDataset</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">DatasetInput</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">Dataset</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a Dataset</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteDataset</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeleteDatasetPayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a Dataset</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">datasetDataOperation</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">actions</span>: [<a class="graphiql-doc-explorer-type-name" href="#">DatasetActionInput</a>!]</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">async</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">updateMetrics</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">DatasetStateInfo</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Perform Dataset Operations</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">addTaskReplacementEngine</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">AddTaskReplacementEngine</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">TaskEngineReplacement</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Replace a source engine to replacement engine<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+addTaskReplacementEngine(input: {<br>
+sourceEngineId: "1"<br>
+replacementEngineId: "2"<br>
+organizationId: "35521"<br>
+payloadFunc: null}) {<br>
+replacementEngineId<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"addTaskReplacementEngine": {<br>
+"replacementEngineId": "2"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">removeTaskReplacementEngine</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">RemoveTaskReplacementEngine</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Remove an engine replacement<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+removeTaskReplacementEngine(input: {<br>
+sourceEngineId: "1",<br>
+replacementEngineId: "2",<br>
+organizationId: "35521"}) {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"removeTaskReplacementEngine": {<br>
+"message": "Engine replacement has been removed"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">notificationMailboxCreate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">NotificationMailboxInput</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">NotificationMailbox</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a custom notification mailbox<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+notificationMailboxCreate(input: {<br>
+name: "example",<br>
+eventFilter: {<br>
+eventNames: "example",<br>
+eventType: "example",,<br>
+delivery: {<br>
+params: {<br>
+example: "example params"<br>
+}<br>
+}<br>
+},<br>
+notificationTemplate: "",<br>
+limit: 10}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"notificationMailboxCreate": [<br>
+{<br>
+"id": "0415f525-813d-4fd4-9dea-9428382b05b9"<br>
+}<br>
+}     }</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">notificationMailboxPause</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">NotificationMailbox</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Pause a notification mailbox<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+notificationMailboxPause(<br>
+id: "0415f525-813d-4fd4-9dea-9428382b05b9") {<br>
+id<br>
+paused<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"notificationMailboxPause": {<br>
+"id": "0415f525-813d-4fd4-9dea-9428382b05b9",<br>
+"paused": true<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">notificationMailboxDelete</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a notification mailbox<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+notificationMailboxDelete(id:"0415f525-813d-4fd4-9dea-9428382b05b9") {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"notificationMailboxDelete": {<br>
+"message": "Notification mailbox has been removed"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">notificationPost</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">NotificaionPostInput</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Notification</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Post a notification to some mailboxes<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+notificationPost(input: {<br>
+mailboxIds: ["0415f525-813d-4fd4-9dea-9428382b05b9"],<br>
+title: "example title",<br>
+body: "example body",<br>
+contentType: "type",<br>
+flags: unread}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"notificationPost": {<br>
+"id": "iDDfG3oB3LnZSYqhRv7-"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">addNotificationTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">AddNotificationTemplate</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">NotificationTemplate</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Add a new notification template by eventName, eventType, application<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+addNotificationTemplate(input: {<br>
+eventName: "example"<br>
+eventType: "example"<br>
+title: "example"<br>
+body: "example"<br>
+application: "80354999-d633-4595-9578-d82f59a5134f"<br>
+mailboxId: "0415f525-813d-4fd4-9dea-9428382b05b9"}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"addNotificationTemplate": {<br>
+"id": "1dbf3d28-bc7a-434f-ba65-455da0169323"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">removeNotificationTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Remove a notification template by id<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+removeNotificationTemplate(id: "1dbf3d28-bc7a-434f-ba65-455da0169323") {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"removeNotificationTemplate": {<br>
+"message": "Notification Template has been removed"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">addNotificationAction</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">AddNotificationAction</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">NotificationAction</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Add a new notification action by eventName, eventType, application<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+addNotificationAction(input: {<br>
+eventName: "example",<br>
+eventType: "example"<br>
+actionName: "example"<br>
+icon: "<a href="https://edit.co.uk/uploads/2016/12/Image-1-Alternatives-to-stock-photography-Thinkstock.jpg">https://edit.co.uk/uploads/2016/12/Image-1-Alternatives-to-stock-photography-Thinkstock.jpg</a>"<br>
+urlTemplate: "<a href="http://www.veritone.com">www.veritone.com</a>"<br>
+application: "80354999-d633-4595-9578-d82f59a5134f"<br>
+mailboxId: "0415f525-813d-4fd4-9dea-9428382b05b9"}) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"addNotificationAction": {<br>
+"id": "27dab45b-d825-4f20-b758-4b089d610903"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">removeNotificationAction</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Remove a notification action by id<br>
+Example<br>
+Request:<br>
+mutation {<br>
+removeNotificationAction(<br>
+id:"27dab45b-d825-4f20-b758-4b089d610903") {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"removeNotificationAction": {<br>
+"message": "Notification Action has been removed"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">setNotificationFlag</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">SetNotificationFlag</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Notification</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Set and unset the notification flags<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+setNotificationFlag(input: {<br>
+notificationId: "iDDfG3oB3LnZSYqhRv7-",<br>
+setFlags: read}) {<br>
+id<br>
+flags<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"setNotificationFlag": {<br>
+"id": "iDDfG3oB3LnZSYqhRv7-",<br>
+"flags": [<br>
+"unread",<br>
+"read"<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">notificationMailboxUnpause</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">NotificationMailbox</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Unpause/resume a notification mailbox<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+notificationMailboxUnpause(<br>
+id: "0415f525-813d-4fd4-9dea-9428382b05b9") {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"notificationMailboxUnpause": {<br>
+"id": "0415f525-813d-4fd4-9dea-9428382b05b9"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">markAllNotificationsRead</a>(<span><span><span class="graphiql-doc-explorer-argument-name">mailboxIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>]!</span></span>): [<a class="graphiql-doc-explorer-type-name" href="#">NotificationMailbox</a>]</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Mark all notification as read for mailboxIds<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+markAllNotificationsRead(<br>
+mailboxIds: ["0415f525-813d-4fd4-9dea-9428382b05b9"]) {<br>
+id<br>
+}<br>
+}<br>
+Response:<br>
+"data": {<br>
+"markAllNotificationsRead": {<br>
+"id": "0415f525-813d-4fd4-9dea-9428382b05b9",<br>
+"notifications": {<br>
+"records": {<br>
+"flags": [<br>
+"unseen",<br>
+"read"<br>
+]<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">markAllNotificationsSeen</a>(<span><span><span class="graphiql-doc-explorer-argument-name">mailboxIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>]!</span></span>): [<a class="graphiql-doc-explorer-type-name" href="#">NotificationMailbox</a>]</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Mark all notification as read for mailboxIds<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+markAllNotificationsSeen(<br>
+mailboxIds: ["0415f525-813d-4fd4-9dea-9428382b05b9"]) {<br>
+id<br>
+notifications{<br>
+records{<br>
+flags<br>
+}<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"markAllNotificationsSeen":<br>
+{<br>
+"id": "0415f525-813d-4fd4-9dea-9428382b05b9",<br>
+"notifications": {<br>
+"records":<br>
+{<br>
+"flags": [<br>
+"read",<br>
+"seen"<br>
+]<br>
+}<br>
+}<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createUserSettingDefinition</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">application</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">key</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">type</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">description</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">defaultValue</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">organizationGuid</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">ApplicationSetting</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create the default user setting definition for application by current organization<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+createUserSettingDefinition(<br>
+application: "80354999-d633-4595-9578-d82f59a5134f",<br>
+key: "example",<br>
+type: "example",<br>
+defaultValue: "example") {<br>
+applicationId<br>
+organizationGuid<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"createUserSettingDefinition": {<br>
+"applicationId": "80354999-d633-4595-9578-d82f59a5134f",<br>
+"organizationGuid": "49a4cbbc-5e83-4c42-b9a3-be6ec0732f09"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteUserSettingDefinition</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">application</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">organizationGuid</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">key</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete the default user setting definition for application and org<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+deleteUserSettingDefinition(<br>
+application: "80354999-d633-4595-9578-d82f59a5134f",<br>
+key:"example") {<br>
+message<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"deleteUserSettingDefinition": {<br>
+"message": "Application setting (application: 80354999-d633-4595-9578-d82f59a5134f, organizationGuid: 49a4cbbc-5e83-4c42-b9a3-be6ec0732f09, key: example) has been deleted"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateUserSetting</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateUserSetting</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">UserSetting</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update setting for user (add/update/remove settings)<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateUserSetting(input: {<br>
+application: "80354999-d633-4595-9578-d82f59a5134f",<br>
+key: "example12",<br>
+value: "example value"}) {<br>
+userId<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"updateUserSetting": {<br>
+"userId": "59cb4e74-7c31-4267-b91e-d4600bc08008"<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createOpenIdProvider</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateOpenIdProvider</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">OpenIdProvider</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create an OpenID Provider</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateOpenIdProvider</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateOpenIdProvider</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">OpenIdProvider</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update an OpenId Provider by ID</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">enableOpenIdProviderForOrg</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">EnableOpenIdProviderForOrg</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">UpdatePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Enable Global OpenID Provider for Organization</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">disableOpenIdProviderForOrg</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">DisableOpenIdProviderForOrg</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">UpdatePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Disable Global OpenID Provider for Organization</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteOpenIdProvider</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete OpenID Provider</p>
+</div></div></div>

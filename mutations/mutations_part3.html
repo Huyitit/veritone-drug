@@ -1,0 +1,580 @@
+<div class="graphiql-doc-explorer-section-title"><svg height="1em" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg"><title> icon</title><rect x="0.6" y="1.1" width="10.8" height="10.8" rx="2.4" stroke="currentColor" stroke-width="1.2"></rect><rect x="5" y="5.5" width="2" height="2" rx="1" fill="currentColor"></rect></svg>Fields</div><div class="graphiql-doc-explorer-section-content"><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">getApplicationJWT</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">GetApplicationJWT</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ApplicationJWTTokenInfo</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Get Organization scoped application JWT token</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">removeApplicationEventEndpoint</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Remove an application event endpoint</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateApplicationEventEndpoint</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateApplicationEventEndpoint</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Application</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update event endpoint for an application</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createOrganizationInvite</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateOrganizationInviteInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">OrganizationInvite</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Multi Organization Invitation.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateOrganizationInvite</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateOrganizationInviteInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">OrganizationInvite</a>!</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">setUserDefaultOrganization</a>(<span><span><span class="graphiql-doc-explorer-argument-name">defaultOrganizationId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">OrganizationInfo</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteOrganizationInvite</a>(<span><span><span class="graphiql-doc-explorer-argument-name">organizationInviteId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>delete organization invitation<br>
+This deletion is hard-delete process. It will remove invitation completely from the database.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">packageCreate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">PackageCreateInput</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Package</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a package</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">packageUpdate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">PackageUpdateInput</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Package</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>This updates the specified package.</p>
+<p>This will result in upgrading the package by duplicating the original package and<br>
+bumping its version number up to the next major version. The new package will reflect<br>
+the changes made to the original package. <strong>Note: The original package will not<br>
+be altered in any way.</strong></p>
+<p>The data returned will be the newly upgraded version of the package.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">packageDelete</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">PackageDeleteResult</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a package</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">packageUpdateResources</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">BulkPackageResourceInput</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Package</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>This updates the resources of the specified package.</p>
+<p>This will result in upgrading the package by duplicating the original package and<br>
+bumping its version number up to the next major version. The new package will reflect<br>
+the changes made to the original package's resources. <strong>Note: The original package will not<br>
+be altered in any way.</strong></p>
+<p>The data returned will be the newly upgraded version of the package.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">packageUpdateGrants</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">BulkPackageGrantInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Package</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Add or remove Grants to a package and organization</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">apiTokenCreate</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">name</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">rights</span>: [<a class="graphiql-doc-explorer-type-name" href="#">AuthPermissionType</a>]!</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">ApiToken</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">apiTokenUpdate</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">hash</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">ApiTokenUpdateInput</a>!</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">ApiTokenInfo</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateApplicationViewer</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">viewerId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateApplicationViewerInput</a>!</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">ApplicationViewer</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update an ApplicationViewer<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+updateApplicationViewer(viewerId: "2a1a1b58-6983-4002-b9ed-7b7f325f621a", input: { name: "Test"}) {<br>
+records{<br>
+id<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"viewers": {<br>
+"records": [<br>
+{<br>
+"viewerId": "2a1a1b58-6983-4002-b9ed-7b7f325f621a",<br>
+"name": "Test"<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteApplicationViewer</a>(<span><span><span class="graphiql-doc-explorer-argument-name">viewerId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ApplicationViewer</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete an ApplicationViewer<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+deleteApplicationViewer(viewerId: "2a1a1b58-6983-4002-b9ed-7b7f325f621a") {<br>
+records{<br>
+id<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"viewers": {<br>
+"records": [<br>
+{<br>
+"viewerId": "2a1a1b58-6983-4002-b9ed-7b7f325f621a",<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteApplicationViewerBuild</a>(<span><span><span class="graphiql-doc-explorer-argument-name">viewerBuildId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ApplicationViewerBuild</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete an ApplicationViewerBuild<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+deleteApplicationViewerBuild(viewerBuildId: "2a1a1b58-6983-4002-b9ed-7b7f325f621a") {<br>
+records{<br>
+id<br>
+name<br>
+}<br>
+}<br>
+}<br>
+Response:<br>
+{<br>
+"data": {<br>
+"viewers": {<br>
+"records": [<br>
+{<br>
+"viewerId": "2a1a1b58-6983-4002-b9ed-7b7f325f621a",<br>
+}<br>
+]<br>
+}<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">initiateMultipartUpload</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">InitiateMultipartUploadInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">MultipartUploadSessionInfo</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>This mutation creates the multipart upload session to an S3 bucket. If provided, it will create the session for a<br>
+specified bucket. Otherwise, it will create a session for the API bucket that is configured for aiware by default.<br>
+What this mutation does is establish a connection to the bucket, initiate the multipart upload session,<br>
+and generate pre-signed URLs for each part that needs to be uploaded. The number of generated pre-signed URLs is<br>
+determined by the <code>numberOfParts</code> input field.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+initiateMultipartUpload(input: {<br>
+fileName: "exampleImage.jpg",<br>
+contentType: "image/jpeg",<br>
+fileSize: 22594,<br>
+}) {<br>
+preSignedUrls {<br>
+partNumber<br>
+signedUrl<br>
+}<br>
+chunkSize<br>
+key<br>
+uploadId<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">completeMultipartUpload</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CompleteMultipartUploadInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">CompleteMultipartUploadResult</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>This mutation is called after all parts have been uploaded. This will finalize and close out the<br>
+multipart upload session and return the final URL where the file was uploaded to.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+completeMultipartUpload(input: {<br>
+key: "exampleImage.jpg",<br>
+uploadId: "exampleUploadId",<br>
+parts: [<br>
+{<br>
+partNumber: "1",<br>
+etag: "exampleEtag"<br>
+}<br>
+]<br>
+}) {<br>
+url<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">cancelMultipartUpload</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CancelMultipartUploadInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>This mutation can be called at any point during an open multipart upload session.<br>
+This will cancel the session and free up any space taken up by any parts already uploaded.<br>
+However, it is possible for there to be dangling parts that may have still been in-progress and<br>
+uploaded after the cancel request was made. This mutation will make the cancel request up to 3 times<br>
+to ensure that everything has been cleaned up properly. If it’s not fully clean after 3 calls,<br>
+an error will be returned, directing to run this mutation again.<br>
+Example:<br>
+Request:<br>
+mutation {<br>
+cancelMultipartUpload(input: {<br>
+key: "exampleImage.jpg",<br>
+uploadId: "exampleUploadId"<br>
+}) {<br>
+id<br>
+message<br>
+}<br>
+}</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">addPlatformEmailProvider</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">EmailProviderConfigInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">EmailProviderConfig</a>!</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">emailTemplateCreate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">EmailTemplateInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">EmailTemplate</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create an email template.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">emailTemplateUpdate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">EmailTemplateInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">EmailTemplate</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>This updates the specified email template.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">emailTemplateDelete</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">organizationGuid</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">EmailTemplate</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete an email template.</p>
+<p>Note: <code>organizationGuid</code> is required, so only organization-scoped templates can be<br>
+deleted. Global templates (created with a null <code>organizationGuid</code>) cannot be deleted<br>
+through this mutation — there is no null org value to match against.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">ingestSlugsCreate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">IngestSlugsCreateInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">IngestSlugsCreateResult</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create one or more ingest slugs in bulk.</p>
+<p>This mutation creates ingest slug records for files, enabling tracking through<br>
+the ingestion pipeline. It supports batch processing (up to 1000 files per batch),<br>
+returns both successful creations and failures, and validates sourceId and optional<br>
+engineId and appId parameters. The organizationId is retrieved from the user's<br>
+authorization context.</p>
+<p>Requires scope: superadmin OR aiware.slug.create</p>
+<p>Example: Create multiple ingest slugs for a video source:<br>
+mutation {<br>
+ingestSlugsCreate(<br>
+input: {<br>
+sourceId: "100"<br>
+files: [<br>
+{<br>
+fileUri: "s3://bucket/videos/file1.mp4"<br>
+bundleKey: "bundle-001"<br>
+mimeType: "video/mp4"<br>
+fileSizeBytes: 2147483648<br>
+fileCreatedAt: "2024-01-15T10:00:00Z"<br>
+fileModifiedAt: "2024-01-15T10:30:00Z"<br>
+status: "pending"<br>
+},<br>
+{<br>
+fileUri: "s3://bucket/videos/file2.mov"<br>
+bundleKey: "bundle-001"<br>
+mimeType: "video/quicktime"<br>
+fileSizeBytes: 1073741824<br>
+fileCreatedAt: "2024-01-15T11:00:00Z"<br>
+fileModifiedAt: "2024-01-15T11:30:00Z"<br>
+status: "pending"<br>
+}<br>
+]<br>
+engineId: "c0e55cde-340b-44d7-bb42-2e0d65e98255"<br>
+appId: "47bd3e25-f4ea-435f-b69b-13cb4f9dd60a"<br>
+}<br>
+) {<br>
+sourceId<br>
+created {<br>
+sourceId<br>
+fileUri<br>
+status<br>
+bundleKey<br>
+createdAt<br>
+}<br>
+failed {<br>
+fileUri<br>
+errorCode<br>
+errorMessage<br>
+}<br>
+}<br>
+}</p>
+<p>Response:<br>
+{<br>
+"data": {<br>
+"ingestSlugsCreate": {<br>
+"sourceId": "100",<br>
+"created": [<br>
+{<br>
+"sourceId": "100",<br>
+"fileUri": "s3://bucket/videos/file1.mp4",<br>
+"status": "pending",<br>
+"bundleKey": "bundle-001",<br>
+"createdAt": "2024-01-15T09:00:00Z"<br>
+},<br>
+{<br>
+"sourceId": "100",<br>
+"fileUri": "s3://bucket/videos/file2.mov",<br>
+"status": "pending",<br>
+"bundleKey": "bundle-001",<br>
+"createdAt": "2024-01-15T09:05:00Z"<br>
+}<br>
+],<br>
+"failed": []<br>
+}<br>
+}<br>
+}</p>
+<p>Notes:</p>
+<ul>
+<li>Status defaults to "pending" if not provided</li>
+<li>Duplicate file URIs for the same source are ignored and returned as failures</li>
+<li>engineId and appId are optional but must exist if provided</li>
+<li>If tdoId is provided, the slug will be associated with that temporal data object</li>
+<li>organizationId is automatically determined from the user's authorization context</li>
+</ul>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">ingestSlugUpdate</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">sourceId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">fileUri</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">IngestSlugUpdateInput</a>!</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">IngestSlug</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update an individual ingest slug's metadata with optional conditional filtering.</p>
+<p>Allows updating file metadata, processing status, and TDO/asset associations<br>
+for a specific ingest slug identified by sourceId and fileUri. Only provided fields<br>
+are updated (partial updates are supported). The updatedAt timestamp is automatically<br>
+updated. The sourceId is scoped to the user's organization from their authorization context.</p>
+<p>Optional filtering can be applied to restrict updates to slugs in a specific status,<br>
+useful for preventing concurrent updates or ensuring updates only occur on files<br>
+in a particular state.</p>
+<p>Requires scope: superadmin OR aiware.slug.update</p>
+<p>Example 1: Update slug status and associate with a TDO:<br>
+mutation {<br>
+ingestSlugUpdate(<br>
+sourceId: "100"<br>
+fileUri: "s3://bucket/videos/sample.mp4"<br>
+input: {<br>
+status: "ingested"<br>
+statusMessage: "Successfully ingested and transcoded"<br>
+tdoId: "1570654874"<br>
+assetId: "1570654874_4hJtNKSUXD"<br>
+mimeType: "video/mp4"<br>
+fileSizeBytes: 2147483648<br>
+}<br>
+) {<br>
+sourceId<br>
+fileUri<br>
+status<br>
+statusMessage<br>
+tdoId<br>
+assetId<br>
+mimeType<br>
+fileSizeBytes<br>
+updatedAt<br>
+}<br>
+}</p>
+<p>Example 2: Update file metadata timestamps:<br>
+mutation {<br>
+ingestSlugUpdate(<br>
+sourceId: "100"<br>
+fileUri: "s3://bucket/videos/sample.mp4"<br>
+input: {<br>
+fileModifiedAt: "2024-01-15T14:00:00Z"<br>
+bundleKey: "bundle-updated"<br>
+}<br>
+) {<br>
+fileModifiedAt<br>
+bundleKey<br>
+updatedAt<br>
+}<br>
+}</p>
+<p>Example 3: Conditional update - only update if status is currently 'pending':<br>
+mutation {<br>
+ingestSlugUpdate(<br>
+sourceId: "100"<br>
+fileUri: "s3://bucket/videos/sample.mp4"<br>
+input: {<br>
+status: "ingested"<br>
+filter: {<br>
+status: "pending"<br>
+}<br>
+}<br>
+) {<br>
+sourceId<br>
+fileUri<br>
+status<br>
+updatedAt<br>
+}<br>
+}</p>
+<p>Response:<br>
+{<br>
+"data": {<br>
+"ingestSlugUpdate": {<br>
+"sourceId": "100",<br>
+"fileUri": "s3://bucket/videos/sample.mp4",<br>
+"status": "ingested",<br>
+"statusMessage": "Successfully ingested and transcoded",<br>
+"tdoId": "1570654874",<br>
+"assetId": "1570654874_4hJtNKSUXD",<br>
+"mimeType": "video/mp4",<br>
+"fileSizeBytes": 2147483648,<br>
+"updatedAt": "2024-01-15T14:00:00Z"<br>
+}<br>
+}<br>
+}</p>
+<p>Notes:</p>
+<ul>
+<li>Both sourceId and fileUri are required and used as composite key</li>
+<li>Any combination of updatable fields can be provided</li>
+<li>TDO/asset associations are upserted</li>
+<li>The returned object contains all current slug fields after the update</li>
+<li>sourceId is validated to belong to the user's organization from authorization context</li>
+<li>filter.status can be used to make updates conditional on current status</li>
+<li>If filter.status is provided and current status doesn't match, returns null (not found)</li>
+</ul>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">ingestSlugUpdateStatus</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">sourceId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">fileUris</span>: [<a class="graphiql-doc-explorer-type-name" href="#">String</a>!]!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">IngestSlugsStatusUpdateInput</a>!</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">IngestSlugUpdateStatusResult</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Bulk update the status of multiple ingest slugs with optimized batch processing.</p>
+<p>The sourceId is scoped to the user's organization from their authorization context.</p>
+<p>Requires scope: superadmin OR aiware.slug.update</p>
+<p>Example 1: Mark multiple files as ingested:<br>
+mutation {<br>
+ingestSlugUpdateStatus(<br>
+sourceId: "100"<br>
+fileUris: [<br>
+"s3://bucket/videos/file1.mp4"<br>
+"s3://bucket/videos/file2.mp4"<br>
+"s3://bucket/videos/file3.mp4"<br>
+]<br>
+input: {<br>
+status: "ingested"<br>
+statusMessage: "Batch processing completed successfully"<br>
+}<br>
+) {<br>
+sourceId<br>
+updated {<br>
+sourceId<br>
+fileUri<br>
+status<br>
+statusMessage<br>
+updatedAt<br>
+}<br>
+failed {<br>
+fileUri<br>
+errorCode<br>
+errorMessage<br>
+}<br>
+}<br>
+}</p>
+<p>Example 2: Reset failed uploads back to pending:<br>
+mutation {<br>
+ingestSlugUpdateStatus(<br>
+sourceId: "100"<br>
+fileUris: [<br>
+"s3://bucket/videos/failed1.mp4"<br>
+"s3://bucket/videos/failed2.mp4"<br>
+]<br>
+input: {<br>
+status: "pending"<br>
+statusMessage: "Retry after connection restored"<br>
+}<br>
+) {<br>
+sourceId<br>
+updated {<br>
+fileUri<br>
+status<br>
+updatedAt<br>
+}<br>
+failed {<br>
+fileUri<br>
+errorCode<br>
+errorMessage<br>
+}<br>
+}<br>
+}</p>
+<p>Response:<br>
+{<br>
+"data": {<br>
+"ingestSlugUpdateStatus": {<br>
+"sourceId": "100",<br>
+"updated": [<br>
+{<br>
+"sourceId": "100",<br>
+"fileUri": "s3://bucket/videos/file1.mp4",<br>
+"status": "ingested",<br>
+"statusMessage": "Batch processing completed successfully",<br>
+"updatedAt": "2024-01-15T14:00:00Z"<br>
+},<br>
+{<br>
+"sourceId": "100",<br>
+"fileUri": "s3://bucket/videos/file2.mp4",<br>
+"status": "ingested",<br>
+"statusMessage": "Batch processing completed successfully",<br>
+"updatedAt": "2024-01-15T14:00:00Z"<br>
+},<br>
+{<br>
+"sourceId": "100",<br>
+"fileUri": "s3://bucket/videos/file3.mp4",<br>
+"status": "ingested",<br>
+"statusMessage": "Batch processing completed successfully",<br>
+"updatedAt": "2024-01-15T14:00:00Z"<br>
+}<br>
+],<br>
+"failed": []<br>
+}<br>
+}<br>
+}</p>
+<p>Notes:</p>
+<ul>
+<li>sourceId and at least one fileUri are required</li>
+<li>Status is a required input, statusMessage is optional</li>
+<li>All files are updated in a single efficient batch operation (single database round-trip)</li>
+<li>Partial success is possible: some files may succeed while others fail</li>
+<li>Possible error codes:
+<ul>
+<li>'constraint_violation': File would violate unique constraint on (media_source_id, bundle_key) where status='ingesting'</li>
+<li>'batch_conflict': Multiple files in the batch would conflict with each other (same bundle_key)</li>
+<li>'not_found': The ingest slug does not exist for the given sourceId and fileUri</li>
+<li>'not_updated': Database error occurred during update</li>
+</ul>
+</li>
+<li>Returns full IngestSlug objects for successfully updated records</li>
+<li>All updates are processed with organization security binding</li>
+<li>Maximum batch limit is 1000 fileUris per request</li>
+</ul>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">ingestSlugsDelete</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">sourceId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">fileUris</span>: [<a class="graphiql-doc-explorer-type-name" href="#">String</a>!]!</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">IngestSlugsDeleteResult</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete specific ingest slug records.</p>
+<p>Removes ingest slug records from the system for the specified sourceId and fileUris.<br>
+Returns IngestSlugKey objects (sourceId and fileUri pairs) for successfully deleted records.<br>
+The sourceId is scoped to the user's organization from their authorization context.</p>
+<p>Requires scope: superadmin OR aiware.slug.delete</p>
+<p>Example: Delete specific ingest slugs:<br>
+mutation {<br>
+ingestSlugsDelete(<br>
+sourceId: "100"<br>
+fileUris: [<br>
+"s3://bucket/videos/old_file1.mp4"<br>
+"s3://bucket/videos/old_file2.mp4"<br>
+]<br>
+) {<br>
+sourceId<br>
+deleted {<br>
+sourceId<br>
+fileUri<br>
+}<br>
+failed {<br>
+fileUri<br>
+errorCode<br>
+errorMessage<br>
+}<br>
+}<br>
+}</p>
+<p>Response:<br>
+{<br>
+"data": {<br>
+"ingestSlugsDelete": {<br>
+"sourceId": "100",<br>
+"deleted": [<br>
+{<br>
+"sourceId": "100",<br>
+"fileUri": "s3://bucket/videos/old_file1.mp4"<br>
+},<br>
+{<br>
+"sourceId": "100",<br>
+"fileUri": "s3://bucket/videos/old_file2.mp4"<br>
+}<br>
+],<br>
+"failed": []<br>
+}<br>
+}<br>
+}</p>
+<p>Notes:</p>
+<ul>
+<li>sourceId and at least one fileUri are required</li>
+<li>Returns IngestSlugKey objects (composite key with sourceId and fileUri) for each successfully deleted slug</li>
+<li>Failures occur if slug not found or on database error</li>
+<li>sourceId is validated to belong to the user's organization from authorization context</li>
+</ul>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">ingestSlugsDeleteForSource</a>(<span><span><span class="graphiql-doc-explorer-argument-name">sourceId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">IngestSlugsDeleteForSourceResult</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete all ingest slug records for a source.</p>
+<p>Removes all ingest slug records associated with a specific source. This operation<br>
+is performed asynchronously and may take time for sources with many records.<br>
+A IngestSlugsDeleteBySource event is emitted and the operation is queued for processing.<br>
+The sourceId is scoped to the user's organization from their authorization context.</p>
+<p>Requires scope: superadmin OR aiware.slug.delete</p>
+<p>Example:<br>
+mutation {<br>
+ingestSlugsDeleteForSource(<br>
+sourceId: "100"<br>
+) {<br>
+message<br>
+submitted<br>
+}<br>
+}</p>
+<p>Response:<br>
+{<br>
+"data": {<br>
+"ingestSlugsDeleteForSource": {<br>
+"message": "Deletion request submitted for source 100. Processing asynchronously.",<br>
+"submitted": true<br>
+}<br>
+}<br>
+}</p>
+<p>Notes:</p>
+<ul>
+<li>This operation removes ALL ingest slugs for the source (use with caution)</li>
+<li>The deletion is processed asynchronously in the background</li>
+<li>sourceId is validated to belong to the user's organization from authorization context</li>
+</ul>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">processingProjectCreate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">ProcessingProjectInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ProcessingProject</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a new processing project.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">processingProjectDelete</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete a processing project by ID.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">processingDeliverableCreate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">ProcessingDeliverableInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ProcessingDeliverable</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a new processing deliverable.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">processingDeliverableCancel</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">projectId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">message</span>: <a class="graphiql-doc-explorer-type-name" href="#">String</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">ProcessingDeliverable</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Cancel a processing deliverable by ID.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createCluster</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateCluster</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Cluster</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateCluster</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateCluster</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Cluster</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteCluster</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">pauseCluster</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">PauseCluster</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Cluster</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">unpauseCluster</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UnpauseCluster</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Cluster</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createClusterNode</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateClusterNode</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ClusterNode</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateClusterNode</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateClusterNode</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ClusterNode</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteClusterNode</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createScheduledJob</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateScheduledJob</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ScheduledJob</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>This creates a scheduled job that will run on a schedule.  Once a scheduled job is created, it can be launched with<br>
+<code>launchScheduledJob</code></p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">cloneScheduledJob</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CloneScheduledJob</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ScheduledJob</a>!</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">revertScheduledJob</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">RevertScheduledJob</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ScheduledJob</a>!</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateScheduledJob</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateScheduledJob</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ScheduledJob</a>!</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteScheduledJob</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createScheduledJobContentTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateScheduledJobContentTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ScheduledJobContentTemplate</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a new content template on a scheduled job</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteScheduledJobContentTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createSource</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateSource</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Source</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a new source</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateSource</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateSource</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Source</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteSource</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createSourceContentTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateSourceContentTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">SourceContentTemplate</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a new source content template on a source</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteSourceContentTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createSourceType</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateSourceType</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">SourceType</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateSourceType</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateSourceType</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">SourceType</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteSourceType</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createJobTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateJobTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">JobTemplate</a>!</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateJobTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateJobTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">JobTemplate</a>!</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteJobTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createTaskTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateTaskTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">TaskTemplate</a>!</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateTaskTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateTaskTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">TaskTemplate</a>!</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteTaskTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">launchScheduledJobs</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">LaunchScheduledJobs</a>!</span></span>): [<a class="graphiql-doc-explorer-type-name" href="#">Job</a>]</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Creates one or more jobs based on the supplied scheduled job.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">launchJobTemplates</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">LaunchJobTemplates</a>!</span></span>): [<a class="graphiql-doc-explorer-type-name" href="#">Job</a>]</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Creates one or more jobs based on the supplied job templates.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">pauseClusterNode</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">PauseClusterNode</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ClusterNode</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Pause for a node</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">unpauseClusterNode</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UnpauseClusterNode</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ClusterNode</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Unpause for a node</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateClusterState</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateClusterState</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Cluster</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update the cluster's runtime state. Used only by infrastructure elements.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">pairClusterNode</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">PairClusterNode</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ClusterNode</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Pairs a node with a cluster.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">pingClusterNode</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">PingClusterNode</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ClusterNode</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Pings the server to update the node's last ping.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">unpairClusterNode</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ClusterNode</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Unpairs a node with a cluster.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createDagTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateDagTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DagTemplate</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Creates a DAG template</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateDagTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateDagTemplate</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DagTemplate</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a DAG template</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteDagTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>delete a DAG template</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">addDagTemplateToOrganization</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">AddDagTemplateToOrganization</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DagTemplateOrganizations</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>add a DAG template to organization</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">removeDagTemplateFromOrganization</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">RemoveDagFromOrganization</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DagTemplateOrganizations</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>remove a DAG template from organization</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateOrganizationCluster</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateOrganizationCluster</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">OrganizationCluster</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Set the default/alwaysUse Cluster for organization</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createDestination</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateDestinationInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Destination</a>!</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateDestination</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateDestinationInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Destination</a>!</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteDestination</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">completeDestinationConnection</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CompleteDestinationConnectionInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Destination</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Confirms the OAuth handshake and flips status PENDING_OAUTH -&gt; CONNECTED.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">distributeAsset</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">DistributeAssetInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Job</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Submits an aiWare Job to distribute the asset. Returns the Job immediately —<br>
+success means the job was submitted, not that the vendor accepted the post.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">setWorkflowRuntimeStorageData</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">workflowRuntimeId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateWorkflowRuntimeStorageData</a>!</span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">WorkflowRuntimeStorageData</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create or Update Workflow data.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">startWorkflowRuntime</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">workflowRuntimeId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">orgId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">generateAuthToken</span>: <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a> = <span class="graphiql-doc-explorer-default-value">false</span></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">WorkflowRuntimeResponse</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Start a Veritone Workflow instance</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">stopWorkflowRuntime</a>(<span><span><span class="graphiql-doc-explorer-argument-name">workflowRuntimeId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">WorkflowRuntimeResponse</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Shutdown Veritone Workflow instance</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createFlowTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateFlowTemplate</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">FlowTemplate</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateFlowTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateFlowTemplate</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">FlowTemplate</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteFlowTemplate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">FlowTemplate</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createFlowRevision</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateFlowRevision</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">FlowRevision</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateFlowRevision</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateFlowRevision</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">FlowRevision</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createFlowExecution</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateFlowExecution</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">FlowExecution</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateFlowExecution</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateFlowExecution</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">FlowExecution</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateFlowRevisionHead</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateFlowRevisionHead</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">FlowRevision</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deployFlowRevision</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">DeployFlowRevision</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">FlowRevision</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createNotebook</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateNotebook</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Engine</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createFlow</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateFlow</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Engine</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateFlow</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateEngine</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Engine</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">copyFlow</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CopyFlow</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Engine</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteFlow</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">DeleteFlow</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Engine</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">pauseFlow</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">pauseFlow</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Engine</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">unpauseFlow</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">pauseFlow</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Engine</a></div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">alwaysUpFlowCreate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">AlwaysUpFlowInput</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">AlwaysUpFlow</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a alwaysUpFlow</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">alwaysUpFlowUpdate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">AlwaysUpFlowInput</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">AlwaysUpFlow</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a alwaysUpFlow</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">authGroupCreate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">AuthGroupCreateInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">AuthGroup</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create new authorization group</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">authEnforcementEnable</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">AuthEnforcementEnableInput</a>!</span></span>): [<a class="graphiql-doc-explorer-type-name" href="#">AuthGroup</a>!]</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create default authorization group for initialize new org or current org OLP onboarding<br>
+This will create two default auth group, orgAdmin + orgAllAccess</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">authGroupUpdate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">AuthGroupUpdateInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">AuthGroup</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update existing authorization group</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">authGroupDelete</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ownerOrganization</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete existing authorization group</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">authGroupAddMembers</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">members</span>: [<a class="graphiql-doc-explorer-type-name" href="#">AuthGroupMemberInput</a>!]!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ownerOrganization</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">AuthGroup</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Add members to authorization group</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">authGroupRemoveMembers</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">memberIds</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ownerOrganization</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">AuthGroup</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Remove members from authorization group</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">authPermissionSetCreate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">AuthPermissionSetInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">AuthPermissionSet</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create new authorization role</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">authPermissionSetUpdate</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">AuthPermissionSetUpdateInput</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">AuthPermissionSet</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update permission set<br>
+!!! Warning: this will have impact on all ACEs that have this permission set attached to them<br>
+Provided permissions will replace the existing permissions.<br>
+E.g.: providing permission A and B for a permission set with A, B and C is going to remove permission C</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">authPermissionSetDelete</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ownerOrganization</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete Permission Set<br>
+!!! Warning: this will delete the permission set.  This will fail if referenced in an ACE</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">addACEsToResources</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">resourceType</span>: <a class="graphiql-doc-explorer-type-name" href="#">AuthResourceType</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">resourceTypeSchemaId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">entries</span>: [<a class="graphiql-doc-explorer-type-name" href="#">AuthACEPermissionInput</a>!]!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ownerOrganization</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">AuthACL</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>This will add ACEs to the specified object(s).</p>
+<p>Applies the partial ACEs to the specified objects</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">removeACEsFromResource</a>(<span><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">resourceType</span>: <a class="graphiql-doc-explorer-type-name" href="#">AuthResourceType</a>!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">resourceTypeSchemaId</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ids</span>: [<a class="graphiql-doc-explorer-type-name" href="#">ID</a>!]!</span></div><div class="graphiql-doc-explorer-argument-multiple"><span><span class="graphiql-doc-explorer-argument-name">ownerOrganization</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></div></span>): <a class="graphiql-doc-explorer-type-name" href="#">AuthACL</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Remove ACE from ACL.  The ACE Ids specified must be for same object type</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createApplicationRole</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">CreateApplicationRoleInput</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ApplicationRole</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create an application role</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateApplicationRole</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">UpdateApplicationRoleInput</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">ApplicationRole</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Update a specified application role</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">deleteApplicationRole</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">DeletePayload</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Delete an application role</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createTDOBatch</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">BatchTDOInput</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">TDOBatch</a>!</div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Create a list of tdos on which bulk action will be performed</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">cancelTDOBatchProcess</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">TDOBatchProcess</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Cancel further execution of the items in the batch.<br>
+Note that some types of batch processes may do not support cancel of the actual<br>
+processing.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">updateInstanceAuditLogConfig</a>(<span><span><span class="graphiql-doc-explorer-argument-name">input</span>: <a class="graphiql-doc-explorer-type-name" href="#">InstanceAuditLogConfigInput</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">InstanceAuditLogConfig</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Configure instance audit rules by adding or removing events that should be stored for audit.</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">createAuditLogExportRequest</a>(<span><span><span class="graphiql-doc-explorer-argument-name">filters</span>: <a class="graphiql-doc-explorer-type-name" href="#">AuditLogExportRequestFilterInput</a></span></span>): <a class="graphiql-doc-explorer-type-name" href="#">AuditLogExportRequest</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Creates and queues export request of audit logs for an organization</p>
+</div></div><div class="graphiql-doc-explorer-item"><div><a class="graphiql-doc-explorer-field-name" href="#">cancelAuditLogExportRequest</a>(<span><span><span class="graphiql-doc-explorer-argument-name">id</span>: <a class="graphiql-doc-explorer-type-name" href="#">ID</a>!</span></span>): <a class="graphiql-doc-explorer-type-name" href="#">Boolean</a></div><div class="graphiql-markdown-description graphiql-markdown-preview"><p>Cancels an audit log export request that is pending or in progress. Returns true if the request was successfully cancelled.</p>
+</div></div></div>

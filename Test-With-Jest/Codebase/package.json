@@ -1,0 +1,31 @@
+{
+  "name": "aiware-folder-graphql-tests",
+  "version": "1.0.0",
+  "description": "GraphQL Jest test suite for Veritone aiWARE Folder Lifecycle Mutations",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "graphql",
+    "jest",
+    "veritone",
+    "aiware",
+    "testing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.9",
+    "jest": "^29.7.0",
+    "jest-html-reporter": "^4.4.2",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.7.3"
+  }
+}
