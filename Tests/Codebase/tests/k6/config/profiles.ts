@@ -42,9 +42,9 @@ export function getExecutionOptions(): Options {
   // Default: "load" profile
   return {
     stages: [
-      { duration: "30s", target: vusOverride || 10 },
-      { duration: durationOverride || "1m", target: vusOverride || 10 },
-      { duration: "15s", target: 0 },
+      { duration: "14s", target: vusOverride || 50 },
+      { duration: durationOverride || "1m", target: vusOverride || 50 },
+      { duration: "10s", target: 0 },
     ],
     thresholds: {
       ...baseThresholds,

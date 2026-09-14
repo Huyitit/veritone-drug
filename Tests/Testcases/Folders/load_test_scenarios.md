@@ -22,7 +22,7 @@ All scenarios evaluate the following baseline thresholds:
 ## Scenario 1: Realistic End-to-End Lifecycle Progression
 
 ### Test Case: TC_LT_01 - Full Folder Lifecycle Multi-VU User Journey
-**Priority:** High | **Type:** E2E
+**Priority:** High
 
 **Load Profile:**
 - **Executor:** Ramping VUs (`ramping-vus`)
@@ -57,7 +57,7 @@ All scenarios evaluate the following baseline thresholds:
 ## Scenario 2: High-Concurrency Folder Hierarchy Creation
 
 ### Test Case: TC_LT_02 - Concurrent Multi-Tier Tree Expansion Burst
-**Priority:** High | **Type:** Functional
+**Priority:** High 
 
 **Load Profile:**
 - **Executor:** Constant VUs (`constant-vus`)
@@ -86,7 +86,7 @@ All scenarios evaluate the following baseline thresholds:
 ## Scenario 3: Read-Heavy Hierarchy Traversal & Overview Queries
 
 ### Test Case: TC_LT_03 - High-Throughput Tree Traversal & Overview Query Load
-**Priority:** Medium | **Type:** Functional
+**Priority:** Medium 
 
 **Load Profile:**
 - **Executor:** Ramping Arrival Rate (`ramping-arrival-rate`)
@@ -114,7 +114,7 @@ All scenarios evaluate the following baseline thresholds:
 ## Scenario 4: Concurrency-Controlled Folder Relocation & Bulk Migration
 
 ### Test Case: TC_LT_04 - Concurrent Relocation & Optimistic Concurrency Control (OCC)
-**Priority:** High | **Type:** Functional
+**Priority:** High 
 
 **Load Profile:**
 - **Executor:** Constant VUs (`constant-vus`)
@@ -142,7 +142,7 @@ All scenarios evaluate the following baseline thresholds:
 ## Scenario 5: Batch Destruction & Hierarchy Cleanup Stress
 
 ### Test Case: TC_LT_05 - High-Throughput Folder Destruction & Rebalancing
-**Priority:** Medium | **Type:** Functional
+**Priority:** Medium 
 
 **Load Profile:**
 - **Executor:** Shared Iterations (`shared-iterations`)

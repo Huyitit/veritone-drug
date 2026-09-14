@@ -4,7 +4,10 @@ import { SetupData } from "../helpers/auth";
 import { CREATE_FOLDER, DELETE_FOLDER } from "../../graphql/folder/mutations";
 import { GET_FOLDER } from "../../graphql/folder/queries";
 
+
+
 export function runDeleteScenario(data: SetupData): void {
+
   const vuId = __VU;
   const iterId = __ITER;
   const prefix = `k6-delete-${data.runId}-vu${vuId}-it${iterId}`;

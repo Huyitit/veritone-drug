@@ -200,14 +200,6 @@ export function generateHtmlReport(data: any): string {
       </div>
 
       <div class="card">
-        <div class="card-title">p(95) Duration</div>
-        <div class="card-val" style="color: var(--primary);">${fmtMs(httpReqDuration["p(95)"])}</div>
-        <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
-          p(99): ${fmtMs(httpReqDuration["p(99)"])} | Med: ${fmtMs(httpReqDuration.med)}
-        </div>
-      </div>
-
-      <div class="card">
         <div class="card-title">HTTP Failure Rate</div>
         <div class="card-val" style="color: ${(httpFailed.rate || 0) > 0 ? "var(--danger)" : "var(--success)"};">
           ${fmtPct(httpFailed.rate)}
@@ -245,7 +237,6 @@ export function generateHtmlReport(data: any): string {
           <th>Median (p50)</th>
           <th>p(90)</th>
           <th>p(95)</th>
-          <th>p(99)</th>
           <th>Max</th>
         </tr>
       </thead>
@@ -256,7 +247,6 @@ export function generateHtmlReport(data: any): string {
           <td>${fmtMs(httpReqDuration.med)}</td>
           <td>${fmtMs(httpReqDuration["p(90)"])}</td>
           <td style="color: var(--primary); font-weight: 600;">${fmtMs(httpReqDuration["p(95)"])}</td>
-          <td style="color: var(--primary);">${fmtMs(httpReqDuration["p(99)"])}</td>
           <td>${fmtMs(httpReqDuration.max)}</td>
         </tr>
       </tbody>
@@ -299,7 +289,6 @@ Checks Pass Rate:  ${((checks.rate || 0) * 100).toFixed(1)}% (${checks.passes ||
 Duration (p50):    ${(httpDuration.med || 0).toFixed(1)} ms
 Duration (p90):    ${(httpDuration["p(90)"] || 0).toFixed(1)} ms
 Duration (p95):    ${(httpDuration["p(95)"] || 0).toFixed(1)} ms
-Duration (p99):    ${(httpDuration["p(99)"] || 0).toFixed(1)} ms
 Duration (max):    ${(httpDuration.max || 0).toFixed(1)} ms
 ================================================================================
 HTML Report written to: k6-report.html
