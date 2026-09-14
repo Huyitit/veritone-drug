@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>k6 Load Test Execution Report</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --primary: #38bdf8;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .badge-success { background: rgba(34, 197, 94, 0.2); color: var(--success); border: 1px solid var(--success); }
+    .badge-fail { background: rgba(239, 68, 68, 0.2); color: var(--danger); border: 1px solid var(--danger); }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+    .card-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .card-val {
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: rgba(15, 23, 42, 0.6);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>aiWARE GraphQL k6 Load Test Report</h1>
+        <div style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">
+          Executed on 2026-09-14T07:55:09.756Z | Target: Veritone aiWARE Folder Lifecycle
+        </div>
+      </div>
+      <div>
+        <span class="badge badge-success">
+          HEALTHY / PASSED
+        </span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Total Requests</div>
+        <div class="card-val">11</div>
+        <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+          Rate: 1.6 req/s
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">p(95) Duration</div>
+        <div class="card-val" style="color: var(--primary);">720.3ms</div>
+        <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+          p(99): N/A | Med: 346.1ms
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">HTTP Failure Rate</div>
+        <div class="card-val" style="color: var(--success);">
+          0.00%
+        </div>
+        <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+          Failed: 0 reqs
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Checks Pass Rate</div>
+        <div class="card-val" style="color: var(--success);">
+          100.0%
+        </div>
+        <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+          33 passed / 0 failed
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Max Virtual Users</div>
+        <div class="card-val">1</div>
+        <div style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.25rem;">
+          GraphQL Errors: 0.00%
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">HTTP Timing Percentiles</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Min</th>
+          <th>Median (p50)</th>
+          <th>p(90)</th>
+          <th>p(95)</th>
+          <th>p(99)</th>
+          <th>Max</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight: 600;">http_req_duration</td>
+          <td>283.7ms</td>
+          <td>346.1ms</td>
+          <td>678.0ms</td>
+          <td style="color: var(--primary); font-weight: 600;">720.3ms</td>
+          <td style="color: var(--primary);">N/A</td>
+          <td>762.5ms</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">Assertion Checks Breakdown</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Check Name</th>
+          <th style="text-align: center;">Status</th>
+          <th style="text-align: right;">Passes</th>
+          <th style="text-align: right;">Fails</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">TC_LT_05_CreatePurgeTarget status is 200</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">2</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">TC_LT_05_CreatePurgeTarget response has valid JSON</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">2</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">TC_LT_05_CreatePurgeTarget has no business errors</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">2</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Target created for deletion test</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">2</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">TC_LT_05_DeleteTarget status is 200</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">2</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">TC_LT_05_DeleteTarget response has valid JSON</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">2</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">TC_LT_05_DeleteTarget has no business errors</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">2</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Target deleted successfully</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">2</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">TC_LT_05_VerifyTombstone responded with expected error</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">2</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Setup_UserLogin status is 200</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">1</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Setup_UserLogin response has valid JSON</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">1</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Setup_UserLogin has no business errors</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">1</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Setup_CheckCmsRoot status is 200</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">1</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Setup_CheckCmsRoot response has valid JSON</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">1</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Setup_CheckCmsRoot has no business errors</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">1</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Setup_CheckWatchlistRoot status is 200</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">1</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Setup_CheckWatchlistRoot response has valid JSON</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">1</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Setup_CheckWatchlistRoot has no business errors</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">1</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Teardown_GetRootChildren status is 200</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">2</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Teardown_GetRootChildren response has valid JSON</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">2</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+          <tr class="check-pass">
+            <td style="font-weight: 500;">Teardown_GetRootChildren has no business errors</td>
+            <td style="text-align: center;">✓ PASS</td>
+            <td style="text-align: right;">2</td>
+            <td style="text-align: right; color: inherit;">0</td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
