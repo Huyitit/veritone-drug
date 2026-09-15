@@ -1,0 +1,1 @@
+CREATE INDEX CONCURRENTLY IF NOT EXISTS sso_user_date_modified_idx ON public.sso_user USING btree (date_modified);

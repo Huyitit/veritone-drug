@@ -1,0 +1,29 @@
+{
+  "extends": "./src/tsconfig.json",
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "nodenext",
+    "types": ["jest", "node"],
+    "moduleResolution": "nodenext",
+    /**
+     * Depth-independent module aliases. Specs sit at varying nesting depths
+     * (test/tdo/, test/application/applicationCITests/, ...), so the same
+     * module was previously spelled '../../src/gql' or '../../../src/gql'
+     * depending on the importer. These aliases give it one stable spelling.
+     *
+     * Resolved relative to this file (TS >= 4.4 allows paths without baseUrl;
+     * baseUrl is deliberately omitted so bare specifiers still resolve only
+     * through node_modules).
+     *
+     * CI runs these specs through ts-jest, which does NOT read tsconfig
+     * paths — the equivalent mapping is duplicated as `moduleNameMapper` in
+     * citest/jest.config.js. Keep the two in sync when adding an alias.
+     */
+    "paths": {
+      "@api/*": ["./*"],
+      "@citest/*": ["../../*"],
+      "@server/*": ["../../../*"]
+    }
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts", "codegen.ts"]
+}

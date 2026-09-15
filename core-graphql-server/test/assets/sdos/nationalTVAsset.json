@@ -1,0 +1,83 @@
+{
+  "assetType": "vtn-standard",
+  "contentType": "application/json",
+  "metadata": {
+    "schemaIds": ["85db55b9-33e0-46ca-b7b0-39a6feeff5ec"],
+    "sourceEngineId": "d7f7e7cd-dca9-49af-90b6-53a3698690f8"
+  },
+  "series": [
+    {
+      "startTimeMs": 0,
+      "stopTimeMs": 300000,
+      "structuredData": {
+        "85db55b9-33e0-46ca-b7b0-39a6feeff5ec": [
+          {
+            "time": {
+              "startDate": "180821",
+              "endDate": "180821",
+              "hour": "20",
+              "minute": "30",
+              "second": "00",
+              "year": "2018",
+              "month": "08",
+              "day": "21",
+              "quaterHour": 59,
+              "datetimeStart": "2018-08-22T00:30:00.000Z",
+              "utc": 1534595400,
+              "datetimeEnd": "2018-08-22T00:45:00.000Z"
+            },
+            "decorators": {
+              "networkCode": "CNN",
+              "programCode": "0000279230",
+              "programPutIndicator": "0",
+              "viewingType": "4",
+              "totalProgram": "30",
+              "breakoutIndicator": "0"
+            },
+            "demographics": {
+              "male": {
+                "age2_5": 8793,
+                "age6_8": 6218,
+                "age9_11": 3986,
+                "age12_17": 5342,
+                "total": 648365,
+                "age18_24": 17463,
+                "age25_34": 39968,
+                "age35_44": 87078,
+                "age45_54": 156242,
+                "age55_64": 129742,
+                "age65": 212532
+              },
+              "female": {
+                "age2_5": 5449,
+                "age6_8": 4390,
+                "age9_11": 4898,
+                "age12_17": 8763,
+                "age18_24": 10099,
+                "age25_34": 27748,
+                "age35_44": 61616,
+                "age45_54": 91128,
+                "age55_64": 143237,
+                "age65": 253552,
+                "total": 596142
+              },
+              "total": 1244507
+            },
+            "networkCode": "CNN",
+            "uniqueCode": "CNN|0000279230",
+            "datetimeStart": "2018-10-31T00:35:00.000Z",
+            "datetimeEnd": "2018-10-31T00:40:00.000Z",
+            "viewershipType": "LV7",
+            "dataId": "4514B06A-3205-5581-9422-3EE8385D168A",
+            "id": "4514B06A-3205-5581-9422-3EE8385D168A",
+            "dataRegistryId": "85db55b9-33e0-46ca-b7b0-39a6feeff5ec",
+            "fileName": "./output/MITLIB-2137375",
+            "isAverage": true
+          }
+        ]
+      }
+    }
+  ],
+  "sourceEngineId": "d7f7e7cd-dca9-49af-90b6-53a3698690f8",
+  "validationContracts": ["85db55b9-33e0-46ca-b7b0-39a6feeff5ec"]
+}

@@ -1,0 +1,500 @@
+enum InstanceAuditLogOrderByField {
+    id
+    eventId
+    objectId
+    targetType
+    createdDateTime
+    eventName
+    event
+    userName
+    userId
+    clientIpAddress
+    clientUserAgent
+    actionResult
+    actionName
+    impersonatorUserId
+    impersonatorUserName
+    originatorApplication
+    originatorService
+    organizationId
+    organizationName
+    sendEmail
+}
+
+enum TargetTypeEnum {
+    tt_TDO
+    tt_Job
+    tt_Asset
+    tt_User
+    tt_Organization
+    tt_Application
+    tt_Engine
+    tt_Cluster
+    tt_Library
+    tt_Source
+    tt_SDO
+    tt_Watchlist
+    tt_Folder
+    tt_ScheduledJob
+    tt_Authentication
+    tt_Platform
+    tt_Package
+    tt_Task
+    tt_Build
+    tt_Media
+    tt_OLP
+}
+
+enum ActionNameEnum {
+    create
+    read
+    update
+    delete
+    """
+    unknown enum value is to provide backward compatibility for the existing data
+    """
+    unknown @deprecated(reason: "obsolete functionality"
+      alternate: "'create', 'read', 'update', 'delete'"
+      expirationDate: "2025-12-31"
+      deprecationDate: "2025-02-03")    
+}
+
+enum EventNameEnum {
+    LoginSucceeded
+    LoginFailed
+    LoginAttemptsExceeded
+    Impersonated
+    PasswordChange
+    Logout
+    SessionEnded
+    PasswordToken
+    LoginVerifyMFAToken
+    RegisterMFA
+    VerifyUserMFARegistration
+    UnregisterMFA
+    AuditLogConfigChange
+    EngineBuildSubmit
+    EngineBuildApprove
+    EngineBuildDisapprove
+    EngineBuildCreate
+    EngineBuildUpload
+    EngineBuildInvalidate
+    EngineBuildPause
+    EngineBuildUnpause
+    EngineBuildDelete
+    EngineBuildUpdate
+    EngineBuildDeploy
+    EngineCreate
+    EngineUpdate
+    EngineDisable
+    EngineEnable
+    IntegrationSettings
+    OrganizationCreate
+    OrganizationUpdate
+    OrganizationDelete
+    OrganizationInvitationCreate
+    OrganizationRequestCreate
+    OrganizationRequestReject
+    OrganizationRequestAccept
+    OrganizationInvitationReject
+    OrganizationInvitationAccept
+    OrganizationInvitationRevoke
+    RetentionRun
+    TrialSignUp
+    BenchmarkSignUp
+    VoiceSignUp
+    SportxSignUp
+    VerisafeSignUp
+    DeveloperTrialSignUp
+    AutomateStudioSignUp
+    AwsReferralSignUp
+    RedactSelfServiceSignUp
+    UserCreate
+    UserUpdate
+    UserDelete
+    Unknown
+    RecordingDelete
+    RecordingCreate
+    RecordingUpdate
+    WatchListCreate
+    WatchListUpdate
+    AssetUpload
+    AssetMetadataUpdate
+    AssetUpdate
+    AssetDelete
+    NewVersionCreate
+    NewVersionInstall
+    PackageCreate
+    PackageDelete
+    PackageApprove
+    PackageReject
+    PackageInstall
+    PackageGrantSet
+    PackageGrantRemove
+    AccessMedia
+    ApplicationCreate
+    ApplicationUpdate
+    ApplicationDelete
+    ClusterCreate
+    ClusterDelete
+    ClusterUpdate
+    FolderCreate
+    FolderUpdate
+    FolderDelete
+    MediaSourceCreate
+    MediaSourceUpdate
+    MediaSourceDelete    
+    LibraryTrain
+    StructuredDataCreate
+    StructuredDataUpdate
+    StructuredDataDelete
+    StructuredDataRegistryCreate
+    StructuredDataRegistryUpdate
+    StructuredDataRegistryDelete
+    JobCreate
+    AuditLogExportCreate
+    AuditLogExportCancel
+    AuditLogExportQuery
+    UserPermissionsUpdate
+    SendEmail
+    AuditLogAccess
+    OLPEnable
+    OLPDisable
+    AuthGroupCreate
+    AuthGroupUpdate
+    AuthGroupDelete
+    AuthGroupMemberAdd
+    AuthGroupMemberRemove
+    AuthPermissionSetCreate
+    AuthPermissionSetUpdate
+    AuthPermissionSetDelete
+    DefaultACEPolicyUpdate
+    ACEGrant
+    ACERevoke
+    ACEQuery
+    AuthorizationDenied
+}
+
+enum EventTypeEnum {
+    authentication
+    organization
+    organizationInvite
+    signup
+    user
+    unknown
+    recording
+    structuredData
+    structured_data
+    watchlist
+    job
+    engine
+    library
+    application
+    cluster
+    folder
+    media_source
+    media
+    task
+    asset
+    platformEvent
+    package
+    platform
+    export
+    olp
+}
+
+enum ActionResultEnum {
+    success
+    failure
+}
+
+type InstanceAuditLogEntry {
+    """
+    The unique ID of the audit log entry.
+    """
+    id: ID!
+    """
+    The eventId of the audit log entry.
+    """
+    eventId: ID
+    """
+    ID of the organization that generated the audit entry.
+    """
+    organizationId: ID
+    """
+    Guid of the organization that generated the audit entry.
+    """
+    organizationGuid: String
+    """
+    Name of the organization that generated the audit entry.
+    """
+    organizationName: String
+    """
+    User ID that generated the audit entry. This might be an API key.
+    """
+    userId: ID
+    """
+    User name or ID that generated the audit entry. This might be an API key.
+    """
+    userName: String
+    """
+    IP address of the client that generated the audit action.
+    """
+    clientIpAddress: String
+    """
+    HTTP user agent of the client that generated the audit action.
+    """
+    clientUserAgent: String
+    """
+    Description about the audit log.
+    """
+    description: String
+    """
+    Date/time at which the audit log entry was created.
+    """
+    createdDateTime: DateTime!
+    """
+    The type of event involved in the audit action, such as `login`.
+    """
+    eventType: EventTypeEnum
+    """
+    A name for the event involved in the audit action.
+    """
+    eventName: EventNameEnum
+    """
+    The type of the object involved in the audit action, such as `Watchlist`
+    or `TemporalDataObject`.
+    """
+    targetType: TargetTypeEnum
+    """
+    The ID of the object involved in the audit action. The format of this ID
+    varies by object type.
+    """
+    objectId: ID
+    """
+    Indicates whether or not the attempted action was successful.
+    """
+    actionResult: ActionResultEnum
+    """
+    The type of action involved in the audit action, such as `created`
+    or `login`.
+    """
+    actionName: ActionNameEnum
+    """
+    Indicates the application involved in the audit action.
+    """
+    originatorApplication: ID
+    """
+    Indicates the service involved in the audit action.
+    """
+    originatorService: String
+    """
+    The userId that creates the action involved in the audit action on behalf of a user via impersonation.
+    """
+    impersonatorUserId: ID
+    """
+    The username that creates the action involved in the audit action on behalf of a user via impersonation.
+    """
+    impersonatorUserName: ID
+    """
+    The correlation ID of the audit log entry.
+    """
+    correlationId: String
+}
+
+type InstanceAuditLogEntryList implements Page {
+    records: [InstanceAuditLogEntry!]!
+    count: Int
+    offset: Int!
+    limit: Int!
+    toDateTime: DateTime
+    fromDateTime: DateTime
+}
+
+type InstanceAuditLogConfig {
+    immutableEvents: [EventNameEnum]
+    configurableEvents: [EventNameEnum]
+}
+
+type AuditLogExportRequestList implements Page {
+    records: [AuditLogExportRequest!]!
+    count: Int
+    offset: Int!
+    limit: Int!
+}
+
+enum AuditExportRequestStatus {
+    PENDING
+    IN_PROGRESS
+    COMPLETED
+    FAILED,
+    CANCELLED
+}
+
+type AuditLogDateTimeFilter {
+  toDateTime: DateTime!
+  fromDateTime: DateTime!
+}
+
+type AuditLogExportRequestFilter {
+    organizationId: ID
+    dateTimeFilter: AuditLogDateTimeFilter
+    eventNames: [EventNameEnum]
+    userNames: [String]
+}
+
+type AuditLogExportRequest {
+    id: ID!
+    filters: JSONData
+    status: AuditExportRequestStatus
+    requestorId: ID
+    downloadUrl: String
+}
+
+input InstanceAuditLogInput{
+    """
+    The unique ID of an audit log entry. Multiple values can be provided.
+    """
+    id: [ID!]
+    """
+    User name on audit entry. It can be partial match.
+    """
+    userName: String
+    """
+    User id on audit entry.
+    """
+    userId: String
+    """
+    The names of the events involved in the audit action, such as [LoginSuccess, LoginFailed]
+    """
+    eventNames: [EventNameEnum]
+    """
+    The name of the event involved in the audit action, such as LoginSuccess
+    """
+    eventName: EventNameEnum @deprecated(
+        reason: "obsolete functionality"
+        alternate: "eventNames"
+        expirationDate: "2025-12-31"
+        deprecationDate: "2025-01-29")
+    """
+    Date/time up to which entries will be returned. In other words, the
+    end of the query time window.
+    Defaults to the current time.
+    """
+    toDateTime: DateTime
+    """
+    Date/time from which entries will be returned. In other words, the
+    start of the query time window.
+    Defaults to the `toDateTime` minus 7 days.
+    """
+    fromDateTime: DateTime
+    """
+    Offset into result set, for paging.
+    """
+    offset: Int = 0
+    """
+    Limit on result size, for paging (page size). Audit queries are
+    lightweight so the default of 100 is higher than the default offset
+    used elsewhere in the API.
+    """
+    limit: Int = 100
+    """
+    Order information. Default is order by `createdDateTime` descending.
+    """
+    orderBy: [InstanceAuditLogOrderBy!]
+    """
+    The orgId on audit entry
+    """
+    organizationId: ID
+}
+
+"""
+Specifies an "order by" entry in the `instanceAuditLog` query
+"""
+input InstanceAuditLogOrderBy {
+    field: InstanceAuditLogOrderByField
+    direction: OrderDirection
+}
+
+input InstanceAuditLogConfigInput {
+    addAuditEvents: [EventNameEnum!]
+    removeAuditEvents: [EventNameEnum!]
+}
+
+input AuditLogDateTimeFilterInput {
+  toDateTime: DateTime!
+  fromDateTime: DateTime!
+}
+
+input AuditLogExportRequestFilterInput {
+  """
+  Optional parameter to export org-level logs. For SA use only. If not provided, SA user's current orgId will be used
+  """
+  organizationId: String
+  """
+  Optional time range filter
+  """
+  dateTimeFilter: AuditLogDateTimeFilterInput
+  """
+  Events to include in the export. Includes all events by default
+  """
+  eventNames: [EventNameEnum]
+  """
+  UserNames to audit. If empty then all org/instance users will be returned
+  """
+  userNames: [String]
+}
+
+
+extend type Query {
+    """
+    Query instance audit log configuration that includes:
+    - pool of events that are stored for audit purposes. Every instance is created
+    with a default subset of auditable events
+    """
+    instanceAuditLogConfig: InstanceAuditLogConfig @scopes(scopes: ["superadmin", "aiware.admin.instance_admin", "veritone.superadmin", "aiware.admin.superadmin"] require: Any)
+
+    """
+    Examine entries from the audit log.
+    Instance admins choose what events' data is stored in audit log sink(s)
+    Instance admins can query all entries.
+    Org admins can query their respective org entries.
+    Non-admin users can query certain entries created as a result of their activity
+    All queries are bracketed by a time window.
+    A default time window is applied if the toDateTime and/or
+    fromDateTime parameters are not provided.
+    The maximum time window length is 365 days.
+    """
+    instanceAuditLog(
+        input: InstanceAuditLogInput
+    ): InstanceAuditLogEntryList!
+
+    auditLogExportRequest(
+        id: ID!
+    ): AuditLogExportRequest @scopes(scopes: ["superadmin", "aiware.admin.instance_admin", "veritone.superadmin", "aiware.admin.superadmin", "admin.org.read"] require: Any)
+
+    auditLogExportRequestForOrg(
+        organizationId: ID!
+        statuses: [AuditExportRequestStatus]
+    ): AuditLogExportRequestList @scopes(scopes: ["superadmin", "aiware.admin.instance_admin", "veritone.superadmin", "aiware.admin.superadmin", "admin.org.read"] require: Any)
+}
+
+extend type Mutation {
+    """
+    Configure instance audit rules by adding or removing events that should be stored for audit.
+    """
+    updateInstanceAuditLogConfig(
+        input: InstanceAuditLogConfigInput
+    ): InstanceAuditLogConfig @scopes(scopes: ["superadmin", "aiware.admin.instance_admin", "veritone.superadmin", "aiware.admin.superadmin"] require: Any)
+
+    """
+    Creates and queues export request of audit logs for an organization
+    """
+    createAuditLogExportRequest(filters: AuditLogExportRequestFilterInput): AuditLogExportRequest @scopes(scopes: ["superadmin", "aiware.admin.instance_admin", "veritone.superadmin", "aiware.admin.superadmin", "admin.org.read"] require: Any)
+
+    """
+    Cancels an audit log export request that is pending or in progress. Returns true if the request was successfully cancelled.
+    """
+    cancelAuditLogExportRequest(id: ID!): Boolean @scopes(scopes: ["superadmin", "aiware.admin.instance_admin", "veritone.superadmin", "aiware.admin.superadmin", "admin.org.read"] require: Any)
+}
+

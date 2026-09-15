@@ -1,0 +1,6 @@
+{
+  "targetId": {{#if TARGET_ID}} "{{{TARGET_ID}}}" {{else}} "{{{TDO_ID}}}" {{/if}},
+  {{#if notificationUri}} "notificationUris":["{{{notificationUri}}}"], {{/if}}
+  {{#if clusterId}} "clusterId": "{{{clusterId}}}", {{/if}}
+  <DAG>
+}

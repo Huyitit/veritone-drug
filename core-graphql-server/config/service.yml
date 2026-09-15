@@ -1,0 +1,258 @@
+# The settings in this file are options that should be the same in all environments
+# For now we are listing them here as part of the migration from a monolithic config file.
+# These could be moved in the corresponding code since they are never modified externally.
+
+# endpoints for various tools
+graphqlApiPath: /graphql
+graphqlPlaygroundPath: /graphql
+graphqlApiPathInternal: /vgraphql
+graphqlPlaygroundPathInternal: /vgraphql
+graphQLEndpoint: v3/graphql
+
+# Enabled optional schemas
+schemas:
+  public:
+    enabledModules:
+      - v3DataModel
+    maskedFields:
+      - operation: userLogin
+        fieldPath: Mutation.userLogin
+
+skipMiddleware: true
+
+# Local caching settings
+cache:
+  stdTTLSec: 30
+  checkPeriodSec: 30
+coreAdminRedis:
+  detect_buffers: true
+  ttl: 10800
+redis:
+  detect_buffers: true
+  ttl: 43200
+taskTypeCacheRefreshIntervalMs: 60000
+
+# Service Behavior
+# GraphQL query defaults
+metricsRange:
+  defaultRange: 30
+  maxRange: 90
+server:
+  maxRequestCost: 10000
+  requestSizeLimit: 52428800
+  validatorSizeLimit: 1mb
+paging:
+  defaultLimit: 30
+  maxLimit: 500
+# Periodic kill of long running queries on db connections marked with queryMonitor. Enabled in SCFG.
+queryMonitor:
+  queryDurationSecondsWarn: 10
+# Healthcheck
+healthCheck:
+  maxAverageResponseTimeMs: 20000
+  minRequestsForResponseTime: 100
+  path: /health
+  maxConcurrentSQL: 1000
+log:
+  exitOnError: false
+  httpLogEnabled: false
+
+# maxRequestTimeElapsedSec: 300
+limitShareMentionInBulk: 100
+
+
+# Data sources
+# Elasticsearch library index:
+elastic:
+  connection:
+    apiVersion: '7.0'
+  indexName: library
+  indexType: _doc
+
+# NSQ
+messaging:
+  name: nsq
+  msgTimeout: 60000
+  disableOnFailure: true
+  logLevel: warn
+  idleTimeout: 1800
+  connectionTimeout: 7200
+
+# s3
+s3:
+  path: assets
+  maxRetry: 3
+  timeout: 30000
+  enableUrlSigning: true
+
+# minio
+minio:
+  maxRetry: 3
+  timeout: 30000
+  localDataStorePath: /mnt/data
+
+# Service endpoints
+# URL to connect to the api gateway. SCFG define baseUri
+veritone-api:
+  maxRetry: 3
+  retryIntervalMs: 5000
+
+
+# DB migration schema. SCFG controls the enable/disable flag
+flyway:
+  path: /usr/local/bin/flyway
+  configPath: flyway/conf
+  lockTTLMs: 180000
+  maxWaitMs: 60000
+  baseDelayMs: 50
+  maxDelayMs: 5000
+  lockExtendThresholdMs: 30000
+  sentinelTTLSec: 86400
+  db:
+    audience:
+      configPath: flyway/db/audience
+      scriptPath:
+        - flyway/db/audience/sql
+
+    cms:
+      configPath: flyway/db/cms
+      scriptPath:
+        - flyway/db/cms/sql
+
+    media_platform:
+      configPath: flyway/db/media_platform
+      scriptPath:
+        - flyway/db/media_platform/sql
+
+    platform:
+      dbKey: core
+      configPath: flyway/db/platform
+      scriptPath:
+        - flyway/db/platform/sql
+
+    sso:
+      configPath: flyway/db/sso
+      scriptPath:
+        - flyway/db/sso/sql
+
+    structured_data:
+      dbKey: third_party
+      configPath: flyway/db/structured_data
+      scriptPath:
+        - flyway/db/structured_data/sql
+
+    subscription:
+      configPath: flyway/db/subscription
+      scriptPath:
+        - flyway/db/subscription/sql
+
+# DEPRECATED: engineRuntime
+engineRuntime:
+  edge: {}
+  event: {}
+  aiware:
+    baseUri: http://localhost
+    version: 1
+    defaultRuntime:
+      cluster: CLUSTER
+      priority: 0
+  iron:
+    baseUri: https://worker-aws-us-east-1.iron.io
+    clusterPath: clusters
+    version: 2
+    defaultRuntime:
+      priority: 0
+
+# DEPRECATED: iron clusters
+manifest:
+  clusterSizesToIds:
+    small: 598ccf431df14a00095476b7
+    medium: 599351ffb58c6300097d613c
+    large: 59935210b58c6300097d615b
+  gpuClusterSizesToIds:
+    p2:
+      small: 5a0e1354e99c81000cee703f
+      medium: 59fccd548f722c00091cd58d
+      large: 5a0e14541da44b00096f259d
+    g2:
+      small: 5a0e2476f881fc000b8b79c5
+      medium: 5a0e2492f881fc000b8b79f1
+      large: 5a0e249e1da44b00096f5a15
+    g3:
+      small: 5a0e24aea657ff000a1c5a24
+      medium: 5a0e24bd1da44b00096f5a4f
+      large: 5a0e24c9e99c81000ceea7e5
+
+# DEPRECATED: standby jobs
+  maxTaskStandbyDepth: 10
+
+# aiware default cluster
+aiware:
+  clusterMemoryLimit: 34359738368
+  defaultCluster: {}
+
+# DEPRECATED: legacyEngineToRealTimeEngines - v1-v2 engine conversions
+legacyEngineToRealTimeEngines:
+  transcribe-speechmatics-container-en-us: c0e55cde-340b-44d7-bb42-2e0d65e98141
+  imagedetection-facerecognition-kairos: a7eff360-683a-43fd-bf74-6cf51a990cb0
+  imagedetection-logorecognition-google: 361ae32c-4937-4d4c-9865-466fd3424bf9
+  imagedetection-ocr-google: 38afb67a-045b-43db-96db-9080073695ab
+  transcribe-speechmatics-container-es: 71ab1ba9-e0b8-4215-b4f9-0fc1a1d2b44d
+  transcribe-nuance-containerized-eng-usa: c0e55cde-340b-44d7-bb42-2e0d65e98141
+  transcribe-voicebase: c0e55cde-340b-44d7-bb42-2e0d65e98141
+  fingerprint-audio: 1905ec9c-1919-4b82-a203-91b8949aa0d5
+
+# workflow
+#TODO: review and see if the workflow apis that use this are obsolete
+workflow:
+  flowRoleId: a5f72287-10b2-47d5-8b68-bd97b0a31f16
+  automateAppId: bdf9375e-1092-4233-8197-9ccbc11357c5
+
+# stationPlayout - used in the /structured-data route
+# TODO: review if that endpoint is used. Move to db lookup based on name
+stationPlayout:
+  wideOrbit:
+    playoutRegistryId: c8444503-1dff-4ee4-a906-4341a6d2296d
+    advertiserRegistryId: d3badf83-942d-445c-aae8-0f04ea903a72
+  csrdsAutomation:
+    playoutRegistryId: 40d873d3-98b2-46a1-a43d-cb9a3e7041b8
+  iMediaTouchAutomation:
+    playoutRegistryId: d25d0428-dc85-46b7-bd4e-586096f92568
+  audioVault:
+    playoutRegistryId: 0134636e-9c2c-4c00-9e21-4c8ef8a6685b
+
+# mandril
+mandrillNotificationRecipient: ecosystem@veritone.com
+
+# core-job: task payload cleanup
+security:
+  dataContentRules:
+  - objectKey: job.task.payload
+    patterns:
+    - action: disallow
+      regex: 169\.254\.169\.254
+      flags: g
+      securityNote: 'Link-local instance metadata request (T1522: Cloud Instance Metadata API)'
+
+# core-server-base required
+recordingIdParser:
+    prefix: mri-
+    baseUri: https://api.{{ENVIRONMENT}}.veritone.com/media-streamer
+
+# db query monitor flags
+db:
+  core_gqm:
+    queryMonitor: true
+  media_platform_gqm:
+    queryMonitor: true
+  third_party_gqm:
+    queryMonitor: true
+  third_party:
+    pool:
+      idle: 2000
+      min: 0
+
+# mailbox settings
+mailbox:
+  reservedNames:
+    exportStatusMailbox: 'Export Request Status Mailbox'

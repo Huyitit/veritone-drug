@@ -1,0 +1,41 @@
+# A custom scalar type representing a file upload in the asset input types
+scalar UploadedFile
+
+# A custom scalar type representing a date/time value in RFC3339 format
+scalar DateTime
+
+# A custom scalar type representing a time-only value in RFC3339 format
+scalar Time
+
+# A custom scalar type representing a blob of valid JSON.
+# When sending a `JSONData` parameter as input, you can format it
+# using normal GraphQL syntax. The data you send will not be validated.
+# For example, say you have the following schema:
+# ```
+#   input ThingInput {
+#     JSONData json
+#   }
+#   mutation {
+#     createThing(thingInput: ThingInput): Thing
+#   }
+#```
+# Then you can send data like so:
+#```
+# mutation {
+#   createThing(thingInput: {
+#     json: {
+#        foo: "bar"
+#     }
+#   }) {
+#    id
+#   }
+# }
+#```
+scalar JSONData
+
+# Int type is limited to Int32 since Int64 hits precision issues with the underlying javascript number type.
+# apollo-type-bigint type is 53 bit integer (max js precision)
+scalar BigInt
+
+# Leave \n at the end of file to avoid schema stitching issues with graphqldoc
+

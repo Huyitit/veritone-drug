@@ -1,0 +1,77 @@
+INSERT INTO job_new.build (
+    engine_id,
+    build_id,
+    version,
+    build_state,
+    created_date,
+    updated_date,
+    deployment_model,
+    docker_image,
+    task_runtime,
+    is_legacy,
+    vul_low_count,
+    vul_medium_count,
+    build_size,
+    manifest
+)  SELECT
+    '352556c7-de07-4d55-b33f-74b1cf237f25',
+    '7c6ccf55-4ec5-441b-9626-c0718ba45096',
+    1,
+    'deployed',
+    1575352631,
+    1575352631,
+    0,
+    '026972849384.dkr.ecr.us-east-1.amazonaws.com/dev-validated:352556c7-de07-4d55-b33f-74b1cf237f25-7c6ccf55-4ec5-441b-9626-c0718ba45096',
+    '{
+        "edge": {}
+    }',
+    false,
+    66,
+    44,
+    525181957,
+    '{
+        "url": "https://github.com/veritone/engine-toolkit",
+        "user": "qdang+superadmin@veritone.com",
+        "build": "7c6ccf55-4ec5-441b-9626-c0718ba45096",
+        "oauth": "",
+        "category": "ingestion",
+        "engineId": "352556c7-de07-4d55-b33f-74b1cf237f25",
+        "isPublic": true,
+        "schedule": "",
+        "schemaId": 0,
+        "sourceId": 0,
+        "ingestion": {
+            "scanner": false,
+            "supportsLiveStreams": false,
+            "supportedSourceTypes": null
+        },
+        "libraries": null,
+        "maxFileMb": 0,
+        "categories": null,
+        "engineMode": "stream",
+        "clusterSize": "custom",
+        "gpuSupported": "",
+        "inputOptions": null,
+        "releaseNotes": "etversion=v0.3.0;builddate=2019-12-03_05:27:04;branch=update-engines;commit=170161eba97b0c55b3a5a8cd004031f82efb139b",
+        "customProfile": "stream-ingestor",
+        "externalCalls": [],
+        "inputEncoding": "",
+        "outputFormats": [
+            "video/mp4"
+        ],
+        "serverCountry": "",
+        "maxConcurrency": 50,
+        "isCJISCompliant": false,
+        "trainableViaApi": false,
+        "whitelistOrgIds": null,
+        "maxMediaLengthMs": 0,
+        "minMediaLengthMs": 0,
+        "fedRampImpactLevel": 0,
+        "initialConcurrency": 50,
+        "sourceFileDeletion": false,
+        "supportedLanguages": null,
+        "preferredInputFormat": "application/json",
+        "supportedInputFormats": null
+    }'
+WHERE NOT EXISTS (SELECT 1 FROM job_new.build WHERE build_id = '7c6ccf55-4ec5-441b-9626-c0718ba45096'
+    OR (engine_id = '352556c7-de07-4d55-b33f-74b1cf237f25' AND build_state = 'deployed'));

@@ -1,0 +1,34 @@
+{
+  "__defaults_in_file": "bake.js",
+
+  "aws-dev": {
+    "waitDurationMinutes": 1,
+    "minRequestsPerCheck": 3,
+    "maxErrorsPerCheck": 30,
+    "maxInternalTokenErrorsPerCheck": 100,
+    "maxEngineJWTErrorsPerCheck": 100,
+    "checkIntervalSec": 10
+  },
+  "aws-stage": {
+    "minRequestsPerCheck": 5,
+    "maxErrorsPerCheck": 30,
+    "maxInternalTokenErrorsPerCheck": 3,
+    "maxEngineJWTErrorsPerCheck": 3,
+    "allowedMinRequestsFailures": 10
+  },
+  "aws-prod": {
+    "waitDurationMinutes": 5,
+    "maxErrorsPerCheck": 100
+  },
+  "aws-uk-prod": {
+    "waitDurationMinutes": 5,
+    "maxErrorsPerCheck": 30
+  },
+  "local": {
+    "waitDurationMinutes": 1,
+    "durationMinutes": 1,
+    "minRequestsPerCheck": 3,
+    "maxErrorsPerCheck": 1,
+    "checkIntervalSec": 10
+  }
+}

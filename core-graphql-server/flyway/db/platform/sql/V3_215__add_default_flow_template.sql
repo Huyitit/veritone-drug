@@ -1,0 +1,38 @@
+INSERT INTO job_new.flow_templates
+(
+    title,
+    sub_title,
+    description,
+    categories,
+    flow,
+    image,
+    screenshots,
+    organization_id,
+    tags,
+    author,
+    public,
+    learn_more_link,
+    logo,
+    package,
+    created_date_time,
+    modified_date_time,
+    flow_id
+) VALUES(
+    'aiWare Workflow Base Template',
+    'Essential Nodes for AI Process Foundation',
+    'This template includes the fundamental nodes required to establish a baseline for AI processing workflows. It offers the basic structure needed for data intake, success and failure outputs, error catching, and debug output. This setup serves as the groundwork upon which complete processes can be built.',
+    '{aiWARE}',
+    'W3siaWQiOiIyYzM5NTJmMzc4YzNhOGJmIiwidHlwZSI6InRhYiIsImxhYmVsIjoiRmxvdyAxIiwiZGlzYWJsZWQiOmZhbHNlLCJpbmZvIjoiIiwiZW52IjpbXX0seyJpZCI6IjI0NTJlZDRkYWNhOTcxYmEiLCJ0eXBlIjoiYWl3YXJlLWluIiwieiI6IjJjMzk1MmYzNzhjM2E4YmYiLCJuYW1lIjoiIiwiZm9ybWF0Ijoib2JqZWN0Iiwic2FtcGxlcyI6W3siaWQiOiJoMm53YmgiLCJuYW1lIjoiRGVmYXVsdCIsInZhbHVlIjp7InBheWxvYWQiOiJ0ZXN0In0sInN0YXR1cyI6ImFjdGl2ZSJ9XSwidGRvQ29udGVudCI6Int9IiwiX210aW1lIjoxNzMwMzk2NjE4OTY1LCJ3YWl0Rm9yUmVzdWx0cyI6ZmFsc2UsImtlZXBQYXlsb2FkIjpmYWxzZSwia2VlcEFsaXZlIjowLCJzZXJ2aWNlTW9kZU9ubHkiOnRydWUsIngiOjI0MCwieSI6MTAwLCJ3aXJlcyI6W1tdXX0seyJpZCI6ImUyZDQ0MWZmOGQ5YmExNzIiLCJ0eXBlIjoiYWl3YXJlLW91dCIsInoiOiIyYzM5NTJmMzc4YzNhOGJmIiwibmFtZSI6IiIsInN0YXR1c0NvZGUiOiJzdWNjZXNzIiwiZmFpbHVyZU1zZyI6IiIsImZhaWx1cmVNc2dUeXBlIjoiIiwiZmFpbHVyZVJlYXNvbiI6IiIsImZhaWx1cmVSZWFzb25UeXBlIjoiIiwic2tpcFJlc3VsdENhbGxiYWNrIjpmYWxzZSwiZGlzYWJsZURlYnVnIjpmYWxzZSwiZXhjbHVkZU1ldGFkYXRhIjpmYWxzZSwieCI6NTgwLCJ5IjoxMDAsIndpcmVzIjpbXX0seyJpZCI6IjU5ODQwNzY5MjI4MTAyMGQiLCJ0eXBlIjoiY2F0Y2giLCJ6IjoiMmMzOTUyZjM3OGMzYThiZiIsIm5hbWUiOiIiLCJzY29wZSI6bnVsbCwidW5jYXVnaHQiOmZhbHNlLCJ4IjoyNjAsInkiOjI0MCwid2lyZXMiOltbIjBlZWY0M2M1NmE0NTVkNjkiLCI5NTI2OTk2YTc3NTc2MDA1Il1dfSx7ImlkIjoiMGVlZjQzYzU2YTQ1NWQ2OSIsInR5cGUiOiJhaXdhcmUtb3V0IiwieiI6IjJjMzk1MmYzNzhjM2E4YmYiLCJuYW1lIjoiIiwic3RhdHVzQ29kZSI6ImZhaWx1cmUiLCJmYWlsdXJlTXNnIjoiIiwiZmFpbHVyZU1zZ1R5cGUiOiJzdHIiLCJmYWlsdXJlUmVhc29uIjoiIiwiZmFpbHVyZVJlYXNvblR5cGUiOiJzdHIiLCJza2lwUmVzdWx0Q2FsbGJhY2siOmZhbHNlLCJkaXNhYmxlRGVidWciOmZhbHNlLCJleGNsdWRlTWV0YWRhdGEiOmZhbHNlLCJ4Ijo1MTAsInkiOjIwMCwid2lyZXMiOltdfSx7ImlkIjoiOTUyNjk5NmE3NzU3NjAwNSIsInR5cGUiOiJkZWJ1ZyIsInoiOiIyYzM5NTJmMzc4YzNhOGJmIiwibmFtZSI6ImRlYnVnIGVycm9yIiwiYWN0aXZlIjp0cnVlLCJ0b3NpZGViYXIiOnRydWUsImNvbnNvbGUiOmZhbHNlLCJ0b3N0YXR1cyI6ZmFsc2UsImNvbXBsZXRlIjoiZXJyb3IiLCJ0YXJnZXRUeXBlIjoibXNnIiwic3RhdHVzVmFsIjoiIiwic3RhdHVzVHlwZSI6ImF1dG8iLCJ4Ijo0OTAsInkiOjI4MCwid2lyZXMiOltdfV0=',
+    '',
+    '{"null"}',
+    '@@{ROOT_ORG_ID}@@',
+    '{aiWARE,Template}',
+    'Veritone',
+    true,
+    NULL,
+    NULL,
+    'eyJkZXBlbmRlbmNpZXMiOnt9fQ==',
+    CURRENT_TIMESTAMP,
+    CURRENT_TIMESTAMP,
+    '40b2b9b4-28bf-4e5e-b3e9-3c45dc40bb22'::uuid
+) ON CONFLICT DO NOTHING;

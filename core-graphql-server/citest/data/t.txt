@@ -1,0 +1,169 @@
+---
+box: nodesource/xenial:6.7.0
+no-response-timeout: 15
+command-timeout: 15
+
+# Build definition
+build:
+  # The steps that will be executed on build 
+  steps:
+    - create-file:
+        name: write netrc
+        filename: $HOME/.netrc
+        content: machine github.com login $GITHUB_ACCESS_TOKEN
+        overwrite: true
+        hide-from-log: true
+
+    - create-file:
+        name: write build-manifest
+        filename: $WERCKER_SOURCE_DIR/build-manifest.yml
+        overwrite: true
+        content: |
+            git_repo: $WERCKER_GIT_REPOSITORY
+            git_branch: $WERCKER_GIT_BRANCH
+            git_commit: $WERCKER_GIT_COMMIT
+            git_owner: $WERCKER_GIT_OWNER
+            wercker_run: $WERCKER_RUN_URL
+            wercker_app: $WERCKER_APPLICATION_URL
+
+    - script:
+        name: echo nodejs information
+        code: |
+          echo "node version $(node -v) running"
+          echo "npm version $(npm -v) running"
+
+    - script:
+        name: npm install
+        code: |
+          NODE_ENV=dev npm install
+
+    - hgen/gulp:
+        tasks: test
+
+    - script:
+        name: npm prune and dedupe
+        code: |
+          npm prune --production
+          npm dedupe
+
+    - script:
+        name: package files
+        code: |
+          tar -czf $WERCKER_OUTPUT_DIR/$WERCKER_GIT_REPOSITORY.node.tgz --exclude-from=.wercker-deploy-ignore *
+          git rev-parse --short HEAD > $WERCKER_OUTPUT_DIR/$WERCKER_GIT_REPOSITORY.build
+          git --no-pager show -s --format='%an <%ae>' $(git rev-parse HEAD) > $WERCKER_OUTPUT_DIR/$WERCKER_GIT_REPOSITORY.author
+
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_URL
+        notify_on: failed
+
+# Deploy Definition
+deploy:
+  # The steps that will be executed on deploy
+  steps:
+    - add-to-known_hosts:
+        hostname: 8.19.32.177
+
+    - add-to-known_hosts:
+        hostname: 8.19.32.80
+
+    - mktemp:
+        envvar: SSH_KEY_PRIVATE_PATH
+
+    - create-file:
+        name: write key
+        filename: $SSH_KEY_PRIVATE_PATH
+        content: $PRIVATE_KEY
+        overwrite: true
+        hide-from-log: true
+
+    - script:
+        name: transfer application
+        code: |
+          pwd
+          ls -laFl
+          md5sum -b *
+          scp -i $SSH_KEY_PRIVATE_PATH -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $WERCKER_GIT_REPOSITORY* release@8.19.32.177:/home/release/binaries/$ENVIRONMENT
+
+    - script:
+        name: update instances
+        code: |
+          ssh -i $SSH_KEY_PRIVATE_PATH -l release -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no 8.19.32.177 "echo \$(/root/datacenter/datacenter.js update-app --app=$WERCKER_GIT_REPOSITORY --version=$ENVIRONMENT)"
+
+packer:
+  steps:
+    - script:
+        name: install-deps
+        code: |
+          sudo apt-get update -y
+          sudo apt-get install -y wget unzip python-yaml
+
+    - script:
+        name: install-packer
+        code: |
+          if [ ! -f "$WERCKER_CACHE_DIR/packer_${PACKER_VERSION}_linux_amd64.zip" ]; then wget https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip; mv ./packer_${PACKER_VERSION}_linux_amd64.zip $WERCKER_CACHE_DIR; fi
+          unzip -o -d /usr/local/bin/ -j $WERCKER_CACHE_DIR/packer_${PACKER_VERSION}_linux_amd64.zip
+
+    - create-file:
+        name: write netrc
+        filename: $HOME/.netrc
+        content: machine github.com login $GITHUB_ACCESS_TOKEN
+        overwrite: true
+        hide-from-log: true
+
+    - script:
+        name: checkout-packer-repo
+        code: |
+          git clone https://github.com/veritone/deployment.git
+
+    - script:
+        name: env-vars-for-packer
+        code: |
+          export GIT_REPOSITORY=$WERCKER_GIT_REPOSITORY
+          export GIT_BRANCH=$WERCKER_GIT_BRANCH
+          export GIT_COMMIT=$WERCKER_GIT_COMMIT
+          export GIT_COMMIT_AUTHOR=$(cat $WERCKER_GIT_REPOSITORY.author)
+          export GIT_COMMIT_SHORT=$(cat $WERCKER_GIT_REPOSITORY.build)
+
+    - script:
+        name: run-packer
+        code: |
+          set -x
+          sudo find ${WERCKER_SOURCE_DIR} -name '*.tgz' -ls
+          cd deployment
+          BINARY_TGZ=${WERCKER_SOURCE_DIR}/${WERCKER_GIT_REPOSITORY}.node.tgz make node_app
+          # ami_id is output to $WERCKER_OUTPUT_DIR/$WERCKER_GIT_REPOSITORY.ami
+
+deploy-aws:
+  steps:
+    - script:
+        name: install-deps
+        code: |
+          sudo apt-get update -y
+          sudo apt-get install -y wget unzip
+
+    - script:
+        name: install-aws
+        code: |
+          if [ ! -f "$WERCKER_CACHE_DIR/awscli-bundle.zip" ]; then wget https://s3.amazonaws.com/aws-cli/awscli-bundle.zip; mv ./awscli-bundle.zip $WERCKER_CACHE_DIR; fi
+          unzip -o $WERCKER_CACHE_DIR/awscli-bundle.zip
+          sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+
+    - create-file:
+        name: write netrc
+        filename: $HOME/.netrc
+        content: machine github.com login $GITHUB_ACCESS_TOKEN
+        overwrite: true
+        hide-from-log: true
+
+    - script:
+        name: checkout-deployment-repo
+        code: |
+          git clone https://github.com/veritone/deployment.git
+
+    - script:
+        name: run deploy.sh
+        code: |
+          cd deployment
+          ./wercker_deploy.sh

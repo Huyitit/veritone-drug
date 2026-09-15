@@ -1,0 +1,376 @@
+{
+  "authenticationOption": "optional",
+  "authToken":
+    "7682-human:513e96ec-eb94-4643-89c3-195dc46235bd-178c4398-1809-4bfe-8d3c-0aa8b7045f8e",
+  "authTokenType": "apikey",
+  "tokenInfo": {
+    "tokenId":
+      "7682-human:513e96ec-eb94-4643-89c3-195dc46235bd-178c4398-1809-4bfe-8d3c-0aa8b7045f8e",
+    "applicationId": "ed075985-bc94-406b-8639-44d1da42c3fb",
+    "groupId": "ea738f5b-9f52-45f3-8db8-3167bfd625fe",
+    "json": {
+      "rights": [
+        "task_type:org_system",
+        "asset:uri",
+        "job:create",
+        "job:read",
+        "job:update",
+        "job:delete",
+        "task:update",
+        "recording:create",
+        "recording:read",
+        "recording:update",
+        "recording:delete",
+        "report:create",
+        "analytics:usage",
+        "ami-node:create",
+        "cluster:read",
+        "node:ping",
+        "node:update-bundle",
+        "node:next-bundle",
+        "node:get-cluster-config",
+        "node:update-directory-cache",
+        "node:update-directory-patch-cache",
+        "external-credential:token"
+      ],
+      "tokenId":
+        "7682-human:513e96ec-eb94-4643-89c3-195dc46235bd-178c4398-1809-4bfe-8d3c-0aa8b7045f8e",
+      "internal": false,
+      "isRevoked": false,
+      "tokenLabel": "7682-human"
+    },
+    "application": {
+      "applicationId": "ed075985-bc94-406b-8639-44d1da42c3fb",
+      "applicationName": "Veritone, Inc.-default",
+      "organizationTypeId": null,
+      "isPlatform": false,
+      "dateCreated": "2015-11-04T00:18:58.011Z",
+      "kvp": {
+        "platformType": "enterprise",
+        "trialEndDate": "2015-12-04 00:18:46.059024836 +0000 UTC"
+      }
+    },
+    "group": {
+      "groupId": "ea738f5b-9f52-45f3-8db8-3167bfd625fe",
+      "groupName": "Veritone, Inc.",
+      "applicationId": "ed075985-bc94-406b-8639-44d1da42c3fb",
+      "modifiedBy": "04178474-2256-4b87-8bb6-ad5baa0ae7c2",
+      "dateCreated": "2015-11-04T00:18:54.025Z",
+      "dateModified": "2018-11-13T16:10:29.000Z",
+      "kvp": {
+        "groupType": "organization",
+        "organizationId": "7682",
+        "organizationName": "Veritone, Inc."
+      },
+      "permissions": {
+        "cms": {
+          "access": "true"
+        }
+      }
+    },
+    "organization": {
+      "organizationName": "Veritone, Inc.",
+      "status": "active",
+      "businessUnit": "DSRD",
+      "organizationId": 7682,
+      "adminSeatLimit": 30,
+      "seatLimit": null,
+      "maxAiwareNodes": 100,
+      "maxAiwareClusters": 999,
+      "dateCreated": "2015-11-04T00:18:25.194Z",
+      "dateModified": "2018-12-11T09:02:06.089Z",
+      "organizationType": ["Broadcaster"],
+      "kvp": {
+        "applicationIds": [
+          "32babe30-fb42-11e4-89bc-27b69865858a",
+          "3580bb6f-f630-41b2-ace0-d2ff2a9081a7",
+          "5704cfc1-799f-422d-bc98-25b1083f37f9",
+          "6975ecbb-ec36-4c3c-b399-bb288259db48",
+          "732c697a-0eb1-4c92-9c40-5d6f5dab8baa",
+          "8a37c1d0-3f3b-48d0-a84e-2b8e3646fbe5",
+          "b9dba7b8-501a-4219-995b-5e6eadfb5ae0",
+          "bc519e7f-7953-408d-8991-57f217286d6c",
+          "bdf9375e-1092-4233-8197-9ccbc11357c5",
+          "c7c16cc7-9bcf-461c-88ca-bf62ca03f198",
+          "cc4e0e89-3420-49c2-b06d-8d9a929c941c",
+          "cf05552b-52e0-46fa-8f7f-4c9eee135c51",
+          "ea1d26ab-0d29-4e97-8ae7-d998a243374e",
+          "ed075985-bc94-406b-8639-44d1da42c3fb"
+        ],
+        "companyType": "",
+        "dataSources": ["arbitron"],
+        "features": {
+          "useNewCreateJob": "true",
+          "complianceStatus": "enabled",
+          "filters": "enabled",
+          "globalMedia": "enabled",
+          "includeDataSources": "enabled",
+          "media": "disabled",
+          "mentionListing": {
+            "comments": true,
+            "edit": true,
+            "ratings": true,
+            "socialSharing": true
+          },
+          "notifications": {
+            "email": true,
+            "sms": false
+          },
+          "postToCollections": "enabled",
+          "privateMedia": "enabled",
+          "privateMediaOnly": "disabled",
+          "ratings": "enabled",
+          "sendMentionsToSalesForce": "enabled",
+          "sendMentionsToWebService": "enabled",
+          "shareCollections": {
+            "internal": "enabled",
+            "external": "enabled"
+          },
+          "shareMentions": {
+            "email": true,
+            "embed": true,
+            "facebook": true,
+            "link": true,
+            "twitter": true
+          },
+          "mentionCount": "enabled",
+          "mentionExport": "enabled",
+          "hideTranscriptOnSharing": "enabled",
+          "downloadMedia": "enabled",
+          "displayMyMediaIndexOptions": "disabled",
+          "socialMediaSharing": "enabled",
+          "showConversionsInAnalytics": "enabled",
+          "showFingerprintInWatchlistCreate": "enabled",
+          "allowWatchlistShare": "enabled",
+          "showMarketFilters": "enabled",
+          "showStationFilters": "enabled",
+          "showProgramFilters": "enabled",
+          "showAdvertisingVerificationFields": "enabled",
+          "canVerifyMentions": "enabled",
+          "discoveryFilters": "enterprise",
+          "bulkUpload": "enabled",
+          "clipshow": "enabled",
+          "hideWorkflowAdvancedSettings": "disabled",
+          "showCMSNotifications": "disabled",
+          "hideEnginePricing": "disabled",
+          "displayMentionsHitsForWatchlists": "enabled",
+          "verifyPostToCollections": "enabled",
+          "salesForceId": "00Di0000000hpx1",
+          "watchlistLabel": "Watchlist",
+          "mediaRights": {
+            "shareWithPlatform": true,
+            "shareWithSpecificAccounts": true
+          },
+          "loginUsersToDiscovery": "enabled",
+          "multiFactorAuth": "disabled",
+          "showGuestMentionDownloadOption": "enabled",
+          "bulkEditTranscript": "enabled",
+          "passwordExpirationDays": 90,
+          "openPrivateWatchlistByDefault": "disabled",
+          "downloadPublicMedia": "enabled",
+          "mentionPostPaddingSeconds": 130,
+          "mentionPrePaddingSeconds": 130,
+          "cmsFolders": "enabled",
+          "faceBoundingBox": "disabled",
+          "disableCmsIngestion": "disabled",
+          "mulitpleCognitiveProfiles": "enabled",
+          "newFilePicker": "enabled",
+          "largeFilesMediaDetailsPage": "enabled",
+          "dataset": "enabled",
+          "disableCmsUpload": "disabled",
+          "showOneClickWatchlist": "enabled",
+          "watchlistLimits": {
+            "maximumMentionCount": 10000,
+            "maximumStartAgeDays": 180
+          },
+          "exportEngineOutput": "enabled",
+          "beta": "enabled",
+          "exportClosedCaptions": "enabled",
+          "developer": "disabled",
+          "showVerifyTdoInfo": "enabled",
+          "defaultApplication": "ea1d26ab-0d29-4e97-8ae7-d998a243374e"
+        },
+        "image":
+          "https://s3.amazonaws.com/prod-api.veritone.com/EXlOSNHd_400x400-d951cc26-e60c-4e1b-a404-db40b507b6b6.jpg",
+        "metadata": {
+          "fields": [
+            {
+              "isColumn": false,
+              "isFilter": false,
+              "key": "programImage",
+              "name": "Image"
+            },
+            {
+              "isColumn": false,
+              "isFilter": false,
+              "key": "programName",
+              "name": "Program"
+            },
+            {
+              "isColumn": false,
+              "isFilter": false,
+              "key": "originalFileName",
+              "name": "File Name"
+            }
+          ]
+        },
+        "platformType": "custom",
+        "primaryContactEmail": "hector+cms@veritone.com",
+        "primaryContactName": "Veritone Operations",
+        "primaryContactPhone": "",
+        "url": "",
+        "dashboards": [
+          {
+            "index": 1,
+            "title": "Mention Count Data",
+            "description":
+              "View your mention metrics by count and program type.",
+            "active": true,
+            "filters": ["treeObject"],
+            "type": "qlik",
+            "qlikAppId": "b3e2c1c4-59ec-4054-9765-20b3d2264f2f",
+            "qlikSheetId": "qKwAJA"
+          },
+          {
+            "index": 2,
+            "title": "Mention Tracking",
+            "description":
+              "View, track and discover your Organization’s mentions by program, tracking unit, and media type.",
+            "active": true,
+            "filters": ["treeObject"],
+            "type": "qlik",
+            "qlikAppId": "b3e2c1c4-59ec-4054-9765-20b3d2264f2f",
+            "qlikSheetId": "UgpXPA"
+          },
+          {
+            "index": 3,
+            "title": "Geolocation",
+            "description": "View and track number of mentions by state.",
+            "active": true,
+            "filters": ["treeObject"],
+            "type": "qlik",
+            "qlikAppId": "55d04088-c20e-4616-97c6-6a226580c0c2",
+            "qlikSheetId": "LjjPER"
+          },
+          {
+            "index": 4,
+            "title": "Audience Data by Date",
+            "description":
+              "View and track your audience metrics by time and tracking unit.",
+            "active": true,
+            "filters": ["treeObject"],
+            "type": "qlik",
+            "qlikAppId": "55d04088-c20e-4616-97c6-6a226580c0c2",
+            "qlikSheetId": "12eafcc2-f4cb-440d-a5a4-b175047167ba"
+          },
+          {
+            "index": 5,
+            "title": "Audience Data by Type",
+            "description":
+              "View audience metrics by tracking unit and audience gender and age range.",
+            "active": true,
+            "filters": ["treeObject"],
+            "type": "qlik",
+            "qlikAppId": "55d04088-c20e-4616-97c6-6a226580c0c2",
+            "qlikSheetId": "3fa4f887-8d58-4071-a7d2-77432545d31c"
+          },
+          {
+            "index": 6,
+            "title": "Verification Tracking",
+            "description":
+              "View verified, pending and mentions that need review by count and type.",
+            "active": true,
+            "filters": ["treeObject"],
+            "type": "qlik",
+            "qlikAppId": "55d04088-c20e-4616-97c6-6a226580c0c2",
+            "qlikSheetId": "zbYVJS"
+          },
+          {
+            "index": 7,
+            "title": "DMA Map",
+            "description": "View audience and impression data by geolocation.",
+            "active": true,
+            "filters": ["treeObject"],
+            "type": "qlik",
+            "qlikAppId": "55d04088-c20e-4616-97c6-6a226580c0c2",
+            "qlikSheetId": "KHpnxt"
+          },
+          {
+            "index": 8,
+            "active": true,
+            "type": "qlik",
+            "filters": [],
+            "title": "Radio Composition Dashboard",
+            "qlikAppId": "6790e761-5fe9-4803-bf83-aa6ef6f68a9e",
+            "qlikSheetId": "ucpmQ"
+          },
+          {
+            "index": 9,
+            "active": true,
+            "type": "qlik",
+            "filters": [],
+            "title": "Log Viewer",
+            "description": "Log Viewer",
+            "qlikAppId": "dbfe5778-602a-4978-b10b-d819f6c63d3e",
+            "qlikSheetId": "JLcFfF"
+          },
+          {
+            "index": 10,
+            "active": true,
+            "type": "qlik",
+            "filters": [],
+            "title": "Log Analytics - Wordcloud",
+            "description": "Log Analytics - Wordcloud",
+            "qlikAppId": "6aa3978a-d0d8-4efe-9198-bd6090593dba",
+            "qlikSheetId": "DDaYj"
+          },
+          {
+            "index": 11,
+            "active": true,
+            "type": "qlik",
+            "filters": [],
+            "title": "Keyword Analytics - Wordcloud",
+            "description": "Keyword Analytics - Wordcloud",
+            "qlikAppId": "300699a4-c5de-4f43-b564-9c96ad8df666",
+            "qlikSheetId": "pxtvM"
+          },
+          {
+            "index": 12,
+            "active": true,
+            "type": "qlik",
+            "filters": [],
+            "title": "Topic Analytics - Wordcloud",
+            "description": "Topic Analytics - Wordcloud",
+            "qlikAppId": "300699a4-c5de-4f43-b564-9c96ad8df666",
+            "qlikSheetId": "FrLDJ"
+          }
+        ],
+        "customCmsAndAclApplicationIds": [
+          "32babe30-fb42-11e4-89bc-27b69865858a",
+          "ed075985-bc94-406b-8639-44d1da42c3fb"
+        ],
+        "phoneNumber": "111-111-1111",
+        "companyName": "asdasd",
+        "companyUrl": "http://asdas.com",
+        "companyDescription": "asdadsasdasdsad sadasdsa asdas",
+        "companyAddress": "adsasd",
+        "companySuiteApt": "asdadsad",
+        "companyCity": "sdadsad",
+        "companyState": "CA",
+        "companyZipCode": "92612",
+        "companyCountry": "United Stat",
+        "aiware": "enabled",
+        "branding": "enabled",
+        "engineApprovalWhiteListed": "enabled",
+        "showInternalEngineFields": "enabled",
+        "logo":
+          "https://s3.amazonaws.com/prod-api.veritone.com/veritone-logo-sm-b7cd025a-ab10-4816-b049-aaeb14fac28a.png"
+      },
+      "integrations": ["face-match", "omny-studio"],
+      "developerFieldsCompleted": true
+    }
+  },
+  "requestInfo": {
+    "httpUrl": "https://api.aws-dev.veritone.com/v3/graphql"
+  }
+}

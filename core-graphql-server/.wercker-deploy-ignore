@@ -1,0 +1,8 @@
+*.log
+*.pid
+Gruntfile.js
+README.md
+js_compress.sh
+logs
+test
+wercker.yml

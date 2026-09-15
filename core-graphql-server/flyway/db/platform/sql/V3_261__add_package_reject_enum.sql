@@ -1,0 +1,1 @@
+ALTER TYPE aiware.package_status_enum ADD VALUE IF NOT EXISTS 'rejected';

@@ -1,0 +1,19 @@
+{
+  "engineId": "{{{ENGINE_ID}}}",
+  "executionPreferences": {
+    {{#if priority}} "priority":{{{priority}}}, {{/if}}
+    "parentCompleteBeforeStarting": true
+  },
+  "ioFolders": [
+    {
+      "referenceId": "engine-input",
+      "mode": "chunk",
+      "type": "input"
+    },
+    {
+      "referenceId": "engine-output",
+      "mode": "chunk",
+      "type": "output"
+    }
+  ]
+}

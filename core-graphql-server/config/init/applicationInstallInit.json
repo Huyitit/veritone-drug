@@ -1,0 +1,419 @@
+{
+	"applications": [{
+		"name": "benchmark",
+		"id": "865f0dc3-393b-4c83-8c90-3e0f0a3a18d2",
+
+		"schemas": [{
+			"id": "219a8cc5-60fc-4c89-947a-71316bd39c75",
+			"organizationId": "7682",
+			"name": "Veritone Transcription Benchmark Results",
+			"description": "Asset-specific benchmark results for transcription engines",
+			"source": "Veritone Transcription Benchmark Results",
+			"definition": {
+				"type": "object",
+				"title": "benchmark-result-transcription",
+				"$schema": "http://json-schema.org/draft-07/schema#",
+				"required": [
+					"organizationId",
+					"tdoId",
+					"benchmarkJobId",
+					"benchmarkTaskId",
+					"engineId",
+					"assetId",
+					"baselineAssetId",
+					"accuracy",
+					"precision",
+					"recall",
+					"wordErrorRate"
+				],
+				"properties": {
+					"tdoId": {
+						"type": "string"
+					},
+					"recall": {
+						"type": "number"
+					},
+					"accuracy": {
+						"type": "number"
+					},
+					"assetIds": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"engineId": {
+						"type": "string"
+					},
+					"precision": {
+						"type": "number"
+					},
+					"wordErrorRate": {
+						"type": "number"
+					},
+					"benchmarkJobId": {
+						"type": "string"
+					},
+					"organizationId": {
+						"type": "string"
+					},
+					"benchmarkTaskId": {
+						"type": "string"
+					},
+					"baselineAssetIds": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"processingTimeMs": {
+						"type": "integer"
+					}
+				},
+				"description": "Transcription benchmarking results"
+			}
+		}, {
+			"id": "b098268f-9c67-4340-9c4f-36d8f048cc40",
+			"organizationId": "7682",
+			"name": "Veritone Face Detection Benchmark Results",
+			"description": "Asset-specific benchmark results for face detection engines",
+			"source": "Veritone Face Detection Benchmark Results",
+			"definition": {
+				"type": "object",
+				"title": "benchmark-result-face-detection",
+				"$schema": "http://json-schema.org/draft-07/schema#",
+				"required": [
+					"organizationId",
+					"tdoId",
+					"benchmarkJobId",
+					"benchmarkTaskId",
+					"categoryId",
+					"engineId",
+					"engineName",
+					"assetId",
+					"baselineAssetId",
+					"precisionCfg",
+					"baselineSeries",
+					"series",
+					"processingTimeMs"
+				],
+				"properties": {
+					"tdoId": {
+						"type": "string"
+					},
+					"series": {
+						"type": "array"
+					},
+					"assetId": {
+						"type": "string"
+					},
+					"engineId": {
+						"type": "string"
+					},
+					"categoryId": {
+						"type": "string"
+					},
+					"engineName": {
+						"type": "string"
+					},
+					"precisionCfg": {
+						"type": "number"
+					},
+					"baselineSeries": {
+						"type": "array"
+					},
+					"benchmarkJobId": {
+						"type": "string"
+					},
+					"organizationId": {
+						"type": "string"
+					},
+					"baselineAssetId": {
+						"type": "string"
+					},
+					"benchmarkTaskId": {
+						"type": "string"
+					},
+					"processingTimeMs": {
+						"type": "number"
+					}
+				},
+				"description": "Face Detection benchmarking results"
+			}
+		}, {
+			"id": "3076c6ba-c168-44b0-8684-36550b8fc3bb",
+			"organizationId": "7682",
+			"name": "Veritone Translation Benchmark Results",
+			"description": "Asset-specific benchmark results for translation engines",
+			"source": "Veritone Translation Benchmark Results",
+			"definition": {
+				"type": "object",
+				"title": "benchmark-result-translation",
+				"$schema": "http://json-schema.org/draft-07/schema#",
+				"required": [
+					"organizationId",
+					"tdoId",
+					"benchmarkJobId",
+					"benchmarkTaskId",
+					"engineId",
+					"assetId",
+					"baselineAssetId",
+					"accuracy",
+					"precision",
+					"recall",
+					"wordErrorRate"
+				],
+				"properties": {
+					"tdoId": {
+						"type": "string"
+					},
+					"recall": {
+						"type": "number"
+					},
+					"accuracy": {
+						"type": "number"
+					},
+					"assetIds": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"engineId": {
+						"type": "string"
+					},
+					"precision": {
+						"type": "number"
+					},
+					"wordErrorRate": {
+						"type": "number"
+					},
+					"benchmarkJobId": {
+						"type": "string"
+					},
+					"organizationId": {
+						"type": "string"
+					},
+					"benchmarkTaskId": {
+						"type": "string"
+					},
+					"baselineAssetIds": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"processingTimeMs": {
+						"type": "integer"
+					}
+				},
+				"description": "Translation benchmarking results"
+			}
+		}, {
+			"id": "be7fa4f6-1ec4-4910-8cd1-113671348272",
+			"organizationId": "7682",
+			"name": "Veritone Object Detection Benchmark Results",
+			"description": "Asset-specific benchmark results for object detection engines",
+			"source": "Veritone Object Detection Benchmark Results",
+			"definition": {
+				"type": "object",
+				"title": "benchmark-result-object-detection",
+				"$schema": "http://json-schema.org/draft-07/schema#",
+				"required": [
+					"organizationId",
+					"tdoId",
+					"benchmarkJobId",
+					"benchmarkTaskId",
+					"categoryId",
+					"engineId",
+					"engineName",
+					"assetId",
+					"baselineAssetId",
+					"precisionCfg",
+					"baselineSeries",
+					"series",
+					"processingTimeMs"
+				],
+				"properties": {
+					"tdoId": {
+						"type": "string"
+					},
+					"series": {
+						"type": "array"
+					},
+					"assetId": {
+						"type": "string"
+					},
+					"engineId": {
+						"type": "string"
+					},
+					"categoryId": {
+						"type": "string"
+					},
+					"engineName": {
+						"type": "string"
+					},
+					"precisionCfg": {
+						"type": "number"
+					},
+					"baselineSeries": {
+						"type": "array"
+					},
+					"benchmarkJobId": {
+						"type": "string"
+					},
+					"organizationId": {
+						"type": "string"
+					},
+					"baselineAssetId": {
+						"type": "string"
+					},
+					"benchmarkTaskId": {
+						"type": "string"
+					},
+					"processingTimeMs": {
+						"type": "number"
+					}
+				},
+				"description": "Object Detection benchmarking results"
+			}
+		}, {
+			"id": "5ccd017f-8485-45df-9c5e-ddbde4570d6a",
+			"organizationId": "7682",
+			"name": "Veritone OCR Benchmark Results",
+			"description": "Veritone OCR Benchmark Results",
+			"source": "Veritone OCR Benchmark Results",
+			"definition": {
+				"type": "object",
+				"title": "benchmark-result-ocr",
+				"$schema": "http://json-schema.org/draft-07/schema#",
+				"required": [
+					"organizationId",
+					"tdoId",
+					"benchmarkJobId",
+					"benchmarkTaskId",
+					"categoryId",
+					"engineId",
+					"engineName",
+					"assetId",
+					"baselineAssetId",
+					"precisionCfg",
+					"baselineSeries",
+					"series",
+					"processingTimeMs"
+				],
+				"properties": {
+					"tdoId": {
+						"type": "string"
+					},
+					"series": {
+						"type": "array"
+					},
+					"assetId": {
+						"type": "string"
+					},
+					"engineId": {
+						"type": "string"
+					},
+					"categoryId": {
+						"type": "string"
+					},
+					"engineName": {
+						"type": "string"
+					},
+					"precisionCfg": {
+						"type": "number"
+					},
+					"baselineSeries": {
+						"type": "array"
+					},
+					"benchmarkJobId": {
+						"type": "string"
+					},
+					"organizationId": {
+						"type": "string"
+					},
+					"baselineAssetId": {
+						"type": "string"
+					},
+					"benchmarkTaskId": {
+						"type": "string"
+					},
+					"processingTimeMs": {
+						"type": "number"
+					}
+				},
+				"description": "OCR benchmarking results"
+			}
+		}, {
+			"id": "ff73422c-20a7-4c76-a0df-6ef3abadb046",
+			"organizationId": "7682",
+			"name": "Veritone Speaker Seperation Benchmark Results",
+			"description": "Speaker Seperation benchmarking results",
+			"source": "Veritone Speaker Seperation Benchmark Results",
+			"definition": {
+				"type": "object",
+				"title": "benchmark-result-speaker-seperation",
+				"$schema": "http://json-schema.org/draft-07/schema#",
+				"required": [
+					"organizationId",
+					"tdoId",
+					"benchmarkJobId",
+					"benchmarkTaskId",
+					"engineId",
+					"assetId",
+					"baselineAssetId",
+					"accuracy",
+					"precision",
+					"recall",
+					"wordErrorRate"
+				],
+				"properties": {
+					"tdoId": {
+						"type": "string"
+					},
+					"recall": {
+						"type": "number"
+					},
+					"accuracy": {
+						"type": "number"
+					},
+					"assetIds": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"engineId": {
+						"type": "string"
+					},
+					"precision": {
+						"type": "number"
+					},
+					"wordErrorRate": {
+						"type": "number"
+					},
+					"benchmarkJobId": {
+						"type": "string"
+					},
+					"organizationId": {
+						"type": "string"
+					},
+					"benchmarkTaskId": {
+						"type": "string"
+					},
+					"baselineAssetIds": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"processingTimeMs": {
+						"type": "integer"
+					}
+				},
+				"description": "Speaker Seperation benchmarking results"
+			}
+		}]
+	}]
+}

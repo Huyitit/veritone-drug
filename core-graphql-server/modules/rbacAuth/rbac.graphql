@@ -1,0 +1,1157 @@
+# directive @hasRole(
+#   permissions: [String!]!
+#   scope: RoleAuthScope = Resource
+#   require: PermissionGroupRequirement = All
+# ) on QUERY | MUTATION | FIELD | FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+
+enum AuthGroupSourceType {
+  API,
+  Integration,
+  AppRole,
+}
+
+enum AuthGroupMemberType {
+  User,
+  Group
+}
+
+union AuthResourceMember = TemporalDataObject | StructuredData | Folder | Source  | Organization | Engine | Library | Dataset | Application
+
+
+"""
+Authorization Group
+"""
+type AuthGroup {
+  """
+  Unique id of the group
+  """
+  id: ID!
+
+  """
+  Name of the group. limited to 100 characters
+  """
+  name: String!
+
+  """
+  Brief and informative description of the group scope and purpose
+  """
+  description: String!
+
+  """
+  Owner organization set during group creation (or the user's organization if none is specified)
+  """
+  organization: OrganizationInfo!
+
+  """
+  If true, the group is a system group
+  """
+  isSystem: Boolean
+  @deprecated(
+      reason: "Replaced by isProtected field"
+      alternate: "isProtected"
+      expirationDate: "2023-01-01"
+      deprecationDate: "2022-11-01"
+    )
+  """
+  If true, the group is a protected group
+  """
+  isProtected: Boolean!
+
+  authClass: AuthObjectClass
+
+  """
+  Source of the group
+  """
+  source: AuthGroupSourceType!,
+
+  """
+  Optional field to store the appRoleID if the group is created by an app
+  """
+  appRole: Role,
+
+  """
+  A list of current group's immediate parent authorization groups
+  """
+  parentGroups: AuthGroupList
+
+  
+  """
+  A list of TDOs that are protected by ACE(s) containing current group
+  """
+  referencedTDOs(offset: Int=0, limit: Int=30): TDOList,
+    @deprecated(
+      reason: "not implemented"
+      alternate: "AuthACE.permissionSet"
+      expirationDate: "2026-04-01"
+      deprecationDate: "2025-10-01"
+    )
+
+  referencedACEs(offset: Int=0, limit: Int=30): [AuthACE],
+    @deprecated(
+        reason: "not implemented"
+        alternate: "AuthACE.permissionSet"
+        expirationDate: "2026-04-01"
+        deprecationDate: "2025-10-01"
+      )
+
+  organizationACEs(offset: Int=0, limit: Int=30): [AuthACE],
+    @deprecated(
+        reason: "not implemented"
+        alternate: "AuthACE.permissionSet"
+        expirationDate: "2026-04-01"
+        deprecationDate: "2025-10-01"
+      )
+
+  """
+  A list of folders that are protected by ACE(s) containing current group
+  """
+  referencedFolders(folderID: ID, folderNameRegexp: String, parentFolderID: ID): FolderList,
+
+  """
+  List of users and groups that are members of the current group
+  """
+  members(
+    ids: [ID!]
+    memberType: AuthGroupMemberType
+    offset: Int = 0
+    limit: Int = 30
+  ): AuthGroupMemberList!,
+
+  memberCount: Int
+
+  """
+  Permission set(s) applied to the group
+  """
+  permissionSet: [AuthPermissionSet]
+    @deprecated(
+      reason: "not implemented"
+      alternate: "AuthACE.permissionSet"
+      expirationDate: "2026-04-01"
+      deprecationDate: "2025-10-01"
+    )
+
+
+  # @hasRole(scope: Organization, permissions: ["org::auth_group_members.r"])
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+
+  createdBy: BasicUserInfo!
+  modifiedBy: BasicUserInfo!
+}
+
+type AuthGroupList implements Page {
+  records: [AuthGroup]!
+  offset: Int!
+  limit: Int!
+  count: Int!
+}
+
+union AuthGroupMember = User | AuthGroup
+
+type AuthGroupMemberEntry {
+  member: AuthGroupMember!
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+}
+
+type AuthGroupMemberList implements Page {
+  records: [AuthGroupMemberEntry]!
+  offset: Int!
+  limit: Int!
+  count: Int!
+}
+
+"""
+Access Control Entry
+"""
+type AuthACE {
+  id: ID!
+  """
+  Type of object referenced by ACE
+  """
+  objectType: AuthResourceType
+
+  """
+  Object ID
+  """
+  objectID: ID!
+
+  """
+  Group or User granted the permission set on the object
+  """
+  member: AuthResourceOwner!
+
+  """
+  Permission Set
+  """
+  permissionSet: AuthPermissionSet!
+
+  """
+  If protected, this ACE cannot be removed
+  """
+  isProtected: Boolean!
+
+  """
+  Organization
+  """
+  organization: OrganizationInfo!
+
+  createdAt: DateTime
+  modifiedAt: DateTime
+
+  createdBy: BasicUserInfo!
+  modifiedBy: BasicUserInfo!
+
+  """
+  Flags controlling specific ACE default policy behaviors
+  """
+  options: [String!]
+}
+
+"""
+This is the Auth Access Control List for a particular resource
+"""
+type AuthACL implements Page {
+  records: [AuthACE]!
+  offset: Int!
+  limit: Int!
+  count: Int!
+}
+
+enum AuthObjectClass {
+  Internal,
+  System,
+  Application,
+  Standard
+}
+
+"""
+Permission Set: set of permission grants, managed as a cohesive entity
+"""
+type AuthPermissionSet {
+  """
+  Unique id of the Permission Set
+  """
+  id: ID!
+  """
+  Name of the Permission Set
+  """
+  name: String!
+  """
+  Brief description of the Permission Set
+  """
+  description: String
+
+  """
+  Owner organization
+  """
+  organization: OrganizationInfo!
+
+  """
+  Application that created this Permission Set
+  """
+  application: Application
+
+  """
+  This is the approle if this permission set comes from an app role
+  """
+  applicationRole: Role
+
+  """
+  Requires: superadmin
+  List of lib-functional-permissions permissions, ex. recording:read, job:create
+  """
+  permissions: [AuthPermissionType!]!
+
+  """
+  This is the set of ACEs that use this permission set
+  """
+  referencedACEs(offset: Int=0, limit: Int=30): [AuthACE],
+
+  hasPermissions(permissions: [AuthPermissionType!]!, requireAll: Boolean = true): Boolean!
+
+  protected: Boolean
+  @deprecated(
+      reason: "Replaced by isProtected field"
+      alternate: "isProtected"
+      expirationDate: "2023-01-01"
+      deprecationDate: "2022-11-01"
+    )
+  """
+  If protected, this permission set cannot be updated or removed
+  """
+  isProtected: Boolean!
+
+  createdAt: DateTime
+  modifiedAt: DateTime
+
+  createdBy: BasicUserInfo
+  modifiedBy: BasicUserInfo
+
+  authClass: AuthObjectClass
+}
+
+type AuthPermissionSetList implements Page {
+  records: [AuthPermissionSet]!
+  offset: Int!
+  limit: Int!
+  count: Int!
+}
+
+input AuditDateTimeFilter {
+  toDateTime: DateTime
+  fromDateTime: DateTime
+}
+
+extend type Query {
+  """
+  Get the list of authorization groups
+  """
+  authGroups(
+    """
+    group ids
+    """
+    ids: [ID]
+
+    """
+    POSIX compliant regular expression for matching the name of the group
+    """
+    nameRegex: String
+
+    """
+    Pass in only if superadmin and require only specific org authGroups. Cannot be used as the only filter.
+    Requires: superadmin.
+    """
+    ownerOrganization: ID
+
+    """
+    Source of the group
+    """
+    source: AuthGroupSourceType,
+
+    """
+    AppRoleID that created this group
+    """
+    appRoleID: ID,
+
+    """
+    Search group by member
+    """
+    member: AuthGroupMemberInput,
+
+    """
+    Filter by modified date
+    """
+    modifiedDateTime: AuditDateTimeFilter,
+
+    """
+    Filter by created date
+    """
+    createdDateTime: AuditDateTimeFilter,
+
+    """
+    Filter by authClass - auth group with one of the listed classes
+    """
+    authClass: [AuthObjectClass]
+
+    """
+    Provide an offset to skip to a certain element in the result, for paging.
+    """
+    offset: Int = 0
+    """
+    Specify maximum number of results to retrieve in this result. Page size.
+    """
+    limit: Int = 30
+  ): AuthGroupList!
+  # @hasRole(scope: Organization, permissions: ["org::auth_group.r"])
+  @featureFlag(name: "enableRBACFeature", defaultValue: false)
+
+  """
+  Get authorization group by id.
+  """
+  authGroup(
+    id: ID
+    """
+    'groupName' is an exact match.
+    """
+    groupName: String
+    """
+    'ownerOrganization' requires superadmin rights.
+    """
+    ownerOrganization: ID
+  ): AuthGroup!
+  # @hasRole(scope: Organization, permissions: ["org::auth_group.r"])
+  @featureFlag(name: "enableRBACFeature", defaultValue: false)
+
+  """
+  Requires: superadmin
+  Get the list of authorization roles in the platform
+  """
+  authPermissionSets(
+    ids: [ID!]
+
+    """
+    POSIX compliant regular expression for matching the name of the group
+    """
+    nameRegex: String
+
+    """
+    Pass in only if superadmin and require only specific org authGroups
+    """
+    ownerOrganization: ID
+
+    """
+    Filter by application
+    """
+    applicationID: ID
+
+    """
+    Filter by role
+    """
+    roleID: ID
+
+    """
+    Filter by modified date
+    """
+    modifiedDateTime: DateTime
+
+    """
+    Filter by created date
+    """
+    createdDateTime: DateTime
+
+    """
+    Filter by permissions
+    """
+    hasPermissions: [AuthPermissionType!]
+
+    """
+    Filter by authClass - permission set with one of the listed classes
+    """
+    authClass: [AuthObjectClass]
+
+    offset: Int = 0
+    limit: Int = 30): AuthPermissionSetList!
+  @featureFlag(name: "enableRBACFeature", defaultValue: false)
+  """
+  Returns permission set by id. 'ownerOrganization' requires superadmin rights
+  """
+  authPermissionSet(id: ID!, ownerOrganization: ID): AuthPermissionSet!
+  @featureFlag(name: "enableRBACFeature", defaultValue: false)
+
+  """
+  Returns the ACL for the specified object
+  """
+  getACLForResources(
+    resourceType: AuthResourceType!,
+    ids: [ID]!
+    """
+    Specify maximum number of results to retrieve in this result. Page size.
+    """
+    offset: Int = 0
+    """
+    Specify maximum number of results to retrieve in this result.
+    """
+    limit: Int = 30
+
+    """
+    Optional permissions filter to return only entries granting the
+    specified permission(s)
+    """
+    permissions: [AuthPermissionType!],
+    """
+    Optional permissions filter match specifier
+    """
+    requireAll: Boolean = true,
+    """
+    Pass in only if superadmin and require only specific org authGroups
+    Requires: superadmin
+    """
+    ownerOrganization: ID
+  ): AuthACL
+  @featureFlag(name: "enableRBACFeature", defaultValue: false)
+  @scopes(
+    scopes: ["superadmin", "veritone.superadmin", "admin.org.read"]
+    require: Any
+  )
+  @requireAuthRole(
+    roles: [
+        {
+            permissions: [AIWARE_PERMISSIONS_SET, AIWARE_PERMISSIONS_GET],
+            resourceTypePath: "resourceType",
+            resourceIdFieldPath: "ids"
+        }
+    ],
+    orgRole: [ADMIN_ORG_READ, VERITONE_SUPERADMIN, SUPERADMIN, AIWARE_PERMISSIONS_SET, AIWARE_PERMISSIONS_GET])
+
+  """
+  See if the specified objects have the specified permissions
+  """
+  hasPermissions(
+    resourceType: AuthResourceType!,
+    """
+    If calling user does not have access to object, then not found
+    """
+    ids: [ID!]!,
+    permissions: [AuthPermissionType!]!,
+    requireAll: Boolean = true,
+    """
+    Must be in same org as caller
+    """
+    userID: ID
+    """
+    Pass in only if superadmin and require only specific org authGroups
+    Requires: superadmin
+    """
+    ownerOrganization: ID
+  ): [AuthPermissionCheck]!
+
+
+
+
+  """
+  Audit permissions for a specific resource and user combination.
+  Returns detailed information about what permissions are granted and how.
+  """
+  resourcePermissionsAudit(
+      """
+      The resource to audit permissions for (TDO, SDO, Folder, etc.)
+      """
+      resource: InputResourceIdentifier!
+
+      """
+      Filter results to only include specific permissions.
+      If not provided, returns all permissions the user has on the resource.
+      """
+      permissions: [AuthPermissionType!]
+
+      """
+      Whether to include permissions inherited from parent resources or organization.
+      - true: Include both direct and inherited permissions (default)
+      - false: Only include permissions granted directly on this resource
+      """
+      includeInherited: Boolean = true
+
+      """
+      User ID to audit permissions for.
+      - If not provided, defaults to the calling user
+      - Only admin/superadmin can audit other users
+      Requires: superadmin (for other users)
+      """
+      userID: ID,
+
+      """
+      Organization ID to check permissions within.
+      - If not provided, uses the user's default organization
+      - Only superadmin can check permissions in other organizations
+      Requires: superadmin
+      """
+      ownerOrganization: ID,
+  ): PermissionAudit!
+
+}
+
+input AuthGroupCreateInput {
+  name: String!
+  description: String!
+
+  # create auth group in specified organization
+  """
+  Requires: superadmin
+  Create the authorization group in the specified org
+  """
+  ownerOrganization: ID #@hasRole(scope: Platform, permissions: ["org::auth_group.r"])
+
+  """
+  Optional members
+  """
+  members: [AuthGroupMemberInput]
+
+  """
+  The designated use type of the auth group
+  """
+  authClass: AuthObjectClass = Standard
+  """
+  Optional, create the application role authorization group
+  """
+  roleID: ID
+}
+
+input AuthEnforcementEnableInput {
+  # create auth group in specified organization
+  """
+  Requires: superadmin
+  Create the authorization group in the specified org
+  """
+  ownerOrganization: ID #@hasRole(scope: Platform, permissions: ["org::auth_group.r"])
+  """
+  Turn on or off OLP for Organization.
+  """
+  enable: Boolean!
+}
+
+input AuthGroupUpdateInput {
+  id: ID!
+  name: String
+  description: String
+  ownerOrganization: ID
+}
+
+input AuthResourceMemberInput {
+  id: ID!
+  memberType: AuthResourceType = TDO
+}
+
+input AuthGroupMemberInput {
+  id: ID!
+  memberType: AuthGroupMemberType = User
+}
+
+"""
+Authorization Role parameters
+"""
+input AuthPermissionSetInput {
+  """
+  Name
+  """
+  name: String!
+
+  """
+  Brief description
+  """
+  description: String!
+
+  """
+  List of lib-functional-permissions permissions, ex. recording:read, job:create
+  """
+  permissions: [AuthPermissionType!]!
+
+  """
+  Optional. Requires SuperAdmin to specify a different organization than user
+  """
+  organizationID: ID
+
+  """
+  If this is from an application, the application ID for this permission set
+  """
+  applicationID: ID
+
+  """
+  If this is from an AppRole, the roleID
+  """
+  roleID: ID
+
+  """
+  The designated use type of the permission set
+  """
+  authClass: AuthObjectClass = Standard
+
+  """
+  If protected, this permission set cannot be updated or removed
+  """
+  protected: Boolean
+  @deprecated(
+      reason: "Replaced by isProtected field"
+      alternate: "isProtected"
+      expirationDate: "2023-01-01"
+      deprecationDate: "2022-11-01"
+    )
+  isProtected: Boolean
+}
+
+input AuthPermissionSetUpdateInput {
+  """
+  ID
+  """
+  id: ID!
+
+  """
+  Name of the role
+  """
+  name: String
+
+  """
+  Brief description of the role
+  """
+  description: String
+
+  """
+  List of lib-functional-permissions permissions, ex. recording:read, job:create
+  """
+  permissions: [AuthPermissionType!]
+
+  """
+  If protected, this permission set cannot be updated or removed
+  """
+  protected: Boolean
+  @deprecated(
+      reason: "Replaced by isProtected field"
+      alternate: "isProtected"
+      expirationDate: "2023-01-01"
+      deprecationDate: "2022-11-01"
+    )
+  isProtected: Boolean
+  """
+  Pass in only if superadmin and require only specific org authGroups
+  Requires: superadmin
+  """
+  ownerOrganization: ID
+}
+
+"""
+Access Control Entry Input for Permissions
+"""
+input AuthACEPermissionInput {
+  """
+  Member ID
+  """
+  member: AuthGroupMemberInput!
+
+  """
+  Permission Set
+  """
+  permissionSetID: ID!
+
+  """
+  Flags controlling specific ACE default policy behaviors
+  e.g.: ["inherit"] is going to ensure that private user-owned ACEs are inherited down the resource tree
+  """
+  options: [String!]
+}
+
+type AuthPermissionCheck {
+  """
+  Type of object referenced by ACE
+  """
+  resourceType: AuthResourceType
+
+  """
+  Object ID
+  """
+  id: ID!
+
+  """
+  true if object has permission
+  """
+  hasPermission: Boolean!
+}
+
+extend type Mutation {
+  """
+  Create new authorization group
+  """
+  authGroupCreate(input: AuthGroupCreateInput!): AuthGroup!
+  @featureFlag(name: "enableRBACFeature", defaultValue: false, ownerOrgFieldPath: "input.ownerOrganization")
+  @scopes(
+    scopes: ["superadmin", "veritone.superadmin", "admin.org.update"]
+    require: Any
+  )
+  """
+  Create default authorization group for initialize new org or current org OLP onboarding
+  This will create two default auth group, orgAdmin + orgAllAccess
+  """
+  authEnforcementEnable(input: AuthEnforcementEnableInput!): [AuthGroup!]
+  # [BUG] org without enableRBACFeature should be able to call this
+  # @featureFlag(name: "enableRBACFeature", defaultValue: false, ownerOrgFieldPath: "input.ownerOrganization")
+  @scopes(
+    scopes: ["superadmin", "veritone.superadmin", "admin.org.update"]
+    require: Any
+  )
+  """
+  Update existing authorization group
+  """
+  authGroupUpdate(input: AuthGroupUpdateInput!): AuthGroup!
+  @featureFlag(name: "enableRBACFeature", defaultValue: false, ownerOrgFieldPath: "input.ownerOrganization")
+  @scopes(
+    scopes: ["superadmin", "veritone.superadmin", "admin.org.update"]
+    require: Any
+  )
+
+  """
+  Delete existing authorization group
+  """
+  authGroupDelete(id: ID!, ownerOrganization: ID): DeletePayload!
+  @featureFlag(name: "enableRBACFeature", defaultValue: false)
+  @scopes(
+    scopes: ["superadmin", "veritone.superadmin", "admin.org.update"]
+    require: Any
+  )
+
+  """
+  Add members to authorization group
+  """
+  authGroupAddMembers(id: ID!, members: [AuthGroupMemberInput!]!, ownerOrganization: ID): AuthGroup!
+  @featureFlag(name: "enableRBACFeature", defaultValue: false)
+  @scopes(
+    scopes: ["superadmin", "veritone.superadmin", "admin.org.update"]
+    require: Any
+  )
+
+  """
+  Remove members from authorization group
+  """
+  authGroupRemoveMembers(id: ID!, memberIds: [ID!]!, ownerOrganization: ID): AuthGroup
+  # @hasRole(scope: Organization, permissions: ["org::auth_group_members.rw"])
+  @featureFlag(name: "enableRBACFeature", defaultValue: false)
+  @scopes(
+    scopes: ["superadmin", "veritone.superadmin", "admin.org.update"]
+    require: Any
+  )
+
+  """
+  Create new authorization role
+  """
+  authPermissionSetCreate(input: AuthPermissionSetInput!): AuthPermissionSet!
+  @featureFlag(name: "enableRBACFeature", defaultValue: false, ownerOrgFieldPath: "input.organizationID")
+  @scopes(
+    scopes: ["superadmin", "veritone.superadmin", "admin.org.update"]
+    require: Any
+  )
+
+  """
+  Update permission set
+  !!! Warning: this will have impact on all ACEs that have this permission set attached to them
+  Provided permissions will replace the existing permissions.
+  E.g.: providing permission A and B for a permission set with A, B and C is going to remove permission C
+  """
+  authPermissionSetUpdate(input: AuthPermissionSetUpdateInput!): AuthPermissionSet!
+  @featureFlag(name: "enableRBACFeature", defaultValue: false, ownerOrgFieldPath: "input.ownerOrganization")
+  @scopes(
+    scopes: ["superadmin", "veritone.superadmin", "admin.org.update"]
+    require: Any
+  )
+
+  """
+  Delete Permission Set
+  !!! Warning: this will delete the permission set.  This will fail if referenced in an ACE
+  """
+  authPermissionSetDelete(id: ID!, ownerOrganization: ID): DeletePayload!
+  @featureFlag(name: "enableRBACFeature", defaultValue: false)
+  @scopes(
+    scopes: ["superadmin", "veritone.superadmin", "admin.org.update"]
+    require: Any
+  )
+
+  """
+  This will add ACEs to the specified object(s).
+
+  Applies the partial ACEs to the specified objects
+  """
+  addACEsToResources(
+    """
+    Object Type to set the ACEs on
+    """
+    resourceType: AuthResourceType,
+
+    """
+    For the SDO resourceType, the resourceTypeSchemaId is required.
+    All input SDO Ids must belong to the same schema.
+    """
+    resourceTypeSchemaId: ID,
+
+    """
+    IDs of the objects to set the ACEs
+    """
+    ids: [ID!]!,
+
+    """
+    ACEs to set
+    """
+    entries: [AuthACEPermissionInput!]!
+    """
+    Pass in only if superadmin and require only specific org permission sets
+    Requires: superadmin
+    """
+    ownerOrganization: ID
+  ): AuthACL!
+  @featureFlag(name: "enableRBACFeature", defaultValue: false)
+  @scopes(
+    scopes: ["superadmin", "veritone.superadmin", "admin.org.update"]
+    require: Any
+  )
+  @requireAuthRole(
+      roles: [
+          {
+              permissions: [AIWARE_PERMISSIONS_SET],
+              resourceTypePath: "resourceType",
+              resourceIdFieldPath: "ids"
+          }
+      ],
+      orgRole: [ADMIN_ORG_UPDATE, VERITONE_SUPERADMIN, SUPERADMIN])
+
+  """
+  Remove ACE from ACL.  The ACE Ids specified must be for same object type
+  """
+  removeACEsFromResource(
+  """
+  Object Type to remove the ACEs from
+  """
+  resourceType: AuthResourceType!,
+
+  """
+  For the SDO resourceType, the resourceTypeSchemaId is required.
+  All input SDO Ids must belong to the same schema.
+  """
+  resourceTypeSchemaId: ID,
+
+  """
+  Ids of the ACEs to remove
+  """
+  ids: [ID!]!,
+  
+  """  
+  The owner organization of the resources.
+  """
+  ownerOrganization: ID): AuthACL!
+  @featureFlag(name: "enableRBACFeature", defaultValue: false)
+  @scopes(
+    scopes: ["superadmin", "veritone.superadmin", "admin.org.update"]
+    require: Any
+  )
+  @requireAuthRole(
+      roles: [
+          {
+              permissions: [AIWARE_PERMISSIONS_SET],
+              resourceTypePath: "resourceType",
+              resourceIdFieldPath: "ids"
+          }
+      ],
+      orgRole: [ADMIN_ORG_UPDATE, VERITONE_SUPERADMIN, SUPERADMIN]
+  )
+}
+
+extend input CreateUser {
+  authGroupIds: [ID!]
+}
+
+extend input UpdateUser {
+  authGroupIds: [ID!]
+}
+
+extend type User {
+  authGroupIds: [ID!]
+  authGroups(
+    """
+    Filter by group ids
+    """
+    ids: [ID]
+
+    """
+    Filter by POSIX compliant regular expression for matching the name of the group
+    """
+    nameRegex: String
+
+    """
+    Filter by source of the group
+    """
+    source: AuthGroupSourceType,
+
+    """
+    Filter by appRoleID that created this group
+    """
+    appRoleID: ID,
+
+    """
+    Filter by modified date
+    """
+    modifiedDateTime: AuditDateTimeFilter,
+
+    """
+    Filter by created date
+    """
+    createdDateTime: AuditDateTimeFilter,
+
+    """
+    Provide an offset to skip to a certain element in the result, for paging.
+    """
+    offset: Int = 0
+    """
+    Specify maximum number of results to retrieve in this result. Page size.
+    """
+    limit: Int = 30
+  ) : AuthGroupList
+}
+
+interface SecurableObject {
+  """
+  Add ACEs to the resource.
+  """
+  addACEs(
+    """
+    ACEs to set
+    """
+    entries: [AuthACEPermissionInput!]!
+  ): AuthACL
+}
+
+extend type Folder implements SecurableObject {
+  """
+  Add ACEs to the folder.
+  """
+  addACEs(
+    """
+    ACEs to set
+    """
+    entries: [AuthACEPermissionInput!]!
+  ): AuthACL
+}
+
+extend type TemporalDataObject implements SecurableObject {
+  """
+  Add ACEs to the TDO.
+  """
+  addACEs(
+    """
+    ACEs to set
+    """
+    entries: [AuthACEPermissionInput!]!
+  ): AuthACL
+}
+
+# Resource Audit types
+
+"""
+Input type for identifying a specific resource in the system
+"""
+input InputResourceIdentifier {
+  """
+  The type of resource (TDO, SDO, Folder, Library, etc.)
+  """
+  resourceType: AuthResourceType!
+
+  """
+  The unique identifier of the resource
+  """
+  resourceId: ID!
+}
+
+"""
+Identifies a specific resource in the system
+"""
+type ResourceIdentifier {
+  """
+  The type of resource (TDO, SDO, Folder, Library, etc.)
+  """
+  resourceType: AuthResourceType!
+
+  """
+  The unique identifier of the resource
+  """
+  resourceId: ID!
+}
+
+
+"""
+Complete audit report of a user's permissions on a specific resource
+"""
+type PermissionAudit {
+  """
+  The resource that was audited
+  """
+  resource: ResourceIdentifier!
+
+  """
+  The user whose permissions were audited
+  """
+  userId: ID!
+
+  """
+  List of all permissions the user effectively has on this resource.
+  This is a flattened summary of all granted permissions.
+  """
+  effectivePermissions: [AuthPermissionType!]!
+
+  """
+  Detailed breakdown of how each permission was granted.
+  Includes the source and reasoning for each permission.
+  """
+  permissionDetails: [PermissionGrantAudit]!
+}
+
+"""
+Detailed audit information for a specific permission
+"""
+type PermissionGrantAudit {
+   """
+   The permission granted
+   """
+   permission: AuthPermissionType!
+
+   """
+   Human-readable explanation of why this permission was granted.
+   Examples: "Direct grant", "Inherited from parent folder", "Organization admin role"
+   """
+   reason: String!
+
+   """
+   All the specific grants that contribute to this permission.
+   Multiple grants may exist if permission comes from multiple sources.
+   """
+   grants: [PermissionGrant!]!
+}
+
+"""
+The different ways a permission can be granted to a user
+"""
+enum PermissionGrantType {
+    """
+    Permission granted directly to the user on this specific resource
+    """
+    Direct
+
+    """
+    Permission granted through membership in a group that has access
+    """
+    GroupMembership
+
+    """
+    Permission granted through the organization level access control entry
+    """
+    OrganizationRole
+
+    """
+    Permission inherited from a parent resource (e.g., folder permissions)
+    """
+    ParentResource
+}
+
+union AuthResourceOwner = BasicUserInfo | AuthGroup
+
+"""
+A specific grant that contributes to a user's permission on a resource
+"""
+type PermissionGrant {
+   """
+   The mechanism by which this permission was granted
+   """
+   type: PermissionGrantType!
+
+   """
+   The permission set that contains the permission
+   """
+   permissionSet: AuthPermissionSet!
+
+   """
+   The user or group that has the permission set assigned on the resource
+   """
+   owner: AuthResourceOwner!
+
+   """
+   The resource context for this permission grant.
+   - null: Permission granted directly on the queried resource
+   - populated: The parent resource that the permission was inherited from
+   """
+   resource: ResourceIdentifier
+}
+
+extend type StructuredData implements SecurableObject {
+  """
+  Add ACEs to the StructuredData.
+  """
+  addACEs(
+    """
+    ACEs to set
+    """
+    entries: [AuthACEPermissionInput!]!
+  ): AuthACL
+}

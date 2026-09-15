@@ -1,0 +1,133 @@
+{
+  "root": false,
+  "$schema": "https://biomejs.dev/schemas/2.4.16/schema.json",
+  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+  "files": {
+    "ignoreUnknown": true,
+    "includes": [
+      "**",
+      "!**/*.json",
+      "!**/*.log",
+      "!**/*.css",
+      "!**/*.html",
+      "!**/*.mjs",
+      "!**/citest/**/*",
+      "!**/dist/**/*",
+      "!**/generated/**/*",
+      "!**/coverage/**/*",
+      "!**/docs/**/*",
+      "!**/build/**/*",
+      "!**/tmp/**/*"
+    ]
+  },
+  "formatter": {
+    "enabled": false,
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "assist": { "actions": { "source": { "organizeImports": "off" } } },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": false,
+      "complexity": {
+        "useArrowFunction": "off",
+        "noUselessCatch": "off",
+        "noThisInStatic": "error",
+        "noUselessTernary": "warn",
+        "noUselessThisAlias": "error",
+        "noUselessRename": "warn",
+        "useFlatMap": "error",
+        "useRegexLiterals": "warn",
+        "useSimpleNumberKeys": "error",
+        "noUselessContinue": "info",
+        "noCommaOperator": "warn",
+        "useWhile": "error"
+      },
+      "correctness": {
+        "noUnusedVariables": "off",
+        "noConstAssign": "error",
+        "noConstantCondition": "error",
+        "noEmptyCharacterClassInRegex": "error",
+        "noEmptyPattern": "error",
+        "noGlobalObjectCalls": "error",
+        "noSelfAssign": "error",
+        "noSwitchDeclarations": "warn",
+        "noPrecisionLoss": "error",
+        "noUnknownFunction": "error",
+        "noUnreachable": "error",
+        "noUnsafeFinally": "error",
+        "useIsNan": "error",
+        "useYield": "error",
+        "useValidTypeof": "error"
+      },
+      "performance": {
+        "noAccumulatingSpread": "warn",
+        "noDelete": "info"
+      },
+      "security": {
+        "noGlobalEval": "error"
+      },
+      "style": {
+        "useBlockStatements": "off"
+      },
+      "suspicious": {
+        "noConsole": "warn",
+        "noAsyncPromiseExecutor": "error",
+        "noCatchAssign": "error",
+        "noClassAssign": "error",
+        "noConfusingLabels": "error",
+        "noDuplicateCase": "error",
+        "noDuplicateClassMembers": "error",
+        "noDuplicateObjectKeys": "error",
+        "noDuplicateParameters": "error",
+        "noEmptyBlock": "error",
+        "noFocusedTests": "error",
+        "noFunctionAssign": "error",
+        "noGlobalAssign": "error",
+        "noImportAssign": "error",
+        "noMisrefactoredShorthandAssign": "error",
+        "noSelfCompare": "error",
+        "noSparseArray": "error",
+        "noThenProperty": "error",
+        "noUnsafeNegation": "error",
+        "useDefaultSwitchClauseLast": "error",
+        "useIsArray": "error",
+        "noWith": "error"
+      }
+    },
+    "includes": [
+      "**",
+      "!**//.nyc_output/**",
+      "!**/graphqldocs/**/*",
+      "!**/modules/core-media-server",
+      "!**/coverage",
+      "!**/_instrumented",
+      "!**/scripts",
+      "!**/citest/**/*",
+      "!**/aiware/api/generated",
+      "!**/loadtest",
+      "!**/dist/**/*",
+      "!**/build/**/*",
+      "!**/tmp/**/*",
+      "!**/dist/**/*",
+      "!**/scripts/**/*",
+      "!**/node_modules/**/*",
+      "!**/graphiql",
+      "!**/.github/**/*",
+      "!**/generated/**/*",
+      "!**/coverage/**/*",
+      "!**/docs/**/*",
+      "!**/elastic-client/src/post.js",
+      "!**/elastic-client/src/pre.js"
+    ]
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "trailingCommas": "none",
+      "lineWidth": 80,
+      "bracketSameLine": false
+    }
+  }
+}

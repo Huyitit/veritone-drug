@@ -1,0 +1,3099 @@
+{
+  "sourceEngineId": "8fad081b-fbac-445f-afde-a3f8a53a55ee",
+  "sourceEngineName": "CITest Engine 20221219 V3",
+  "taskId": "19020824_w3VijmG9X904M9U",
+  "generatedDateUTC": "0001-01-01T00:00:00Z",
+  "sentiment": {},
+  "series": [
+    {
+      "startTimeMs": 0,
+      "stopTimeMs": 1000,
+      "sentiment": {},
+      "object": {
+        "label": "Black",
+        "type": "object",
+        "confidence": 0.9849877953529358,
+        "age": {},
+        "objectCategory": [
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "White", "@id": "kg:/m/083jv/m/0dl567" },
+          { "class": "Sky", "@id": "kg:/m/01bqvp/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Red", "@id": "kg:/m/06fvc/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Brown", "@id": "kg:/m/09q2t/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "Atmosphere", "@id": "kg:/m/01ctsf/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 1000,
+      "stopTimeMs": 2000,
+      "sentiment": {},
+      "object": {
+        "label": "Text",
+        "type": "object",
+        "confidence": 0.9888905882835388,
+        "age": {},
+        "objectCategory": [
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "White", "@id": "kg:/m/083jv/m/0dl567" },
+          { "class": "Logo", "@id": "kg:/m/0dwx7/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Sky", "@id": "kg:/m/01bqvp/m/0dl567" },
+          { "class": "Black-and-white", "@id": "kg:/m/01g6gs/m/0dl567" },
+          { "class": "Monochrome photography", "@id": "kg:/m/03d49p1/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 2000,
+      "stopTimeMs": 3000,
+      "sentiment": {},
+      "object": {
+        "label": "Text",
+        "type": "object",
+        "confidence": 0.9846360087394714,
+        "age": {},
+        "objectCategory": [
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "White", "@id": "kg:/m/083jv/m/0dl567" },
+          { "class": "Photograph", "@id": "kg:/m/068jd/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          {
+            "class": "Monochrome photography",
+            "@id": "kg:/m/03d49p1/m/0dl567"
+          },
+          { "class": "Logo", "@id": "kg:/m/0dwx7/m/0dl567" },
+          { "class": "Black-and-white", "@id": "kg:/m/01g6gs/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 3000,
+      "stopTimeMs": 4000,
+      "sentiment": {},
+      "object": {
+        "label": "Transport",
+        "type": "object",
+        "confidence": 0.9558648467063904,
+        "age": {},
+        "objectCategory": [
+          { "class": "Transport", "@id": "kg:/m/07bsy/m/0dl567" },
+          { "class": "Mode of transport", "@id": "kg:/m/079bkr/m/0dl567" },
+          { "class": "Product", "@id": "kg:/m/01jwgf/m/0dl567" },
+          { "class": "Asphalt", "@id": "kg:/m/0hr8/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" },
+          { "class": "Architecture", "@id": "kg:/m/03nfmq/m/0dl567" },
+          { "class": "Commercial vehicle", "@id": "kg:/m/0fkwjg/m/0dl567" },
+          { "class": "Auto part", "@id": "kg:/m/08dz3q/m/0dl567" },
+          { "class": "Recycling", "@id": "kg:/m/0j6v7/m/0dl567" },
+          { "class": "Vehicle", "@id": "kg:/m/07yv9/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 4000,
+      "stopTimeMs": 5000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9068462252616882,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Product", "@id": "kg:/m/01jwgf/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" },
+          { "class": "Asphalt", "@id": "kg:/m/0hr8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 5000,
+      "stopTimeMs": 6000,
+      "sentiment": {},
+      "object": {
+        "label": "Product",
+        "type": "object",
+        "confidence": 0.9252941012382507,
+        "age": {},
+        "objectCategory": [
+          { "class": "Product", "@id": "kg:/m/01jwgf/m/0dl567" },
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 6000,
+      "stopTimeMs": 7000,
+      "sentiment": {},
+      "object": {
+        "label": "Product",
+        "type": "object",
+        "confidence": 0.934798538684845,
+        "age": {},
+        "objectCategory": [
+          { "class": "Product", "@id": "kg:/m/01jwgf/m/0dl567" },
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" },
+          { "class": "Door", "@id": "kg:/m/02dgv/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 7000,
+      "stopTimeMs": 8000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9853076934814453,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Line", "@id": "kg:/m/03scnj/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Leisure", "@id": "kg:/m/04g3r/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 8000,
+      "stopTimeMs": 9000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9924327731132507,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 9000,
+      "stopTimeMs": 10000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.945163369178772,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Asphalt", "@id": "kg:/m/0hr8/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Road", "@id": "kg:/m/06gfj/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 10000,
+      "stopTimeMs": 11000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9317846894264221,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Asphalt", "@id": "kg:/m/0hr8/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Line", "@id": "kg:/m/03scnj/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Lane", "@id": "kg:/m/033j3c/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 11000,
+      "stopTimeMs": 12000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9908850193023682,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis ball", "@id": "kg:/m/05ctyq/m/0dl567" },
+          { "class": "Ball game", "@id": "kg:/m/020m7t/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 12000,
+      "stopTimeMs": 13000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9924327731132507,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Tennis ball", "@id": "kg:/m/05ctyq/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 13000,
+      "stopTimeMs": 14000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.7933995723724365,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Play", "@id": "kg:/m/06wtgq/m/0dl567" },
+          { "class": "Asphalt", "@id": "kg:/m/0hr8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 14000,
+      "stopTimeMs": 15000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.7655137181282043,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 15000,
+      "stopTimeMs": 16000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Racketlon", "@id": "kg:/m/02ql4yj/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" },
+          { "class": "Ball game", "@id": "kg:/m/020m7t/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 16000,
+      "stopTimeMs": 17000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9924327731132507,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis racket", "@id": "kg:/m/0h8my_4/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Ball game", "@id": "kg:/m/020m7t/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 17000,
+      "stopTimeMs": 18000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9908850193023682,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 18000,
+      "stopTimeMs": 19000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9924327731132507,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Tennis ball", "@id": "kg:/m/05ctyq/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 19000,
+      "stopTimeMs": 20000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Ball game", "@id": "kg:/m/020m7t/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 20000,
+      "stopTimeMs": 21000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9679355025291443,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Shoulder", "@id": "kg:/m/01ssh5/m/0dl567" },
+          { "class": "Arm", "@id": "kg:/m/0dzf4/m/0dl567" },
+          { "class": "Joint", "@id": "kg:/m/01dvt1/m/0dl567" },
+          { "class": "Ping pong", "@id": "kg:/m/07jbh/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Elbow", "@id": "kg:/m/01vm1p/m/0dl567" },
+          { "class": "Performance", "@id": "kg:/m/01gq53/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 21000,
+      "stopTimeMs": 22000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.9735272526741028,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          { "class": "Feature phone", "@id": "kg:/m/0bxyyx_/m/0dl567" },
+          { "class": "Hand", "@id": "kg:/m/0k65p/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 22000,
+      "stopTimeMs": 23000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.9824745655059814,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Feature phone", "@id": "kg:/m/0bxyyx_/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          { "class": "Cellular network", "@id": "kg:/m/036xn3/m/0dl567" },
+          { "class": "Telephony", "@id": "kg:/m/0bhmh/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 23000,
+      "stopTimeMs": 24000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.9832992553710938,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Feature phone", "@id": "kg:/m/0bxyyx_/m/0dl567" },
+          { "class": "Hand", "@id": "kg:/m/0k65p/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 24000,
+      "stopTimeMs": 25000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.9648087620735168,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          { "class": "Hand", "@id": "kg:/m/0k65p/m/0dl567" },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 25000,
+      "stopTimeMs": 26000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.9741470813751221,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Hand", "@id": "kg:/m/0k65p/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 26000,
+      "stopTimeMs": 27000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9908850193023682,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis racket", "@id": "kg:/m/0h8my_4/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 27000,
+      "stopTimeMs": 28000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9908850193023682,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 28000,
+      "stopTimeMs": 29000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.989280641078949,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 29000,
+      "stopTimeMs": 30000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.989280641078949,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 30000,
+      "stopTimeMs": 31000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9863275289535522,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Tennis ball", "@id": "kg:/m/05ctyq/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Line", "@id": "kg:/m/03scnj/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 31000,
+      "stopTimeMs": 32000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9908850193023682,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis ball", "@id": "kg:/m/05ctyq/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 32000,
+      "stopTimeMs": 33000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9886748194694519,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 33000,
+      "stopTimeMs": 34000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9881195425987244,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 34000,
+      "stopTimeMs": 35000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9875949025154114,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Tennis ball", "@id": "kg:/m/05ctyq/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 35000,
+      "stopTimeMs": 36000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9870002269744873,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 36000,
+      "stopTimeMs": 37000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9874237775802612,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 37000,
+      "stopTimeMs": 38000,
+      "sentiment": {},
+      "object": {
+        "label": "Mobile phone",
+        "type": "object",
+        "confidence": 0.9924608469009399,
+        "age": {},
+        "objectCategory": [
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Feature phone", "@id": "kg:/m/0bxyyx_/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 38000,
+      "stopTimeMs": 39000,
+      "sentiment": {},
+      "object": {
+        "label": "Mobile phone",
+        "type": "object",
+        "confidence": 0.989639401435852,
+        "age": {},
+        "objectCategory": [
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Feature phone", "@id": "kg:/m/0bxyyx_/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 39000,
+      "stopTimeMs": 40000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.9871096611022949,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 40000,
+      "stopTimeMs": 41000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.9897322058677673,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 41000,
+      "stopTimeMs": 42000,
+      "sentiment": {},
+      "object": {
+        "label": "Mobile phone",
+        "type": "object",
+        "confidence": 0.9924608469009399,
+        "age": {},
+        "objectCategory": [
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 42000,
+      "stopTimeMs": 43000,
+      "sentiment": {},
+      "object": {
+        "label": "Mobile phone",
+        "type": "object",
+        "confidence": 0.9924608469009399,
+        "age": {},
+        "objectCategory": [
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 43000,
+      "stopTimeMs": 44000,
+      "sentiment": {},
+      "object": {
+        "label": "Mobile phone",
+        "type": "object",
+        "confidence": 0.9924608469009399,
+        "age": {},
+        "objectCategory": [
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 44000,
+      "stopTimeMs": 45000,
+      "sentiment": {},
+      "object": {
+        "label": "Mobile phone",
+        "type": "object",
+        "confidence": 0.9965964555740356,
+        "age": {},
+        "objectCategory": [
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Feature phone", "@id": "kg:/m/0bxyyx_/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 45000,
+      "stopTimeMs": 46000,
+      "sentiment": {},
+      "object": {
+        "label": "Mobile phone",
+        "type": "object",
+        "confidence": 0.9924608469009399,
+        "age": {},
+        "objectCategory": [
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 46000,
+      "stopTimeMs": 47000,
+      "sentiment": {},
+      "object": {
+        "label": "Mobile phone",
+        "type": "object",
+        "confidence": 0.9965964555740356,
+        "age": {},
+        "objectCategory": [
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Feature phone", "@id": "kg:/m/0bxyyx_/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 47000,
+      "stopTimeMs": 48000,
+      "sentiment": {},
+      "object": {
+        "label": "Mobile phone",
+        "type": "object",
+        "confidence": 0.9871616959571838,
+        "age": {},
+        "objectCategory": [
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 48000,
+      "stopTimeMs": 49000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.9832992553710938,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 49000,
+      "stopTimeMs": 50000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.9883014559745789,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 50000,
+      "stopTimeMs": 51000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.986048698425293,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 51000,
+      "stopTimeMs": 52000,
+      "sentiment": {},
+      "object": {
+        "label": "Mobile phone",
+        "type": "object",
+        "confidence": 0.9924608469009399,
+        "age": {},
+        "objectCategory": [
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 52000,
+      "stopTimeMs": 53000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9764078855514526,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Fun", "@id": "kg:/m/0ds99lh/m/0dl567" },
+          { "class": "Ball game", "@id": "kg:/m/020m7t/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 53000,
+      "stopTimeMs": 54000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.980522096157074,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Line", "@id": "kg:/m/03scnj/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Architecture", "@id": "kg:/m/03nfmq/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 54000,
+      "stopTimeMs": 55000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9814098477363586,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Line", "@id": "kg:/m/03scnj/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Architecture", "@id": "kg:/m/03nfmq/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 55000,
+      "stopTimeMs": 56000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9760938882827759,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Fun", "@id": "kg:/m/0ds99lh/m/0dl567" },
+          { "class": "Architecture", "@id": "kg:/m/03nfmq/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 56000,
+      "stopTimeMs": 57000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9738544821739197,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Fun", "@id": "kg:/m/0ds99lh/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis ball", "@id": "kg:/m/05ctyq/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 57000,
+      "stopTimeMs": 58000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9613794684410095,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Fun", "@id": "kg:/m/0ds99lh/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Architecture", "@id": "kg:/m/03nfmq/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 58000,
+      "stopTimeMs": 59000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9738544821739197,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Fun", "@id": "kg:/m/0ds99lh/m/0dl567" },
+          { "class": "Photography", "@id": "kg:/m/05wkw/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 59000,
+      "stopTimeMs": 60000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9673298597335815,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Leisure", "@id": "kg:/m/04g3r/m/0dl567" },
+          { "class": "Stadium", "@id": "kg:/m/019cfy/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 60000,
+      "stopTimeMs": 61000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.960953950881958,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Fun", "@id": "kg:/m/0ds99lh/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 61000,
+      "stopTimeMs": 62000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9576524496078491,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Leisure", "@id": "kg:/m/04g3r/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 62000,
+      "stopTimeMs": 63000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9700060486793518,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Fun", "@id": "kg:/m/0ds99lh/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Ball game", "@id": "kg:/m/020m7t/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 63000,
+      "stopTimeMs": 64000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9509285688400269,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Architecture", "@id": "kg:/m/03nfmq/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Games", "@id": "kg:/m/03bt1gh/m/0dl567" },
+          { "class": "Stadium", "@id": "kg:/m/019cfy/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 64000,
+      "stopTimeMs": 65000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.952997088432312,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Stadium", "@id": "kg:/m/019cfy/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 65000,
+      "stopTimeMs": 66000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.9897322058677673,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 66000,
+      "stopTimeMs": 67000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.9897322058677673,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Product", "@id": "kg:/m/01jwgf/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 67000,
+      "stopTimeMs": 68000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.9824745655059814,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 68000,
+      "stopTimeMs": 69000,
+      "sentiment": {},
+      "object": {
+        "label": "Mobile phone",
+        "type": "object",
+        "confidence": 0.9871616959571838,
+        "age": {},
+        "objectCategory": [
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Feature phone", "@id": "kg:/m/0bxyyx_/m/0dl567" },
+          { "class": "Hand", "@id": "kg:/m/0k65p/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 69000,
+      "stopTimeMs": 70000,
+      "sentiment": {},
+      "object": {
+        "label": "Gadget",
+        "type": "object",
+        "confidence": 0.9841626286506653,
+        "age": {},
+        "objectCategory": [
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Hand", "@id": "kg:/m/0k65p/m/0dl567" },
+          { "class": "Finger", "@id": "kg:/m/09cx8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 70000,
+      "stopTimeMs": 71000,
+      "sentiment": {},
+      "object": {
+        "label": "Mobile phone",
+        "type": "object",
+        "confidence": 0.9871616959571838,
+        "age": {},
+        "objectCategory": [
+          { "class": "Mobile phone", "@id": "kg:/m/050k8/m/0dl567" },
+          { "class": "Gadget", "@id": "kg:/m/02mf1n/m/0dl567" },
+          { "class": "Communication Device", "@id": "kg:/m/0glmwd6/m/0dl567" },
+          {
+            "class": "Portable communications device",
+            "@id": "kg:/m/020fsy/m/0dl567"
+          },
+          { "class": "Smartphone", "@id": "kg:/m/0169zh/m/0dl567" },
+          { "class": "Electronic device", "@id": "kg:/m/0bs7_0t/m/0dl567" },
+          { "class": "Technology", "@id": "kg:/m/07c1v/m/0dl567" },
+          { "class": "Iphone", "@id": "kg:/m/027lnzs/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Feature phone", "@id": "kg:/m/0bxyyx_/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 71000,
+      "stopTimeMs": 72000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9562879204750061,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Table", "@id": "kg:/m/04bcr3/m/0dl567" },
+          { "class": "Badminton", "@id": "kg:/m/0194d/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" },
+          { "class": "Photography", "@id": "kg:/m/05wkw/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 72000,
+      "stopTimeMs": 73000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis court",
+        "type": "object",
+        "confidence": 0.979943573474884,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Table", "@id": "kg:/m/04bcr3/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Room", "@id": "kg:/m/06ht1/m/0dl567" },
+          { "class": "Tennis ball", "@id": "kg:/m/05ctyq/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 73000,
+      "stopTimeMs": 74000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis court",
+        "type": "object",
+        "confidence": 0.9809494614601135,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Luxury vehicle", "@id": "kg:/m/01lcwm/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 74000,
+      "stopTimeMs": 75000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9767147898674011,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Line", "@id": "kg:/m/03scnj/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 75000,
+      "stopTimeMs": 76000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9802911281585693,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Line", "@id": "kg:/m/03scnj/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 76000,
+      "stopTimeMs": 77000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis court",
+        "type": "object",
+        "confidence": 0.9819208979606628,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 77000,
+      "stopTimeMs": 78000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9828441739082336,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Ball game", "@id": "kg:/m/020m7t/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 78000,
+      "stopTimeMs": 79000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9858206510543823,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Net sports", "@id": "kg:/m/0ch36lm/m/0dl567" },
+          { "class": "Ball game", "@id": "kg:/m/020m7t/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 79000,
+      "stopTimeMs": 80000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9826472997665405,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Ball game", "@id": "kg:/m/020m7t/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 80000,
+      "stopTimeMs": 81000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.928557813167572,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Product", "@id": "kg:/m/01jwgf/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 81000,
+      "stopTimeMs": 82000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9354104399681091,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 82000,
+      "stopTimeMs": 83000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 83000,
+      "stopTimeMs": 84000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis racket", "@id": "kg:/m/0h8my_4/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 84000,
+      "stopTimeMs": 85000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9908850193023682,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 85000,
+      "stopTimeMs": 86000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9789886474609375,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis racket", "@id": "kg:/m/0h8my_4/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 86000,
+      "stopTimeMs": 87000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.8944157361984253,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" },
+          { "class": "Trampolining", "@id": "kg:/m/01b57x/m/0dl567" },
+          { "class": "Fun", "@id": "kg:/m/0ds99lh/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Trampoline", "@id": "kg:/m/02_444/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" },
+          {
+            "class": "Trampolining--Equipment and supplies",
+            "@id": "kg:/m/0bp17jw/m/0dl567"
+          }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 87000,
+      "stopTimeMs": 88000,
+      "sentiment": {},
+      "object": {
+        "label": "Ceiling",
+        "type": "object",
+        "confidence": 0.8978509306907654,
+        "age": {},
+        "objectCategory": [
+          { "class": "Ceiling", "@id": "kg:/m/03gfsp/m/0dl567" },
+          { "class": "Glass", "@id": "kg:/m/039jq/m/0dl567" },
+          { "class": "Architecture", "@id": "kg:/m/03nfmq/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Mesh", "@id": "kg:/m/0413y3/m/0dl567" },
+          { "class": "Metal", "@id": "kg:/m/04t7l/m/0dl567" },
+          { "class": "Building", "@id": "kg:/m/0cgh4/m/0dl567" },
+          { "class": "Daylighting", "@id": "kg:/m/0k2n5/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 88000,
+      "stopTimeMs": 89000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9864956736564636,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Leisure", "@id": "kg:/m/04g3r/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 89000,
+      "stopTimeMs": 90000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 90000,
+      "stopTimeMs": 91000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 91000,
+      "stopTimeMs": 92000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9938534498214722,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" },
+          { "class": "Tennis ball", "@id": "kg:/m/05ctyq/m/0dl567" },
+          { "class": "Ball game", "@id": "kg:/m/020m7t/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 92000,
+      "stopTimeMs": 93000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 93000,
+      "stopTimeMs": 94000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Ball game", "@id": "kg:/m/020m7t/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 94000,
+      "stopTimeMs": 95000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9194968938827515,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Product", "@id": "kg:/m/01jwgf/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 95000,
+      "stopTimeMs": 96000,
+      "sentiment": {},
+      "object": {
+        "label": "Product",
+        "type": "object",
+        "confidence": 0.9252941012382507,
+        "age": {},
+        "objectCategory": [
+          { "class": "Product", "@id": "kg:/m/01jwgf/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" },
+          { "class": "Door", "@id": "kg:/m/02dgv/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 96000,
+      "stopTimeMs": 97000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9354104399681091,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Product", "@id": "kg:/m/01jwgf/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" },
+          { "class": "Recycling", "@id": "kg:/m/0j6v7/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 97000,
+      "stopTimeMs": 98000,
+      "sentiment": {},
+      "object": {
+        "label": "Product",
+        "type": "object",
+        "confidence": 0.9413959383964539,
+        "age": {},
+        "objectCategory": [
+          { "class": "Product", "@id": "kg:/m/01jwgf/m/0dl567" },
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 98000,
+      "stopTimeMs": 99000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Fun", "@id": "kg:/m/0ds99lh/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" },
+          { "class": "Arm", "@id": "kg:/m/0dzf4/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 99000,
+      "stopTimeMs": 100000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9938534498214722,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis racket", "@id": "kg:/m/0h8my_4/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 100000,
+      "stopTimeMs": 101000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 101000,
+      "stopTimeMs": 102000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9881195425987244,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 102000,
+      "stopTimeMs": 103000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9875091910362244,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis ball", "@id": "kg:/m/05ctyq/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 103000,
+      "stopTimeMs": 104000,
+      "sentiment": {},
+      "object": {
+        "label": "Sport venue",
+        "type": "object",
+        "confidence": 0.9875949025154114,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Real tennis", "@id": "kg:/m/01j2rk/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 104000,
+      "stopTimeMs": 105000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Arm", "@id": "kg:/m/0dzf4/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Fun", "@id": "kg:/m/0ds99lh/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 105000,
+      "stopTimeMs": 106000,
+      "sentiment": {},
+      "object": {
+        "label": "Performance",
+        "type": "object",
+        "confidence": 0.88886958360672,
+        "age": {},
+        "objectCategory": [
+          { "class": "Performance", "@id": "kg:/m/01gq53/m/0dl567" },
+          { "class": "Fun", "@id": "kg:/m/0ds99lh/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Standing", "@id": "kg:/m/02wzbmj/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" },
+          { "class": "Arm", "@id": "kg:/m/0dzf4/m/0dl567" },
+          { "class": "Joint", "@id": "kg:/m/01dvt1/m/0dl567" },
+          { "class": "Leisure", "@id": "kg:/m/04g3r/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 106000,
+      "stopTimeMs": 107000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis racket", "@id": "kg:/m/0h8my_4/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          {
+            "class": "Tennis racket accessory",
+            "@id": "kg:/m/0h8mj3b/m/0dl567"
+          },
+          { "class": "Strings", "@id": "kg:/m/0fhrwd/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 107000,
+      "stopTimeMs": 108000,
+      "sentiment": {},
+      "object": {
+        "label": "Racket",
+        "type": "object",
+        "confidence": 0.9856875538825989,
+        "age": {},
+        "objectCategory": [
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Tennis racket", "@id": "kg:/m/0h8my_4/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          {
+            "class": "Tennis racket accessory",
+            "@id": "kg:/m/0h8mj3b/m/0dl567"
+          },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Strings", "@id": "kg:/m/0fhrwd/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 108000,
+      "stopTimeMs": 109000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Arm", "@id": "kg:/m/0dzf4/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" },
+          { "class": "Fun", "@id": "kg:/m/0ds99lh/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 109000,
+      "stopTimeMs": 110000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9620494246482849,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Transport", "@id": "kg:/m/07bsy/m/0dl567" },
+          { "class": "Asphalt", "@id": "kg:/m/0hr8/m/0dl567" },
+          { "class": "Automotive exterior", "@id": "kg:/m/0h8ls87/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 110000,
+      "stopTimeMs": 111000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9354104399681091,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Asphalt", "@id": "kg:/m/0hr8/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Cylinder", "@id": "kg:/m/03h_4m/m/0dl567" },
+          { "class": "Waste containment", "@id": "kg:/m/0h8n8sw/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 111000,
+      "stopTimeMs": 112000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9194968938827515,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Asphalt", "@id": "kg:/m/0hr8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 112000,
+      "stopTimeMs": 113000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9354104399681091,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Animation", "@id": "kg:/m/0hcr/m/0dl567" },
+          { "class": "Plastic", "@id": "kg:/m/05z87/m/0dl567" },
+          { "class": "Play", "@id": "kg:/m/06wtgq/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 113000,
+      "stopTimeMs": 114000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9194968938827515,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Play", "@id": "kg:/m/06wtgq/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 114000,
+      "stopTimeMs": 115000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9194968938827515,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Transport", "@id": "kg:/m/07bsy/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" },
+          { "class": "Asphalt", "@id": "kg:/m/0hr8/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 115000,
+      "stopTimeMs": 116000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.989280641078949,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Net", "@id": "kg:/m/02qdwbp/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 116000,
+      "stopTimeMs": 117000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis ball", "@id": "kg:/m/05ctyq/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 117000,
+      "stopTimeMs": 118000,
+      "sentiment": {},
+      "object": {
+        "label": "Sports",
+        "type": "object",
+        "confidence": 0.9889867305755615,
+        "age": {},
+        "objectCategory": [
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Leisure", "@id": "kg:/m/04g3r/m/0dl567" },
+          { "class": "Blue", "@id": "kg:/m/01g5v/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Individual sports", "@id": "kg:/m/08t0vy/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 118000,
+      "stopTimeMs": 119000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9487798810005188,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Animation", "@id": "kg:/m/0hcr/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Plastic", "@id": "kg:/m/05z87/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 119000,
+      "stopTimeMs": 120000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.928557813167572,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Plastic", "@id": "kg:/m/05z87/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 120000,
+      "stopTimeMs": 121000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9407991766929626,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Plastic", "@id": "kg:/m/05z87/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 121000,
+      "stopTimeMs": 122000,
+      "sentiment": {},
+      "object": {
+        "label": "Plastic",
+        "type": "object",
+        "confidence": 0.5028172731399536,
+        "age": {},
+        "objectCategory": [
+          { "class": "Plastic", "@id": "kg:/m/05z87/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 122000,
+      "stopTimeMs": 123000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis ball",
+        "type": "object",
+        "confidence": 0.9791373014450073,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis ball", "@id": "kg:/m/05ctyq/m/0dl567" },
+          { "class": "Ball", "@id": "kg:/m/018xm/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" },
+          { "class": "Play", "@id": "kg:/m/06wtgq/m/0dl567" },
+          {
+            "class": "Indoor games and sports",
+            "@id": "kg:/m/0b42l9/m/0dl567"
+          },
+          { "class": "Table", "@id": "kg:/m/04bcr3/m/0dl567" },
+          { "class": "Leisure", "@id": "kg:/m/04g3r/m/0dl567" },
+          { "class": "Games", "@id": "kg:/m/03bt1gh/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Pool", "@id": "kg:/m/04p0xr/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 123000,
+      "stopTimeMs": 124000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis ball",
+        "type": "object",
+        "confidence": 0.9812608361244202,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis ball", "@id": "kg:/m/05ctyq/m/0dl567" },
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Ball", "@id": "kg:/m/018xm/m/0dl567" },
+          { "class": "Sports equipment", "@id": "kg:/m/05y5lj/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Play", "@id": "kg:/m/06wtgq/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 124000,
+      "stopTimeMs": 125000,
+      "sentiment": {},
+      "object": {
+        "label": "Plastic",
+        "type": "object",
+        "confidence": 0.8418104648590088,
+        "age": {},
+        "objectCategory": [
+          { "class": "Plastic", "@id": "kg:/m/05z87/m/0dl567" },
+          { "class": "Table", "@id": "kg:/m/04bcr3/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 125000,
+      "stopTimeMs": 126000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9730715751647949,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Product", "@id": "kg:/m/01jwgf/m/0dl567" },
+          { "class": "Plastic", "@id": "kg:/m/05z87/m/0dl567" },
+          { "class": "Carton", "@id": "kg:/m/033rv2/m/0dl567" },
+          { "class": "Label", "@id": "kg:/m/05c0n6k/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 126000,
+      "stopTimeMs": 127000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9194968938827515,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" },
+          { "class": "Electric generator", "@id": "kg:/m/0l4dz/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 127000,
+      "stopTimeMs": 128000,
+      "sentiment": {},
+      "object": {
+        "label": "Green",
+        "type": "object",
+        "confidence": 0.9407991766929626,
+        "age": {},
+        "objectCategory": [
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Machine", "@id": "kg:/m/0dkw5/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 128000,
+      "stopTimeMs": 129000,
+      "sentiment": {},
+      "object": {
+        "label": "Black",
+        "type": "object",
+        "confidence": 0.9849877953529358,
+        "age": {},
+        "objectCategory": [
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "White", "@id": "kg:/m/083jv/m/0dl567" },
+          { "class": "Sky", "@id": "kg:/m/01bqvp/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Red", "@id": "kg:/m/06fvc/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Brown", "@id": "kg:/m/09q2t/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "Atmosphere", "@id": "kg:/m/01ctsf/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 129000,
+      "stopTimeMs": 130000,
+      "sentiment": {},
+      "object": {
+        "label": "Text",
+        "type": "object",
+        "confidence": 0.988566517829895,
+        "age": {},
+        "objectCategory": [
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "White", "@id": "kg:/m/083jv/m/0dl567" },
+          { "class": "Photograph", "@id": "kg:/m/068jd/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Logo", "@id": "kg:/m/0dwx7/m/0dl567" },
+          { "class": "Sky", "@id": "kg:/m/01bqvp/m/0dl567" },
+          { "class": "Monochrome photography", "@id": "kg:/m/03d49p1/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 130000,
+      "stopTimeMs": 131000,
+      "sentiment": {},
+      "object": {
+        "label": "Text",
+        "type": "object",
+        "confidence": 0.9884117245674133,
+        "age": {},
+        "objectCategory": [
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "White", "@id": "kg:/m/083jv/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "Photograph", "@id": "kg:/m/068jd/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Logo", "@id": "kg:/m/0dwx7/m/0dl567" },
+          { "class": "Sky", "@id": "kg:/m/01bqvp/m/0dl567" },
+          { "class": "Monochrome photography", "@id": "kg:/m/03d49p1/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 131000,
+      "stopTimeMs": 132000,
+      "sentiment": {},
+      "object": {
+        "label": "Tennis",
+        "type": "object",
+        "confidence": 0.9938534498214722,
+        "age": {},
+        "objectCategory": [
+          { "class": "Tennis", "@id": "kg:/m/07bs0/m/0dl567" },
+          { "class": "Sports", "@id": "kg:/m/06ntj/m/0dl567" },
+          { "class": "Tennis court", "@id": "kg:/m/07gcy/m/0dl567" },
+          { "class": "Tennis player", "@id": "kg:/m/02xhr73/m/0dl567" },
+          { "class": "Racquet sport", "@id": "kg:/m/01qhp_/m/0dl567" },
+          { "class": "Racket", "@id": "kg:/m/0dv9c/m/0dl567" },
+          { "class": "Soft tennis", "@id": "kg:/m/09515x/m/0dl567" },
+          { "class": "Rackets", "@id": "kg:/m/05bzyr/m/0dl567" },
+          { "class": "Sport venue", "@id": "kg:/m/0bmgjqz/m/0dl567" },
+          { "class": "Tennis Equipment", "@id": "kg:/m/0bps4xh/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 132000,
+      "stopTimeMs": 133000,
+      "sentiment": {},
+      "object": {
+        "label": "Text",
+        "type": "object",
+        "confidence": 0.9865463376045227,
+        "age": {},
+        "objectCategory": [
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "White", "@id": "kg:/m/083jv/m/0dl567" },
+          { "class": "Sky", "@id": "kg:/m/01bqvp/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Red", "@id": "kg:/m/06fvc/m/0dl567" },
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Brown", "@id": "kg:/m/09q2t/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 133000,
+      "stopTimeMs": 134000,
+      "sentiment": {},
+      "object": {
+        "label": "Text",
+        "type": "object",
+        "confidence": 0.9916344285011292,
+        "age": {},
+        "objectCategory": [
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Line", "@id": "kg:/m/03scnj/m/0dl567" },
+          { "class": "Logo", "@id": "kg:/m/0dwx7/m/0dl567" },
+          { "class": "Sky", "@id": "kg:/m/01bqvp/m/0dl567" },
+          {
+            "class": "Monochrome photography",
+            "@id": "kg:/m/03d49p1/m/0dl567"
+          },
+          { "class": "Organism", "@id": "kg:/m/05nnm/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 134000,
+      "stopTimeMs": 135000,
+      "sentiment": {},
+      "object": {
+        "label": "Text",
+        "type": "object",
+        "confidence": 0.9916344285011292,
+        "age": {},
+        "objectCategory": [
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Line", "@id": "kg:/m/03scnj/m/0dl567" },
+          { "class": "Logo", "@id": "kg:/m/0dwx7/m/0dl567" },
+          { "class": "Sky", "@id": "kg:/m/01bqvp/m/0dl567" },
+          { "class": "Organism", "@id": "kg:/m/05nnm/m/0dl567" },
+          { "class": "Monochrome photography", "@id": "kg:/m/03d49p1/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 135000,
+      "stopTimeMs": 136000,
+      "sentiment": {},
+      "object": {
+        "label": "Text",
+        "type": "object",
+        "confidence": 0.9916344285011292,
+        "age": {},
+        "objectCategory": [
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Line", "@id": "kg:/m/03scnj/m/0dl567" },
+          { "class": "Logo", "@id": "kg:/m/0dwx7/m/0dl567" },
+          { "class": "Sky", "@id": "kg:/m/01bqvp/m/0dl567" },
+          { "class": "Organism", "@id": "kg:/m/05nnm/m/0dl567" },
+          { "class": "Monochrome photography", "@id": "kg:/m/03d49p1/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 136000,
+      "stopTimeMs": 137000,
+      "sentiment": {},
+      "object": {
+        "label": "Text",
+        "type": "object",
+        "confidence": 0.9916344285011292,
+        "age": {},
+        "objectCategory": [
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Sky", "@id": "kg:/m/01bqvp/m/0dl567" },
+          { "class": "Line", "@id": "kg:/m/03scnj/m/0dl567" },
+          { "class": "Logo", "@id": "kg:/m/0dwx7/m/0dl567" },
+          { "class": "Organism", "@id": "kg:/m/05nnm/m/0dl567" },
+          { "class": "Monochrome photography", "@id": "kg:/m/03d49p1/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 137000,
+      "stopTimeMs": 138000,
+      "sentiment": {},
+      "object": {
+        "label": "Text",
+        "type": "object",
+        "confidence": 0.9853972792625427,
+        "age": {},
+        "objectCategory": [
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "White", "@id": "kg:/m/083jv/m/0dl567" },
+          { "class": "Sky", "@id": "kg:/m/01bqvp/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Red", "@id": "kg:/m/06fvc/m/0dl567" },
+          { "class": "Green", "@id": "kg:/m/038hg/m/0dl567" },
+          { "class": "Brown", "@id": "kg:/m/09q2t/m/0dl567" }
+        ]
+      }
+    }
+  ]
+}

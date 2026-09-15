@@ -1,0 +1,3820 @@
+type ScheduledJob {
+  id: ID!
+
+  """
+  Organization ID
+  """
+  organizationId: ID
+
+  """
+  Organization that owns this scheduled job
+  """
+  organization: Organization
+
+  """
+  Name of scheduled job
+  """
+  name: String
+
+  """
+  Description for the scheduledJob
+  """
+  description: String
+
+  """
+  This is the time the scheduled job will start ingesting.
+
+  This is in Source Local Time
+
+  Notes:
+  - If this is in the past, then ingestion will start here and go forward
+  - If this is the future, then ingestion will not start until that time is reached
+  """
+  startDateTime: DateTime
+
+  """
+  The stop time for the scheduledJob.
+
+  This is in Source Local Time
+  """
+  stopDateTime: DateTime
+
+  """
+  deprecated. DO NOT USE.
+  TODO(al): Remove
+  """
+  jobTemplateIds: [ID!]
+
+  """
+  deprecated. DO NOT USE.
+  TODO(al): Remove
+  """
+  jobTemplates(offset: Int = 0, limit: Int = 30): JobTemplateList!
+    @deprecated(
+      reason: "obsolete v2 construct"
+      alternate: "N/A"
+      expirationDate: "2021-12-31"
+      deprecationDate: "2020-05-10"
+    )
+
+  """
+  Retrieve the complete set of job templates associated with this
+  scheduled job, including those that are associated through a job
+  pipeline.
+  """
+  allJobTemplates(offset: Int = 0, limit: Int = 30): JobTemplateList!
+
+  """
+  The ID of the primary source on this scheduled job, if applicable.
+  This is based on the payloads of the tasks that are invoked for
+  this scheduled job.
+  """
+  primarySourceId: ID
+
+  """
+  The primary source. See `primarySourceId` above.
+  """
+  primarySource: Source
+
+  jobs(
+    """
+    Optionally, specify a TDO ID to filter by job target
+    """
+    targetId: ID
+
+    """
+    Optionally, specify a cluster ID to filter by cluster
+    """
+    clusterId: ID
+
+    """
+    Provide sort information. The default is to sort by
+    createdDateTime descending.
+    """
+    orderBy: [JobSortField!]
+
+    """
+    Optionally, specify filters on date/time fields.
+    If a filter is not provided here, the query will
+    default to the past 3 months.
+    """
+    dateTimeFilter: [JobDateTimeFilter!]
+
+    """
+    Provide a list of status strings to filter by status
+    """
+    status: [JobStatusFilter!]
+
+    """
+    Provide an offset to skip to a certain element in the result, for paging.
+    """
+    offset: Int = 0
+
+    """
+    Specify the maximum number of results to included in this response, or page size.
+    """
+    limit: Int = 30
+  ): JobList!
+
+  """
+  Get a list of sources that are used
+  by engine configurations that reference
+  this schedule through the schedule -> job -> task relationship.
+  """
+  sources(offset: Int = 0, limit: Int = 30): SourceList
+
+  """
+  If the scheduled job is recurring, this is the day and times for the recurring schedule
+  """
+  parts: [SchedulePart!]
+
+  """
+  If true, this is active
+  """
+  isActive: Boolean!
+
+  """
+  This is the scheduledJob Run Mode.  Recurring, Continuous, Once or On Demand.
+
+  On Demand will be launched when the API is called
+  """
+  runMode: RunMode!
+
+  details: JSONData
+
+  detailsSchemaId: ID
+
+  createdDateTime: DateTime
+
+  modifiedDateTime: DateTime
+
+  """
+  List of schema-controlled content templates attached
+  to this scheduled job
+  """
+  contentTemplates: [ScheduledJobContentTemplate!]!
+
+  """
+  Permissions granted to other organizations. Only the source owner
+  can view or edit this field.
+  """
+  collaborators: ScheduledJobCollaboratorList!
+
+  """
+  A public scheduled job can be viewed and launched by
+  users from any organization. By default, scheduled jobs are
+  private and can only be viewed or launched by the owning organization
+  and organizations that the owner has explicitly shared them with.
+  Only Veritone administrators can create public scheduled jobs.
+  """
+  isPublic: Boolean
+
+  """
+  The user's permission on this scheduled job
+  """
+  permission: ScheduledJobPermission
+
+  primarySourceTypeId: ID
+
+  primarySourceType: SourceType
+
+  ingestionStatusId: ID
+
+  ingestionStatus: String
+
+  affiliates(offset: Int = 0, limit: Int = 30): ProgramAffiliateList!
+
+  """
+  deprecated. DO NOT USE.x
+  TODO: Remove
+  """
+  jobPipelineIds: [ID!]
+    @deprecated(
+      reason: "obsolete v2 construct"
+      alternate: "N/A"
+      expirationDate: "2021-12-31"
+      deprecationDate: "2020-05-10"
+    )
+
+  """
+  deprecated. DO NOT USE.
+  TODO: Remove
+  """
+  jobPipelines(offset: Int = 0, limit: Int = 30): JobPipelineList!
+    @deprecated(
+      reason: "obsolete v2 construct"
+      alternate: "N/A"
+      expirationDate: "2021-12-31"
+      deprecationDate: "2020-05-10"
+    )
+}
+
+input CreateProgramAffiliate {
+  sourceId: ID!
+  scheduledDay: DayOfWeek!
+  startDateTime: DateTime!
+  stopDateTime: DateTime!
+  startTime: Time!
+  stopTime: Time!
+}
+
+type ProgramAffiliate {
+  sourceId: ID!
+  source: Source
+  scheduledJobId: ID!
+  scheduledJob: ScheduledJob
+  scheduledDay: DayOfWeek
+
+  """
+  The day of week adjusted to source live timezone
+  """
+  scheduledDayLocal: DayOfWeek
+  startDateTime: DateTime
+  stopDateTime: DateTime
+  startTime: Time
+  stopTime: Time
+  status: String
+}
+
+type ProgramAffiliateList implements Page {
+  records: [ProgramAffiliate!]
+  offset: Int!
+  limit: Int!
+  count: Int
+}
+
+input ScheduledJobOrderBy {
+  field: ScheduledJobOrderField!
+  direction: OrderDirection = desc
+}
+
+enum ScheduledJobOrderField {
+  id
+  createdDateTime
+  modifiedDateTime
+  startDateTime
+  stopDateTime
+  name
+  runMode
+  isActive
+}
+
+"""
+A source ACL grants a single organization limited rights to a private source
+"""
+type ScheduledJobCollaborator {
+  """
+  The permission granted. Either `viewer` or `editor`.
+  """
+  permission: ScheduledJobPermission!
+  """
+  Organization ID the source was shared with
+  """
+  organizationId: ID!
+  """
+  The organization the source was shared with
+  """
+  organization: Organization
+}
+
+type ScheduledJobCollaboratorList implements Page {
+  records: [ScheduledJobCollaborator!]!
+  offset: Int!
+  limit: Int!
+  count: Int
+}
+
+enum SetScheduledJobPermission {
+  viewer
+  editor
+  none
+}
+
+input CreateScheduledJobCollaborator {
+  """
+  ID of the organization to share the source with
+  """
+  organizationId: ID!
+  """
+  Permission to grant. Can be `editor` or `viewer`.
+  Set to `none` to revoke permissions for this organization.
+  """
+  permission: SetScheduledJobPermission!
+}
+
+"""
+Permissions or roles on source objects
+"""
+enum ScheduledJobPermission {
+  """
+  A source editor can make updates to some source fields, but cannot
+  delete or share the source.
+  """
+  editor
+  """
+  A viewer can view the source and use it in ingestion jobs,
+  but not make any updates to it.
+  """
+  viewer
+
+  """
+  A source owner has full rights to update and delete the source.
+  """
+  owner
+}
+
+enum RunMode {
+  """
+  This will run 24x7 from start to stop
+  """
+  Continuous
+
+  """
+  This will run on a recurring schedule or interval
+  """
+  Recurring
+
+  """
+  This will run once and then be complete
+  """
+  Once
+
+  """
+  This will run now
+  """
+  Now
+}
+
+enum ScheduleType {
+  Weekly
+  Interval
+}
+
+type SchedulePart {
+  scheduleType: ScheduleType!
+
+  """
+  The day of week adjusted to source live timezone
+  """
+  scheduledDayLocal: DayOfWeek
+  scheduledDay: DayOfWeek
+  startTime: Time
+  stopTime: Time
+  repeatIntervalUnit: IntervalUnit
+  repeatInterval: Int
+  durationSeconds: Int
+}
+
+enum IntervalUnit {
+  Months
+  Weeks
+  Days
+  Hours
+  Minutes
+  Seconds
+}
+
+input CreateRecurringSchedulePart {
+  repeatIntervalUnit: IntervalUnit!
+  repeatInterval: Int!
+  durationSeconds: Int
+
+  """
+  Time of day, required for repeat interval unit in days.
+  """
+  startTime: Time
+}
+
+input CreateWeeklySchedulePart {
+  scheduledDay: DayOfWeek
+  startTime: Time
+  stopTime: Time
+}
+
+"""
+Example to create a scheduleJob:
+mutation createScheduleJob {
+createScheduledJob(input:
+{
+name: "every5Min"
+        runMode:Recurring
+recurringScheduleParts: [
+{
+repeatIntervalUnit: Minutes
+repeatInterval: 5
+}]
+jobTemplates:[
+{
+
+#clusterId: "rt-242c1beb-653a-4299-bb33-2d8fb105d70b"
+            clusterId: "YOUR OWN CLUSTER ID"
+            taskTemplates : [
+{
+engineId: "9e611ad7-2d3b-48f6-a51b-0a1ba40fe255" webstream adapter
+payload: {
+url:"https://s3.amazonaws.com/src-veritone-tests/stage/20190505/0_40_Eric%20Knox%20BWC%20Video_40secs.mp4"
+           }
+},
+{
+engineId: "352556c7-de07-4d55-b33f-74b1cf237f25" playback
+},
+{
+engineId: "8bdb0e3b-ff28-4f6e-a3ba-887bd06e6440" chunk audio
+payload:{
+ffmpegTemplate: "audio"
+            chunkOverlap: 15
+customFFMPEGProperties:{
+chunkSizeInSeconds: "30"
+            }
+}
+},
+{
+#engine to run
+engineId: "c0e55cde-340b-44d7-bb42-2e0d65e98255"
+        }
+]
+}
+]
+}
+)
+{
+id
+}
+}
+"""
+input CreateScheduledJob {
+  jobTemplateIds: [ID!]
+
+  jobTemplates: [CreateJobTemplate!]
+  """
+  Config for existing DAG templates that should be used to generate Job templates
+  """
+  dagTemplates: ScheduledJobDagTemplateConfig
+
+  weeklyScheduleParts: [CreateWeeklySchedulePart!]
+  recurringScheduleParts: [CreateRecurringSchedulePart!]
+
+  name: String!
+  """
+  A detailed description. Defaults to name.
+  """
+  description: String
+  runMode: RunMode = Once
+  """
+  JSON containing metadata details for this scheduled job.
+  If supplied, then the detailsSchemaId must also be set.
+  The supplied data must comply with the schema
+  """
+  details: JSONData
+  """
+  Schema ID for detail metadata on this scheduled job
+  """
+  detailsSchemaId: ID
+
+  isActive: Boolean = true
+
+  startDateTime: DateTime
+  stopDateTime: DateTime
+
+  """
+  Optionally, associate content templates with the new scheduled job
+  """
+  contentTemplates: [CreateScheduledJobContentTemplateWithScheduledJob!]
+
+  """
+  Organization ID. Used only by Veritone platform components.
+  Other clients should not attempt to send this field. Any value sent
+  will be ignored.
+  """
+  organizationId: ID
+
+  """
+  Application ID. Used only by Veritone platform components.
+  Other clients should not attempt to send this field. Any value sent
+  will be ignored.
+  """
+  applicationId: ID
+
+  """
+  Indicates whether or not the scheduled job is publicly accessible.
+  Only Veritone administrators can create public scheduled jobs.
+  Other users will get an error if they attempt to set this value to true.
+  """
+  isPublic: Boolean = false
+
+  affiliates: [CreateProgramAffiliate!]
+
+  jobPipelineIds: [ID!]
+    @deprecated(
+      reason: "obsolete v2 functionality"
+      alternate: "n/a"
+      expirationDate: "2021-12-31"
+      deprecationDate: "2021-07-22"
+    )
+}
+
+input CloneScheduledJob {
+  id: ID!
+
+  """
+  Organization ID. Used only by Veritone platform components.
+  Other clients should not attempt to send this field. Any value sent
+  will be ignored.
+  """
+  organizationId: ID
+}
+
+input RevertScheduledJob {
+  id: ID!
+}
+
+input UpdateScheduledJob {
+  id: ID!
+
+  jobTemplateIds: [ID!]
+
+  """
+  Optionally, specify the job template definitions here.
+  """
+  jobTemplates: [CreateJobTemplate!]
+
+  """
+  Config for existing DAG templates that should be used to generate Job templates
+  """
+  dagTemplates: ScheduledJobDagTemplateConfig
+
+  weeklyScheduleParts: [CreateWeeklySchedulePart!]
+  recurringScheduleParts: [CreateRecurringSchedulePart!]
+
+  name: String
+  """
+  A detailed description. Defaults to name.
+  """
+  description: String
+  runMode: RunMode
+  """
+  JSON containing metadata details for this scheduled job.
+  If the scheduled job does not already have a schema ID
+  associated with, one must be supplied along with this data.
+  In either case, the supplied data must comply with the
+  schema.
+  """
+  details: JSONData
+  """
+  ID of the schema for detail metadata on this scheduled job
+  """
+  detailsSchemaId: ID
+  isActive: Boolean
+
+  startDateTime: DateTime
+  stopDateTime: DateTime
+
+  """
+  Optionally, associate content templates with the new scheduled job
+  """
+  contentTemplates: [CreateScheduledJobContentTemplateWithScheduledJob!]
+
+  """
+  Indicates whether or not the scheduled job is publicly accessible.
+  Only Veritone administrators can create public scheduled jobs.
+  Other users will get an error if they attempt to set this value to true.
+  """
+  isPublic: Boolean = false
+
+  affiliates: [CreateProgramAffiliate!]
+
+  """
+  Indicates whether or not the scheduled job we should upgrade this schedule job
+  to the new data model if an upgrade is possible.
+  """
+  migrateIfLegacy: Boolean = false
+
+  jobPipelineIds: [ID!]
+    @deprecated(
+      reason: "obsolete v2 functionality"
+      alternate: "n/a"
+      expirationDate: "2021-12-31"
+      deprecationDate: "2021-07-22"
+    )
+
+  """
+  The ingestion status enum of scheduled job
+  """
+  ingestionStatus: IngestionStatus
+    @deprecated(
+      reason: "obsolete legacy info"
+      alternate: "contentTemplate"
+      expirationDate: "2021-12-31"
+      deprecationDate: "2021-10-21"
+    )
+  """
+  The ingestion status id of scheduled job
+  """
+  ingestionStatusId: ID
+    @deprecated(
+      reason: "obsolete legacy info"
+      alternate: "contentTemplate"
+      expirationDate: "2021-12-31"
+      deprecationDate: "2021-10-21"
+    )
+}
+
+enum IngestionStatus {
+  RECORD
+  RECORD_AND_TRANSCRIBE
+  INACTIVE
+  METRICS_ONLY
+}
+
+type ScheduledJobList implements Page {
+  records: [ScheduledJob!]!
+  count: Int!
+  offset: Int!
+  limit: Int!
+}
+
+type ClusterSubscription {
+  userId: ID!
+  emailAddress: String!
+  id: ID!
+  createdDateTime: DateTime!
+  modifiedDateTime: DateTime!
+  isActive: Boolean!
+}
+
+type ClusterSubscriptionList implements Page {
+  records: [ClusterSubscription!]!
+  count: Int!
+  offset: Int!
+  limit: Int!
+}
+
+input CreateClusterSubscription {
+  userId: ID!
+  isActive: Boolean = true
+}
+
+input UpdateClusterSubscription {
+  userId: ID!
+  isActive: Boolean
+}
+
+enum ClusterStatus {
+  pending
+  active
+  deploying
+  online
+  paused
+  terminated
+  failure
+}
+
+type Cluster {
+  id: ID!
+  nodes: ClusterNodeList
+  name: String
+  isPublic: Boolean
+  type: ClusterType
+  organizationId: ID
+  allowedEngines: [ID!]
+  containerTag: String
+  paused: Boolean
+  memorySizeBytes: Float
+  storageSizeBytes: Float
+  createdDateTime: DateTime
+  modifiedDateTime: DateTime
+  deletedDateTime: DateTime
+  cachedDateTime: DateTime
+  default: Boolean
+  bypassAllowedEngines: Boolean
+  collaborators(offset: Int = 0, limit: Int = 30): ClusterCollaboratorList
+  """
+  Edge version. Default is 3.
+  """
+  edgeVersion: Int
+
+  """
+  Retrieve jobs
+  """
+  jobs(
+    """
+    Provide an ID to retrieve a single specific job.
+    """
+    id: ID
+
+    """
+    Provide a list of status strings to filter by status
+    """
+    status: [JobStatusFilter!]
+
+    """
+    Provide an offset to skip to a certain element in the result, for paging.
+    """
+    offset: Int = 0
+
+    """
+    Specify the maximum number of results to included in this response, or page size.
+    """
+    limit: Int = 30
+
+    """
+    Provide an application ID to filter jobs for a given application.
+    Defaults to the user's own application.
+    """
+    applicationId: ID
+
+    """
+    Provide a target ID to get the set of jobs running against a particular TDO.
+    """
+    targetId: ID
+
+    """
+    Provide a list of scheduled job IDs to get jobs associated with the scheduled jobs
+    """
+    scheduledJobIds: [ID!]
+
+    """
+    Provide sort information. The default is to sort by
+    createdDateTime descending.
+    """
+    orderBy: [JobSortField!]
+
+    """
+    Filter by date/time field. If a filter is not provided, a default of
+    `createdDateTime` between now and 1 day ago will be applied.
+    """
+    dateTimeFilter: [JobDateTimeFilter!]
+
+    """
+    Provide list of application IDs to filter jobs.
+    Defaults to the user's own application.
+    """
+    applicationIds: [ID]
+  ): JobList! @scopes(scopes: ["job.read"]) @limit(cost: 3)
+  tasks(
+    """
+    Specify a list of job status strings to filter by status
+    """
+    status: [TaskStatus!]
+
+    """
+    Provide an offset to skip to a certain element in the result, for paging.
+    """
+    offset: Int = 0
+
+    """
+    Maximum number of results to retrieve in this query
+    """
+    limit: Int = 30
+
+    """
+    Specify an ID to retrieve a single specific task
+    """
+    id: ID
+
+    """
+    If a filter is not provided, a default of `createdDateTime` between
+    now and 1 day ago will be applied.
+    """
+    dateTimeFilter: [TaskDateTimeFilter!]
+  ): TaskList!
+
+  """
+  Base url controller
+  """
+  controllerUrl: String
+
+  """
+  Retrieve current subscriptions for events on this cluster.
+  """
+  subscriptions: ClusterSubscriptionList!
+
+  """
+  Retrieve tags for this cluster
+  """
+  tags: [String!]
+
+  """
+  Retrieve the cluster's current status
+  """
+  status: ClusterStatus!
+
+  """
+  Cluster configuration overrides
+  """
+  clusterConfig: JSONData
+
+  """
+  State information about the cluster, conforming to a stable schema.
+  """
+  state: JSONData
+
+  """
+  Date and time at which the state was last updated the system.
+  """
+  stateLastUpdatedDateTime: DateTime
+
+  """
+  media storage option
+  """
+  mediaStorage: MediaStorageOption!
+
+  """
+  media storage path -- applies to edge only
+  """
+  mediaStoragePath: String
+
+  """
+  ID of the management node. Applies to portable/edge clusters only.
+  """
+  managementNodeID: ID
+
+  """
+  Optionally, specify a time at which the edge cluster should
+  be restarted daily. Applies only to edge clusters.
+  """
+  restartTimeUTC: Time
+
+  """
+  Retrieve the cluster's service token
+  """
+  serviceToken: String
+
+  """
+  Cluster deployment process status
+  """
+  targetStatus: ClusterStatus
+
+  """
+  Cluster is a group or not
+  """
+  isGroup: Boolean
+
+  """
+  The GroupId that includes this cluster
+  """
+  clusterGroupId: ID
+
+  """
+  Retrieve clusters in group
+  """
+  clusters(
+    """
+    Provide an offset to skip to a certain element in the result, for paging.
+    """
+    offset: Int = 0
+
+    """
+    Maximum number of results to retrieve in this query
+    """
+    limit: Int = 30
+  ): ClusterList!
+
+  """
+  ID for the core that the cluster is pulling jobs from
+  """
+  coreId: String
+}
+
+enum MediaStorageOption {
+  edge
+  core
+}
+
+enum ClusterType {
+  """
+  Amazon Machine Image
+  """
+  ami
+
+  """
+  Real-Time
+  """
+  RT
+
+  """
+  On Premise
+  """
+  OnPrem
+}
+
+"""
+This API creates an edge cluster for this core
+
+Example:
+mutation createCluster {
+createCluster (input: {
+name: "YOUR_CLUSTER_NAME",
+allowedEngines: ["all"],
+dockerCredentials: {},
+type: RT,
+containerTag: "YOUR_CONTAINER_TAG",
+paused: false,
+memorySize: "20gb",
+storageSize: "10gb",
+bypassAllowedEngines: true,
+collaborators: [],
+subscriptions: [],
+tags: ["aiware-agent"],
+status: active,
+mediaStorage: core,
+mediaStoragePath: "",
+serviceToken: "fake-token",
+edgeVersion: 3,
+}
+) {
+id
+}
+}
+"""
+input CreateCluster {
+  name: String!
+  allowedEngines: [String]!
+  dockerCredentials: JSONData!
+  type: ClusterType
+  edgeVersion: Int
+  containerTag: String
+  paused: Boolean
+
+  """
+  Specify memory size in raw bytes or in human-readable
+  format such as 8gb, 1024mb, etc.
+  """
+  memorySize: String
+
+  """
+  Specify storage size in raw bytes or in human-readable
+  format such as 8gb, 1024mb, etc.
+  """
+  storageSize: String
+  bypassAllowedEngines: Boolean
+
+  """
+  Permissions granted to other organizations. Only the cluster owner
+  can view or edit this field.
+  """
+  collaborators: [CreateClusterCollaborator!]
+
+  """
+  Set subscriptions on the cluster.
+  """
+  subscriptions: [CreateClusterSubscription]
+
+  """
+  Tags for cluster
+  """
+  tags: [String]
+
+  """
+  Status for cluster
+  """
+  status: ClusterStatus
+
+  """
+  Update the cluster config
+  """
+  clusterConfig: JSONData
+
+  """
+  media storage type (edge or core)
+  """
+  mediaStorage: MediaStorageOption = core
+
+  """
+  Media storage path. Optional -- use only for edge.
+  """
+  mediaStoragePath: String
+
+  """
+  Optionally, specify a time at which the edge cluster should
+  be restarted daily. Applies only to edge clusters.
+  """
+  restartTimeUTC: Time
+
+  """
+  Optionally, specify an api-token for cluster
+  """
+  serviceToken: String
+
+  """
+  ID of the organization. Only Veritone platform components can set this value.
+  """
+  organizationId: ID
+
+  """
+  Indicates if this cluster represents a cluster group or an individual cluster.
+  Default is false - legacy normal cluster
+  """
+  isGroup: Boolean = false
+
+  """
+  ID of the cluster group which this cluster belongs
+  """
+  clusterGroupId: ID
+
+  """
+  ID of the core that the cluster is pulling jobs from
+  """
+  coreId: String
+}
+
+input UpdateCluster {
+  id: ID!
+  name: String
+  allowedEngines: [String]
+  dockerCredentials: JSONData
+  edgeVersion: Int
+  containerTag: String
+  memorySize: Int
+  storageSize: Int
+  bypassAllowedEngines: Boolean
+
+  """
+  Permissions granted to other organizations. Only the cluster owner
+  can view or edit this field.
+  """
+  collaborators: [CreateClusterCollaborator!]
+
+  """
+  Tags for cluster
+  """
+  tags: [String]
+  status: ClusterStatus
+
+  """
+  Update the cluster config
+  """
+  clusterConfig: JSONData
+
+  """
+  Media storage path. Optional -- use only for edge.
+  """
+  mediaStoragePath: String
+
+  """
+  Designate a management node ID. Used only for edge/portable clusters.
+  Must be the ID of an existing node in the cluster.
+  """
+  managementNodeID: ID
+
+  """
+  Optionally, specify a time at which the edge cluster should
+  be restarted daily. Applies only to edge clusters.
+  """
+  restartTimeUTC: Time
+
+  """
+  Update subscriptions on the cluster.
+  """
+  subscriptions: [UpdateClusterSubscription]
+
+  """
+  Optionally, specify an api-token for cluster
+  """
+  serviceToken: String
+
+  """
+  Update base URL controller
+  """
+  controllerUrl: String
+
+  """
+  ID of the core that the cluster is pulling jobs from
+  """
+  coreId: String
+
+  """
+  The ID of the organization, specify default cluster for an organization
+  """
+  setAsDefaultForOrganization: ID
+  """
+  Specify default cluster per environment
+  """
+  setAsEnvironmentDefaultCluster: Boolean
+  """
+  List of business units, specify default cluster for each unit in the list
+  """
+  setAsDefaultForBUs: [String!]
+}
+
+"""
+A source ACL grants a single organization limited rights to a private clusters
+"""
+type ClusterCollaborator {
+  """
+  The permission granted.
+  """
+  permission: ClusterPermission!
+
+  """
+  Organization ID the cluster was shared with
+  """
+  organizationId: ID!
+
+  """
+  The organization the cluster was shared with
+  """
+  organization: Organization
+}
+
+type ClusterCollaboratorList implements Page {
+  records: [ClusterCollaborator!]!
+  offset: Int!
+  limit: Int!
+  count: Int
+}
+
+enum ClusterPermission {
+  owner
+  viewer
+}
+
+enum SetClusterPermission {
+  viewer
+  none
+}
+
+input CreateClusterCollaborator {
+  """
+  ID of the organization to share
+  """
+  organizationId: ID!
+
+  """
+  Permission to grant cluster. Can be `viewer`.
+  Set to `none` to revoke permissions for this organization.
+  """
+  permission: SetClusterPermission!
+}
+
+input PauseCluster {
+  id: ID!
+}
+
+input UnpauseCluster {
+  id: ID!
+}
+
+type ClusterList implements Page {
+  records: [Cluster!]!
+  count: Int!
+  offset: Int!
+  limit: Int!
+}
+
+type ClusterNode {
+  id: ID!
+  clusterId: ID
+  cluster: Cluster
+  name: String
+  metrics: JSONData
+
+  """
+  Cluster configuration overrides
+  """
+  nodeConfig: JSONData
+  paused: Boolean
+  createdDateTime: DateTime
+  modifiedDateTime: DateTime
+  status: ClusterNodeStatus
+  role: String
+}
+
+enum ClusterNodeStatus {
+  anonymous
+  running
+  offline
+  decomissioned
+  paused
+}
+
+input CreateClusterNode {
+  name: String
+  clusterId: ID
+  metrics: JSONData!
+  containerTag: String
+  offlineBrowsing: Boolean
+  storagePresent: Boolean
+
+  """
+  Update the cluster node config
+  """
+  nodeConfig: JSONData
+  role: String
+}
+
+input UpdateClusterNode {
+  id: ID!
+  name: String
+  """
+  Update the cluster node config
+  """
+  nodeConfig: JSONData
+  metrics: JSONData
+}
+
+type ClusterNodeList implements Page {
+  records: [ClusterNode]
+  count: Int!
+  offset: Int!
+  limit: Int!
+}
+
+type EngineConfiguration {
+  id: ID!
+  credentials: [ExternalCredential!]
+  sourceId: ID
+  source: Source
+}
+
+input CreateEngineConfiguration {
+  sourceId: ID!
+  credentialIds: [ID!]
+}
+
+input UpdateEngineConfiguration {
+  id: ID!
+  credentialIds: [ID!]
+}
+
+type EngineConfigurationList implements Page {
+  records: [EngineConfiguration!]!
+  count: Int!
+  offset: Int!
+  limit: Int!
+}
+
+type ExternalCredential {
+  id: ID!
+  sourceTypeId: ID
+  sourceType: SourceType
+  data: StructuredData
+  dataId: ID
+}
+
+input CreateExternalCredential {
+  sourceTypeId: ID
+  dataId: ID
+}
+
+input UpdateExternalCredential {
+  id: ID!
+  dataId: ID
+}
+
+type ExternalCredentialList implements Page {
+  records: [ExternalCredential!]!
+  count: Int!
+  offset: Int!
+  limit: Int!
+}
+
+"""
+A source represents a source of data and is used by adapters to ingest
+data into the platform for use by an engine workflow.
+"""
+type Source {
+  """
+  Unique ID of this source
+  """
+  id: ID!
+
+  """
+  ID of the source type for this source.
+  """
+  sourceTypeId: ID!
+
+  """
+  The source type for this source
+  """
+  sourceType: SourceType
+
+  """
+  A name for this source
+  """
+  name: String!
+
+  """
+  Metadata associated with this source. The schema for this data is
+  specific to the source type and controlled by a schema.
+  """
+  details: JSONData
+
+  """
+  Indicates whether this source is public and available to all organizations
+  or restricted to the organization that owns id.
+  """
+  isPublic: Boolean!
+
+  """
+  ID of the organization that owns this source
+  """
+  organizationId: ID!
+
+  """
+  The organization that owns this source
+  """
+  organization: Organization
+
+  """
+  Date and time this source was created
+  """
+  createdDateTime: DateTime
+
+  """
+  Date and time this source was last modified
+  """
+  modifiedDateTime: DateTime
+
+  """
+  An optional thumbnail image URL for the source
+  """
+  thumbnailUrl: String
+
+  contentTemplates: [SourceContentTemplate!]!
+
+  """
+  Id of a published data registry schema
+  """
+  correlationSchemaId: ID
+
+  """
+  Id of a structured data object for the correlationSchemaId
+  """
+  correlationSDOId: ID
+
+  """
+  Corresponding SDO created for the source
+  """
+  sdo: StructuredData
+
+  """
+  permission the currently authenticated principal has on this source.
+  """
+  permission: SourcePermission!
+
+  """
+  Permissions granted to other organizations. Only the source owner
+  can view or edit this field.
+  """
+  collaborators(
+    orderBy: SourceCollaboratorOrderBy = organizationId
+    orderDirection: OrderDirection = asc
+  ): SourceCollaboratorList!
+
+  """
+  Current state for the source object. This is controlled by
+  the adapters that use the source and should not be set by
+  other clients.
+  """
+  state: JSONData
+
+  """
+  Get signed url from the provided url or object name.
+  The storage type, bucket, region, default ttl and credentials are set in the storageConfig on the source object.
+  When url is passed in and the bucket/region or storage type differs from the source storageConfig error will be thrown.
+  """
+  getStorageSignedUrl(input: GetStorageSignedUrlInput!): SignedUrlInfo
+
+  """
+  The ID of the user or token that originally created the source
+  """
+  createdBy: ID
+
+  """
+  The ID of the user or token that last modified the source
+  """
+  updatedBy: ID
+
+  """
+  The ID of the user or token that is the owner of the source
+  """
+  ownedBy: ID
+}
+
+enum SourceCollaboratorOrderBy {
+  organizationId
+  permission
+}
+
+"""
+A source ACL grants a single organization limited rights to a private source
+"""
+type SourceCollaborator {
+  """
+  The permission granted. Either `viewer` or `editor`.
+  """
+  permission: SourcePermission!
+
+  """
+  Organization ID the source was shared with
+  """
+  organizationId: ID!
+
+  """
+  The organization the source was shared with
+  """
+  organization: Organization
+}
+
+type SourceCollaboratorList implements Page {
+  records: [SourceCollaborator!]!
+  offset: Int!
+  limit: Int!
+  count: Int
+}
+
+enum SetSourcePermission {
+  viewer
+  editor
+  none
+}
+
+input CreateSourceCollaborator {
+  """
+  ID of the organization to share the source with
+  """
+  organizationId: ID!
+
+  """
+  Permission to grant. Can be `editor` or `viewer`.
+  Set to `none` to revoke permissions for this organization.
+  """
+  permission: SetSourcePermission!
+}
+
+"""
+Permissions or roles on source objects
+"""
+enum SourcePermission {
+  """
+  A source editor can make updates to some source fields, but cannot
+  delete or share the source.
+  """
+  editor
+
+  """
+  A viewer can view the source and use it in ingestion jobs,
+  but not make any updates to it.
+  """
+  viewer
+
+  """
+  A source owner has full rights to update and delete the source.
+  """
+  owner
+}
+
+"""
+Data used to create a new source
+"""
+input CreateSource {
+  """
+  The source type ID
+  """
+  sourceTypeId: ID!
+
+  """
+  The human-readable source name. The value does not have to be unique,
+  but it is strongly recommended to use a name that is unique within
+  the owning organization.
+  """
+  name: String!
+
+  """
+  Indicates whether or not the source is public. Default is false (private
+  to owner organization).
+  """
+  isPublic: Boolean = false
+
+  """
+  Additional metadata to associate with the source. This data may be
+  validated against a schema associated with the source type.
+  """
+  details: JSONData
+
+  """
+  Optional thumbnail image URL for the source
+  """
+  thumbnailUrl: String
+
+  """
+  Optionally, associate content templates with the new source
+  """
+  contentTemplates: [CreateSourceContentTemplateWithSource!]
+
+  """
+  Optionally associate a schema for correlation.
+  Required when correlationSDOId is specified.
+  """
+  correlationSchemaId: ID
+
+  """
+  Optionally associate a structured data object of the specified correlationSchemaId.
+  Required when correlationSchemaId is specified.
+  """
+  correlationSDOId: ID
+
+  """
+  Add or modify collaborators on the source.
+  """
+  collaborators: [CreateSourceCollaborator!]
+
+  """
+  Optionally, set an initial state for the source.
+  This is typically not required.
+  """
+  state: JSONData
+
+  """
+  Storage configuration. This will be used for granting access to storage read/write URIs for the source
+  """
+  storageConfig: StorageConfigInput
+
+  """
+  Optionally, specify the user ID that should be assigned as the owner of the source.
+  This is typically not required. By default, this is set to the user who created the source.
+  """
+  ownedBy: ID
+}
+
+"""
+Data used to update an existing source
+"""
+input UpdateSource {
+  """
+  The ID of the source to update
+  """
+  id: ID!
+
+  """
+  Update the name field
+  """
+  name: String
+
+  """
+  Update the isPublic field
+  """
+  isPublic: Boolean
+
+  """
+  Additional metadata to associate with the source. This data may be
+  validated against a schema associated with the source type.
+  """
+  details: JSONData
+
+  """
+  Optional thumbnail image URL for the source
+  """
+  thumbnailUrl: String
+
+  """
+  Optionally, associate content templates with the new source
+  """
+  contentTemplates: [CreateSourceContentTemplateWithSource!]
+
+  """
+  Optionally associate a schema for correlation.
+  Required when correlationSDOId is specified.
+  """
+  correlationSchemaId: ID
+
+  """
+  Optionally associate a structured data object of the specified correlationSchemaId.
+  Required when correlationSchemaId is specified.
+  """
+  correlationSDOId: ID
+
+  """
+  Add or modify collaborators on the source. Permissions for organizations
+  not mentioned in this list will _not_ be modified. To revoke permissions
+  for an organization, use the `none` permission.
+  """
+  collaborators: [CreateSourceCollaborator!]
+
+  """
+  Set current state for the source. This is used only by the adapters
+  that use the source and should not be set by other clients.
+  """
+  state: JSONData
+    @scopes(
+      scopes: ["task_type:internal", "superadmin", "task_type:org_system"]
+      require: Any
+    )
+
+  """
+  Storage configuration. This will be used for granting access to storage read/write URIs for the source
+  """
+  storageConfig: StorageConfigInput
+
+  """
+  Optional field to set a new owner of the source by user ID.
+  """
+  ownedBy: ID
+}
+
+type SourceList implements Page {
+  records: [Source!]!
+  count: Int!
+  offset: Int!
+  limit: Int!
+}
+
+type SourceContentTemplate {
+  id: ID!
+  sourceId: ID!
+  sdoId: ID!
+  sdo: StructuredData
+  schemaId: ID!
+  data: JSONData
+  createdDateTime: DateTime
+  modifiedDateTime: DateTime
+}
+
+input CreateSourceContentTemplate {
+  """
+  Specify the source ID that this content template applies to
+  """
+  sourceId: ID!
+
+  """
+  Supply the ID of the data registry that contains the schema
+  for the content template.
+  """
+  schemaId: ID!
+
+  """
+  To associate an existing structured data object (SDO) to the
+  source, provide the SDO ID. Either this field or data must be supplied.
+  """
+  sdoId: ID
+
+  """
+  To create a new structured data object, supply this field with
+  JSON to save in the SDO. The JSON must comply with the schema
+  defined in data registry.
+  """
+  data: JSONData
+}
+
+input CreateSourceContentTemplateWithSource {
+  """
+  Supply the ID of the data registry that contains the schema
+  for the content template.
+  """
+  schemaId: ID!
+
+  """
+  To associate an existing structured data object (SDO) to the
+  source, provide the SDO ID. Either this field or data must be supplied.
+  """
+  sdoId: ID
+
+  """
+  To create a new structured data object, supply this field with
+  JSON to save in the SDO. The JSON must comply with the schema
+  defined in data registry.
+  """
+  data: JSONData
+}
+
+type ScheduledJobContentTemplate {
+  id: ID!
+  scheduledJobId: ID!
+  sdoId: ID!
+  sdo: StructuredData
+  schemaId: ID!
+  data: JSONData
+  createdDateTime: DateTime
+  modifiedDateTime: DateTime
+}
+
+input CreateScheduledJobContentTemplate {
+  """
+  Specify the scheduled job ID that this content template applies to
+  """
+  scheduledJobId: ID!
+
+  """
+  Supply the ID of the data registry that contains the schema
+  for the content template.
+  """
+  schemaId: ID!
+
+  """
+  To associate an existing structured data object (SDO) to the
+  source, provide the SDO ID. Either this field or data must be supplied.
+  """
+  sdoId: ID
+
+  """
+  To create a new structured data object, supply this field with
+  JSON to save in the SDO. The JSON must comply with the schema
+  defined in data registry.
+  """
+  data: JSONData
+}
+
+input CreateScheduledJobContentTemplateWithScheduledJob {
+  """
+  Supply the ID of the data registry that contains the schema
+  for the content template.
+  """
+  schemaId: ID!
+
+  """
+  To associate an existing structured data object (SDO) to the
+  source, provide the SDO ID. Either this field or data must be supplied.
+  """
+  sdoId: ID
+
+  """
+  To create a new structured data object, supply this field with
+  JSON to save in the SDO. The JSON must comply with the schema
+  defined in data registry.
+  """
+  data: JSONData
+}
+
+"""
+A source type represents a category of sources that share common
+attributes, such as "TV station" or "Real-time camera feed".
+"""
+type SourceType {
+  """
+  Unique ID of this source type
+  """
+  id: ID!
+
+  """
+  A name for this source type
+  """
+  name: String!
+  organizationId: ID
+  isPublic: Boolean
+
+  """
+  The ID of an optional schema for instances (sources) of
+  this source type
+  """
+  sourceSchemaId: ID
+
+  """
+  The icon representing the type of source
+  """
+  iconClass: String
+
+  """
+  The schema object used to validate details for instances (sources)
+  of this source type
+  """
+  sourceSchema: Schema
+
+  """
+  The ID of an optional schema for credentials associated with
+  sources of this type.
+  """
+  credentialSchemaId: ID
+
+  """
+  The schema used to validate credentials associated with sources
+  of this type.
+  """
+  credentialSchema: Schema
+
+  """
+  Date and time this object was created.
+  """
+  createdDateTime: DateTime
+
+  """
+  Date and time this object was last modified
+  """
+  modifiedDateTime: DateTime
+
+  credentialType: CredentialType
+
+  """
+  Indicates whether or not the source is "live", such as a camera feed
+  """
+  isLive: Boolean
+
+  """
+  Indicates whether the source requires a scan job pipeline
+  """
+  requiresScanPipeline: Boolean
+
+  supportedRunModes: [RunMode!]!
+
+  """
+  The source type category ID for this source type.
+  Used primarily by Veritone platform components.
+  """
+  categoryId: ID!
+
+  """
+  The source type category for this source type.
+  Used primarily by Veritone platform components.
+  """
+  category: SourceTypeCategory!
+
+  """
+  List of source formats applicable to this source type.
+  Only applies to certain source types; many will have an
+  empty list.
+  """
+  sourceFormats: [String!]!
+
+  """
+  List of program formats applicable to this source type.
+  Only applies to certain source types; many will have an
+  empty list.
+  """
+  programFormats: [String!]!
+
+  """
+  Sources created under this source type
+  """
+  sources(
+    """
+    Optionally, provide a list of IDs to retrieve sources by ID
+    """
+    id: [ID!]
+
+    """
+    Provide a name or partial name value to filter by name.
+    The `nameMatch` parameter can be used to determine the string
+    match strategy used in the filter. Default is "starts with".
+    Note that all matching is case-insensitive.
+    """
+    name: String
+
+    """
+    String matching strategy. Default is "starts with".
+    """
+    nameMatch: StringMatch = startsWith
+
+    """
+    Provide an offset to skip to a certain element in the result, for paging.
+    """
+    offset: Int = 0
+
+    """
+    Specify maximum number of results to retrieve in this result. Page size.
+    """
+    limit: Int = 30
+
+    """
+    Set this flag to true or false to return only sources that do or do
+    not have content templates associated with them.
+    The default is neither (do not filter on the presence of content templates).
+    """
+    hasContentTemplates: Boolean
+
+    """
+    Set this flag to true to include public sources or false to include
+    only sources owned by the
+    user's org, not public sources.
+    Public sources owned by the caller's org will always be returned.
+    """
+    includePublic: Boolean = true
+
+    """
+    #Provide a correlation schama ID to filter for sources that correlate using specified schema.
+    """
+    correlationSchemaId: ID
+
+    """
+    Provide optional sort information. If not provided, a default sort
+    by createdDateTime descending will be applied.
+    """
+    orderBy: [SourceSortField!]
+  ): SourceList!
+}
+
+"""
+Source type categories are managed by Veritone.
+"""
+type SourceTypeCategory {
+  id: ID!
+  name: String!
+}
+
+type SourceTypeCategoryList implements Page {
+  records: [SourceTypeCategory!]!
+  limit: Int!
+  offset: Int!
+  count: Int
+}
+
+enum CredentialType {
+  None
+  Any
+  APIKey
+  Username
+}
+
+input CreateSourceType {
+  sourceSchemaId: ID
+  credentialSchemaId: ID
+  name: String!
+  details: JSONData
+  credentialType: CredentialType = None
+
+  """
+  Indicates that the source type is publicly accessible.
+  If false, is usable only by the owner organization.
+  """
+  isPublic: Boolean = False
+
+  """
+  Indicates whether or not the source type is "live", such
+  as a camera feed
+  """
+  isLive: Boolean = False
+
+  """
+  Indicates whether or not the source type requires
+  scan pipeline jobs
+  """
+  requiresScanPipeline: Boolean = false
+
+  """
+  Source type category ID
+  """
+  categoryId: ID!
+}
+
+input UpdateSourceType {
+  id: ID!
+  name: String
+  sourceSchemaId: ID
+  credentialSchemaId: ID
+  details: JSONData
+  credentialType: CredentialType
+
+  """
+  Indicates that the source type is publicly accessible.
+  If false, is usable only by the owner organization.
+  """
+  isPublic: Boolean
+
+  """
+  Indicates whether or not the source type is "live", such
+  as a camera feed
+  """
+  isLive: Boolean = False
+
+  """
+  Indicates whether or not the source type requires
+  scan pipeline jobs
+  """
+  requiresScanPipeline: Boolean = false
+
+  """
+  Source type category ID
+  """
+  categoryId: ID
+}
+
+type SourceTypeList implements Page {
+  records: [SourceType!]!
+  count: Int!
+  offset: Int!
+  limit: Int!
+}
+
+type ExecutionLocation {
+  id: ID!
+  clusterId: ID!
+  cluster: Cluster!
+  nodeId: ID
+  node: ClusterNode
+  data: JSONData!
+}
+
+type CreateExecutionLocation {
+  clusterId: ID!
+  nodeId: ID
+}
+
+type UpdateExecutionLocation {
+  id: ID!
+  clusterId: ID!
+  nodeId: ID
+}
+
+type ExecutionLocationList implements Page {
+  records: [ExecutionLocation!]!
+  count: Int!
+  offset: Int!
+  limit: Int!
+}
+
+"""
+A job template is a reusable template for job creation.
+"""
+type JobTemplate {
+  """
+  The object ID
+  """
+  id: ID!
+
+  """
+  Date and time this job template was created
+  """
+  createdDateTime: DateTime
+
+  """
+  Date and time this job template was last modified
+  """
+  modifiedDateTime: DateTime
+
+  """
+  Task templates associated with this job template
+  """
+  taskTemplates(
+    engineType: [EngineTypeFilter!]
+    engineId: ID
+    offset: Int = 0
+    limit: Int = 30
+  ): TaskTemplateList!
+
+  """
+  Job pipeline stage. Defined only if this template belongs to a job pipeline.
+  """
+  jobPipelineStage: Int
+
+  """
+  Target execution cluster ID
+  """
+  clusterId: ID
+  skipDecider: Boolean
+
+  """
+  Optional configuration data for jobs launched from the template.
+  A schema may be enforced over the data stored here.
+  Used for top-level information about the job that does not fit on
+  a specific task template.
+  """
+  jobConfig: JSONData
+
+  routes: [Route]
+
+  """
+  This contains a list of URIs engine toolkit will send completed chunks.
+  This is for all tasks in job.
+  """
+  notificationUris: [String]
+
+  """
+  deprecated. DO NOT USE.
+  TODO: Remove
+  """
+  jobPipelineId: ID
+    @deprecated(
+      reason: "obsolete v2 functionality"
+      alternate: "n/a"
+      expirationDate: "2021-12-31"
+      deprecationDate: "2021-07-22"
+    )
+  """
+  deprecated. DO NOT USE.
+  TODO: Remove
+  """
+  jobPipeline: JobPipeline
+    @deprecated(
+      reason: "obsolete v2 functionality"
+      alternate: "n/a"
+      expirationDate: "2021-12-31"
+      deprecationDate: "2021-07-22"
+    )
+}
+
+input CreateJobTemplate {
+  """
+  The set of task template definitions for this job template.
+  """
+  taskTemplates: [CreateTaskTemplate!]
+
+  """
+  Used only by Veritone platform components.
+  """
+  skipDecider: Boolean
+
+  """
+  Optional job-level configuration. Typically used only by Veritone
+  platform components.
+  """
+  jobConfig: JSONData
+
+  """
+  Application ID. Used only by Veritone platform components.
+  Other clients should not attempt to send this field. Any value sent
+  will be ignored.
+  """
+  applicationId: ID
+  clusterId: ID
+
+  routes: [CreateRoute]
+
+  """
+  This contains a list of URIs engine toolkit will send completed chunks.
+  This is for all tasks in job.
+  """
+  notificationUris: [String]
+
+  """
+  deprecated. DO NOT USE.
+  TODO: Remove
+  """
+  jobPipelineId: ID
+    @deprecated(
+      reason: "obsolete v2 functionality"
+      alternate: "n/a"
+      expirationDate: "2021-12-31"
+      deprecationDate: "2021-07-22"
+    )
+  """
+  deprecated. DO NOT USE.
+  TODO: Remove
+  """
+  jobPipelineStage: Int
+    @deprecated(
+      reason: "obsolete v2 functionality"
+      alternate: "n/a"
+      expirationDate: "2021-12-31"
+      deprecationDate: "2021-07-22"
+    )
+}
+
+"""
+deprecated. DO NOT USE.
+TODO: Remove
+"""
+type JobPipeline {
+  id: ID!
+  jobTemplates: JobTemplateList
+  organizationId: ID
+  organization: Organization
+  isPublic: Boolean!
+}
+
+"""
+deprecated. DO NOT USE.
+TODO: Remove
+"""
+type JobPipelineList implements Page {
+  records: [JobPipeline!]!
+  count: Int!
+  offset: Int!
+  limit: Int!
+}
+
+input UpdateJobTemplate {
+  id: ID!
+
+  jobPipelineStage: Int
+    @deprecated(
+      reason: "obsolete v2 functionality"
+      alternate: "n/a"
+      expirationDate: "2021-12-31"
+      deprecationDate: "2021-07-22"
+    )
+
+  skipDecider: Boolean
+  jobConfig: JSONData
+
+  """
+  This contains a list of URIs engine toolkit will send completed chunks.
+  """
+  notificationUris: [String]
+}
+
+type JobTemplateList implements Page {
+  records: [JobTemplate!]!
+  count: Int!
+  offset: Int!
+  limit: Int!
+}
+
+type TaskTemplate {
+  id: ID!
+  engineId: ID
+  engine: Engine
+  engineConfigId: ID
+  engineConfig: EngineConfiguration
+  executionLocationId: ID
+  executionLocation: ExecutionLocation
+  jobTemplateId: ID
+  jobTemplate: JobTemplate
+  payload: JSONData
+  payloadString: String
+
+  """
+  Execution preferences for the current task
+  """
+  executionPreferences: ExecutionPreferences
+
+  """
+  IO folders for the task.
+  """
+  ioFolders: [IoFolder]
+
+  parentTaskId: ID
+
+  parentTask: Task
+  childTaskIds: [ID!]!
+  childTasks: TaskTemplateList!
+
+  """
+  This contains a list of URIs engine toolkit will send completed chunks.
+  """
+  notificationUris: [String]
+}
+
+input CreateTaskTemplate {
+  engineId: ID
+  engineConfigId: ID
+  executionLocationId: ID
+  jobTemplateId: ID
+  payload: JSONData
+  payloadString: String
+  parentTaskId: ID
+
+  """
+  Execution preferences for the current task
+  """
+  executionPreferences: CreateExecutionPreferences
+
+  """
+  IO folders for the task.
+  """
+  ioFolders: [CreateIoFolder]
+
+  """
+  This contains a list of URIs engine toolkit will send completed chunks.
+  """
+  notificationUris: [String]
+}
+
+input UpdateTaskTemplate {
+  id: ID!
+  payload: JSONData
+  payloadString: String
+  parentTaskId: ID
+
+  """
+  This contains a list of URIs engine toolkit will send completed chunks.
+  """
+  notificationUris: [String]
+}
+
+type TaskTemplateList implements Page {
+  records: [TaskTemplate!]!
+  count: Int!
+  offset: Int!
+  limit: Int!
+}
+
+extend type Task {
+  engineConfiguration: EngineConfiguration
+  engineConfigurationId: ID
+  executionLocation: ExecutionLocation
+  executionLocationId: ID
+  templateId: ID
+  template: TaskTemplate
+}
+
+extend type Job {
+  """
+  ID of the template from which this job was created, if applicable.
+  """
+  templateId: ID
+
+  """
+  The template which this job was created, if applicable.
+  """
+  template: JobTemplate
+
+  """
+  ID of the scheduled job under which this job was created, if applicable.
+  """
+  scheduledJobId: ID
+
+  """
+  The scheduled job under which this job was created, if applicable.
+  """
+  scheduledJob: ScheduledJob
+  """
+  DAG Template by job
+  """
+  dagTemplate: DagTemplate
+}
+
+extend type Watchlist {
+  """
+  Contains the list of all source type IDs
+  associated with this watchlist, including
+  those for sources on schedules.
+  """
+  combinedSourceTypeIds: [ID!]
+  scheduledJobs(offset: Int = 0, limit: Int = 30): ScheduledJobList!
+
+  """
+  TODO for backward compat with v3 search?
+  """
+  schedules(offset: Int = 0, limit: Int = 30): ScheduledJobList!
+}
+
+extend type TDOSourceData {
+  """
+  The scheduled job under which this TDO was created, if any
+  """
+  scheduledJob: ScheduledJob
+
+  """
+  The source from which this TDO was created, if any
+  """
+  source: Source
+}
+
+extend type Query {
+  """
+  Retrieve a single schedule
+  """
+  scheduledJob(id: ID!): ScheduledJob
+
+  """
+  Retrieve or search for schedules
+  """
+  scheduledJobs(
+    """
+    Provide an ID to retrieve a specific schedule
+    """
+    id: ID
+
+    """
+    Provide a schedule name, or part of one, to search for schedules
+    by name. Supports prefix/like search.
+    """
+    name: String
+
+    """
+    Specify a run mode to filter to run mode
+    """
+    runMode: RunMode
+
+    """
+    Specify isActive true or false to filter by active state
+    """
+    isActive: Boolean
+    engineId: ID
+    engineCategoryId: ID
+    engineType: [EngineTypeFilter!]
+
+    """
+    Specify an offset to retrieve additional pages
+    """
+    offset: Int = 0
+
+    """
+    Specify a limit to limit result size.
+    """
+    limit: Int = 30
+    dateTimeFilter: [ScheduledJobDateTimeFilter!]
+
+    """
+    Time filter is in station local time
+    """
+    partTimeFilter: [ScheduledJobPartTimeFilter!]
+
+    """
+    Optionally, specify one or more source IDs. Scheduled jobs with
+    any of the given sources as their primary source will be returned.
+    """
+    primarySourceId: [ID!]
+
+    """
+    Optionally, specify one or more source type IDs. Scheduled jobs with
+    any of the given sources types on their primary source will be returned.
+    """
+    primarySourceTypeId: [ID!]
+
+    hasJobTemplate: Boolean
+
+    """
+    Specify isRunning true or false to filter for scheduled jobs that
+    have jobs running right now.
+    """
+    hasRunningJobs: Boolean
+
+    """
+    Order information. Default will order by modifiedDateTime descending.
+    """
+    orderBy: [ScheduledJobOrderBy!]
+
+    """
+    Specify a permission level to retrieve scheduled jobs to which you
+    have at least that permission.
+    """
+    permission: ScheduledJobPermission = viewer
+
+    """
+    Specify clusterId to filter scheduled jobs that run on specified cluster
+    """
+    clusterId: ID
+
+    """
+    Set to true to return only the scheduled jobs that were created by the current user
+    """
+    includeOwnedOnly: Boolean = false
+
+    """
+    Specify createdBy to return only the scheduled jobs that were created by a specific user within the same organization.
+    """
+    createdBy: ID
+  ): ScheduledJobList
+
+  """
+  Retrieve a single engine configuration
+  """
+  engineConfiguration(id: ID!): EngineConfiguration
+
+  """
+  Retrieve all engine configurations
+  """
+  engineConfigurations(id: ID): EngineConfigurationList
+
+  """
+  Retrieve a single node
+  """
+  clusterNode(id: ID!): ClusterNode!
+
+  """
+  Retrieve a list of nodes
+  """
+  clusterNodes(id: ID, offset: Int = 0, limit: Int = 30): ClusterNodeList!
+
+  """
+  Retrieve a single cluster
+  """
+  cluster(id: ID!): Cluster!
+
+  """
+  Retrieve a list of clusters
+  """
+  clusters(
+    id: ID
+    name: String
+    type: ClusterType
+    nameMatch: StringMatch = contains
+    offset: Int = 0
+    limit: Int = 30
+
+    """
+    Type of string match to use against tags, if any
+    """
+    tagMatch: StringMatch = startsWith
+
+    """
+    List of tags to match against
+    """
+    tags: [String!]
+    dateTimeFilter: [ClusterDateTimeFilter!]
+    orderBy: [ClusterOrderBy!]
+
+    """
+    ID of the organization. Only Veritone platform components can set this value.
+    """
+    organizationId: ID
+
+    """
+    Provide a cluster group ID to filter for cluster of the specified group.
+    """
+    clusterGroupId: ID
+
+    """
+    Provide multiple cluster group IDs to filter for cluster of the specified group.
+    """
+    clusterGroupIds: [ID]
+
+    """
+    Set this flag to true or false to return only ClusterGroups or Clusters.
+    The default is false (Cluster is not a Group will always be returned).
+    """
+    isGroup: Boolean = false
+
+    """
+    The Cluster/Group status
+    """
+    status: ClusterStatus
+
+    """
+    The list of allowed engines to return olny clusters that supports all engineIDs in this list.
+    """
+    allowedEngines: [ID!]
+
+    """
+    Edge version to filter
+    """
+    edgeVersion: Int
+  ): ClusterList!
+
+  """
+  Retrieve a single execution location
+  """
+  executionLocation(id: ID!): ExecutionLocation
+
+  """
+  Retrieve a list of execution locations
+  """
+  executionLocations(id: ID): ExecutionLocationList!
+
+  """
+  Retrieve a single job template
+  """
+  jobTemplate(id: ID!): JobTemplate!
+
+  """
+  Retrieve a list of job templates for a given job pipelineId
+  """
+  jobTemplates(
+    jobPipelineId: ID
+      @deprecated(
+        reason: "obsolete v2 functionality"
+        alternate: "n/a"
+        expirationDate: "2021-12-31"
+        deprecationDate: "2021-07-22"
+      )
+    scheduledJobId: ID
+    engineId: ID
+    engineType: [EngineTypeFilter!]
+    offset: Int = 0
+    limit: Int = 30
+  ): JobTemplateList!
+
+  """
+  Retrieve a single task template
+  """
+  taskTemplate(id: ID!): TaskTemplate!
+
+  """
+  Retrieve a single source
+  """
+  source(id: ID!): Source!
+    @scopes(
+      scopes: [
+        "cms.access"
+        "discovery.access"
+        "cms.sources.read"
+        "cms.customerservice"
+      ]
+      require: Any
+    )
+    @auth(allowOrgless: true, skipObjectAuthorization: true)
+
+  """
+  Retrieve a list of sources
+  """
+  sources(
+    """
+    Provide an ID to retrieve a specific source.
+    """
+    id: ID
+
+    """
+    Optionally, provide a list of IDs to retrieve sources by ID. This will be ignored if the id field is passed in.
+    """
+    ids: [ID!]
+
+    """
+    Provide a source type ID to filter for sources of the specified type.
+    """
+    sourceTypeId: ID
+    sourceTypeIds: [ID]
+
+    """
+    Provide a name or partial name value to filter by name.
+    The `nameMatch` parameter can be used to determine the string
+    match strategy used in the filter. Default is "starts with".
+    Note that all matching is case-insensitive.
+    """
+    name: String
+
+    """
+    String matching strategy. Default is "starts with".
+    """
+    nameMatch: StringMatch = startsWith
+
+    """
+    Provide an offset to skip to a certain element in the result, for paging.
+    """
+    offset: Int = 0
+
+    """
+    Specify maximum number of results to retrieve in this result. Page size.
+    """
+    limit: Int = 30
+
+    """
+    Set this flag to true or false to return only sources that do or do
+    not have content templates associated with them.
+    The default is neither (do not filter on the presence of content templates).
+    """
+    hasContentTemplates: Boolean
+
+    """
+    Set this flag to true to include public sources or false to include
+    only sources owned by the
+    user's org, not public sources.
+    Public sources owned by the caller's org will always be returned.
+    """
+    includePublic: Boolean = true
+
+    """
+    #Provide a correlation schama ID to filter for sources that correlate using specified schema.
+    """
+    correlationSchemaId: ID
+
+    """
+    Provide optional sort information. If not provided, a default sort
+    by createdDateTime descending will be applied.
+    """
+    orderBy: [SourceSortField!]
+
+    """
+    Specify a permission level to retrieve sources to which you
+    have at least that permission.
+    """
+    permission: SourcePermission = viewer
+
+    """
+    Retrieve sources that have a specific storage configuration, ex. specific s3 bucket, or
+    configuration that matches requested url.
+    """
+    storageConfigFilter: StorageConfigFilter
+  ): SourceList!
+    @scopes(
+      scopes: [
+        "cms.access"
+        "discovery.access"
+        "cms.sources.read"
+        "cms.customerservice"
+      ]
+      require: Any
+    )
+    @auth(allowOrgless: true, skipObjectAuthorization: true)
+
+  """
+  Retrieve a single source type
+  """
+  sourceType(id: ID!): SourceType!
+
+  """
+  Retrieve a list of source types
+  """
+  sourceTypes(
+    id: ID
+    ids: [ID]
+
+    """
+    Provide a source type category ID to select source types belonging
+    to the category
+    """
+    categoryId: ID
+
+    """
+    Provide `isLive` to select source types with the given value.
+    isLive: Boolean
+    """
+    offset: Int = 0
+    limit: Int = 30
+  ): SourceTypeList!
+
+  """
+  Retrieve all source type categories
+  """
+  sourceTypeCategories(
+    """
+    Optionally, provide a source category type ID.
+    """
+    id: ID
+  ): SourceTypeCategoryList!
+
+  """
+  Retrieve a single source type category
+  """
+  sourceTypeCategory(id: ID!): SourceTypeCategory!
+
+  """
+  Retrieve a single external credential
+  """
+  externalCredential(id: ID!): ExternalCredential!
+
+  """
+  Retrieve a list of external credentials
+  """
+  externalCredentials(id: ID): ExternalCredentialList!
+  tasks(
+    """
+    Id of task
+    """
+    id: ID
+
+    """
+    Id of task template
+    """
+    taskTemplateId: ID
+
+    """
+    Id of job
+    """
+    jobId: ID
+
+    """
+    Id or list Ids of application
+    """
+    applicationIds: [ID]
+
+    """
+    Id or list Ids of engine
+    """
+    engineId: [ID]
+
+    """
+    Filter by date time
+    """
+    dateTimeFilter: [TaskDateTimeFilter!]
+    offset: Int = 0
+    limit: Int = 30
+  ): TaskList
+
+  """
+  matching cluster tags in use by this organization
+  """
+  clusterTags(matchType: StringMatch = startsWith, match: String!): [String!]!
+
+  """
+  Retriveve a list of DAG templates
+  """
+  dagTemplates(
+    """
+    Id of DAG template(s) to filter by
+    """
+    id: [ID]
+
+    """
+    Filter by name
+    """
+    name: String
+
+    """
+    Filter by cognitive categoryId
+    """
+    cognitiveCategoryId: ID
+
+    """
+    Filter by mimeType
+    """
+    mimeType: String
+    offset: Int = 0
+    limit: Int = 30
+
+    """
+    Filter by tags
+    """
+    tags: [String!]
+
+    """
+    Type of string match to use against tags, if any
+    """
+    tagMatch: StringMatch = startsWith
+  ): DagTemplateList @scopes(scopes: ["job.read"])
+
+  """
+  Gets a DAG Template by ID.
+  """
+  dagTemplate(
+    """
+    Id of the dag template
+    """
+    id: ID!
+  ): DagTemplate! @scopes(scopes: ["job.read"])
+
+  # VP-2581 Distribution Center — connected channels + seeded catalog. Kept in this single
+  # Query extension (not a second one) so util.spec.js stripSectionFromString stays satisfied.
+  """Org-scoped Destinations for the authenticated caller's organization."""
+  destinations: [Destination!]!
+    @scopes(scopes: ["aiware.destination.read"])
+
+  """Single Destination by id; org-scoped — returns null if not in caller's org or soft-deleted."""
+  destination(id: ID!): Destination
+    @scopes(scopes: ["aiware.destination.read"])
+
+  """Resolves a connected destination's Ayrshare Profile-Key for the distribute engine at task pickup.
+     Engine-only; not exposed to human callers."""
+  destinationVendorProfile(destinationId: ID!): DestinationVendorProfile
+
+  """Seeded catalog of DestinationTypes. All filter args are optional and AND-combined.
+     No args -> all non-deleted, public types."""
+  destinationTypes(
+    ids: [ID!]
+    vendorCapability: String
+    platform: String
+  ): [DestinationType!]!
+    @scopes(scopes: ["aiware.destination.read"])
+
+  destinationType(id: ID!): DestinationType
+    @scopes(scopes: ["aiware.destination.read"])
+}
+
+type DagTemplateList implements Page {
+  records: [DagTemplate]
+  limit: Int!
+  offset: Int!
+  count: Int!
+}
+
+input ClusterOrderBy {
+  field: ClusterOrderByField!
+  direction: OrderDirection = desc
+}
+
+enum ClusterOrderByField {
+  name
+  createdDateTime
+  modifiedDateTime
+  stateLastUpdatedDateTime
+}
+
+input ClusterDateTimeFilter {
+  toDateTime: DateTime
+  fromDateTime: DateTime
+  field: ClusterDateTimeField!
+}
+
+enum ClusterDateTimeField {
+  createdDateTime
+  modifiedDateTime
+  stateLastUpdatedDateTime
+}
+
+#
+"""
+Source list sort information
+"""
+input SourceSortField {
+  """
+  Specify the field to sort by. Required.
+  """
+  field: SourceOrderField!
+
+  """
+  Specify the sort direction. Default is descending.
+  """
+  direction: OrderDirection = desc
+}
+
+"""
+Source list sort field options
+"""
+enum SourceOrderField {
+  createdDateTime
+  modifiedDateTime
+  id
+  name
+  sourceTypeId
+}
+
+input ScheduledJobDateTimeFilter {
+  toDateTime: DateTime
+  fromDateTime: DateTime
+  field: ScheduledJobDateTimeField!
+  includeEmpty: Boolean
+}
+
+enum ScheduledJobDateTimeField {
+  startDateTime
+  stopDateTime
+  dateCreated
+  dateModified
+}
+
+input ScheduledJobPartTimeFilter {
+  toTime: Time
+  fromTime: Time
+  field: ScheduledJobPartTimeField!
+}
+
+enum ScheduledJobPartTimeField {
+  startTime
+  endTime
+}
+
+extend type Mutation {
+  createCluster(input: CreateCluster!): Cluster
+
+  updateCluster(input: UpdateCluster!): Cluster
+
+  deleteCluster(id: ID!): DeletePayload
+
+  pauseCluster(input: PauseCluster!): Cluster @audit(action: Update)
+
+  unpauseCluster(input: UnpauseCluster!): Cluster @audit(action: Update)
+
+  createClusterNode(input: CreateClusterNode!): ClusterNode
+
+  updateClusterNode(input: UpdateClusterNode!): ClusterNode
+
+  deleteClusterNode(id: ID!): DeletePayload
+
+  """
+  This creates a scheduled job that will run on a schedule.  Once a scheduled job is created, it can be launched with
+  `launchScheduledJob`
+  """
+  createScheduledJob(input: CreateScheduledJob!): ScheduledJob!
+
+  cloneScheduledJob(input: CloneScheduledJob!): ScheduledJob!
+
+  revertScheduledJob(input: RevertScheduledJob!): ScheduledJob!
+
+  updateScheduledJob(input: UpdateScheduledJob!): ScheduledJob!
+
+  deleteScheduledJob(id: ID!): DeletePayload
+
+  """
+  Create a new content template on a scheduled job
+  """
+  createScheduledJobContentTemplate(
+    input: CreateScheduledJobContentTemplate!
+  ): ScheduledJobContentTemplate!
+
+  deleteScheduledJobContentTemplate(
+    """
+    ID of the scheduled job content template to delete. It will be removed from the
+    scheduled job. The underlying SDO will not be deleted.
+    """
+    id: ID!
+  ): DeletePayload
+
+  """
+  Create a new source
+  """
+  createSource(input: CreateSource!): Source
+
+  updateSource(input: UpdateSource!): Source
+    @scopes(
+      scopes: ["cms.access", "cms.sources.update", "source.update"]
+      require: Any
+    )
+    @auth(allowOrgless: true)
+
+  deleteSource(id: ID!): DeletePayload
+
+  """
+  Create a new source content template on a source
+  """
+  createSourceContentTemplate(
+    input: CreateSourceContentTemplate!
+  ): SourceContentTemplate!
+
+  deleteSourceContentTemplate(
+    """
+    ID of the source content template to delete. It will be removed from the
+    source. The underlying SDO will not be deleted.
+    """
+    id: ID!
+  ): DeletePayload
+
+  createSourceType(input: CreateSourceType!): SourceType
+    @scopes(scopes: ["superadmin"])
+
+  updateSourceType(input: UpdateSourceType!): SourceType
+    @scopes(scopes: ["superadmin", "source_type:update"], require: Any)
+
+  deleteSourceType(id: ID!): DeletePayload @scopes(scopes: ["superadmin"])
+
+  createJobTemplate(input: CreateJobTemplate!): JobTemplate!
+
+  updateJobTemplate(input: UpdateJobTemplate!): JobTemplate!
+  deleteJobTemplate(id: ID!): DeletePayload
+
+  createTaskTemplate(input: CreateTaskTemplate!): TaskTemplate!
+
+  updateTaskTemplate(input: UpdateTaskTemplate!): TaskTemplate!
+
+  deleteTaskTemplate(id: ID!): DeletePayload
+
+  """
+  Creates one or more jobs based on the supplied scheduled job.
+  """
+  launchScheduledJobs(input: LaunchScheduledJobs!): [Job]
+    @scopes(scopes: ["job.create"])
+    @audit(action: Create)
+
+  """
+  Creates one or more jobs based on the supplied job templates.
+  """
+  launchJobTemplates(input: LaunchJobTemplates!): [Job]
+    @scopes(scopes: ["job.create"])
+    @audit(action: Create)
+
+  """
+  Pause for a node
+  """
+  pauseClusterNode(input: PauseClusterNode!): ClusterNode @audit(action: Update)
+
+  """
+  Unpause for a node
+  """
+  unpauseClusterNode(input: UnpauseClusterNode!): ClusterNode
+    @audit(action: Update)
+
+  """
+  Update the cluster's runtime state. Used only by infrastructure elements.
+  """
+  updateClusterState(input: UpdateClusterState!): Cluster @audit(action: Update)
+
+  """
+  Pairs a node with a cluster.
+  """
+  pairClusterNode(input: PairClusterNode!): ClusterNode
+    @scopes(scopes: ["admin.access"])
+
+  """
+  Pings the server to update the node's last ping.
+  """
+  pingClusterNode(input: PingClusterNode!): ClusterNode
+
+  """
+  Unpairs a node with a cluster.
+  """
+  unpairClusterNode(id: ID!): ClusterNode @scopes(scopes: ["admin.access"])
+
+  """
+  Creates a DAG template
+  """
+  createDagTemplate(input: CreateDagTemplate!): DagTemplate!
+    @scopes(scopes: ["job.create"])
+
+  """
+  Update a DAG template
+  """
+  updateDagTemplate(input: UpdateDagTemplate!): DagTemplate!
+    @scopes(scopes: ["job.update"])
+
+  """
+  delete a DAG template
+  """
+  deleteDagTemplate(id: ID!): DeletePayload @scopes(scopes: ["job.delete"])
+
+  """
+  add a DAG template to organization
+  """
+  addDagTemplateToOrganization(
+    input: AddDagTemplateToOrganization!
+  ): DagTemplateOrganizations!
+    @scopes(scopes: ["superadmin"])
+    @audit(action: Update)
+
+  """
+  remove a DAG template from organization
+  """
+  removeDagTemplateFromOrganization(
+    input: RemoveDagFromOrganization
+  ): DagTemplateOrganizations!
+    @scopes(scopes: ["superadmin"])
+    @audit(action: Update)
+
+  """
+  Set the default/alwaysUse Cluster for organization
+  """
+  updateOrganizationCluster(
+    input: UpdateOrganizationCluster
+  ): OrganizationCluster!
+    @scopes(scopes: ["superadmin", "admin.org.update"], require: Any)
+    @audit(action: Update)
+}
+
+enum UpdateOrganizationClusterAction {
+  setDefault
+  removeDefault
+  setOverride
+  removeOverride
+}
+
+input UpdateOrganizationCluster {
+  """
+  The ID of the cluster
+  """
+  clusterId: ID!
+  """
+  The ID of the organization.
+  """
+  organizationId: ID!
+  """
+  Set to true to use the cluster as a default cluster for the org
+  To un-set
+  """
+  isAlwaysUse: Boolean
+    @deprecated(
+      reason: "redundant, obscure field"
+      alternate: "action"
+      expirationDate: "2021-12-31"
+      deprecationDate: "2020-05-10"
+    )
+
+  """
+  Provide the organization ID to add.
+  """
+  action: UpdateOrganizationClusterAction = setDefault
+}
+
+type OrganizationCluster {
+  organizationId: ID!
+  clusterId: ID!
+  isAlwaysUse: Boolean
+}
+
+input RemoveDagFromOrganization {
+  dagTemplateId: ID!
+
+  """
+  Provide the organization ID to add.
+  """
+  organizationId: ID!
+}
+
+type DagTemplateOrganizations {
+  dagTemplateId: ID!
+  organizationIds: [ID]
+}
+
+input AddDagTemplateToOrganization {
+  """
+  Provide the organization ID to add.
+  """
+  organizationId: ID!
+  dagTemplateId: ID!
+}
+
+input UpdateDagTemplate {
+  id: ID!
+  name: String
+  description: String
+  cognitiveCategoryId: ID
+  mimeType: String
+  dag: String
+  dagTemplateLanguage: String
+  tags: [String!]
+}
+
+input CreateDagTemplate {
+  """
+  Name of the DAG template
+  """
+  name: String!
+
+  """
+  ID of the organization. Only superadmin can set this value.
+  """
+  targetOrganizationId: ID
+  description: String
+  dag: String!
+  dagTemplateLanguage: String
+  mimeType: String
+  cognitiveCategoryId: ID
+  tags: [String!]
+}
+
+type DagTemplate {
+  id: ID!
+  name: String!
+  description: String
+  cognitiveCategoryId: ID
+  mimeType: String
+  dag: JSONData!
+  dagTemplateLanguage: String
+  targetOrganizationId: ID!
+  tags: [String]
+}
+
+input PingClusterNode {
+  """
+  Id of the node.
+  """
+  nodeId: ID!
+  nodeMetrics: JSONData
+}
+
+input PairClusterNode {
+  id: ID!
+  nodePair: NodePair!
+}
+
+input NodePair {
+  clusterId: ID!
+  displayName: String!
+  role: String!
+  offlineBrowsing: Boolean!
+}
+
+input CreateBundle {
+  clusterId: ID!
+  nodeId: ID
+  name: String!
+  externalCredentialId: ID
+  testRun: Boolean
+  selectDetail: CreateBundleSelectDetail!
+  selectCategory: BundleCategory!
+  scheduleDefinition: CreateBundleScheduleDefinition!
+}
+
+enum BundleCategory {
+  category
+  extension
+  file
+}
+
+input CreateBundleSelectDetail {
+  category: String!
+
+  """
+  Array of file types to include.
+  """
+  select: [String!]
+
+  """
+  Array of paths to search from.
+  """
+  paths: [String!]
+
+  """
+  Array of files to search from.
+  """
+  files: [String]
+
+  """
+  Array of tasks to run for each job.
+  """
+  tasks: [CreateBundleSelectDetailTask]
+
+  """
+  Include items after this time.
+  """
+  afterTime: DateTime
+
+  """
+  Include items before this time.
+  """
+  beforeTime: DateTime
+  recursiveDescent: Boolean!
+  service: CreateBundleService
+}
+
+input CreateBundleSelectDetailTask {
+  """
+  Id of engine.
+  """
+  engineId: ID!
+}
+
+input CreateBundleScheduleDefinition {
+  recurringStartTime: DateTime
+  recurringEndTime: DateTime
+  repeatDaysTimeInMinutes: Int
+  repeatDaysOfWeek: [Int]
+  repeatDaysOfMonth: [Int]
+  repeatMinutes: Int
+}
+
+input CreateBundleService {
+  serviceType: String
+  region: String
+  bucketName: String
+}
+
+"""
+Updates the state information for a given cluster
+"""
+input UpdateClusterState {
+  nodes: [ClusterNodeUpdate]
+
+  """
+  The cluster ID
+  """
+  id: ID!
+  state: JSONData!
+
+  """
+  Optionally, update current the cluster status.
+  """
+  targetStatus: ClusterStatus
+}
+
+input ClusterNodeUpdate {
+  nodeId: ID!
+  metrics: JSONData
+}
+
+input PauseClusterNode {
+  """
+  Node ID
+  """
+  id: ID!
+}
+
+input UnpauseClusterNode {
+  """
+  Node ID
+  """
+  id: ID!
+}
+
+input LaunchScheduledJobs {
+  """
+  Optional data about the job target,
+  a TemporalDataObject. If this field is
+  not specified then a suitable
+  object will be created automatically.
+  """
+  targetInfo: CreateAllPipelineJobsTargetInfo
+
+  """
+  Optional data used to create a _new_ TDO for the job.
+  Specify this field _or_ `targetInfo`, but not both.
+  """
+  createTargetInfo: CreateTDOForJob
+
+  """
+  Job payload
+  """
+  payload: JSONData
+  scheduledJobId: ID
+}
+
+input CreateTDOForJob {
+  """
+  A name for the TDO object, such as the name of the primary media file.
+  If not provided, the TDO will have the name of the scheduled job that
+  created it.
+  """
+  name: String
+
+  """
+  A description for the TDO object.
+  """
+  description: String
+
+  """
+  True if the new TDO should be made public. If true, security.global
+  will be set to true and users from other organizations will be able to
+  view, but not modify, the TDO's metadata and assets.
+  """
+  isPublic: Boolean
+
+  """
+  An optional parent folder ID for the new TemporalDataObject.
+  The folder can be filed in additional folders later using `fileTemporalDataObject`,
+  or un-filed from this one.
+  """
+  parentFolderId: ID
+
+  """
+  Only internal systems can set this value
+  """
+  applicationId: ID
+
+  """
+  Status, such as "downloaded" or "recording".
+  The server will set a value if one is not provided.
+  """
+  status: String
+
+  """
+  Detailed metadata about the TDO
+  """
+  details: JSONData
+
+  """
+  Optionally, specify one or more structured data objects to apply as
+  content templates to the TDO. They will be stored as assets of type
+  content-template and will contain an immutable copy of the original data.
+  """
+  contentTemplates: [CreateTDOContentTemplateWithTDO!]
+
+  """
+  Optionally, add the new data to the search index. If the data is not
+  indexed on creation, it can be indexed later by using `updateTDO` or
+  creating a suitable job.
+  """
+  addToIndex: Boolean
+
+  """
+  An optional thumbnail URL for the TDO
+  """
+  thumbnailUrl: String
+
+  """
+  An optional preview asset URL for the TDO
+  """
+  previewUrl: String
+
+  """
+  An optional image representing the TDO source
+  """
+  sourceImageUrl: String
+}
+
+input LaunchJobTemplates {
+  ids: [ID!]!
+  scheduledJobId: ID
+  payload: JSONData
+
+  """
+  Optional data used to create a _new_ TDO for the job.
+  Specify this field _or_ `targetInfo`, but not both.
+  """
+  createTargetInfo: CreateTDOForJob
+  targetInfo: LaunchJobTemplatesTargetInfo
+}
+
+input CreateNextPipelineJobsTargetInfo {
+  """
+  ID of the target object for the job pipeline,
+  typically that of a TemporalDataObject
+  """
+  targetId: ID!
+  startOffsetMs: Int
+  endOffsetMs: Int
+}
+
+input CreateAllPipelineJobsTargetInfo {
+  """
+  ID of the target object for the job pipeline,
+  typically that of a TemporalDataObject
+  """
+  targetId: ID!
+  startOffsetMs: Int
+  endOffsetMs: Int
+}
+
+input LaunchJobTemplatesTargetInfo {
+  """
+  ID of the target object for the jobs,
+  typically that of a TemporalDataObject
+  """
+  targetId: ID!
+  startOffsetMs: Int
+  endOffsetMs: Int
+}
+
+input ScheduledJobDagTemplateConfig {
+  dagTemplateIds: [ID!]
+  params: JSONData
+  jobConfig: JSONData
+}
+
+enum StorageProviderType {
+  aws_s3
+  # azure_blob
+  # google_cloud_storage
+  # minio_s3
+}
+
+input StorageConfigInput {
+  """
+  Storage provider service
+  """
+  type: StorageProviderType!
+  bucket: String!
+  region: String
+  keyPrefix: String
+  signedUrlExpiresInSeconds: Int!
+  credentials: JSONData
+  details: JSONData
+}
+
+enum SourceAccessType {
+  GET
+  PUT
+}
+
+input StorageConfigFilter {
+  """
+  URL of object or bucket to find matching sources with storage configs covering this URL
+  """
+  url: String
+
+  """
+  Bucket name to find matching sources with storage configs covering this bucket
+  """
+  bucket: String
+
+  """
+  Key to find matching sources with storage configs covering this key. Must use with bucket, this is ignored if used with url
+  """
+  key: String
+
+  """
+  Require strict match by region
+  """
+  region: String
+
+  """
+  Storage provider service
+  """
+  type: StorageProviderType!
+
+  """
+  Return all matching sources not just the longest key match.
+  """
+  returnAllMatching: Boolean = false
+}
+
+input GetStorageSignedUrlInput {
+  """
+  URL of the object to be signed. If it is already signed and the bucket belongs to the source the signature will be refreshed.
+  If the bucket does not belong to the source, error will be returned.
+  """
+  url: String
+
+  """
+  The storage object key
+  """
+  key: String
+
+  """
+  The type of access requested
+  """
+  access: SourceAccessType = GET
+
+  """
+  Time interval, in seconds, after which this URL is expired and no longer valid. This is optional and defaults to the source default.
+  Note: this value is capped at the source default, so any value higher than the source default will be capped at the source default.
+  """
+  expiresInSeconds: Int
+}
+
+type SignedUrlInfo {
+  """
+  The storage object key
+  """
+  key: String!
+  """
+  Time interval, in seconds, after which this URL is expired and no longer valid.
+  """
+  expiresInSeconds: Int!
+  """
+  Absolute time at which this URL expires
+  """
+  expiresAtDateTime: DateTime!
+  """
+  The signed URL, which can be uploaded to with an HTTP PUT (note:  PUT is
+  required. POST will generate an error).
+  """
+  url: String!
+
+  """
+  The type of access granted
+  """
+  access: SourceAccessType!
+}
+
+# =============================================================================
+# Distribution Center (VP-2581)
+# Seeded catalog of distribute targets (DestinationType) + org-scoped, OAuth-
+# connected publish channels (Destination).
+# =============================================================================
+
+"""Lifecycle state of a Destination's connection to its vendor (e.g. Ayrshare)."""
+enum DestinationStatus {
+  """Created; awaiting completion of the vendor OAuth handshake."""
+  PENDING_OAUTH
+  """OAuth complete and verified; ready to distribute."""
+  CONNECTED
+  """Previously connected, now intentionally detached."""
+  DISCONNECTED
+  """Connection is in an error state (e.g. vendor reports the link was revoked)."""
+  ERROR
+}
+
+"""Seeded catalog entry describing a distribute target (e.g. YouTube via Ayrshare)."""
+type DestinationType {
+  id: ID!
+
+  """Human-readable name, e.g. "YouTube"."""
+  name: String!
+
+  """Platform key, e.g. "youtube", "instagram", "tiktok"."""
+  platform: String!
+
+  """Coarse capability tag, e.g. "social-publish"."""
+  vendorCapability: String!
+
+  iconClass: String
+
+  """UUID of the aiWare Engine that runs distribute jobs for this DestinationType."""
+  engineId: ID!
+
+  """The aiWare Engine joined on engineId."""
+  engine: Engine
+
+  """JSON Schema that Destination.details must conform to; validated server-side."""
+  configSchema: Schema
+  configSchemaId: ID!
+
+  """JSON Schema that DistributeAssetInput.platformPayload must conform to; validated server-side."""
+  publishSchema: Schema
+  publishSchemaId: ID!
+
+  """
+  Declared media constraints for this destination, one entry per vendor post type. Read these rather than
+  hardcoding platform limits, which drift from what the vendor actually enforces.
+
+  Clients MUST NOT gate submission on a constraint absent from `enforcedConstraints` — the rest are published
+  for display, and blocking on them will reject media the platform accepts. Empty list means nothing is
+  declared and no pre-flight check applies.
+  """
+  mediaConstraints: [MediaConstraint!]!
+
+  isPublic: Boolean
+  createdDateTime: DateTime
+  modifiedDateTime: DateTime
+}
+
+"""
+Media constraints a destination's platform imposes, for one vendor post type.
+
+`hard*` values are the platform's rejection thresholds; `recommended*` are quality guidance only, which the
+platform accepts media below.
+
+**Declared does not mean enforced — check `enforcedConstraints` before gating on any field.** Today only
+`DURATION` is enforced: the published asset is a downscaled preview rendition, so checking its dimensions would
+reject assets whose masters are publishable. Dimension and aspect enforcement is sequenced behind VE-26886; the
+values are published now so there is one source of truth when it lands.
+
+A null field means that constraint is not declared for this post type.
+"""
+type MediaConstraint {
+  id: ID!
+
+  """Vendor post type these limits apply to, e.g. "reels"."""
+  postType: String!
+
+  """
+  Which constraint classes on this row are validated server-side, and are therefore safe to gate submission on.
+  """
+  enforcedConstraints: [MediaConstraintClass!]!
+
+  """
+  The rejection thresholds, as a JSON Schema (draft-07) over the asset's measured properties.
+
+  Run it client-side to warn before submitting: the server evaluates this same document with ajv configured to
+  match `@rjsf/validator-ajv8`, so both sides reach the same verdict.
+
+  Recognised properties are `durationMs` (MILLISECONDS, directly comparable to `Asset.fileData.mediaDurationMs`),
+  `widthPx`, `heightPx` and `aspectRatio` (width/height). Only `minimum`, `maximum` and `enum` appear.
+
+  A property present here is NOT necessarily checked by the server — `enforcedConstraints` is the list of what
+  is. Validate an asset by supplying only the properties you can measure; absent properties are not checked, and
+  the document never uses `required`.
+
+  `{}` means nothing is declared.
+  """
+  constraintSchema: JSONData!
+
+  """
+  Advisory quality targets, e.g. `{"widthPx": 1080, "heightPx": 1920, "aspectRatio": 0.5625}`.
+
+  NEVER rejection thresholds — the platform accepts media that misses them, so show them as guidance and do not
+  gate submission on them. `constraintSchema` is what can reject a publish.
+
+  Keys are the property names `constraintSchema` uses, so a target lines up against its limit. Unlike
+  `constraintSchema` this is a flat map of values, NOT a JSON Schema: do not pass it to a validator.
+
+  `{}` means no guidance is published for this destination.
+  """
+  recommendedMedia: JSONData!
+}
+
+"""
+A class of media constraint, used to say which ones are enforced server-side.
+
+New members may be added as enforcement expands. Clients MUST tolerate an unrecognised value and treat it as
+NOT gateable — a client contract with no schema-level enforcement, since GraphQL has no tolerant-enum mechanism.
+If a fourth class lands and client tolerance proves impractical, the fallback is a parallel
+`enforcedConstraintKeys: [String!]!`.
+"""
+enum MediaConstraintClass {
+  """Media duration, validated against Asset.fileData.mediaDurationMs in milliseconds."""
+  DURATION
+  """Pixel width and height."""
+  DIMENSIONS
+  """Aspect ratio (width/height)."""
+  ASPECT_RATIO
+}
+
+"""An org-scoped publish channel: 1:1 to a vendor (Ayrshare) User Profile / social account."""
+type Destination {
+  id: ID!
+  destinationTypeId: ID!
+  destinationType: DestinationType
+  label: String!
+
+  """Must conform to destinationType.configSchema; validated server-side at every write."""
+  details: JSONData
+
+  """Ayrshare Profile-Key — opaque credential, restricted to org admins."""
+  vendorProfileId: String!
+    @scopes(scopes: ["admin.org.update"])
+
+  """Linked social-account label, e.g. "@channel-name"."""
+  platformAccountLabel: String
+
+  status: DestinationStatus!
+
+  """Short-lived vendor OAuth URL while status is PENDING_OAUTH; null once CONNECTED."""
+  oauthUrl: String
+  oauthUrlExpiresAt: DateTime
+
+  createdBy: User
+  createdDateTime: DateTime!
+  modifiedDateTime: DateTime
+}
+
+"""The Ayrshare Profile-Key for a destination, transit-encrypted for the engine. Engine-only."""
+type DestinationVendorProfile {
+  """
+  The Profile-Key encrypted under the core/engine shared secret (AES-256-GCM, envelope `iv::ciphertext::authTag`,
+  base64 segments). The engine decrypts with the shared secret; the plaintext key is never sent over the wire.
+  """
+  vendorProfileIdEncrypted: String!
+}
+
+input CreateDestinationInput {
+  destinationTypeId: ID!
+  label: String!
+
+  """Must conform to the DestinationType.configSchema; validated server-side."""
+  details: JSONData
+}
+
+input UpdateDestinationInput {
+  id: ID!
+  label: String
+
+  """Partial update; merged onto current details then re-validated against configSchema."""
+  details: JSONData
+}
+
+input CompleteDestinationConnectionInput {
+  id: ID!
+}
+
+input RefreshDestinationOAuthUrlInput {
+  id: ID!
+}
+
+input DistributeAssetInput {
+  """Target TDO ids. For MVP the server errors if more than one is supplied.
+     Each must resolve to a TDO in the caller's org."""
+  tdoIds: [ID!]!
+  destinationId: ID!
+
+  """Must conform to destination.destinationType.publishSchema. Validated server-side."""
+  platformPayload: JSONData!
+}
+
+extend type Mutation {
+  createDestination(input: CreateDestinationInput!): Destination!
+    @scopes(scopes: ["aiware.destination.create"])
+  updateDestination(input: UpdateDestinationInput!): Destination!
+    @scopes(scopes: ["aiware.destination.update"])
+  deleteDestination(id: ID!): DeletePayload
+    @scopes(scopes: ["aiware.destination.delete"])
+  """Confirms the OAuth handshake and flips status PENDING_OAUTH -> CONNECTED."""
+  completeDestinationConnection(input: CompleteDestinationConnectionInput!): Destination!
+    @scopes(scopes: ["aiware.destination.update"])
+    @audit(action: Update)
+
+  """Issues a fresh vendor OAuth URL for an existing destination that is not yet CONNECTED, so an
+     abandoned or failed handshake can be retried without deleting and recreating the destination.
+     Reuses the destination's existing vendor profile — no new profile is created. The returned
+     `oauthUrl` is short-lived (see `oauthUrlExpiresAt`); request it at the moment of use rather than
+     caching it. Sets status back to PENDING_OAUTH (a retry is allowed from DISCONNECTED and ERROR
+     too), so `oauthUrl` is only ever populated on a PENDING_OAUTH row. Errors on a CONNECTED
+     destination. The write is guarded on the same condition, so a destination connected concurrently is
+     never downgraded — though a refresh that commits before that connect lands still succeeds."""
+  refreshDestinationOAuthUrl(input: RefreshDestinationOAuthUrlInput!): Destination!
+    @scopes(scopes: ["aiware.destination.update"])
+    @audit(action: Update)
+
+  """Submits an aiWare Job to distribute the asset. Returns the Job immediately —
+     success means the job was submitted, not that the vendor accepted the post."""
+  distributeAsset(input: DistributeAssetInput!): Job!
+    @scopes(scopes: ["aiware.destination.read"])
+    @audit(action: Create)
+}
+

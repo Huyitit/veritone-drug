@@ -1,0 +1,214 @@
+-- Flyway migration: backfill COMMENT ON statements for audience
+-- Source: VP-2529 walkthrough — aidlc-docs/VP-2529/tasks/01-audience.md
+-- Delivery ticket: VE-21361
+-- Captured inventory: 2026-05-20 against aiw-b0031d
+-- Idempotent: PostgreSQL COMMENT ON … IS '…' is upsert-by-design.
+
+-- ============================================================
+-- Tables (26)
+-- ============================================================
+
+DO $$ BEGIN COMMENT ON TABLE public."_arbitron_audience_estimate_" IS 'Legacy Arbitron audience-estimate fact table. One row per (file × geo_indicator × estimate_type × daypart × listening_location × audience_characteristic × station_combo); projection is the AQH listener count. Loaded from Arbitron data deliveries (FK by file_id → arbitron_file). Schema-only as of 2026-05; not read by aiware-core.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public."_stage_arbitron_audience_characteristic" IS 'Staging table for Arbitron audience-characteristic records during data load. Promoted into public.arbitron_audience_characteristic after FK enrichment (age_group_id, gender_id). Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public."_stage_arbitron_daypart" IS 'Staging table for Arbitron daypart definitions (named time blocks like "AM Drive", "PM Drive"). Promoted into public.arbitron_daypart after load. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public."_stage_arbitron_daypart_day" IS 'Staging table mapping each Arbitron daypart to the days-of-week and start/end times it covers. Promoted into public.arbitron_daypart_day. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public."_stage_arbitron_station_combo" IS 'Staging table for Arbitron station-combo rows (call letters, band, frequency, format/activity codes). A "station combo" is Arbitron''s term for a broadcast outlet identity. Promoted into public.arbitron_station_combo. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public."_stage_media_source" IS 'Staging table mapping Arbitron station identities to internal media_source_id values. Used during load to enrich arbitron_station_combo. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public."_stage_program_schedule_day" IS 'Staging table for program schedule entries per day-of-week with start/end times, keyed by (program_id, media_source_id). Used to derive program_start_time and temp_program_dayparts. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.age_group IS 'Reference table mapping age-group ids to human-readable names (e.g. "18-34", "25-54"). Used by arbitron_audience_characteristic for demographic faceting. NOTE: aiware-core''s mention-sync/export queries JOIN a same-named table in media_platform, not this one — the audience DB copy is legacy.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_audience_characteristic IS 'Arbitron audience-characteristic reference: combines demographics_code/qualitative_code with age_group and gender to define a target demographic cell. Joined against arbitron_*summary* tables on audience_characteristic_id. NOTE: aiware-core reads the same-named table in media_platform, not this one.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_daypart IS 'Arbitron daypart reference table (id → human name → number of quarter-hours covered). A daypart is a named broadcast time block (e.g. "Mon-Fri 6-10AM"). Schema-only in this DB as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_daypart_day IS 'Day-by-day breakdown of each Arbitron daypart: rows of (daypart_id, day_of_week, start_time, end_time). Schema-only in this DB as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_file IS 'Arbitron data-delivery file metadata: each row identifies one delivered file (Arbitron book) with reporting period, market code, dates, and copyright string. file_id is the system surrogate key referenced by every loaded fact table in this DB. Schema-only in this DB as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_in_tab IS 'Arbitron in-tab sample-size table: weighted-population numerator (number of diary keepers in-tab) per (file, geo_indicator, audience_characteristic). Used to compute statistical reliability of audience estimates. Schema-only in this DB as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_market IS 'Arbitron market reference: id, human name, market code (DMA or Metro code), and lat/long centroid. Referenced by all market-keyed summaries in this DB. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_media_source_summary_dma IS 'DMA-level (Designated Market Area, Nielsen TV-market geography reused here) media-source audience summary. One row per (media_source, date-range, daypart, market) with audience_aqh listener count and audience_characteristics hstore of demographic breakdowns. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_media_source_summary_metro IS 'Metro-level (Arbitron radio Metro Survey Area) media-source audience summary; same shape as arbitron_media_source_summary_dma but keyed to a smaller geography. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_network_affiliation IS 'Network-affiliation lookup linking Arbitron station combos to their network type and affiliation id, per delivered file. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_population IS 'Universe estimate (weighted population) per (file, geo_indicator, audience_characteristic) — denominator used to scale AQH listener counts into rating percentages. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_program_market_summary_dma IS 'Per-program × per-market DMA-level audience summary: (program, market, date-range, program_hour) → audience_aqh and audience_characteristics hstore. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_program_summary_dma IS 'Per-program DMA-level summary aggregated across markets/media-sources arrays. One row per (program, date-range, program_hour, day_of_week) with array columns markets/media_sources holding the contributing ids. Clustered on _ix_arbitron_program_summary_dma@program_id. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_program_summary_metro IS 'Metro-level counterpart of arbitron_program_summary_dma, same shape but smaller geographic scope. Clustered on _ix_arbitron_program_summary_metro@program_id. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.arbitron_station_combo IS 'Final (post-stage) Arbitron station-combo reference: call letters, band, frequency, format/activity codes, plus internal media_source_id and media_source_ids[] cross-references. Joined to estimate/summary tables on station_combo_id. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.gender IS 'Reference table mapping gender ids to human-readable names. Used by arbitron_audience_characteristic for demographic breakdowns. NOTE: aiware-core''s mention-sync/export queries JOIN a same-named table in media_platform, not this one — the audience DB copy is legacy.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.program_start_time IS 'Denormalized program start-time index keyed by (program_id, day_of_week, start_time). Originally populated by ETL from _stage_program_schedule_day to speed up program-instance lookups. Schema-only in this DB as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.temp_arbitron_file IS 'Transient scratch table used during Arbitron file-load deduplication (rnum is a ROW_NUMBER() ordinal). Should be empty between loads; left in schema because Flyway baseline captured it. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON TABLE public.temp_program_dayparts IS 'Transient scratch table joining program schedules to dayparts during Arbitron load (resolves which daypart a program-hour falls in). Should be empty between loads. Schema-only as of 2026-05.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+
+-- ============================================================
+-- Columns (161)
+-- ============================================================
+
+DO $$ BEGIN COMMENT ON COLUMN public."_arbitron_audience_estimate_".file_id IS 'FK to arbitron_file.file_id; identifies the Arbitron book this estimate row was loaded from.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_arbitron_audience_estimate_".geo_indicator IS 'Encoded geographic indicator (DMA vs Metro vs Total Survey Area). Values follow Arbitron''s geography taxonomy.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_arbitron_audience_estimate_".estimate_type IS 'Encoded estimate type (AQH, Cume, Time-Spent-Listening, etc.) following Arbitron''s estimate taxonomy.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_arbitron_audience_estimate_".daypart_id IS 'FK to arbitron_daypart.daypart_id; the time block this estimate covers.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_arbitron_audience_estimate_".listening_location IS 'Encoded listening location (At Home, In Car, At Work, Other) per Arbitron''s "Where Listening Occurs" dimension.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_arbitron_audience_estimate_".audience_charecteristic_id IS 'FK to arbitron_audience_characteristic.audience_characteristic_id (note misspelling — charecteristic not characteristic; preserved from source).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_arbitron_audience_estimate_".station_combo_id IS 'FK to arbitron_station_combo.station_combo_id (text-typed).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_arbitron_audience_estimate_".projection IS 'AQH (Average Quarter-Hour) projected listener count — the actual measured/modeled audience size.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_audience_characteristic".audience_characteristic_id IS 'Arbitron-assigned id for the demographic cell; surrogate key in the post-stage table.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_audience_characteristic".audience_characteristic_name IS 'Human-readable description of the demographic cell (e.g. "Persons 25-54", "Women 18-34 Hispanic Origin").'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_audience_characteristic".demographics_code IS 'Arbitron demographic code (age × gender × language origin) string.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_audience_characteristic".qualitative_code IS 'Arbitron qualitative code (income, education, ethnicity overlays); may be blank when not segmented.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_daypart".daypart_id IS 'Arbitron daypart id; surrogate key in the post-stage table.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_daypart".daypart_name IS 'Human-readable daypart label (e.g. "Mon-Fri 6AM-10AM").'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_daypart".daypart_quarter_hours IS 'Count of 15-minute slots the daypart spans, encoded as text.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_daypart_day".daypart_id IS 'FK to the daypart this row belongs to.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_daypart_day".day_of_week IS 'ISO day-of-week (1=Monday … 7=Sunday) when the daypart applies.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_daypart_day".start_time IS 'Local start time of the daypart on this day.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_daypart_day".end_time IS 'Local end time of the daypart on this day.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_station_combo".geo_indicator IS 'Encoded geographic scope for the station-combo record.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_station_combo".station_combo_type IS 'Arbitron station-combo type code (single station, simulcast, network, etc.).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_station_combo".station_combo_id IS 'Arbitron station-combo identifier (text).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_station_combo".station_combo_name IS 'Human-readable name of the station combo.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_station_combo".station_call_letters IS 'FCC call letters (e.g. "WABC", "KQED-FM").'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_station_combo".station_band IS 'Broadcast band (AM/FM/HD/Satellite).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_station_combo".call_letter_change_indicator IS 'Flag indicating call letters changed during the reporting period.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_station_combo".station_frequency IS 'Broadcast frequency (kHz for AM, MHz for FM) as text.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_station_combo".station_format_code IS 'Arbitron format code (News/Talk, AC, Country, etc.).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_station_combo".station_activity_code IS 'Arbitron activity/status code (active, off-air, simulcast, etc.).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_station_combo".home_outside_indicator IS 'Flag distinguishing in-home from outside-home listening attribution.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_station_combo".station_sequence_number IS 'Ordering sequence number within the combo group.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_arbitron_station_combo".station_encode_flag IS 'Encoding/processing flag set during Arbitron load.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_media_source".media_source_name IS 'Display name of the media source being mapped (typically station call letters or network name).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_media_source".media_source_id IS 'Internal Veritone media_source_id value the source will be linked to.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_program_schedule_day".program_id IS 'Veritone program id (FK to media_platform.public.program).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_program_schedule_day".media_source_id IS 'Veritone media_source id the program airs on.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_program_schedule_day".program_schedule_day_of_week IS 'ISO day-of-week (1=Mon … 7=Sun) the program airs.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_program_schedule_day".start_time IS 'Local start time of the airing.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public."_stage_program_schedule_day".end_time IS 'Local end time of the airing.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.age_group.age_group_id IS 'PK; surrogate id for the age range.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.age_group.age_group_name IS 'Human-readable age range (e.g. "18-34", "12+").'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_audience_characteristic.audience_characteristic_id IS 'PK; Arbitron-assigned id for the demographic cell.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_audience_characteristic.audience_characteristic_name IS 'Human-readable cell name (e.g. "Women 25-54 Hispanic").'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_audience_characteristic.demographics_code IS 'Arbitron demographics code string.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_audience_characteristic.qualitative_code IS 'Arbitron qualitative code string.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_audience_characteristic.age_group_id IS 'FK to age_group.age_group_id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_audience_characteristic.gender_id IS 'FK to gender.gender_id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_daypart.daypart_id IS 'PK; Arbitron daypart id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_daypart.daypart_name IS 'Human-readable daypart label.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_daypart.daypart_quarter_hours IS 'Count of 15-minute slots the daypart spans (text).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_daypart_day.daypart_id IS 'FK to arbitron_daypart.daypart_id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_daypart_day.day_of_week IS 'ISO day-of-week (1=Mon … 7=Sun).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_daypart_day.start_time IS 'Local start time of the daypart on this day.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_daypart_day.end_time IS 'Local end time of the daypart on this day.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_file.file_id IS 'PK; surrogate id assigned at load time (from sequence arbitron_file_file_id_seq).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_file.record_id IS 'Source-system record id from the Arbitron delivery.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_file.record_type IS 'Arbitron record-type code identifying the data layout.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_file.report_period_id IS 'Arbitron report-period identifier (book code).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_file.arbitron_market_code IS 'Arbitron market code this delivery covers.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_file.report_period_short IS 'Short label of the report period (e.g. "Su25" for Summer 2025).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_file.report_period_name IS 'Full label of the report period (e.g. "Summer 2025").'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_file.start_date IS 'First day covered by the report period.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_file.end_date IS 'Last day covered by the report period.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_file.market_name IS 'Human-readable market name at delivery time.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_file.standard IS 'Arbitron measurement standard/methodology code.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_file.copyright IS 'Copyright string from the source delivery.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_in_tab.file_id IS 'FK to arbitron_file.file_id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_in_tab.geo_indicator IS 'Geographic scope code (DMA/Metro/TSA).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_in_tab.audience_characteristic_id IS 'FK to arbitron_audience_characteristic.audience_characteristic_id (text-typed here, integer elsewhere — preserved from source).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_in_tab.in_tab_value IS 'In-tab sample count (number of diary keepers represented) as text.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_market.arbitron_market_id IS 'PK; surrogate id from sequence arbitron_market_arbitron_market_id_seq.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_market.market_name IS 'Human-readable market name (e.g. "New York", "Los Angeles").'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_market.market_code IS 'External Arbitron/Nielsen market code (DMA or Metro code).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_market.market_type_id IS 'Encoded market type (DMA vs Metro vs TSA).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_market.latitude IS 'Market centroid latitude (text-typed; degrees).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_market.longitude IS 'Market centroid longitude (text-typed; degrees).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_dma.media_source_id IS 'Veritone media_source id this summary row aggregates.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_dma.start_date IS 'First day of the aggregation window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_dma.end_date IS 'Last day of the aggregation window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_dma.daypart_id IS 'FK to arbitron_daypart.daypart_id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_dma.arbitron_market_id IS 'FK to arbitron_market.arbitron_market_id; the DMA scope.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_dma.audience_aqh IS 'Average Quarter-Hour projected listener count for this media source × daypart × market window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_dma.audience_characteristics IS 'hstore of demographic_cell_id → AQH for each contributing audience characteristic.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_metro.media_source_id IS 'Veritone media_source id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_metro.start_date IS 'First day of the aggregation window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_metro.end_date IS 'Last day of the aggregation window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_metro.daypart_id IS 'FK to arbitron_daypart.daypart_id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_metro.arbitron_market_id IS 'FK to arbitron_market.arbitron_market_id; the Metro scope.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_metro.audience_aqh IS 'Average Quarter-Hour projected listener count for this window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_media_source_summary_metro.audience_characteristics IS 'hstore of demographic_cell_id → AQH for each contributing audience characteristic.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_network_affiliation.file_id IS 'FK to arbitron_file.file_id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_network_affiliation.network_type_id IS 'Arbitron network-type code (full network, news network, sports network, etc.).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_network_affiliation.network_affiliation_id IS 'Arbitron network-affiliation identifier the station belongs to.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_network_affiliation.station_combo_id IS 'FK to arbitron_station_combo.station_combo_id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_network_affiliation.unused IS 'Padding column carried from the Arbitron file format; intentionally unused.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_population.file_id IS 'FK to arbitron_file.file_id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_population.geo_indicator IS 'Geographic scope code.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_population.audience_characteristic_id IS 'FK to arbitron_audience_characteristic.audience_characteristic_id (text-typed).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_population.weighted_population IS 'Universe estimate (weighted population) used as the rating denominator (text).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_market_summary_dma.program_id IS 'Veritone program id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_market_summary_dma.arbitron_market_id IS 'FK to arbitron_market.arbitron_market_id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_market_summary_dma.start_date IS 'First day of the aggregation window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_market_summary_dma.end_date IS 'Last day of the aggregation window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_market_summary_dma.program_hour IS 'Program-hour offset (0..23) the row covers.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_market_summary_dma.audience_aqh IS 'AQH listener count for the (program, market, hour) window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_market_summary_dma.audience_characteristics IS 'hstore of demographic_cell_id → AQH for each contributing audience characteristic.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_dma.program_id IS 'Veritone program id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_dma.start_date IS 'First day of the aggregation window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_dma.end_date IS 'Last day of the aggregation window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_dma.program_hour IS 'Program-hour offset (0..23).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_dma.markets IS 'Array of arbitron_market_id values contributing to this row.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_dma.media_sources IS 'Array of Veritone media_source_id values contributing to this row.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_dma.audience_aqh IS 'AQH listener count for the aggregated window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_dma.audience_characteristics IS 'hstore of demographic_cell_id → AQH per audience characteristic.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_dma.day_of_week IS 'ISO day-of-week the row covers (NULL = all-days roll-up).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_metro.program_id IS 'Veritone program id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_metro.start_date IS 'First day of the aggregation window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_metro.end_date IS 'Last day of the aggregation window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_metro.program_hour IS 'Program-hour offset (0..23).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_metro.markets IS 'Array of arbitron_market_id values contributing (Metro scope).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_metro.media_sources IS 'Array of media_source_id values contributing.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_metro.audience_aqh IS 'AQH listener count for the aggregated window.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_metro.audience_characteristics IS 'hstore of demographic_cell_id → AQH per audience characteristic.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_program_summary_metro.day_of_week IS 'ISO day-of-week (NULL = all-days roll-up).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.geo_indicator IS 'Geographic scope code for this station-combo record.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.station_combo_type IS 'Arbitron station-combo type code.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.station_combo_id IS 'Arbitron station-combo identifier (text).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.station_combo_name IS 'Human-readable name.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.station_call_letters IS 'FCC call letters.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.station_band IS 'Broadcast band (AM/FM/HD/Satellite).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.call_letter_change_indicator IS 'Flag indicating call letters changed during the period.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.station_frequency IS 'Broadcast frequency as text.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.station_format_code IS 'Arbitron format code.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.station_activity_code IS 'Arbitron activity/status code.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.home_outside_indicator IS 'In-home vs outside-home listening indicator.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.station_sequence_number IS 'Ordering sequence number within the combo group.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.station_encode_flag IS 'Encoding/processing flag from load.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.media_source_id IS 'Primary Veritone media_source_id this combo maps to.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.arbitron_station_combo.media_source_ids IS 'All Veritone media_source_id values that historically mapped to this combo (covers re-assignments).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.gender.gender_id IS 'PK; surrogate id for the gender bucket.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.gender.gender_name IS 'Human-readable gender label.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.program_start_time.program_id IS 'Veritone program id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.program_start_time.day_of_week IS 'ISO day-of-week the program airs.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.program_start_time.start_time IS 'Start time encoded as integer (minutes since midnight or HHMM — see ETL source; column is plain int, not time).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_arbitron_file.file_id IS 'Working copy of arbitron_file.file_id during dedup.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_arbitron_file.arbitron_market_code IS 'Working copy of market code.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_arbitron_file.record_type IS 'Working copy of record type.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_arbitron_file.start_date IS 'Working copy of period start.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_arbitron_file.end_date IS 'Working copy of period end.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_arbitron_file.market_name IS 'Working copy of market name.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_arbitron_file.report_period_name IS 'Working copy of report-period name.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_arbitron_file.rnum IS 'ROW_NUMBER() ordinal used for dedup partitioning during load.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_program_dayparts.program_id IS 'Working program id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_program_dayparts.media_source_id IS 'Working media_source id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_program_dayparts.daypart_id IS 'Working daypart id.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_program_dayparts.day_of_week IS 'ISO day-of-week.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_program_dayparts.program_hour IS 'Program-hour interval (PG interval type).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_program_dayparts.daypart_start IS 'Working daypart start time.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_program_dayparts.daypart_end IS 'Working daypart end time.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_program_dayparts.program_start IS 'Working program start time (microsecond precision).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON COLUMN public.temp_program_dayparts.program_end IS 'Working program end time (microsecond precision).'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+
+-- ============================================================
+-- Indexes (7)
+-- ============================================================
+
+DO $$ BEGIN COMMENT ON INDEX public."_ix_arbitron_audience_estimate@file_id" IS 'Btree on (file_id) on _arbitron_audience_estimate_; Veritone _ix_<table>@<cols> convention.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON INDEX public."_ix_arbitron_audience_estimate@station_combo_id" IS 'Btree on (station_combo_id) on _arbitron_audience_estimate_; Veritone _ix_<table>@<cols> convention.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON INDEX public."_ix_arbitron_media_source_summary_dma@media_source_id" IS 'Btree on (media_source_id) on arbitron_media_source_summary_dma; Veritone _ix_<table>@<cols> convention.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON INDEX public."_ix_arbitron_media_source_summary_metro@media_source_id" IS 'Btree on (media_source_id) on arbitron_media_source_summary_metro; Veritone _ix_<table>@<cols> convention.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON INDEX public."_ix_arbitron_program_summary_dma@program_id" IS 'Btree on (program_id) on arbitron_program_summary_dma; Veritone _ix_<table>@<cols> convention.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON INDEX public."_ix_arbitron_program_summary_metro@program_id" IS 'Btree on (program_id) on arbitron_program_summary_metro; Veritone _ix_<table>@<cols> convention.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;
+DO $$ BEGIN COMMENT ON INDEX public."_ix_program_start_time@program_id" IS 'Btree on (program_id) on program_start_time; Veritone _ix_<table>@<cols> convention.'; EXCEPTION WHEN OTHERS THEN NULL; END; $$;

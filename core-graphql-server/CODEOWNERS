@@ -1,0 +1,12 @@
+# This file sets rules for code ownership of critical files.
+# These files require approval from specific maintainers.
+# See https://help.github.com/en/articles/about-code-owners.
+# Note that a repo admin can merge a PR even if it has not
+# been approved. This should only be done for emergency hotfixes
+# when a normal reviewer is not available.
+
+# from May 2019 all code changes require review from API team
+* @veritone/aiware-core
+
+# A lead or architect must approve all schema changes
+*.graphql stefanminkov

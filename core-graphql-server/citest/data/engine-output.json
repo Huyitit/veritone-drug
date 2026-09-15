@@ -1,0 +1,209 @@
+{
+  "schemaId": "https://www.veritone.com/schema/engine/20170929",
+  "sourceEngineId": "9f6c396e-5ef1-4eba-b1e2-e5ae11384687",
+  "sourceEngineName": "engine_x",
+  "taskPayload": {},
+  "taskId": "9f6c396e-5ef1-4eba-b1e2-e5ae11384687",
+  "generatedDateUtc": "2017-12-08T17:19:02Z",
+  "externalSourceId": "SOME STRING",
+  "validationContracts": ["ocr", "face"],
+  "tags": [
+    {
+      "key": "foo",
+      "value": "bar"
+    },
+    {
+      "key": "foo",
+      "value": "bar2"
+    }
+  ],
+  "language": "en - gb",
+  "entityId": "9f6c396e-5ef1-4eba-b1e2-e5ae11384687",
+  "libraryId": "9f6c396e-5ef1-4eba-b1e2-e5ae11384687",
+  "sentiment": {
+    "positiveValue": 0.12,
+    "positiveConfidence": 0.12,
+    "negativeValue": 0.12,
+    "negativeConfidence": 0.12
+  },
+  "gps": [
+    {
+      "latitude": 59.123,
+      "longitude": 213.123,
+      "precision": 100,
+      "direction": 10.1,
+      "velocity": 100,
+      "altitude": 123.12
+    }
+  ],
+  "object": [
+    {
+      "label": "Satya Nadella",
+      "type": "library_entity",
+      "uri": "http://testuri.com",
+      "entityId": "9f6c396e-5ef1-4eba-b1e2-e5ae11384687",
+      "libraryId": "9f6c396e-5ef1-4eba-b1e2-e5ae11384687",
+      "confidence": 0.99234,
+      "text": "The quick brown fox jumped over the brown fence",
+      "gender": {
+        "gender": "male",
+        "confidence": 0.9945
+      },
+      "emotions": [],
+      "age": {
+        "min": 20,
+        "max": 50,
+        "confidence": 0.2
+      },
+      "faceLandmarks": [
+        {
+          "type": "mouth",
+          "locationPoly": [
+            {
+              "x": 0.1,
+              "y": 0.2
+            }
+          ]
+        }
+      ],
+      "objectCategory": [
+        {
+          "class": "animal",
+          "@id": "kg:/m/0dl567"
+        }
+      ],
+      "region": "left",
+      "boundingPoly": [
+        {
+          "x": 0.1,
+          "y": 0.2
+        }
+      ],
+      "gps": [
+        {
+          "latitude": 59.123,
+          "longitude": 213.123,
+          "precision": 100,
+          "direction": 10.1,
+          "velocity": 100,
+          "altitude": 123.12
+        }
+      ],
+      "attributes": [
+        {
+          "attribute": "adult",
+          "score": 0.9,
+          "confidence": 0.012213
+        }
+      ],
+      "vendor": {}
+    }
+  ],
+  "vendor": {},
+  "series": [
+    {
+      "startTimeMs": 1260,
+      "stopTimeMs": 1360,
+      "tags": [
+        {
+          "key": "foo",
+          "value": "bar"
+        },
+        {
+          "key": "foo",
+          "value": "bar2"
+        }
+      ],
+      "language": "en - gb",
+      "speakerId": "9f6c396e-5ef1-4eba-b1e2-e5ae11384687",
+      "words": [
+        {
+          "word": "!silence",
+          "confidence": 0.794,
+          "bestPath": true,
+          "utteranceLength": 1
+        }
+      ],
+      "sentiment": {
+        "positiveValue": 0.12,
+        "positiveConfidence": 0.12,
+        "negativeValue": 0.12,
+        "negativeConfidence": 0.12
+      },
+      "entityId": "9f6c396e-5ef1-4eba-b1e2-e5ae11384687",
+      "libraryId": "9f6c396e-5ef1-4eba-b1e2-e5ae11384687",
+      "object": {
+        "label": "Satya Nadella",
+        "type": "library_entity",
+        "uri": "http://testuri.com",
+        "entityId": "9f6c396e-5ef1-4eba-b1e2-e5ae11384687",
+        "libraryId": "9f6c396e-5ef1-4eba-b1e2-e5ae11384687",
+        "confidence": 0.99234,
+        "text": "The quick brown fox jumped over the brown fence",
+        "gender": {
+          "gender": "male",
+          "confidence": 0.9945
+        },
+        "emotions": [],
+        "age": {
+          "min": 20,
+          "max": 50,
+          "confidence": 0.2
+        },
+        "faceLandmarks": [
+          {
+            "type": "mouth",
+            "locationPoly": [
+              {
+                "x": 0.1,
+                "y": 0.2
+              }
+            ]
+          }
+        ],
+        "objectCategory": [
+          {
+            "class": "animal",
+            "@id": "kg:/m/0dl567"
+          }
+        ],
+        "region": "left",
+        "boundingPoly": [
+          {
+            "x": 0.1,
+            "y": 0.2
+          }
+        ],
+        "gps": [
+          {
+            "latitude": 59.123,
+            "longitude": 213.123,
+            "precision": 100,
+            "direction": 10.1,
+            "velocity": 100,
+            "altitude": 123.12
+          }
+        ],
+        "attributes": [
+          {
+            "attribute": "adult",
+            "score": 0.9,
+            "confidence": 0.012213
+          }
+        ],
+        "vendor": {}
+      },
+      "gps": [
+        {
+          "latitude": 59.123,
+          "longitude": 213.123,
+          "precision": 100,
+          "direction": 10.1,
+          "velocity": 100,
+          "altitude": 123.12
+        }
+      ],
+      "vendor": {}
+    }
+  ]
+}

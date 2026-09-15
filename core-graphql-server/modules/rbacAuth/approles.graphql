@@ -1,0 +1,76 @@
+extend type Query {
+    """
+    Get App Roles
+    
+    If no args, return visible appRoles to Org.
+    If args, filter approles visible to user an org by criteria
+    If organization is specified, the user must be a SuperAdmin.  If so, then approles will be visible to that org instead of caller's org.
+    If SuperAdmin and organization is not specified, this behaves as if a normal user in an org called it.
+    """
+    applicationRoles(
+        ids: [ID],
+
+        """
+        POSIX compliant regular expression for matching the name
+        """
+        nameRegex: String
+
+        """
+        Return roles for this application
+        """
+        applicationId: ID
+
+        """
+        Return roles for this organization.
+
+        The user has to be a member of the organization or a superadmin
+        """
+        organizationId: ID
+
+        """
+        Return public roles
+        """
+        public: Boolean
+
+    ): [ApplicationRole]!
+
+    """
+    This returns the specified application role
+    """
+    applicationRole(id: ID!): ApplicationRole
+}
+
+input CreateApplicationRoleInput {
+    id: ID
+    name: String!
+    description: String!
+    applicationId: ID!
+    permissions: [AuthPermissionType]!
+    isPrivate: Boolean!
+    isAppEventRole: Boolean!
+}
+input UpdateApplicationRoleInput {
+    id: ID!
+    name: String
+    description: String
+    permissions: [AuthPermissionType]
+    isPrivate: Boolean
+    isAppEventRole: Boolean
+}
+
+extend type Mutation {
+    """
+    Create an application role
+    """
+    createApplicationRole(input: CreateApplicationRoleInput): ApplicationRole!
+
+    """
+    Update a specified application role
+    """
+    updateApplicationRole(input: UpdateApplicationRoleInput): ApplicationRole!
+
+    """
+    Delete an application role
+    """
+    deleteApplicationRole(id: ID!): DeletePayload!
+}

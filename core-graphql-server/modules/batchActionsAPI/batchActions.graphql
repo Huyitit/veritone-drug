@@ -1,0 +1,242 @@
+"""
+enum for TDOBatchProcessesInput.dateTimeFilter
+"""
+enum BatchProcessDateTimeField {
+    dateModified
+    dateCreated
+}
+
+"""
+enum for TDOBatchProcessesInput.orderBy
+"""
+enum BatchProcessOrderField {
+    dateModified
+    dateCreated
+}
+
+"""
+status for a batch process
+"""
+enum BatchProcessStatus {
+    creating
+    pending
+    running
+    completed
+    canceling
+    canceled
+    failed
+    aborted
+}
+
+enum BatchProcessItemStatus {
+    pending
+    complete
+    running
+    cancelled
+    queued
+    failed
+    aborted
+}
+
+"""
+Result for each action performed in the batch
+"""
+interface BatchProcessActionResult {
+    targetId: ID!
+    actionId: ID!
+    status: BatchProcessItemStatus!
+    details: JSONData
+}
+
+"""
+interface for each mutator attache to a batch
+"""
+interface BatchProcess {
+    id: ID!
+    status: BatchProcessStatus!
+    details: JSONData
+    concurrency: Int
+    itemsCompleted: Int
+    itemsFailed: Int
+    itemsTotal: Int
+}
+
+"""
+input for a new batch
+"""
+input BatchTDOInput {
+    """
+    Human-readable name for the batch
+    """
+    name: String!
+    """
+    The selection option that created the set.
+    """
+    batchSelector: JSONData!
+    """
+    organization Id
+    """
+    orgId: ID!
+    """
+    createdBy provide info of the user creator
+    """
+    createdBy: String
+    """
+    modifiedBy provide info of the user editor
+    """
+    modifiedBy: String
+    """
+    option to add a date filter to exclude tdos created after the event created timestamp
+    """
+    skipTdosAfterEventCreation: Boolean = false
+}
+
+"""
+input for the mutator executeJobTemplate
+"""
+input  BatchJobTemplateInput {
+    modifiedBy: String
+    concurrency: Int = 100
+    processDefinition: JSONData!
+}
+
+"""
+input for the query of a batch process
+"""
+input TDOBatchProcessesInput {
+    id: ID
+    status: [BatchProcessStatus!]
+    tdoId: ID
+    dateTimeFilter: [BatchProcessDateTimeFilter!]
+    orderBy: [BatchProcessSortField!]
+    offset: Int = 0
+    limit: Int = 100
+}
+
+input BatchProcessDateTimeFilter {
+    toDateTime: DateTime
+    fromDateTime: DateTime
+    field: BatchProcessDateTimeField!
+}
+
+input BatchProcessSortField {
+    field: BatchProcessOrderField!
+    direction: OrderDirection = desc
+}
+
+"""
+batch type
+"""
+type TDOBatch {
+    id: ID!
+    """
+    List of tdos incuded in the batch
+    """
+    temporalDataObjects(offset: Int = 0, limit: Int = 100): TDOList
+    """
+    List of the tdo ids in the batch
+    """
+    temporalDataObjectsIds(offset: Int = 0, limit: Int = 100): IDList
+    """
+    The selection option that created this set. ex. list of ids or search query
+    """
+    selectionCriteria: JSONData
+    """
+    Runs a job defined by the input, for every tdo in the set. This also materializes and finalizes
+    the tdo set if the selectionCriteria is dynamic (ex. search)
+    """
+    executeJobTemplate(input: BatchJobTemplateInput!): TDOBatchJobProcess
+    """
+    Indicates if the list of tdos is finalized. In the case where the list of tdos is dynamic
+    (ex. based on a search) this flag shows whether the search has been executed and the list of tdos is created
+    """
+    isMutable: Boolean!
+}
+
+"""
+Paginated list of ids
+"""
+type IDList implements Page {
+    records: [ID!]
+    offset: Int!
+    limit: Int!
+    count: Int
+}
+
+type TDOBatchProcess implements BatchProcess {
+    id: ID!
+    status: BatchProcessStatus!
+    TDOBatch: TDOBatch!
+    details: JSONData
+    concurrency: Int
+    itemsCompleted: Int
+    itemsFailed: Int
+    itemsTotal: Int
+    itemsRunning: Int
+    itemsPending: Int
+    actions(offset: Int = 0, limit: Int = 30, status: BatchProcessItemStatus, orderBy: [BatchProcessSortField!]
+    ): BatchActionResultList!
+}
+
+type TDOBatchJobProcess implements BatchProcess {
+    id: ID!
+    """
+    Overall status of the batch execution
+    """
+    status: BatchProcessStatus!
+    """
+    The set of TDOs that are being processed
+    """
+    TDOBatch: TDOBatch!
+    """
+    Details of the input that created the batchJobProcess
+    """
+    details: JSONData
+    concurrency: Int
+    itemsCompleted: Int
+    itemsFailed: Int
+    itemsTotal: Int
+    itemsRunning: Int
+    itemsPending: Int
+}
+
+type BatchActionResultList implements Page {
+    records: [TDOBatchJobActionResult]
+    offset: Int!
+    limit: Int!
+    count: Int
+}
+
+type TDOBatchJobActionResult implements BatchProcessActionResult{
+    targetId: ID!
+    actionId: ID!
+    status: BatchProcessItemStatus!
+    details: JSONData
+    job: Job!
+    temporalDataObject: TemporalDataObject!
+}
+
+extend type Query {
+    """
+    Get existing batch by id
+    """
+    TDOBatch(id: ID! ): TDOBatch
+    """
+    Get BatchProcess by ID, status or a tdo that is member of the batch
+    """
+    TDOBatchProcesses(input: TDOBatchProcessesInput): [TDOBatchProcess]
+}
+
+extend type Mutation {
+    """
+    Create a list of tdos on which bulk action will be performed
+    """
+    createTDOBatch(input: BatchTDOInput): TDOBatch! @scopes(scopes: ["job.create"])
+
+    """
+    Cancel further execution of the items in the batch.
+    Note that some types of batch processes may do not support cancel of the actual
+    processing.
+    """
+    cancelTDOBatchProcess(id: ID): TDOBatchProcess @scopes(scopes: ["job.delete"]) @audit(action: Delete)
+}

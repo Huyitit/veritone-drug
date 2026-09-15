@@ -1,0 +1,183 @@
+{
+  "schemas": {
+    "public": {
+      "modules": [
+        {
+          "name": "customScalars",
+          "path": "../modules/customScalars",
+          "doNotWrap": true
+        },
+        {
+          "name": "root",
+          "path": "../modules/root",
+          "doNotWrap": true
+        },
+        {
+          "name": "core",
+          "path": "../modules/core"
+        },
+        {
+          "name": "v3DataModel",
+          "path": "../modules/v3DataModel"
+        },
+        {
+          "name": "workflow",
+          "path": "../modules/workflow"
+        },
+        {
+          "name": "rbacAuth",
+          "path": "../modules/rbacAuth"
+        },
+        {
+          "name": "batchActionsAPI",
+          "path": "../modules/batchActionsAPI"
+        },
+        {
+          "name": "instanceAuditLog",
+          "path": "../modules/instanceAuditLog"
+        }
+      ]
+    },
+    "internal": {
+      "modules": [
+        {
+          "name": "customScalars",
+          "path": "../modules/customScalars",
+          "doNotWrap": true
+        },
+        {
+          "name": "root",
+          "path": "../modules/root",
+          "doNotWrap": true
+        },
+        {
+          "name": "core",
+          "path": "../modules/core",
+          "importTypeDefs": false,
+          "importResolvers": false
+        },
+        {
+          "name": "internalAPI",
+          "path": "../modules/internalAPI"
+        },
+        {
+          "name": "v3DataModel",
+          "path": "../modules/v3DataModel",
+          "importTypeDefs": false,
+          "importResolvers": false
+        }
+      ]
+    }
+  },
+  "directiveValidation": {
+    "scopes": {
+      "additionalRights": [
+        "task_type.internal",
+        "devops.querymonitor",
+        "task_type:org_system",
+        "source_type:update",
+        "schema:update",
+        "schema:read",
+        "master",
+        "user:create"
+      ]
+    }
+  },
+  "requiredDirectives": [
+    {
+      "onType": "Mutation",
+      "all": ["limit"],
+      "default": {
+        "kind": "Directive",
+        "name": {
+          "kind": "Name",
+          "value": "limit"
+        },
+        "arguments": [
+          {
+            "kind": "Argument",
+            "name": {
+              "kind": "Name",
+              "value": "cost"
+            },
+            "value": {
+              "kind": "IntValue",
+              "value": "3"
+            }
+          }
+        ]
+      },
+      "description": "Apply default cost limit of 3 to all mutations."
+    },
+    {
+      "onType": "Query",
+      "all": ["limit"],
+      "default": {
+        "kind": "Directive",
+        "name": {
+          "kind": "Name",
+          "value": "limit"
+        },
+        "arguments": [
+          {
+            "kind": "Argument",
+            "name": {
+              "kind": "Name",
+              "value": "cost"
+            },
+            "value": {
+              "kind": "IntValue",
+              "value": "1"
+            }
+          }
+        ]
+      },
+      "description": "Apply default cost limit of 1 to all queries."
+    },
+    {
+      "onType": "Query",
+      "any": ["auth", "noAuth"],
+      "default": {
+        "kind": "Directive",
+        "name": {
+          "kind": "Name",
+          "value": "auth"
+        },
+        "arguments": []
+      },
+      "description":
+        "Require one of auth or noAuth on every query. auth will be applied as the default."
+    },
+    {
+      "ofType": "EngineBlacklist",
+      "all": [
+        {
+          "name": "permissions",
+          "args": [
+            {
+              "name": "perms",
+              "any": "superadmin"
+            }
+          ]
+        }
+      ],
+      "description":
+        "EngineBlacklist objects are accessible only to Veritone admins"
+    },
+
+    {
+      "onType": "Mutation",
+      "any": ["auth", "noAuth"],
+      "description":
+        "All mutations must have authentication and permissions directive",
+      "default": {
+        "kind": "Directive",
+        "name": {
+          "kind": "Name",
+          "value": "auth"
+        },
+        "arguments": []
+      }
+    }
+  ]
+}

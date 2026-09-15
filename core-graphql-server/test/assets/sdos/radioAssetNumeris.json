@@ -1,0 +1,81 @@
+{
+  "assetType": "vtn-standard",
+  "contentType": "application/json",
+  "metadata": {
+    "schemaIds": ["0d0bc61f-5793-4d80-a980-9b041cabf661"],
+    "sourceEngineId": "d7f7e7cd-dca9-49af-90b6-53a3698690f8"
+  },
+  "series": [
+    {
+      "startTimeMs": 0,
+      "stopTimeMs": 900000,
+      "structuredData": {
+        "0d0bc61f-5793-4d80-a980-9b041cabf661": [
+          {
+            "affiliates": ["WKXW-FM"],
+            "datetimeEnd": "2017-12-06T00:00:00.000Z",
+            "datetimeStart": "2017-09-14T00:00:00.000Z",
+            "demographics": {
+              "male": {
+                "age12_17": 126,
+                "age18_20": 697,
+                "age21_24": 558,
+                "age25_34": 3763,
+                "age35_44": 2912,
+                "age45_49": 3183,
+                "age50_54": 926,
+                "age55_64": 3995,
+                "age65": 7650,
+                "total": 23810
+              },
+              "female": {
+                "age12_17": 288,
+                "age18_20": 80,
+                "age21_24": 248,
+                "age25_34": 613,
+                "age35_44": 2575,
+                "age45_49": 1884,
+                "age50_54": 2048,
+                "age55_64": 4117,
+                "age65": 6988,
+                "total": 18841
+              },
+              "total": 42651
+            },
+            "markets": [
+              "BALTIMORE",
+              "WASHINGTON, DC (HAGRSTWN)",
+              "PHILADELPHIA",
+              "NEW YORK"
+            ],
+            "reportPeriodId": "500092",
+            "reportPeriodName": "Fall 2017 RNAT Quarterly",
+            "station": {
+              "geoIndicator": 3,
+              "stationComboType": 1,
+              "stationComboId": "018593",
+              "stationComboName": "WKXW-FM",
+              "stationCallLetter": "WKXW",
+              "stationBand": "FM",
+              "callLetterChangeIndicator": "",
+              "stationFrequency": "101.5",
+              "stationFormatCode": 87,
+              "stationActivityCode": "",
+              "homeOutsideIndicator": 1,
+              "stationSequenceNumber": "113",
+              "stationEncodeFlag": "2"
+            },
+            "stationDayParts": {
+              "4": ["WKXW-FM"]
+            },
+            "dataSource": {
+              "name": "Numeris"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "sourceEngineId": "d7f7e7cd-dca9-49af-90b6-53a3698690f8",
+  "validationContracts": ["0d0bc61f-5793-4d80-a980-9b041cabf661"]
+}

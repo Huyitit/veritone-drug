@@ -1,0 +1,785 @@
+extend type Query {
+  """
+  flowTemplates
+  """
+  flowTemplates(
+    id: ID
+    offset: Int = 0
+    limit: Int = 30
+    showPublic: Boolean = true
+    categories: [String]
+    tags: [String]
+    title: String
+    authors: [String]
+  ): FlowTemplateList
+    @scopes(scopes: ["job.read"])
+
+  """
+  flowRevisions
+  """
+  flowRevisions(
+    id: ID
+    offset: Int = 0
+    limit: Int = 30
+    isHead: Boolean
+    isDeployed: Boolean
+    hasBuilds: Boolean
+    engineId: ID
+    buildId: ID
+    userId: ID
+    flowId: ID
+    createOnEmpty: Boolean = true
+  ): FlowRevisionList
+
+  """
+  flowRevision
+  """
+  flowRevision(id: ID!): FlowRevision
+
+  """
+  flows
+  """
+  flows(id: ID, offset: Int = 0, limit: Int = 30): EngineList
+
+  """
+  flow
+  """
+  flow(id: ID!): Engine
+
+  """
+  flowExecutions
+  """
+  flowExecutions(
+    offset: Int = 0
+    limit: Int = 30
+    flowId: ID!
+    flowExecutionId: ID
+    flowRevisionId: ID
+  ): FlowExecutionList
+
+  """
+  flowExecution
+  """
+  flowExecution(flowExecutionId: ID!): FlowExecution
+
+  """
+  Retrieve Workflow Metric of the current user's organization
+  """
+  workflowMetric: WorkflowMetric!
+  dailyTaskMetrics: DailyTaskMetricsList!
+
+  """
+  Retrieve Veritone Workflow instance status by id
+  """
+  workflowRuntime(workflowRuntimeId: ID!): WorkflowRuntimeResponse!
+
+  """
+  Get a specific workflowRuntimeData based on dataKey
+  """
+  workflowRuntimeStorageData(
+    """
+    Unique id of the workflow instance
+    """
+    workflowRuntimeId: ID!
+    """
+    The unique id to rertrieve a single workflow data
+    """
+    storageKey: String
+    """
+    A prefix filter used to return a set of workflow data
+    items whose dataKey starts with dataKeyPrefix
+    """
+    storageKeyPrefix: String
+    """
+    Offset for paging
+    """
+    offset: Int = 0
+    """
+    Limit on result size, for paging (page size).
+    workflowRuntimeData can be arbitrary large therefore smaller paging shoulf be preffered
+    """
+    limit: Int = 30
+  ): WorkflowRuntimeStorageDataList!
+    @scopes(
+      scopes: [
+        "superadmin"
+        "veritone.superadmin"
+        "workflow.create"
+        "admin.org.read"
+      ]
+      require: Any
+    )
+
+  """
+  Get alwaysUpFlow list
+  """
+  alwaysUpFlows(
+    engineId: ID
+    organizationId: ID
+    alwaysUpFlowId: ID
+    status: AlwaysUpFlowStatus
+    """
+    Gets all relevant AUF objects. Super admin only
+    """
+    getAll: Boolean = false
+    """
+    Provide an offset to skip to a certain element in the result, for paging.
+    """
+    offset: Int = 0
+    """
+    Specify maximum number of results to retrieve in this result. Page size.
+    """
+    limit: Int = 30
+  ): AlwaysUpFlowList
+    @scopes(scopes: ["developer.engine.read"])
+
+
+  """
+  Get alwaysUpFlow
+  """
+  alwaysUpFlow(
+    engineId: ID
+    organizationId: ID
+    alwaysUpFlowId: ID
+  ): AlwaysUpFlow
+    @scopes(scopes: ["developer.engine.read"])
+}
+
+extend type Mutation {
+  """
+  Create or Update Workflow data.
+  """
+  setWorkflowRuntimeStorageData(
+    workflowRuntimeId: ID!
+    input: CreateWorkflowRuntimeStorageData!
+  ): WorkflowRuntimeStorageData!
+    @scopes(
+      scopes: [
+        "superadmin"
+        "veritone.superadmin"
+        "workflow.create"
+        "admin.org.update"
+      ]
+      require: Any
+    )
+
+  """
+  Start a Veritone Workflow instance
+  """
+  startWorkflowRuntime(
+    workflowRuntimeId: ID!
+    orgId: ID!
+    generateAuthToken: Boolean = false
+  ): WorkflowRuntimeResponse!
+    @scopes(
+      scopes: ["superadmin", "veritone.superadmin", "admin.org.update"]
+      require: Any
+    )
+
+  """
+  Shutdown Veritone Workflow instance
+  """
+  stopWorkflowRuntime(workflowRuntimeId: ID!): WorkflowRuntimeResponse!
+    @scopes(
+      scopes: ["superadmin", "veritone.superadmin", "admin.org.update"]
+      require: Any
+    )
+
+  # Create flow template
+  createFlowTemplate(input: CreateFlowTemplate): FlowTemplate
+    @scopes(scopes: ["developer.engine.read", "developer.engine.create"])
+
+  # Update flow template
+  updateFlowTemplate(input: UpdateFlowTemplate): FlowTemplate
+    @scopes(scopes: ["developer.engine.read", "developer.engine.update"])
+
+  # Delete flow template
+  deleteFlowTemplate(id: ID!): FlowTemplate
+    @scopes(scopes: ["developer.engine.delete"])
+
+  # Create flow revision
+  createFlowRevision(input: CreateFlowRevision): FlowRevision
+    @scopes(scopes: ["developer.engine.read", "developer.engine.create"])
+
+  # Update flow revision
+  updateFlowRevision(input: UpdateFlowRevision): FlowRevision
+    @scopes(scopes: ["developer.engine.read", "developer.engine.create"])
+
+  # # Create flow execution
+  createFlowExecution(input: CreateFlowExecution): FlowExecution
+    @scopes(scopes: ["job.read", "job.create"])
+
+  # Update flow execution
+  updateFlowExecution(input: UpdateFlowExecution): FlowExecution
+    @scopes(scopes: ["job.read", "job.create"])
+
+  """
+  Deprecated, use createFlow instead
+  """
+  createFlowFromTemplate(input: CreateFlowFromTemplate): FlowFromTemplate
+    @deprecated(
+      reason: "Not Implemented"
+      alternate: "createFlow"
+      expirationDate: "2024-6-29"
+      deprecationDate: "2023-6-29"
+    )
+
+  # Update flow revision
+  updateFlowRevisionHead(input: UpdateFlowRevisionHead): FlowRevision
+    @scopes(scopes: ["developer.engine.read", "developer.engine.create"])
+
+  # Deploy flow revision
+  deployFlowRevision(input: DeployFlowRevision): FlowRevision
+    @scopes(scopes: ["developer.engine.read", "developer.build.create"])
+
+  # Create Notebook. Starting as duplicate of create flow
+  createNotebook(input: CreateNotebook): Engine
+    @scopes(scopes: ["developer.engine.create"])
+
+  # Create flow
+  createFlow(input: CreateFlow): Engine
+    @scopes(scopes: ["developer.engine.create", "developer.build.create"])
+  # Update flow
+  updateFlow(input: CreateEngine): Engine
+    @scopes(scopes: ["developer.engine.create"])
+  # Copy flow
+  copyFlow(input: CopyFlow): Engine @scopes(scopes: ["developer.engine.create"])
+  # Delete flow
+  deleteFlow(input: DeleteFlow): Engine
+    @scopes(scopes: ["developer.engine.delete"])
+  # Pause flow
+  pauseFlow(input: pauseFlow): Engine
+    @scopes(scopes: ["developer.engine.create"])
+  # Unpause flow
+  unpauseFlow(input: pauseFlow): Engine
+    @scopes(scopes: ["developer.engine.create"])
+  """
+  Create a alwaysUpFlow
+  """
+  alwaysUpFlowCreate(input: AlwaysUpFlowInput): AlwaysUpFlow
+    @scopes(scopes: ["developer.engine.create"])
+  """
+  Update a alwaysUpFlow
+  """
+  alwaysUpFlowUpdate(input: AlwaysUpFlowInput): AlwaysUpFlow
+    @scopes(scopes: ["developer.engine.update"])
+}
+
+input pauseFlow {
+  """
+  flowId wo pause
+  """
+  flowId: ID!
+}
+
+input DeleteFlow {
+  flowId: ID!
+}
+
+input CopyFlow {
+  """
+  flowId without flowRevisionId will base the copy off the HEAD revision
+  """
+  flowId: ID
+  """
+  Name for the new Automate Flow.
+  """
+  name: String
+  """
+  flowRevisionId will base the copy off the revision
+  """
+  flowRevisionId: ID
+}
+
+input DeployFlowRevision {
+  flowRevisionId: ID
+  flowId: ID
+  """
+  __Only superadmin tokens are allowed to set this flag.__
+  When true, disables the automatic creation of a new package when deploying a flow revision.
+  Set to false by default.
+  """
+  disableAutoPackageCreation: Boolean = false
+}
+
+input CreateFlowFromTemplate {
+  # an optional flow name
+  name: String
+  # the flow category
+  categoryId: String
+  # the flow template id
+  flowTemplateId: String!
+}
+
+input CreateFlow {
+  id: ID
+  name: String
+  description: String
+  """
+  The engine category
+  """
+  categoryId: ID
+  """
+  Optional application id for linked applications. This will be used to access
+  the default module pallete.
+  """
+  linkedApplicationId: ID
+  """
+  Optional automate flow template id. Flow templates can be queried using the flowTemplates call.
+  By default, if templateId is not provided (or is left empty),
+  the engine will be created with the default flow "aiWare Workflow Base Template" (id: "40b2b9b4-28bf-4e5e-b3e9-3c45dc40bb22").
+  This must be an actual
+  template id such as '36' for 'Support Call Analytics Reporter'. An engineId will not fail
+  but it will create a blank flow.
+  """
+  templateId: ID
+  """
+  The engine deployment model. See the DeploymentModel enum for options.
+  """
+  deploymentModel: String
+  """
+  JWT rights for engine, which is used for generating jwtToken rights later
+  """
+  jwtRights: JSONData
+  """
+  packages containing automate resources(automateNode, automatePalette)
+  """
+  packageIds: [String]
+  """
+  This is specifically to get the node-red image related to the cluster. 
+  """
+  clusterId: String
+}
+
+input CreateNotebook {
+  id: ID
+  name: String
+  description: String
+  """
+  The engine category
+  """
+  categoryId: ID
+  """
+  Optional application id for linked applications. This will be used to access
+  the default module pallete.
+  """
+  linkedApplicationId: ID
+  """
+  Optional automate flow template id. Flow templates can be queried using the flowTemplates call.
+  If left empty will be a blank flow. This must be an actual
+  template id such as '36' for 'Support Call Analytics Reporter'. An engineId will not fail
+  but it will create a blank flow.
+  """
+  templateId: ID
+  """
+  The engine deployment model. See the DeploymentModel enum for options.
+  """
+  deploymentModel: String
+  """
+  JWT rights for engine, which is used for generating jwtToken rights later
+  """
+  jwtRights: JSONData
+  """
+  packages containing automate resources(automateNode, automatePalette)
+  """
+  packageIds: [String]
+}
+
+input UpdateFlowRevisionHead {
+  flowId: ID!
+  runtime: JSONData!
+  """
+  Optionally preserve current head in a new revision. Default false.
+  """
+  preserveHead: Boolean = false
+}
+
+input UpdateFlowRevision {
+  flowRevisionId: ID!
+  """
+  Human readable positive increasing integer value
+  """
+  flowRevisionNumb: Int
+  buildId: ID
+  """
+  The ID of the flow. In this context interchangeable with flowId
+  """
+  engineId: ID
+  """
+  The ID of the flow. In this context interchangeable with engineId
+  """
+  flowId: ID
+  description: String
+  """
+  The flow array and package that describes the flow and dependencies
+  """
+  runtime: JSONData
+}
+
+input CreateFlowRevision {
+  """
+  Optional given id
+  """
+  flowRevisionId: ID
+  """
+  The ID of the flow to associate the revision to
+  """
+  flowId: ID!
+  """
+  The flow array and package that describes the flow and dependencies
+  """
+  runtime: JSONData!
+  """
+  Force creation of revision even if the hash matches an existing revision
+  """
+  forceCreate: Boolean
+  """
+  Set the new revision as the HEAD
+  """
+  isHead: Boolean
+  description: String
+}
+
+input UpdateFlowTemplate {
+  id: ID!
+  title: String
+  subtitle: String
+  description: String
+  tags: [String]
+  learnMoreLink: String
+  image: String
+  organizationId: String
+  screenshots: [String]
+  categories: [String]
+  author: String
+  public: Boolean
+  flow: String
+  package: String
+}
+
+input CreateFlowTemplate {
+  id: ID
+  title: String!
+  subtitle: String!
+  description: String!
+  tags: [String]
+  learnMoreLink: String
+  image: String
+  organizationId: String
+  screenshots: [String]
+  categories: [String]!
+  author: String!
+  public: Boolean
+  flow: String!
+  package: String
+}
+
+type FlowFromTemplate {
+  # created engine id
+  id: String!
+  # created engine name
+  name: String!
+  # created build id
+  buildId: String!
+}
+
+input CreateWorkflowRuntimeStorageData {
+  """
+  Unique lookup id for the workflowRuntimeData
+  """
+  storageKey: String!
+  """
+  Data content - base64 encoded binary, plain string or encoded JSON
+  """
+  storageData: String!
+  """
+  Optional metadata for the workflowRuntimeData
+  """
+  storageMetadata: String
+}
+
+type FlowTemplateList implements Page {
+  records: [FlowTemplate!]
+  offset: Int!
+  limit: Int!
+  count: Int
+}
+
+type FlowTemplate {
+  id: ID!
+  title: String
+  subtitle: String
+  description: String
+  flow: String
+  package: String
+  image: String
+  screenshots: [String]
+  categories: [String]
+  organizationId: String
+  tags: [String]
+  author: String
+  public: Boolean
+  learnmorelink: String
+  logo: String
+  created: DateTime
+  modified: DateTime
+}
+
+type FlowRevisionList implements Page {
+  records: [FlowRevision!]
+  offset: Int!
+  limit: Int!
+  count: Int
+}
+
+#add input of createFlowRevision and updateFlowRevision
+type FlowRevision {
+  flowRevisionId: ID!
+  flowRevisionNumb: Int!
+  engineId: ID!
+  isHead: Boolean!
+  isDeployed: Boolean
+  organizationId: String
+  createdDateTime: DateTime!
+  updatedDateTime: DateTime
+  updatedBy: String!
+  runtime: JSONData
+  hash: String
+  buildId: ID
+  userId: ID
+  description: String
+}
+
+type FlowExecutionList implements Page {
+  records: [FlowExecution!]
+  offset: Int!
+  limit: Int!
+  count: Int
+}
+
+type FlowExecution {
+  """
+  The id of the execution
+  """
+  flowExecutionId: ID!
+  """
+  The id of the associated flow
+  """
+  flowId: ID!
+  """
+  The id of the associated revision
+  """
+  flowRevisionId: ID
+  """
+  The id of the organization used
+  """
+  organizationId: String!
+  """
+  Auto generated timestamp on creation
+  """
+  createdDateTime: DateTime!
+  """
+  Auto generated timestamp on update
+  """
+  updatedDateTime: DateTime
+  """
+  The status of the execution after completion
+  """
+  flowExecutionStatus: String
+  """
+  The url to the result file or single string of text
+  """
+  flowExecutionResult: String
+  """
+  The url to the log file
+  """
+  flowExecutionLog: String
+  """
+  The url or string of flow input
+  """
+  flowExecutionInput: String
+  """
+  The authed user during execution creation
+  """
+  userId: ID
+  """
+  Run Mode context of where the flow was ran(Studio, Engine, Service, AUF, etc)
+  """
+  runMode: String
+}
+
+type WorkflowMetric {
+  """
+  The number of users who have access to Flow
+  """
+  flowSeatCount: Int!
+  """
+  The flow engine task count
+  """
+  flowTaskCount: Int!
+}
+
+type WorkflowRuntimeResponse {
+  success: Boolean!
+
+  """
+  Error message if success is false
+  """
+  message: String
+
+  """
+  uri of veritone workflow instance.
+  This is only available when Workflow request is successful
+  """
+  uri: String
+
+  """
+  Authentication token used for webhooks
+  """
+  authToken: String
+
+  """
+  Creation date of this history record
+  """
+  createdDateTime: DateTime
+  """
+  Last modified date of this history record
+  """
+  modifiedDateTime: DateTime
+}
+
+type WorkflowRuntimeStorageDataList implements Page {
+  records: [WorkflowRuntimeStorageData]
+  count: Int
+  offset: Int!
+  limit: Int!
+}
+
+type WorkflowRuntimeStorageData {
+  """
+  Unique lookup id for the workflowRuntimeData
+  """
+  storageKey: String!
+  """
+  Data content - base64 encoded binary, plain string or encoded JSON
+  """
+  storageData: String!
+  """
+  Optional metadata for the workflowRuntimeData
+  """
+  storageMetadata: String
+}
+
+enum AlwaysUpFlowStatus {
+  active
+  inactive
+  deleted
+}
+
+input AlwaysUpFlowInput {
+  """
+  The UUID of the AlwaysUpFlow.
+  """
+  alwaysUpFlowId: ID
+  """
+  The ID of the organization this AlwaysUpFlow will belong to.
+  Defaults to the user's organization.
+  """
+  organizationId: ID
+  """
+  The ID of the engine
+  """
+  engineId: ID!
+  """
+  The ID of specific build being used. Default null to use most up to date build
+  """
+  buildId: ID
+  """
+  Scheduled value - In chron format of '* * * * * *'. Checks for ranges in hours and minutes, for example: "* 8-16 * * * " is active from 8pm to 4pm every day.
+  """
+  schedule: String
+  """
+  This is the schedule the always up flow will be restarted. Flows must restart at least once every 24 hours.
+  Defaults to '0 4 * * *' which is midnight eastern time(4am UTC). The 'int int * * *' format is the only accepted format.
+  """
+  updateSchedule: String
+  """
+  The status enum for a schedule as it will never be deleted.
+  """
+  status: AlwaysUpFlowStatus
+  """
+  The flag used to mark the pod for deletion which will start a new pod defaulting this boolean to false.
+  """
+  restart: Boolean
+  """
+  Schedules last update time UTC time zone.
+  """
+  dateModified: DateTime
+  """
+  The schedule was created UTC time zone
+  """
+  dateCreated: DateTime
+  createdBy: String
+  modifiedBy: String
+}
+
+"""
+A AlwaysUpFlow object.
+"""
+type AlwaysUpFlow {
+  """
+  The UUID of the AlwaysUpFlow.
+  """
+  alwaysUpFlowId: ID
+  """
+  The ID of the organization this AlwaysUpFlow will belong to.
+  Defaults to the user's organization.
+  """
+  organizationId: ID
+  """
+  The GUID of the organization this AlwaysUpFlow will belong to.
+  Defaults to the user's organization.
+  """
+  organizationGuid: ID
+  """
+  The ID of the engine
+  """
+  engineId: ID
+  """
+  The ID of specific build being used. Default null to use most up to date build
+  """
+  buildId: ID
+  """
+  Scheduled value
+  """
+  schedule: String
+  """
+  updateScheduled value
+  """
+  updateSchedule: String
+  """
+  The status enum for a schedule as it will never be deleted.
+  """
+  status: AlwaysUpFlowStatus
+  """
+  The flag used to mark the pod for deletion which will start a new pod defaulting this boolean to false.
+  """
+  restart: Boolean
+  """
+  Schedules last update time UTC time zone.
+  """
+  dateModified: DateTime
+  """
+  The schedule was created UTC time zone
+  """
+  dateCreated: DateTime
+  createdBy: String
+  modifiedBy: String
+}
+
+type AlwaysUpFlowList {
+  records: [AlwaysUpFlow!]
+  offset: Int!
+  limit: Int!
+  count: Int
+}

@@ -1,0 +1,8 @@
+# TODO_TESTS — rbacAuth/dal
+
+TESTED: 5 of 5.
+
+| # | Status | Priority | Subject | Regression this test would catch | Implemented | PR |
+|---|--------|----------|---------|----------------------------------|-------------|----|
+| 1 | done | medium | `resourceTypes.js — resource-type enumeration` | A regression that drops or renames a documented resource type would silently break RBAC grants targeting that type. Verify the documented type-string ↔ id mappings. | `resourceTypes.spec.js` (4 cases: map shape, TDO + Folder exact DB bindings, distinct join tables) | VE-23627 |
+| 2 | implemented | medium | `authGroup.dal.js:71 — getPrivateAuthGroupOwners(authGroupIds)`, cache-unavailable fallback branch (`if (!redisCache \|\| !localCache)`) | New function (VE-25569/#4533 destination-permissions work) — the 6 new tests in authGroup.dal.spec.js's `getPrivateAuthGroupOwners` describe block thoroughly cover the L1/L2/DB cache-tier logic (positive/negative caching, DB-error-does-not-poison-cache), but none instantiate `serviceContext` WITHOUT `redisCache`/`localCache` to exercise the documented "cache unavailable (e.g. tests) -> preserve the original never-throw contract" bypass path. A regression there would either throw where the function is documented to swallow errors and return `[]`, or silently skip the direct-DB-lookup fallback entirely — this function backs the ACERevoke audit fallback per its own code comment, so a silent failure here degrades revoke-audit accuracy rather than crashing loudly. | `authGroup.dal.spec.js` (2 cases: direct-DB bypass resolves correctly, DB error swallowed and returns `[]`) | (pending — framework will open PR) |

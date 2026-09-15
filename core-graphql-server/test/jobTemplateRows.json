@@ -1,0 +1,84 @@
+{
+  "oneRow": [
+    {
+      "id": "18125119_m1dODVWA5Q",
+      "application_id": "784ecd92-4e31-41eb-8a80-6b73bfdf4914",
+      "target_id": "123",
+      "created_date_time": 1545253772,
+      "modified_date_time": 1545253772,
+      "retries": 0,
+      "deleted_date_time": null,
+      "cluster_id": "rt-deadbeef-001",
+      "bundle_id": null,
+      "source_asset_id": null,
+      "client_application_id": "784ecd92-4e31-41eb-8a80-6b73bfdf4914",
+      "is_template": true,
+      "job_pipeline_id": null,
+      "job_pipeline_stage": null,
+      "skip_decider": false,
+      "correlation_id": null,
+      "job_config": null
+    }
+  ],
+  "manyRows": [
+    {
+      "id": "18125119_m1dODVWA5Q",
+      "application_id": "784ecd92-4e31-41eb-8a80-6b73bfdf4914",
+      "target_id": "123123",
+      "created_date_time": 1545253772,
+      "modified_date_time": 1545253772,
+      "retries": 0,
+      "deleted_date_time": null,
+      "cluster_id": "rt-deadbeef-001",
+      "bundle_id": null,
+      "source_asset_id": null,
+      "client_application_id": "784ecd92-4e31-41eb-8a80-6b73bfdf4914",
+      "is_template": true,
+      "job_pipeline_id": null,
+      "job_pipeline_stage": null,
+      "skip_decider": false,
+      "correlation_id": null,
+      "job_config": null
+    },
+    {
+      "id": "18125119_m1dODVWA5A",
+      "application_id": "784ecd92-4e31-41eb-8a80-6b73bfdf4914",
+      "target_id": "12334",
+      "created_date_time": 1545253372,
+      "modified_date_time": 1545253372,
+      "retries": 0,
+      "deleted_date_time": null,
+      "cluster_id": "rt-deadbeef-001",
+      "bundle_id": null,
+      "source_asset_id": null,
+      "client_application_id": "784ecd92-4e31-41eb-8a80-6b73bfdf4914",
+      "is_template": true,
+      "job_pipeline_id": null,
+      "job_pipeline_stage": null,
+      "skip_decider": false,
+      "correlation_id": null,
+      "job_config": null
+    },
+    {
+      "id": "18125119_m1dODVWA5B",
+      "application_id": "784ecd92-4e31-41eb-8a80-6b73bfdf4914",
+      "target_id": "1234",
+      "created_date_time": 1545254772,
+      "modified_date_time": 1545254772,
+      "retries": 0,
+      "deleted_date_time": null,
+      "cluster_id": null,
+      "bundle_id": null,
+      "source_asset_id": null,
+      "client_application_id": "784ecd92-4e31-41eb-8a80-6b73bfdf4914",
+      "is_template": true,
+      "job_pipeline_id": null,
+      "job_pipeline_stage": null,
+      "skip_decider": false,
+      "correlation_id": "3498235987240597345",
+      "job_config": {
+        "foo": "bar"
+      }
+    }
+  ]
+}

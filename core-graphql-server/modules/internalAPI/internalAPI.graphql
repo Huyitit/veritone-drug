@@ -1,0 +1,296 @@
+type Query {
+  # Retrieve a list of internal tokens.
+  # Note that the actual authentication tokens cannot be seen in full
+  # in the output of this query!
+  internalTokens(
+    # Offset for paging
+    offset: Int = 0
+    # Limit / page size for paging
+    limit: Int = 30
+    # Optionally, specify a status to filter by
+    status: [InternalTokenStatus!]
+    # Optionally, specify a specific token ID to retrieve
+    id: ID
+    # Specify order direction. The only
+    # field that can currently be sorted on is id
+    orderDirection: OrderDirection = asc
+  ): InternalTokenList! @scopes(scopes: ["superadmin"])
+  # Retrieve a single token. Note that you must have the full
+  # authentication token in order to retrieve it; the response to
+  # this query does not include the full token. It's used for
+  # getting other metadata such as status, requestor, etc.
+  internalToken(
+    # Provide the ID of the token to retrieve
+    id: ID!
+  ): InternalToken! @scopes(scopes: ["superadmin"])
+  # List all available rights that be requested on a token
+  availableRights: [String!]!
+  scheduledEvent(id: ID!): ScheduledEvent
+    @scopes(scopes: ["task_type:internal", "superadmin"], require: Any)
+  scheduledEvents(
+    id: ID
+    ids: [ID!]
+    name: String
+    type: String
+    limit: Int = 30
+    offset: Int = 0
+  ): ScheduledEventList!
+    @scopes(scopes: ["task_type:internal", "superadmin"], require: Any)
+}
+
+type Mutation {
+  # Request a new internal token. The token will not be active
+  # until it is approved by another administrator.
+  requestInternalToken(
+    # Input fields required to request a token
+    input: RequestInternalToken!
+  ): InternalToken! @scopes(scopes: ["superadmin"]) @tokenType(type: User)
+  # Approve an internal token request. The token must be approved by
+  # a user with administrative privileges who is not the original requestor.
+  approveInternalToken(
+    # Fields required to approve a token request
+    input: ApproveInternalToken!
+  ): InternalToken! @scopes(scopes: ["superadmin"]) @tokenType(type: User)
+  # Revoke an internal token
+  revokeInternalToken(
+    # Fields required to revoke a token
+    input: RevokeInternalToken!
+  ): InternalToken! @scopes(scopes: ["superadmin"]) @tokenType(type: User)
+  # Update an internal token.
+  # A rights change requires approval. The token will remain active,
+  # with the original rights, until the change is approved.
+  updateInternalToken(
+    # Fields required to update a token
+    input: UpdateInternalToken!
+  ): InternalToken! @scopes(scopes: ["superadmin"]) @tokenType(type: User)
+
+  databaseQueryMonitor(
+    enableKill: Boolean = false
+    # Also run ANALYZE against the stalest tables on the same connections, after
+    # the kill sweep completes. ANALYZE needs the owner/superuser rights these
+    # `queryMonitor` connections already carry.
+    enableAnalyze: Boolean = false
+    # Cap on tables analyzed per run, across all databases combined.
+    maxTables: Int
+    # Only consider tables not analyzed (or autoanalyzed) in this many days.
+    stalenessDays: Int
+  ): [DatabaseQueryMonitorResult!]!
+    @scopes(scopes: ["superadmin", "devops.querymonitor"], require: Any)
+
+  createScheduledEvent(input: CreateScheduledEvent): ScheduledEvent!
+    @scopes(scopes: ["superadmin"])
+
+  updateScheduledEvent(input: UpdateScheduledEvent): ScheduledEvent!
+    @scopes(scopes: ["superadmin"])
+
+  deleteScheduledEvent(id: ID!): ScheduledEvent! @scopes(scopes: ["superadmin"])
+
+  setAssetStorageTags(
+    input: AssetStorageTagInput!
+  ): OpResult
+    @scopes(scopes: ["task_type:internal"])
+}
+
+type UserToken {
+  token: String!
+}
+
+type DatabaseQueryMonitorResult {
+  database: String!
+  timestamp: DateTime!
+  queries: [DatabaseQueryInfo!]!
+  summary: JSONData
+  queryError: String
+  # Tables analyzed on this tick. Empty unless `enableAnalyze` was set.
+  tables: [DatabaseAnalyzeTableInfo!]!
+  # Analyze counters for this database. Null unless `enableAnalyze` was set.
+  analyzeSummary: JSONData
+}
+
+type DatabaseQueryInfo {
+  sql: String!
+  userName: String!
+  pid: ID!
+  applicationName: String
+  clientIpAddress: String
+  state: String!
+  queryStartTime: DateTime!
+  queryDurationSeconds: Int!
+  action: QueryAction!
+}
+
+enum QueryAction {
+  warn
+  kill
+  killFailed
+  terminate
+}
+
+type DatabaseAnalyzeTableInfo {
+  schemaName: String!
+  tableName: String!
+  # Null when the table has never been analyzed.
+  lastAnalyze: DateTime
+  # Null when the table has never been autoanalyzed.
+  lastAutoanalyze: DateTime
+  durationMs: Int
+  action: AnalyzeAction!
+}
+
+enum AnalyzeAction {
+  analyzed
+  failed
+}
+
+# Fields required to request an internal token
+input RequestInternalToken {
+  # List the rights requested. The list will be validated against
+  # the complete set of known rights returned by `availableRights`.
+  # Certain rights, such as `superadmin`, cannot be set on an
+  # internal token.
+  rights: [String!]!
+  # Provide a short, human-readable tag for the token.
+  # Must not contain spaces or special characters other than `.`, `-`, and `:`.
+  # Must be non-empty but not more than 32 characters long.
+  # The tag becomes part of the token and cannot be changed.
+  tag: String!
+  # Provide a human-readable label. If not provided, the tag will be used.
+  # The label can be changed at any time.
+  label: String
+}
+
+# Fields required to update an internal token
+input UpdateInternalToken {
+  # ID of the token to update
+  id: ID!
+  # List the rights requested. The list will be validated against
+  # the complete set of known rights returned by `availableRights`.
+  # Certain rights, such as `superadmin`, cannot be set on an
+  # internal token.
+  rights: [String!]
+  # Provide a human-readable label.
+  # Approval is not needed for a label change.
+  label: String
+}
+
+input ApproveInternalToken {
+  # ID of the internal token to approve.
+  # Note that a user cannot approve their own request.
+  # The actual token ID _or_ the request ID can be used to
+  # approve the token.
+  id: ID!
+}
+
+input RevokeInternalToken {
+  # ID of the internal token to revoke.
+  id: ID!
+}
+
+# Represents a persistence, org-less internal token provisioned for use
+# by Veritone platform components.
+type InternalToken {
+  # A short, human-readable tag for the token. It is a prefix on the token itself.
+  tag: String!
+  # A longer label for the token
+  label: String!
+  # All rights granted to the token
+  rights: [String!]!
+  # ID of the user who requested the token
+  requestorId: ID
+  # ID of the user who approved the token
+  approverId: ID
+  # Date and time the token was originally requested
+  createdDateTime: DateTime
+  # Date and time the token was approved (if any)
+  approvedDateTime: DateTime
+  # Date and time the token was last modified in any way
+  modifiedDateTime: DateTime
+  # Date and time the token was revoked (if any)
+  revokedDateTime: DateTime
+  # The ID -- the actual token used to authenticate.
+  id: ID!
+  # Current status of the token. Only an `active` token can
+  # be used to authenticate.
+  status: InternalTokenStatus!
+  # ID of the active approval request for this token, if any.
+  # will be null for an active token, but will have an ID
+  # for a pending or updatePending token. This ID can be
+  # passed to approveToken in place of the actual token.
+  # It is not obscured and can be retrieved by the requestor
+  # at any time by filtering on `pending` or `updatePending` state.
+  requestId: ID
+}
+
+# Possible status setting for internal tokens
+enum InternalTokenStatus {
+  # A new token request that has not yet been approved.
+  # The token cannot be used to authenticate.
+  pending
+  # An active, valid token.
+  active
+  # A token that has been permanently revoked.
+  revoked
+  # A token that is active and valid but has rights updates
+  # pending approval. The original rights are active; the new
+  # rights will not be active until the request is approved.
+  updatePending
+}
+
+type InternalTokenList implements Page {
+  records: [InternalToken!]!
+  count: Int
+  offset: Int!
+  limit: Int!
+}
+
+input CreateScheduledEvent {
+  name: String!
+  type: String!
+  applicationId: String
+  # Payload JSON or ProtoBuf
+  payload: String!
+  schedule: String!
+}
+
+input UpdateScheduledEvent {
+  id: ID!
+  name: String
+  type: String
+  applicationId: String
+  # Payload JSON or ProtoBuf
+  payload: String
+  schedule: String
+}
+
+type ScheduledEvent {
+  id: ID!
+  name: String!
+  type: String!
+  applicationId: String
+  payload: String!
+  schedule: String!
+  createdDateTime: DateTime!
+  modifiedDateTime: DateTime
+}
+
+type ScheduledEventList implements Page {
+  records: [ScheduledEvent!]!
+  count: Int
+  offset: Int!
+  limit: Int!
+}
+
+input AssetStorageTag {
+  key: String!
+  value: String 
+}
+input AssetStorageTagInput {
+  """
+  A s3 URI. The URI is an object URL of an existing object on S3.
+  """
+  uri: String!
+  """
+  List of tags to set for URI s3. 
+  """
+  tags: [AssetStorageTag!]!
+}

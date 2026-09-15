@@ -1,0 +1,10 @@
+{
+  "target": {
+    {{#if tdoName}} "name": "{{{tdoName}}}", {{/if}}
+    {{#if tdoDescription}} "description": "{{{tdoDescription}}}", {{/if}}
+    "status": "downloaded"
+  },
+  {{#if clusterId}} "clusterId": "{{{clusterId}}}", {{/if}}
+  {{#if notificationUri}} "notificationUris": ["{{{notificationUri}}}"], {{/if}}
+  <DAG>
+}

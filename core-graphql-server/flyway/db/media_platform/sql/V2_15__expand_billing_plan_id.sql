@@ -1,0 +1,1 @@
+ALTER TABLE organization ALTER COLUMN billing_plan_id TYPE varchar(19);

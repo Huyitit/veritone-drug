@@ -1,0 +1,73 @@
+"tasks": [
+  {
+    "engineId": "9e611ad7-2d3b-48f6-a51b-0a1ba40fe255",
+    "payload": {
+      "url": "{{{UPLOAD_URL}}}"
+    },
+    "executionPreferences": {
+      {{#if priority}} "priority":{{{priority}}} {{/if}}
+    },
+    "ioFolders": [
+      {
+        "referenceId": "wsa-output",
+        "mode": "stream",
+        "type": "output"
+      }
+    ]
+  },
+  {
+    "engineId": "8bdb0e3b-ff28-4f6e-a3ba-887bd06e6440",
+    "payload": {
+      "ffmpegTemplate": "audio",
+      "customFFMPEGProperties": {
+        "chunkSizeInSeconds": {{#if chunkSizeInSeconds}} "{{{chunkSizeInSeconds}}}" {{else}} "300" {{/if}}
+      }
+    },
+    "executionPreferences": {
+      {{#if priority}} "priority":{{{priority}}}, {{/if}}
+      "parentCompleteBeforeStarting": true
+    },
+    "ioFolders": [
+      {
+        "referenceId": "si-input",
+        "mode": "stream",
+        "type": "input"
+      },
+      {
+        "referenceId": "si-output",
+        "mode": "chunk",
+        "type": "output"
+      }
+    ]
+  },
+  <TASK>
+  ,
+  {
+    "engineId": "8eccf9cc-6b6d-4d7d-8cb3-7ebf4950c5f3",
+    "executionPreferences": {
+      {{#if priority}} "priority":{{{priority}}}, {{/if}}
+      "parentCompleteBeforeStarting": true
+    },
+    "ioFolders": [
+      {
+        "referenceId": "ow-input",
+        "mode": "chunk",
+        "type": "input"
+      }
+    ]
+  }
+],
+"routes": [
+  {
+    "parentIoFolderReferenceId": "wsa-output",
+    "childIoFolderReferenceId": "si-input"
+  },
+  {
+    "parentIoFolderReferenceId": "si-output",
+    "childIoFolderReferenceId": "engine-input"
+  },
+  {
+    "parentIoFolderReferenceId": "engine-output",
+    "childIoFolderReferenceId": "ow-input"
+  }
+]

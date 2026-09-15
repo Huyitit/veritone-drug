@@ -1,0 +1,401 @@
+resources:
+  - resourceType: nsq
+    name: aiware_core:messaging
+    params:
+      nsqdHost: ''
+      nsqdPort: 4150
+      nsqlookupds:
+        - nsqlookupd.service.consul:4161
+      nsqlookupdDiscovery: false
+      tls: false
+      tlsVerification: false
+  - resourceType: minio
+    name: aiware_core:minio
+    params:
+      enabled: false
+      enableUrlSigning: true
+      signedUrlExpires: 604800
+      accessKey: ''
+      secretKey: ''
+      bucket: aiware
+      path: asset
+      endPoint: minio-1
+      port: 9101
+      secure: false
+  - resourceType: redis
+    name: aiware_core:coreAdminRedis
+    params:
+      host: ''
+      port: 6379
+      password: ''
+  - resourceType: redis
+    name: aiware_core:redis
+    params:
+      host: ''
+      port: 6379
+      password: ''
+  - resourceType: postgres
+    name: aiware_core:audience
+    params:
+      max: 10
+  - resourceType: postgres
+    name: aiware_core:audience:read
+    params:
+      max: 10
+      readonly: true
+  - resourceType: postgres
+    name: aiware_core:cms
+    params:
+      max: 10
+  - resourceType: postgres
+    name: aiware_core:cms:read
+    params:
+      max: 10
+      readonly: true
+  - resourceType: postgres
+    name: aiware_core:core
+    params:
+      max: 10
+  - resourceType: postgres
+    name: aiware_core:core:read
+    params:
+      max: 10
+      readonly: true
+  - resourceType: postgres
+    name: aiware_core:core_gqm
+    params:
+      max: 2
+  - resourceType: postgres
+    name: aiware_core:media_platform
+    params:
+      max: 10
+  - resourceType: postgres
+    name: aiware_core:media_platform:read
+    params:
+      max: 10
+      readonly: true
+  - resourceType: postgres
+    name: aiware_core:media_platform_gqm
+    params:
+      max: 2
+  - resourceType: postgres
+    name: aiware_core:sso
+    params:
+      max: 10
+  - resourceType: postgres
+    name: aiware_core:sso:read
+    params:
+      max: 10
+      readonly: true
+  - resourceType: postgres
+    name: aiware_core:subscription
+    params:
+      max: 10
+  - resourceType: postgres
+    name: aiware_core:subscription:read
+    params:
+      max: 10
+      readonly: true
+  - resourceType: postgres
+    name: aiware_core:third_party
+    params: {}
+  - resourceType: postgres
+    name: aiware_core:third_party:read
+    params:
+      readonly: true
+  - resourceType: postgres
+    name: aiware_core:third_party_gqm
+    params:
+      max: 2
+  - resourceType: es
+    name: aiware_core:elastic
+    params:
+      connection:
+        host: ''
+        apiVersion: '6.0'
+configKeys:
+  - key: applicationName
+    section: application
+    value: core-graphql-server
+  - key: apiVersionPath
+    section: application
+    value: /v3
+  - key: nodeEnv
+    section: application
+    value: prod
+  - key: port
+    section: application
+    value: 3000
+  - key: allowedOriginHosts
+    section: application
+    kvp:
+      value: null
+  - key: tmpdir
+    section: application
+    value: /tmp
+  - key: maxRequestCost
+    section: application
+    value: 1000
+  - key: requireComplexPassword
+    section: application
+    value: false
+  - key: useMediaTableSourceHack
+    section: application
+    value: false
+  - key: defaultPmiClusterId
+    section: application
+    value: ''
+  - key: publicDnsZoneName
+    section: application
+    value: PUBLIC_DNS_ZONE_NAME
+  - key: publicDnsZoneName2
+    section: application
+    value: PUBLIC_DNS_ZONE_NAME_2
+  - key: wwwRoot
+    section: application
+    value: WWW_ROOT
+  - key: apiRoot
+    section: application
+    value: API_ROOT
+  - key: storageEndpoint
+    section: application
+    value: STORAGE_ENDPOINT
+  - key: mandrillAPIKey
+    section: application
+    value: MANDRILL_API_KEY
+  - key: signedUrlOverrideEngines
+    section: application
+    value: []
+  - key: enableRequestEntryLog
+    section: application
+    value: false
+  - key: taskTypeCacheRefreshIntervalMs
+    section: application
+    value: 120000
+  - key: notifyOnUploadFailures
+    section: application
+    value: false
+  - key: taskTablePartitionActiveDate
+    section: application
+    value: '2021-03-15T00:00:00.000Z'
+  - key: jobTablePartitionActiveDate
+    section: application
+    value: '2021-03-15T00:00:00.000Z'
+  - key: sharedUrlPartitionActiveDate
+    section: application
+    value: '2021-03-15T00:00:00.000Z'
+  - key: recordingAssetTablePartitionActiveDate
+    section: application
+    value: '2021-03-15T00:00:00.000Z'
+  - key: defaultRealTimeCluster
+    section: application
+  - key: mediaFormats
+    section: application
+    value: []
+  - key: auth.jwtCookieName
+    section: application
+    value: SHARED__AUTH__JWT_COOKIE_NAME
+  - key: auth.jwtRefreshCookieName
+    section: application
+    value: SHARED__AUTH__JWT_REFRESH_COOKIE_NAME
+  - key: auth.userTokenCookieName
+    section: application
+    value: SHARED__AUTH__USER_TOKEN_COOKIE_NAME
+  - key: auth.useInsecureCookie
+    section: application
+    value: false
+  - key: metricsRange.defaultRange
+    section: application
+    value: 30
+  - key: metricsRange.maxRange
+    section: application
+    value: 90
+  - key: server.heartbeatEnabled
+    section: application
+    value: true
+  - key: server.redisHeartbeatEnabled
+    section: application
+    value: true
+  - key: server.maxRequestCost
+    section: application
+    value: 1000
+  - key: server.uploadSizeLimit
+    section: application
+    value: 1073741824
+  - key: server.disableGlobalRequestSizeLimit
+    section: application
+    value: false
+  - key: cache.stdTTLSec
+    section: application
+    value: 30
+  - key: cache.checkPeriodSec
+    section: application
+    value: 30
+  - key: aiware.enabled
+    section: application
+    value: false
+  - key: aiware.organizationApplicationId
+    section: application
+    value: ''
+  - key: aiware.clusterMemoryLimit
+    section: application
+    value: 0
+  - key: log.level
+    section: application
+    value: warn
+  - key: dnsZone.external
+    section: application
+    value: ''
+  - key: jwt.secret
+    section: application
+    value: JWT__SECRET
+  - key: jwt.ttl
+    section: application
+    value: 7d
+  - key: jwt.sdoTokenTtlSec
+    section: application
+    value: 3600
+  - key: messaging.enable
+    section: application
+    value: true
+  - key: messaging.name
+    section: application
+    value: nsq
+  - key: messaging.maxInFlight
+    section: application
+    value: 1000
+  - key: s3.region
+    section: application
+    value: us-east-1
+  - key: s3.bucket
+    section: application
+    value: ''
+  - key: s3.buildTestReportBucket
+    section: application
+    value: ''
+  - key: s3.buildManifestBucket
+    section: application
+    value: ''
+  - key: s3.signedUrlExpires
+    section: application
+    value: 604800
+  - key: s3.buckets
+    section: application
+    value: []
+  - key: flyway.migrate
+    section: application
+    value: true
+  - key: flyway.path
+    section: application
+    value: /usr/local/bin/flyway
+  - key: flyway.rootOrgId
+    section: application
+    value: 1
+  - key: queryMonitor.enableKill
+    section: application
+    value: true
+  - key: queryMonitor.queryDurationSecondsKill
+    section: application
+    value: 30
+  - key: queryMonitor.queryDurationSecondsTerminate
+    section: application
+    value: 60
+  - key: services.elasticLogClusterUri
+    section: application
+    value: ''
+  - key: featureFlags.maxTDOAssetLimitWarnOnly
+    section: application
+    value: false
+  - key: featureFlags.getTDOMetadataFromMediaPlatform
+    section: application
+    value: false
+  - key: featureFlags.enableNativeMPEGDash
+    section: application
+    value: false
+  - key: featureFlags.signedWritableUrlOverride
+    section: application
+    value: false
+  - key: recordingWeekConfig.weeklyIdsDateActive
+    section: application
+    value: '2021-03-15T00:00:00.000Z'
+  - key: recordingWeekConfig.weekOffset
+    section: application
+    value: 0
+  - key: server.rateLimit.intervalRequestLimit
+    section: application
+    value: 1000
+  - key: server.rateLimit.tokenRequestLimit
+    section: application
+    value: 100
+  - key: aiware.defaultCluster.name
+    section: application
+    value: ''
+  - key: aiware.defaultCluster.memory
+    section: application
+    value: 0
+  - key: aiware.defaultCluster.disk
+    section: application
+    value: 0
+  - key: services.core-search-server.token
+    section: application
+    value: ''
+  - key: engineRuntime.iron.token
+    section: application
+    value: ''
+  - key: engineRuntime.iron.projectId
+    section: application
+    value: ''
+  - key: rateLimit.tokenType.default
+    section: application
+    value: 5000
+  - key: engineRuntime.iron.defaultRuntime.cluster
+    section: application
+    value: ''
+  - key: featureFlags.rateLimitOnUnhealthyServer
+    section: application
+    value: false
+  - key: featureFlags.redisCacheEnabled
+    section: application
+    value: true
+  - key: featureFlags.enforceWatchlistRangeLimits
+    section: application
+    value: true
+  - key: featureFlags.sharedMention
+    section: application
+    value: true
+  - key: featureFlags.allowSharedMentionById
+    section: application
+    value: true
+  - key: featureFlags.sdRestEndpoint
+    section: application
+    value: true
+  - key: featureFlags.adminEndpoint
+    section: application
+    value: true
+  - key: featureFlags.enableClusterPreference
+    section: application
+    value: true
+  - key: featureFlags.maxTDOAssetLimitWarnOnly
+    section: application
+    value: true
+  - key: featureFlags.getTDOMetadataFromMediaPlatform
+    section: application
+    value: true
+  - key: featureFlags.enabledAWSUrlSignErrorHandling
+    section: application
+    value: false
+  - key: featureFlags.useNewUpdateTask
+    section: application
+    value: true
+  - key: featureFlags.defaultTimezoneOffset
+    section: application
+    value: false
+  - key: featureFlags.errorOnMessageFailure
+    section: application
+    value: true
+  - key: featureFlags.maxSharedMentionId
+    section: application
+    value: 0
+  - key: featureFlags.canExportLogsOlderThan12Months
+    section: application
+    value: true

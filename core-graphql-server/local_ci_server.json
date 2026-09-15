@@ -1,0 +1,269 @@
+{
+  "LOCAL_TEST_KILL_SERVER_AFTER_SEC": 600,
+  "LOCAL_TEST_COVERAGE_ENABLED": true,
+  "allowLocalConfig": false,
+  "taskTablePartitionActiveDate": "2018-07-29T00:00:00.000Z",
+  "jobTablePartitionActiveDate": "2018-07-29T00:00:00.000Z",
+  "sharedUrlPartitionActiveDate": "2018-12-16T00:00:00.000Z",
+  "recordingAssetTablePartitionActiveDate": "2018-10-22T00:00:00.000Z",
+  "recordingWeekConfig": {
+    "weeklyIdsDateActive": "2018-10-22T00:00:00.000Z",
+    "weekOffset": 20
+  },
+  "featureFlags": {
+    "defaultTimezoneOffset": true,
+    "enforceWatchlistRangeLimits": true,
+    "sharedMention": true,
+    "useNewUpdateTask": true,
+    "enabledAWSUrlSignErrorHandling": true,
+    "sdRestEndpoint": true,
+    "rateLimitOnUnhealthyServer": false,
+    "rateLimitWarnOnly": false,
+    "errorOnMessageFailure": false
+  },
+  "nodeEnv": "local",
+  "port": 9000,
+  "maxRequestTimeElapsedSec": 300,
+  "limitShareMentionInBulk": 100,
+  "tmpdir": "./tmp",
+  "paging": {
+    "defaultLimit": 30,
+    "maxLimit": 500
+  },
+  "server": {
+    "validatorSizeLimit": "1mb",
+    "requestSizeLimit": "5mb",
+    "uploadSizeLimit": 1073741824
+  },
+  "metricsRange": {
+    "defaultRange": 30,
+    "maxRange": 90
+  },
+  "jwt": {
+    "secret": "@@JWT_SECRET@@",
+    "ttl": "7d"
+  },
+  "s3": {
+    "useDbCredentialForAll": true,
+    "region": "us-east-1",
+    "bucket": "dev.inspirent",
+    "path": "assets",
+    "maxRetry": 3,
+    "timeout": 30000,
+    "enableUrlSigning": true,
+    "buckets": [
+      {
+        "key": "asset",
+        "name": "dev.inspirent",
+        "path": "assets"
+      },
+      {
+        "key": "api",
+        "name": "dev-api.veritone.com",
+        "path": "signedUrl",
+        "signedUrlExpires": 10800
+      },
+      {
+        "key": "library",
+        "name": "dev-veritone-library",
+        "path": "library",
+        "signedUrlExpires": 10800
+      },
+      {
+        "key": "dataset",
+        "name": "dev-veritone-dataset",
+        "path": "dataset",
+        "signedUrlExpires": 10800
+      },
+      {
+        "key": "tasklog",
+        "name": "veritone-task-logs-dev",
+        "signedUrlExpires": 10800
+      },
+      {
+        "key": "ugc",
+        "name": "dev-veritone-ugc",
+        "signedUrlExpires": 3600
+      },
+      {
+        "key": "face",
+        "name": "test.veritone-face",
+        "signedUrlExpires": 10800,
+        "region": "us-east-1"
+      }
+    ],
+    "buildTestReportBucket": "vda-build-test-reports-dev",
+    "buildManifestBucket": "vda-engine-config-dev"
+  },
+  "queryMonitor": {
+    "enableKill": false,
+    "queryDurationSecondsWarn": 60,
+    "queryDurationSecondsKill": 180
+  },
+  "db": {
+    "audience": {
+      "max": 2,
+      "read":
+        "postgres://readaccess:readaccess@0.pg-media.aws-dev.veritone.com:5432/audience?sslmode=disable",
+      "write":
+        "postgres://core_graphql_server:Hnadev1@0.pg-media.aws-dev.veritone.com:5432/audience?sslmode=disable"
+    },
+    "cms": {
+      "max": 2,
+      "read":
+        "postgres://readaccess:readaccess@0.pg-media.aws-dev.veritone.com:5432/cms?sslmode=disable",
+      "write":
+        "postgres://core_graphql_server:Hnadev1@0.pg-media.aws-dev.veritone.com:5432/cms?sslmode=disable"
+    },
+    "core": {
+      "max": 2,
+      "read":
+        "postgres://readaccess:readaccess@0.pg-core.aws-dev.veritone.com:5432/platform?sslmode=disable",
+      "write":
+        "postgres://core_graphql_server:Hnadev1@0.pg-core.aws-dev.veritone.com:5432/platform?sslmode=disable"
+    },
+    "core_gqm": {
+      "queryMonitor": true,
+      "max": 2,
+      "write":
+        "postgres://core_graphql_server:Hnadev1@0.pg-core.aws-dev.veritone.com:5432/platform?sslmode=disable"
+    },
+    "media_platform": {
+      "max": 2,
+      "read":
+        "postgres://readaccess:readaccess@0.pg-media.aws-dev.veritone.com:5432/media_platform?sslmode=disable",
+      "write":
+        "postgres://core_graphql_server:Hnadev1@0.pg-media.aws-dev.veritone.com:5432/media_platform?sslmode=disable"
+    },
+    "media_platform_gqm": {
+      "queryMonitor": true,
+      "max": 2,
+      "write":
+        "postgres://core_graphql_server:Hnadev1@0.pg-media.aws-dev.veritone.com:5432/media_platform?sslmode=disable"
+    },
+    "sso": {
+      "max": 2,
+      "read":
+        "postgres://readaccess:readaccess@0.pg-media.aws-dev.veritone.com:5432/sso?sslmode=disable",
+      "write":
+        "postgres://core_graphql_server:Hnadev1@0.pg-media.aws-dev.veritone.com:5432/sso?sslmode=disable"
+    },
+    "subscription": {
+      "max": 2,
+      "read":
+        "postgres://readaccess:readaccess@0.pg-media.aws-dev.veritone.com:5432/subscription?sslmode=disable",
+      "write":
+        "postgres://core_graphql_server:Hnadev1@0.pg-media.aws-dev.veritone.com:5432/subscription?sslmode=disable"
+    },
+    "third_party": {
+      "max": 2,
+      "read":
+        "postgres://readaccess:readaccess@0.pg-thirdparty.aws-dev.veritone.com:5432/structured_data?sslmode=disable",
+      "write":
+        "postgres://core_graphql_server:Hnadev1@0.pg-thirdparty.aws-dev.veritone.com:5432/structured_data?sslmode=disable",
+      "pool": {
+        "max": 5,
+        "min": 0,
+        "idle": 10000
+      }
+    },
+    "third_party_gqm": {
+      "queryMonitor": true,
+      "max": 2,
+      "write":
+        "postgres://core_graphql_server:Hnadev1@0.pg-thirdparty.aws-dev.veritone.com:5432/structured_data?sslmode=disable"
+    },
+    "constants": {
+      "customerSuccessOrgId": 7682
+    }
+  },
+  "dbSchema": "recording",
+  "cache": {
+    "stdTTLSec": 30,
+    "checkPeriodSec": 30
+  },
+  "services": {
+    "task-insert-server": {
+      "uri": "https://api.aws-dev.veritone.com/task-insert-server/"
+    },
+    "core-collection-server": {
+      "uri": "https://api.aws-dev.veritone.com/api/collection/"
+    },
+    "core-search-server": {
+      "uri": "https://api.aws-dev.veritone.com/api/"
+    },
+    "transcript-streamer": {
+      "uri": "https://api.aws-dev.veritone.com/transcript/"
+    },
+    "media-streamer": {
+      "uri": "https://api.aws-dev.veritone.com/media-streamer/"
+    },
+    "coreAdminUri": "https://api.aws-dev.veritone.com/v1/admin/",
+    "loginPageUri": "https://www.aws-dev.veritone.com/login/#/",
+    "kibanaUri": "https://kibana.aws-dev.veritone.com/elasticsearch/",
+    "workflowBaseUri": "workflow.aws-dev.veritone.com",
+    "workflowManagementApiUri": "api-workflow.aws-dev.veritone.com"
+  },
+  "elastic": {
+    "connection": {
+      "host": "http://elasticsearch-lb.aws-dev.veritone.com:9200",
+      "apiVersion": "1.7"
+    },
+    "indexName": "library",
+    "indexType": "library-entity"
+  },
+  "maxSignedAssetUrls": 100,
+  "mandrillAPIKey": "@@MANDRILL_API_KEY@@",
+  "pageUris": {
+    "collectionsShareLinkUrl":
+      "https://collections.aws-dev.veritone.com/share/",
+    "discoveryShareLinkUrl":
+      "https://enterprise.aws-dev.veritone.com/media-detail/#/sharedMention/enterprise/"
+  },
+  "allowedOriginHosts": [],
+  "schemas": {
+    "public": {
+      "enabledModules": ["v3DataModel"]
+    }
+  },
+  "dnsZone": {
+    "external": "aws-dev.veritone.com"
+  },
+  "aiware": {
+    "clusterMemoryLimit": 34359738368,
+    "defaultCluster": {
+      "name": "",
+      "memory": 4294967296,
+      "disk": 10737418240
+    }
+  },
+  "messaging": {
+    "enableDroppedMessageSpool": true,
+    "droppedMessageSpoolPrefix": "./vtn-messages-",
+    "enable": false,
+    "name": "nsq",
+    "nsqdHost": "localhost",
+    "nsqdPort": 4150,
+    "nsqlookupds": ["localhost:4161"],
+    "nsqlookupdDiscovery": false,
+    "maxInFlight": 10,
+    "logLevel": "error",
+    "msgTimeout": 60000,
+    "tls": false,
+    "tlsVerification": false
+  },
+  "minio": {
+    "enabled": false
+  },
+  "redis": {
+    "detect_buffers": true,
+    "host": "redis32.aws-dev.veritone.com",
+    "port": 6379,
+    "ttl": 10800
+  },
+  "skipMiddleware": true,
+  "serverToken":
+    "core-job-server-dev:ff69f9b47794471ca254f639a5f82ceb583a3f623b014009b6a2b8934214d4ce",
+  "mandrillNotificationRecipient": "ecosystem@veritone.com",
+  "publicDnsZoneName": "dev.us-1.veritone.com"
+}

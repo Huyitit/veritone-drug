@@ -1,0 +1,2 @@
+ALTER TABLE job_new.engine
+ADD COLUMN IF NOT EXISTS metadata_version INT NOT NULL DEFAULT 1;

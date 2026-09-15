@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "esModuleInterop": true,
+    "plugins": [
+      {
+        "name": "@0no-co/graphqlsp",
+        "schema": { "url": "https://api.veritone.com/v3/graphql" }
+      }
+    ]
+  }
+}

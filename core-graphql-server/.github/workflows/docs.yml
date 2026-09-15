@@ -1,0 +1,26 @@
+name: Generate grapqhl docs
+
+on:
+  push:
+    branches: [ master,docs ]
+    paths:
+      - 'schema/**.*'
+  workflow_dispatch:
+    
+
+jobs:
+  resources:
+    name: generate docs
+    runs-on: veritone-self-hosted
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: ./make_graphqldocs.sh
+      - name: Update resources
+        uses: test-room-7/action-update-file@v1
+        with:
+          file-path: ./web/**/*.*
+          commit-msg: Update documentaion
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          branch: docs

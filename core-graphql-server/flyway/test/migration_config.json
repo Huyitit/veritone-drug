@@ -1,0 +1,69 @@
+{
+	"nodeEnv": "edge",
+	"flyway": {
+	  "migrate": true,
+	  "migrateAndQuit": true
+	},
+	"log": {
+	  "level": "debug"
+	},
+	"db": {
+	  "audience": {
+		"read": "postgres://postgres:postgres@127.0.0.1:5432/audience?sslmode=disable",
+		"write": "postgres://postgres:postgres@127.0.0.1:5432/audience?sslmode=disable"
+	  },
+	  "cms": {
+		"read": "postgres://postgres:postgres@127.0.0.1:5432/cms?sslmode=disable",
+		"write": "postgres://postgres:postgres@127.0.0.1:5432/cms?sslmode=disable"
+	  },
+	  "core": {
+		"read": "postgres://postgres:postgres@127.0.0.1:5432/platform?sslmode=disable",
+		"write": "postgres://postgres:postgres@127.0.0.1:5432/platform?sslmode=disable"
+	  },
+	  "media_platform": {
+		"read": "postgres://postgres:postgres@127.0.0.1:5432/media_platform?sslmode=disable",
+		"write": "postgres://postgres:postgres@127.0.0.1:5432/media_platform?sslmode=disable"
+	  },
+	  "sso": {
+		"read": "postgres://postgres:postgres@127.0.0.1:5432/sso?sslmode=disable",
+		"write": "postgres://postgres:postgres@127.0.0.1:5432/sso?sslmode=disable"
+	  },
+	  "subscription": {
+		"read": "postgres://postgres:postgres@127.0.0.1:5432/subscription?sslmode=disable",
+		"write": "postgres://postgres:postgres@127.0.0.1:5432/subscription?sslmode=disable"
+	  },
+	  "third_party": {
+		"read": "postgres://postgres:postgres@127.0.0.1:5432/structured_data?sslmode=disable",
+		"write": "postgres://postgres:postgres@127.0.0.1:5432/structured_data?sslmode=disable",
+		"pool": {
+		  "max": 5
+		}
+	  },
+	  "constants": {
+		"customerSuccessOrgId": 7682
+	  }
+	},
+	"services": {
+		"coreAdminUri": "127.0.0.1"
+	},	
+	"messaging": {
+	  "enabled": false,
+	  "nsqdHost": "127.0.0.1",
+	  "nsqdPort": 4150,
+	  "nsqlookupds": [
+		"127.0.0.1:4161"
+	  ],
+	  "nsqlookupdDiscovery": false,
+	  "maxInFlight": 10,
+	  "tls": false,
+	  "tlsVerification": false
+	},
+	"redis": {
+	  "host": "127.0.0.1",
+	  "port": 6379
+	},
+	"coreAdminRedis": {
+	  "host": "127.0.0.1",
+	  "port": 6379
+	}
+}

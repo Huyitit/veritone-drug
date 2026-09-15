@@ -1,0 +1,55 @@
+{
+  "sourceEngineId": "c3497af0-ac1c-421d-8b2e-618797093623",
+  "sourceEngineName": "Object Detection - AC - V2F",
+  "taskId": "19020824_w3VijmG9X904M9U",
+  "generatedDateUTC": "0001-01-01T00:00:00Z",
+  "sentiment": {},
+  "series": [
+    {
+      "startTimeMs": 0,
+      "stopTimeMs": 1000,
+      "sentiment": {},
+      "object": {
+        "label": "Black",
+        "type": "object",
+        "confidence": 0.9849877953529358,
+        "age": {},
+        "objectCategory": [
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "White", "@id": "kg:/m/083jv/m/0dl567" },
+          { "class": "Sky", "@id": "kg:/m/01bqvp/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Red", "@id": "kg:/m/06fvc/m/0dl567" },
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Brown", "@id": "kg:/m/09q2t/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "Atmosphere", "@id": "kg:/m/01ctsf/m/0dl567" }
+        ]
+      }
+    },
+    {
+      "startTimeMs": 1000,
+      "stopTimeMs": 2000,
+      "sentiment": {},
+      "object": {
+        "label": "Text",
+        "type": "object",
+        "confidence": 0.9888905882835388,
+        "age": {},
+        "objectCategory": [
+          { "class": "Text", "@id": "kg:/m/07s6nbt/m/0dl567" },
+          { "class": "Font", "@id": "kg:/m/03gq5hm/m/0dl567" },
+          { "class": "Black", "@id": "kg:/m/019sc/m/0dl567" },
+          { "class": "Darkness", "@id": "kg:/m/01kyr8/m/0dl567" },
+          { "class": "White", "@id": "kg:/m/083jv/m/0dl567" },
+          { "class": "Logo", "@id": "kg:/m/0dwx7/m/0dl567" },
+          { "class": "Light", "@id": "kg:/m/04k84/m/0dl567" },
+          { "class": "Sky", "@id": "kg:/m/01bqvp/m/0dl567" },
+          { "class": "Black-and-white", "@id": "kg:/m/01g6gs/m/0dl567" },
+          { "class": "Monochrome photography", "@id": "kg:/m/03d49p1/m/0dl567" }
+        ]
+      }
+    }
+  ]
+}

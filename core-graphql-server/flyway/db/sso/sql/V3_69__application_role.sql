@@ -1,0 +1,1 @@
+ALTER TABLE role ADD COLUMN IF NOT EXISTS application_id uuid null REFERENCES application (application_id);

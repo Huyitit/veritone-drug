@@ -1,0 +1,7 @@
+# Bun test-runner configuration. CI runs these specs through jest
+# (citest/jest.config.js), which has its own globalSetup and a 180s timeout —
+# this file gives local `bun test` runs the equivalent environment.
+[test]
+# Populates the feature-flag globals that jest.global.setup.js provides under
+# jest; specs gate conditional tests on them at collection time.
+preload = ["./test/setup.ts"]

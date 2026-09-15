@@ -1,0 +1,9 @@
+Deprecated config parameters:
+
+apiEndpoint
+uiEndpoint
+apiEndpointInternal
+uiEndpointInternal
+notifyOnUploadFailures
+maxRequestCost (duplicate server.maxRequestCost)
+

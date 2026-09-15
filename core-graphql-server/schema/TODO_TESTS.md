@@ -1,0 +1,23 @@
+# TODO_TESTS — core-graphql-server/schema
+
+Curated by `worker-psd-aqa`. Each row is one proposed test addition with a clear regression statement.
+Anyone (human or this agent) may add rows; only the agent updates the `Implemented` and `PR` columns.
+
+Append-only at the bullet level: once a row exists, don't silently delete it. Implementation marks the row done.
+
+Source files (depth-1): `config.js` (pure data), `context.js` (serviceContext factory), `index.js` (schema builder).
+Test framework: Jest 29.7.0, next-to-source `*.spec.js`. Existing: `index.spec.js` (smoke-tests `createSchema` only).
+
+| # | Status | Priority | Subject (file:line — function) | Regression this test would catch | Implemented | PR |
+|---|--------|----------|--------------------------------|----------------------------------|-------------|----|
+| 1 | implemented | medium | `config.js — schema-build config` | A regression in schema-build config (e.g. wrong directive registration) would silently change validation behavior. Verify documented config shape. | `schema/config.spec.js` | [#TBD] |
+| 2 | implemented | medium | `context.js — per-request resolver context` | A regression in the context-builder (e.g. failing to attach the authenticated user) would silently expose unauthenticated resolver execution. Verify the documented context shape per request. | `schema/context.spec.js` | [#TBD] |
+| 3 | implemented | medium | `index.js:102 — loadModules (optional module excluded when not in enabledModules list)` | An optional module that should be disabled would be loaded anyway, exposing APIs or resolvers that should be gated. Exercise the `optional=true` + module NOT in config path. | `schema/index.unit.spec.js` | [#TBD] |
+| 4 | implemented | medium | `index.js:150 — loadModule (doNotWrap=true skips resolver wrapping)` | A module marked `doNotWrap` would have its resolvers wrapped with the standard middleware (logging, auth enforcement), breaking its intentionally unwrapped behavior. | `schema/index.unit.spec.js` | [#TBD] |
+| 5 | implemented | medium | `index.js:186 — loadModule/stripType (importQuery=false removes Query block and resolvers)` | Stripping the `Query` block from a typeDef string would fail silently — the wrong schema would be built, exposing queries on a schema that should not have them. | `schema/index.unit.spec.js` | [#TBD] |
+| 6 | implemented | medium | `index.js:186 — loadModule/stripType (importTypeDefs=false clears typeDefs)` | A module configured with `importTypeDefs=false` would still inject its type definitions, causing duplicate type definition errors at schema build time. | `schema/index.unit.spec.js` | [#TBD] |
+| 7 | implemented | high [security-coverage] | `index.js:68 — createSchema (RBAC directives attached only when schemaName === 'public')` | If the `public`-only guard broke, the `internal` schema could gain (or the `public` schema could lose) RBAC authorization directives, silently changing which schema enforces role-based access control. | `schema/index.unit.spec.js` | (pending — VE-25935 PR opening) |
+| 8 | implemented | medium | `index.js:206 — loadModule/stripType (importMutation=false removes the Mutation block and resolvers)` | A module configured with `importMutation=false` would still expose its Mutation type and resolvers, allowing mutations that should have been suppressed for that schema. | `schema/index.unit.spec.js` | (pending — VE-25935 PR opening) |
+| 9 | implemented | medium | `index.js:221 — loadModule (importResolvers=false clears the resolver map)` | A module configured with `importResolvers=false` would still contribute resolvers to the schema, duplicating or conflicting with resolvers supplied by another module for the same type. | `schema/index.unit.spec.js` | (pending — VE-25935 PR opening) |
+| 10 | implemented | medium | `index.js:167 — loadModule (wrapResolverMap invoked with the correct op per typeName: query/mutation/subscription/field)` | A `Mutation` or `SubscriptionService` resolver map could be wrapped with the wrong `op` value (e.g. `'field'` instead of `'mutation'`), causing the wrong middleware (logging/auth enforcement) to apply to that resolver type. | `schema/index.unit.spec.js` | (pending — VE-25935 PR opening) |
+| 11 | implemented | medium | `index.js:138 — loadModules (resolvers from multiple modules in one schema are recursively merged via _.merge)` | If two modules in the same schema each contribute resolvers for the same type (e.g. both define `Query` fields), a broken merge would silently drop one module's resolvers instead of combining them. | `schema/index.unit.spec.js` | (pending — VE-25935 PR opening) |

@@ -1,0 +1,42 @@
+{
+  "sourceEngineId": "dc9f5b03-88e2-4682-b79f-e37e4ffba058",
+  "taskId": "24083421_tIBZfnvXOZnFOg1",
+  "internalTaskId": "a82da6d6-df18-46dc-a697-1cd304109930",
+  "generatedDateUTC": "2024-08-21T16:40:13.747105612Z",
+  "validationContracts": [
+    "object"
+  ],
+  "series": [
+    {
+      "startTimeMs": 0,
+      "stopTimeMs": 1000,
+      "object": {
+        "type": "motorVehicle",
+        "label": "8ZTB029",
+        "motorVehicle": {
+          "licensePlate": {
+            "number": "8ZTB029",
+            "confidence": 0.813,
+            "issuer": "us-ca",
+            "issuerConfidence": 0.836
+          },
+          "make": "Dodge",
+          "model": "Charger",
+          "makeModelConfidence": 0.839,
+          "bodyStyle": "Sedan",
+          "bodyStyleConfidence": 0.899,
+          "color": "silver",
+          "colorConfidence": 0.842,
+          "orientation": "Front",
+          "orientationConfidence": 0.936
+        },
+        "boundingPoly": [
+          { "x": 0.4439484126984127, "y": 0.8902116402116402 },
+          { "x": 0.5302579365079365, "y": 0.8902116402116402 },
+          { "x": 0.5302579365079365, "y": 0.9540343915343915 },
+          { "x": 0.4439484126984127, "y": 0.9540343915343915 }
+        ]
+      }
+    }
+  ]
+}

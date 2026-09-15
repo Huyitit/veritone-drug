@@ -1,0 +1,130 @@
+{
+  "fieldName": "libraries",
+  "fieldNodes": [
+    {
+      "kind": "Field",
+      "alias": null,
+      "name": {
+        "kind": "Name",
+        "value": "libraries",
+        "loc": {
+          "start": 10,
+          "end": 19
+        }
+      },
+      "arguments": [],
+      "directives": [],
+      "selectionSet": {
+        "kind": "SelectionSet",
+        "selections": [
+          {
+            "kind": "Field",
+            "alias": null,
+            "name": {
+              "kind": "Name",
+              "value": "records",
+              "loc": {
+                "start": 26,
+                "end": 33
+              }
+            },
+            "arguments": [],
+            "directives": [],
+            "selectionSet": {
+              "kind": "SelectionSet",
+              "selections": [
+                {
+                  "kind": "Field",
+                  "alias": null,
+                  "name": {
+                    "kind": "Name",
+                    "value": "id",
+                    "loc": {
+                      "start": 42,
+                      "end": 44
+                    }
+                  },
+                  "arguments": [],
+                  "directives": [],
+                  "selectionSet": null,
+                  "loc": {
+                    "start": 42,
+                    "end": 44
+                  }
+                },
+                {
+                  "kind": "Field",
+                  "alias": null,
+                  "name": {
+                    "kind": "Name",
+                    "value": "summary",
+                    "loc": {
+                      "start": 51,
+                      "end": 58
+                    }
+                  },
+                  "arguments": [],
+                  "directives": [],
+                  "selectionSet": {
+                    "kind": "SelectionSet",
+                    "selections": [
+                      {
+                        "kind": "Field",
+                        "alias": null,
+                        "name": {
+                          "kind": "Name",
+                          "value": "jsondata",
+                          "loc": {
+                            "start": 78,
+                            "end": 86
+                          }
+                        },
+                        "arguments": [],
+                        "directives": [],
+                        "selectionSet": null,
+                        "loc": {
+                          "start": 78,
+                          "end": 86
+                        }
+                      }
+                    ],
+                    "loc": {
+                      "start": 59,
+                      "end": 94
+                    }
+                  },
+                  "loc": {
+                    "start": 51,
+                    "end": 94
+                  }
+                }
+              ],
+              "loc": {
+                "start": 34,
+                "end": 100
+              }
+            },
+            "loc": {
+              "start": 26,
+              "end": 100
+            }
+          }
+        ],
+        "loc": {
+          "start": 20,
+          "end": 104
+        }
+      },
+      "loc": {
+        "start": 10,
+        "end": 104
+      }
+    }
+  ],
+  "returnType": "LibraryList",
+  "parentType": "Query",
+  "path": {
+    "key": "libraries"
+  },
+  "variableValues": {}
+}

@@ -1,0 +1,301 @@
+# This file defines our GraphQL schema.
+# A comment just above a type, field, or parameter name will be treated as
+# documentation for that object by GraphiQL or graphdoc documentation
+# generators. You can use markdown syntax within comments for formatting.
+
+#######################
+# Custom directives
+# These are specific to our implementation.
+#######################
+
+"""
+Used to authorize access to a given query, mutation, or field
+based on permissions set in the user token.
+for example, to restrict a field foo to superadmins, add
+ foo: Foo @scopes(scopes: ["superadmin"])
+Permission strings must EXACTLY match the permission objects defined
+in functional-permissions-lib. If the user does not have all required
+permissions, the field will contain null and the errors list will
+have an "access denied" error message.
+"""
+directive @scopes(
+  """
+  List of one or more scopes required for the field
+  """
+  scopes: [String!]!
+  """
+  Whether or not to require _all_ scopes listed or only any one of them.
+  Default is All.
+  """
+  require: ScopeRequirement = All
+) on QUERY | MUTATION | FIELD | FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+
+"""
+Used to require authentication and to enforce organization-level
+authorization. This directive, with default parameters, is applied by
+default to all queries and mutations. Parameter values can be overridden
+by setting it explicitly on a field.
+The @noAuth directive can be explicitly used on fields that do not
+require authentication.
+Examples:
+ Allow org-less tokens to access objects of type TemporalDataObject
+ based on the id parameter.
+  @auth(allowOrgless: true, objectAuthType: TemporalDataObject)
+Allow org-less tokens to use the field with no object restrictions.
+The @scopes directive might still apply.
+  @auth(allowOrgless: true, skipObjectAuthorization: true)
+Allow org-less tokens to use the field if the ID referenced in parentId
+is in the allowed set of TemporalDataObjects. Useful for something like
+createAsset.
+  @auth(allowOrgless: true, objectAuthType: TemporalDataObject,
+        objectAuthIdParam: parentId)
+"""
+directive @auth(
+  """
+  Whether or not to allow access for org-less (engine) tokens
+  """
+  allowOrgless: Boolean = true
+  """
+  Whether or not to skip object-level authorization for org-less tokens.
+  Use with caution.
+  """
+  skipObjectAuthorization: Boolean = false
+  """
+  The type of object that object-level access controls should apply to.
+  Must be set if allowOrgless is true and skipObjectAuthorization is false.
+  """
+  objectAuthType: AuthObjectType
+  """
+  The name of the field parameter containing id(s) to query for.
+  Object-level authorization will authorize this value against the list of
+  allowed object resources for the token.
+  """
+  objectAuthIdParam: String = "id"
+) on QUERY | MUTATION | FIELD | FIELD_DEFINITION
+
+
+enum AuthPermissionType {
+  NO_ACCESS
+}
+"""
+WIP: directive to replace the current @auth directive
+"""
+directive @requireAuthRole(
+  """
+  Ordered list of roles required in order to grant access to the object. The first matching role in the user context
+  will be used as the authorization record for the permitted action, therefore is strongly advisable to put the resource
+  specific roles first and the organization role fallback last. Ex. [role(type: tdo, recording:read), role(type: folder, folder:read_contents)]
+  """
+  roles: [AuthRoleRequirement!]
+  """
+  If none of the auth context roles grant access, allow access via organization role. ex.
+  orgRole: ['recording:read'], will allow read access to any resource of type recording
+  for any group with organization role that has the recording.read permission
+  """
+  orgRole: [AuthPermissionType!]
+  """
+  Set the orgRole array behavior - All: require all permissions, Any: any of the listed permissions would allow access
+  """
+  orgRoleRequireAll: Boolean = false
+) on QUERY | MUTATION | FIELD | FIELD_DEFINITION | INPUT_FIELD_DEFINITION | INPUT_OBJECT | OBJECT | ARGUMENT_DEFINITION
+
+"""
+WIP: use this directive when:
+1. @requireRoles could not be used due to resource ids not being available
+2. the field resolver doesn't implement the authorization itself
+This directive is ran after the object is resolved and the objects are filtered based on their ids and the roles available in the auth context.
+The downside of using this, is that paging requests may yield less than a page size results (in the worst case 0) and the client will have to
+check the warnings section for explanation amd figure out if the result iteration should be continued.
+"""
+directive @verifyAuthRoleAccess(
+  """
+  see @requireAuthRole.roles
+  """
+  roles: [AuthRoleRequirement]!
+  orgRole: [AuthPermissionType!]
+  throwErr: Boolean = false
+) on QUERY | FIELD | FIELD_DEFINITION | OBJECT
+
+directive @authListFilter(
+  """
+  Use with listing apis where the ids are not available
+  This builds a filter that should be used by the dal layer to filter objects
+  that the caller has access to.
+  """
+  roles: [AuthPermissionType]!
+  resourceType: AuthResourceType!
+  orgRole: [AuthPermissionType!]
+  parentPath: String
+  parentType: AuthResourceType
+) on QUERY | FIELD | FIELD_DEFINITION
+
+directive @authInherit(
+  """
+  Use this to automatically propagate ACEs from source (parent) object to the (new) object
+  """
+  source: AuthResource!
+  target: [AuthResource!]!
+) on MUTATION | FIELD_DEFINITION
+
+"""
+Used to explicitly declare that a given field does not require authentication.
+Use with caution.
+"""
+directive @noAuth on QUERY | MUTATION | FIELD | FIELD_DEFINITION
+
+directive @tokenType(
+  type: TokenType!
+) on QUERY | MUTATION | FIELD | FIELD_DEFINITION
+
+directive @log on QUERY | MUTATION | FIELD
+
+directive @noLog on QUERY | MUTATION | FIELD
+
+directive @featureFlag(
+  """
+  default value for the feature flag to use if it is not provided
+  in configuration or on the org
+  """
+  defaultValue: Boolean = false
+  """
+  Optional name for the feature flag. The default will be the
+  mutation, query, or field name to which the directive is attached.
+  """
+  name: String
+  """
+  Optional field args path for the feature flag. Only superAdmin can validate
+  feature flag on an organization from fieldArgs.
+  """
+  ownerOrgFieldPath: String
+) on QUERY | MUTATION | FIELD | ARGUMENT_DEFINITION | FIELD_DEFINITION
+
+directive @audit(
+  objectType: String
+  action: AuditAction
+  skip: Boolean = False
+) on MUTATION | FIELD_DEFINITION
+
+directive @limit(cost: Int) on QUERY | MUTATION | FIELD | FIELD_DEFINITION
+
+directive @length(max: Int) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+directive @deprecated(
+  expirationDate: String!
+  deprecationDate: String!
+  reason: String!
+  alternate: String!
+) on QUERY | MUTATION | FIELD | ARGUMENT_DEFINITION | INPUT_OBJECT | INPUT_FIELD_DEFINITION | OBJECT | FIELD_DEFINITION | ENUM_VALUE
+
+enum AuditAction {
+  Create
+  Update
+  Delete
+}
+
+enum TokenType {
+  API
+  User
+}
+
+enum ScopeRequirement {
+  Any
+  All
+}
+"""
+legacy used in the @auth directive
+"""
+enum AuthObjectType {
+  TemporalDataObject
+  Job
+  Task
+  Folder,
+  AuthorizationGroup
+}
+
+enum AuthResourceType {
+  NONE
+}
+
+enum OrderDirection {
+  asc
+  desc
+}
+
+"""
+Common fields used by queries and fields that support paging to represent
+a single page of results.
+"""
+interface Page {
+  """
+  Provide an offset to skip to a certain element in the result, for paging.
+  """
+  offset: Int!
+  """
+  Maximum number of results that were retrieved in this query; page size
+  """
+  limit: Int!
+  """
+  Number of records returned in this response
+  """
+  count: Int
+}
+
+"""
+WIP:
+"""
+input AuthRoleRequirement {
+  """
+  List of one or more permissions required for the operation
+  Currently that's a list of functional permissions, but potentially can be expanded to
+  some sort of policy descriptors
+  """
+  permissions: [AuthPermissionType!]!
+  """
+  The type of object that object-level access controls should apply to.
+  Must be set if allowOrgless is true and skipObjectAuthorization is false.
+  """
+  resourceType: AuthResourceType
+
+  """
+  If resourceType in the schema is dynamic, instead of resourceType specify the path to the
+  field in the input that specifies the resource type.
+  """
+  resourceTypePath: String
+
+  """
+  The name of the field parameter containing id(s) to query for.
+  Object-level authorization will lookup roles set to this resource and assigned to
+  an authorization group in the request authorization context
+  """
+  resourceIdFieldPath: String!
+  """
+  The name of the parent field for this resource. It also contains id(s) to query for.
+  Object-level authorization will lookup roles set to this parent resource and assigned to
+  an authorization group in the request authorization context
+  """
+  parentPath: String
+  """
+  The type of parent object that object-level access controls should apply to.
+  """
+  parentType: AuthResourceType
+}
+
+input AuthResource {
+  resourceType: AuthResourceType!
+  resourceIdFieldPath: String!
+}
+
+type OpResult {
+  success: Boolean!
+  msg: String
+  code: String
+}
+
+# This is the root of our schema. If you're new to our API,
+# browse into Query.
+schema {
+  # Queries are used to retrieve data.
+  query: Query
+  # Mutations are used to modify data -- to create, update, or delete.
+  mutation: Mutation
+}

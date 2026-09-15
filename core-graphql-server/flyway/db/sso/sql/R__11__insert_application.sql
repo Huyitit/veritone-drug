@@ -1,0 +1,38 @@
+INSERT INTO public.application (
+  application_id,
+  application_name,
+  application_key,
+  application_status,
+  application_description,
+  application_icon_url,
+  application_icon_svg,
+  application_url,
+  application_check_permissions,
+  application_order,
+  owner_organization_id,
+  deployment_model,
+  created_date,
+  updated_date,
+  oauth2_redirect_urls,
+  oauth2_client_secret,
+  permissions_required
+) SELECT
+  '7f402a84-4ae6-451f-85ca-9447397610b7', 
+  'Advertiser_2021-01-28 20:21:21.57404+00', 
+  'advertiser_2021-01-28 20:21:21.57404+00',
+  'deleted', 
+  'A Veritone legacy application that should only be provisioned to users who currently still require access.',
+  'https://static.veritone.com/veritone-ui/appicons-2/advertiser.png',
+  NULL,
+  'https://@@{EXTERNAL_DNS_ZONE}@@/media/mentions#/mention/agency/all',
+  true,
+  1,
+  7682,
+  0,
+  1495504505,
+  1611865281,
+  NULL,
+  NULL,
+  NULL
+WHERE '@@{NODE_ENV}@@' IN ('prod', 'stage', 'dev', 'local', 'uk-prod') 
+  AND NOT EXISTS (SELECT 1 FROM public.application WHERE application_id = '7f402a84-4ae6-451f-85ca-9447397610b7');

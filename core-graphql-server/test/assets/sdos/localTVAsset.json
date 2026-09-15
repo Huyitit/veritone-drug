@@ -1,0 +1,75 @@
+{
+  "assetType": "vtn-standard",
+  "contentType": "application/json",
+  "metadata": {
+    "schemaIds": ["a86e58a1-0c0d-4057-9f2f-244e4fc0eb2a"],
+    "sourceEngineId": "d7f7e7cd-dca9-49af-90b6-53a3698690f8"
+  },
+  "series": [
+    {
+      "startTimeMs": 0,
+      "stopTimeMs": 300000,
+      "structuredData": {
+        "a86e58a1-0c0d-4057-9f2f-244e4fc0eb2a": [
+          {
+            "time": {
+              "startDate": "180821",
+              "endDate": "180821",
+              "hour": "20",
+              "minute": "30",
+              "second": "00",
+              "year": "2018",
+              "month": "08",
+              "day": "21",
+              "quaterHour": 59,
+              "datetimeStart": "2018-08-22T00:30:00.000Z",
+              "utc": 1534595400,
+              "datetimeEnd": "2018-08-22T00:45:00.000Z"
+            },
+            "decorators": {
+              "networkCode": "WCBS",
+              "programCode": "0000279230",
+              "programPutIndicator": "0",
+              "viewingType": "4",
+              "totalProgram": "30",
+              "breakoutIndicator": "0"
+            },
+            "demographics": {
+              "male": {
+                "age65": 32645,
+                "total": 82193,
+                "age18_24": 2943,
+                "age25_34": 1469,
+                "age35_49": 9059,
+                "age50_54": 7626,
+                "age55_64": 28450
+              },
+              "total": 263438,
+              "female": {
+                "age65": 111410,
+                "total": 181245,
+                "age18_24": 974,
+                "age25_34": 711,
+                "age35_49": 8524,
+                "age50_54": 9888,
+                "age55_64": 48088
+              }
+            },
+            "networkCode": "WCBS",
+            "uniqueCode": "WCBS|0000279230",
+            "datetimeStart": "2018-10-31T00:35:00.000Z",
+            "datetimeEnd": "2018-10-31T00:40:00.000Z",
+            "viewershipType": "LV7",
+            "dataId": "4514B06A-3205-5581-9422-3EE8385D168A",
+            "id": "4514B06A-3205-5581-9422-3EE8385D168A",
+            "dataRegistryId": "85db55b9-33e0-46ca-b7b0-39a6feeff5ec",
+            "fileName": "./output/MITLIB-2137375",
+            "isAverage": true
+          }
+        ]
+      }
+    }
+  ],
+  "sourceEngineId": "d7f7e7cd-dca9-49af-90b6-53a3698690f8",
+  "validationContracts": ["a86e58a1-0c0d-4057-9f2f-244e4fc0eb2a"]
+}

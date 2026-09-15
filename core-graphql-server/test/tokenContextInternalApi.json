@@ -1,0 +1,35 @@
+{
+  "authenticationOption": "optional",
+  "authToken": "internal-service:a5e73d8dceeb7b53930753",
+  "authTokenType": "apikey",
+  "tokenInfo": {
+    "tokenId": "internal-service:a5e73d8dceeb7b53930753",
+    "applicationId": null,
+    "groupId": null,
+    "json": {
+      "tokenId": "internal-service:a5e73d8dceeb7b53930753",
+      "rights": [
+        "developer:engine:read",
+        "developer.build.read",
+        "task_type:internal",
+        "job:create",
+        "job:read",
+        "job:update",
+        "task:read",
+        "task:update",
+        "recording:create",
+        "recording:read",
+        "recording:update"
+      ],
+      "internal": true,
+      "tokenLabel": "internal-service",
+      "isRevoked": false
+    },
+    "application": null,
+    "group": null,
+    "organization": null
+  },
+  "requestInfo": {
+    "httpUrl": "https://api.aws-dev.veritone.com/v3/graphql"
+  }
+}

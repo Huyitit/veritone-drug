@@ -1,0 +1,4 @@
+DROP TRIGGER IF EXISTS trigger_refresh_program_to_tracking_unit_view ON public.tracking_unit;
+DROP TRIGGER IF EXISTS trigger_refresh_program_to_tracking_unit_view ON public.tracking_unit_market;
+DROP TRIGGER IF EXISTS trigger_refresh_program_to_tracking_unit_view ON public.tracking_unit_program;
+DROP TRIGGER IF EXISTS trigger_refresh_program_to_tracking_unit_view ON public.tracking_unit_media_source;

@@ -1,0 +1,1 @@
+ALTER TABLE sso_user ADD COLUMN IF NOT EXISTS email varchar(1024);

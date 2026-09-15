@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="manifest" href="<%= urlPlaceholders.url %>/public/manifest.json" />
+    <link rel="icon" href="<%= urlPlaceholders.url %>/public/logo.svg" />
+    <title>GraphiQL</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <div id="urlPlaceholders" 
+    <% Object.keys(urlPlaceholders).forEach(function(key) { %>
+      data-<%= key %>="<%= urlPlaceholders[key] %>"
+      <% }); %>
+  ></div>
+    <div id="settings" data-theme="<%= themePlaceholder %>"></div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "sourceEngineId": "557f7da4-d654-4608-a706-762f4533ebff",
+  "taskId": "24104109_V4lObw0KxXTP0IP",
+  "internalTaskId": "af28b936-e4af-4aba-b338-fadabe46e909",
+  "generatedDateUTC": "2024-10-09T18:34:48.275Z",
+  "series": [
+    {
+      "startTimeMs": 16000,
+      "stopTimeMs": 17000,
+      "object": {
+        "type": "licensePlate",
+        "label": "9HQF528",
+        "licensePlate": {
+          "number": "9HQF528",
+          "confidence": 0.85
+        },
+        "boundingPoly": [
+          { "x": 0.08194, "y": 0.421875 },
+          { "x": 0.29028, "y": 0.421875 },
+          { "x": 0.29028, "y": 0.565625 },
+          { "x": 0.08194, "y": 0.565625 }
+        ]
+      }
+    }    
+  ]
+}

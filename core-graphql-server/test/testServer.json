@@ -1,0 +1,393 @@
+{
+  "taskTablePartitionActiveDate": "2018-07-29T00:00:00.000Z",
+  "jobTablePartitionActiveDate": "2018-07-29T00:00:00.000Z",
+  "sharedUrlPartitionActiveDate": "2018-07-29T00:00:00.000Z",
+  "recordingAssetTablePartitionActiveDate": "2018-10-22T00:00:00.000Z",
+  "recordingWeekConfig": {
+    "weeklyIdsDateActive": "2018-10-15T00:00:00.000Z",
+    "weekOffset": 44
+  },
+  "featureFlags": {
+    "useNewJobQuery": true,
+    "defaultTimezoneOffset": true,
+    "enforceWatchlistRangeLimits": true,
+    "sharedMention": true,
+    "useNewUpdateTask": true,
+    "enabledAWSUrlSignErrorHandling": true,
+    "startV3Job": true,
+    "enableClusterPreference": false
+  },
+  "port": 3000,
+  "notifyOnUploadFailures": false,
+  "maxRequestTimeElapsedSec": 300,
+  "tmpdir": "/tmp",
+  "paging": {
+    "defaultLimit": 30,
+    "maxLimit": 500
+  },
+  "server": {
+    "heartbeatEnabled": false,
+    "redisHeartbeatEnabled": false,
+    "memwatchEnabled": false,
+    "requestSizeLimit": "5mb",
+    "uploadSizeLimit": "100mb",
+    "rateLimit": {
+      "intervalRequestLimit": 1000,
+      "tokenRequestLimit": 100
+    }
+  },
+  "metricsRange": {
+    "defaultRange": 30,
+    "maxRange": 90
+  },
+  "jwt": {
+    "secret": "FhkKp9zeYGyJQrtE",
+    "_secret": "wSBlwE1vgfaFztle",
+    "ttl": "7d"
+  },
+  "manta": {
+    "privateKey":
+      "-----BEGIN RSA PRIVATE KEY-----\nMIIEogIBAAKCAQEAyyRLAIQgHt3/cgz48XY8aLStIPwThsNGGSkb1eTzSyuQM52J\nbGKK202vjhbLTGhHtbx6kObdvSb5u5sx6FhxTA+Hcokm+dspir7ilSDMJ6n275rk\nDpWc2VG0SFywgjnPiK1X/LCTJGmjKGDNDCrVbKS0DyJ31F4Vm7GN64uYqqJqm2yX\naBzcKdSicz0EmB0/dB35yPTi7fAUtO6UHask3+QOa4GVjN/rWxt+LfvzgFKH2s/v\nyIHsp8tDLaMr4TLHnk83T1xC7UZ0BpY+gfynu/P3fO6nTmXE+UaRLMu3UTttj3mZ\nfLx43/VBXrvfgV/nryPNi4Z9rZV4xrFb5/u/vwIBIwKCAQARaYLFh6r7VNthjBVW\nhno03ElamUOAlGUYGXdqGvBIRZAEbJbAJbQhbQ8MLdbpSsRRZ+0/nsKMjk/rglS8\nJNaC3MJ3iBlIncG7b3KBz5x4badzn4/j/jID/7Bd+VD1OCe7Qg7bJRPtLaBFSiA0\nPi+M+Cyw1xGV3C2841VOtDGoOadNhSKnWNtnkeX1A8sS04j+QeFJ/AiWzhUsvwlA\ngjIFKNaxRMuaprPgFXOQpOoAy/ZAEcLhB8kjYIv0XNZivJMZBGcb6vZulv2mi+lv\nFe840n3lnVzbxeu2EIq3gAH3agfJYjcMMUzfbRA2fndZV+ffsWhiwEowpq3aTb5a\nUGrTAoGBAP3/jzPgO8sJZzkSGdNDr594QlhQ4WMC9jPwUG78kqolJb1CWOavwHzw\nKMDfNbTBCCZvTmIjWqGtBZ82hBT82eF+Xt0MtifEmLjl3A2wOqTfop6CYopg7O+d\nIorxTkqpPO2uL1vKn5961efMqUwQs/PZ9Fe08iPnXtOFG0kE4TOzAoGBAMy+IXnn\nfxFoHJk2oZrOHwxlhbJuQcZg6um6lA6F1DMpNzMVBhImMTvfTc5h7OoLVCiAB6wO\ndyBeCe3UOVG5wNymvPynm4rJIYE0WeLBwhvwDvGDtYw+yRdlYwkz/VW21CUJJbt5\nMwM2fEcWTyMI/7f4xF6r0Pg5SLj5YGYaxa3FAoGBAO977WttBS0mH37zzzToC/zB\n2CdiM5feOJde7MBqe6e8n+z1acOPxB4HAdpsDhDTQjLd+XJ5GvA1a7NfSVWd8gB+\ndrMpPgg9BQYajaaBlmDwHPvaBSNis4LV+/9Yi6V6/u66LKcA36T+ya6rBgXj3N6a\nTMe5PBM5PCaE0JVNvmPxAoGAbyVioUMnuP4A5XVtq8766XjwzpOgDJsDLmyZhDoF\netvcIwtpshS7pCjD1m+sfw121Cg+rdv3hplzGrUJLF2F9CAAMWJNH3R/5w3KZSda\nvrWEdHqzAv2DG1RLtInv7LO0/imJgwdHlAeijP17aspe7teAiyoSWt1EvC+auxXZ\nBo8CgYEA5IF0W/tOorCo25loSWrB7oLTBgG8K0rI0nDcNgcdneF8nGXtpTqqDeOn\nUVghG7DHDcBAdCsQrIlARIjEe4LhKk6gv03EQLw1yvVoa+SyADuctM6BnpZonSgV\nRr/KS0mPgtvUPkj4lhDIZNywImtdbjNR5SOO0icH1/PgTAEGjRM=\n-----END RSA PRIVATE KEY-----",
+    "keyId": "39:43:22:a8:e2:43:0e:5d:1b:5f:a5:23:a7:41:61:b4",
+    "user": "core.veritone",
+    "url": "https://us-east.manta.joyent.com/"
+  },
+  "veritone-api": {
+    "baseUri": "http://localhost/api",
+    "maxRetry": 3,
+    "retryIntervalMs": 5000
+  },
+  "seatLimitDomainIgnoreList": [
+		"veritone.com",
+		"setacinq.vn"
+	],
+  "s3": {
+    "region": "us-east-1",
+    "bucket": "dev.inspirent",
+    "path": "assets",
+    "maxRetry": 3,
+    "timeout": 30000,
+    "enableUrlSigning": true,
+    "buckets": [
+      {
+        "key": "api",
+        "name": "dev-api.veritone.com",
+        "path": "signedUrl",
+        "signedUrlExpires": 10800
+      },
+      {
+        "key": "library",
+        "name": "dev-veritone-library",
+        "path": "library",
+        "signedUrlExpires": 10800
+      },
+      {
+        "key": "tasklog",
+        "name": "veritone-task-logs-dev",
+        "signedUrlExpires": 10800
+      },
+      {
+        "key": "ugc",
+        "bucket": "dev-veritone-ugc",
+        "name": "dev-veritone-ugc",
+        "signedUrlExpires": 3600
+      },
+      {
+        "key": "face",
+        "name": "test.veritone-face",
+        "signedUrlExpires": 10800,
+        "region": "us-east-1"
+      }
+    ],
+    "buildTestReportBucket": "vda-build-test-reports-dev",
+    "buildManifestBucket": "vda-engine-config-dev"
+  },
+  "azure": {
+    "storage": {
+      "clientId": "veritonedevmedia",
+      "clientSecret":
+        "H4p7cbgAVLNUg5LrKueHLslF13fhfUXfSKNZFgTRwwBHeifQsLwA65MsNllYDZ/HqKS7ikOE4KBQicxYcM35jw==",
+      "copyBlobWaitIntervalMs": 1000
+    },
+    "media": {
+      "clientId": "veritonedevmedia",
+      "clientSecret": "e/I+ifE+uzYM7d3S6w8FmiRtk82kk48UUkZrECDmFqA="
+    }
+  },
+  "queryMonitor": {
+    "enableKill": true,
+    "queryDurationSecondsWarn": 60,
+    "queryDurationSecondsKill": 180
+  },
+  "db": {
+    "audience": {
+      "read":
+        "postgres://foo:bar@0001.pg-media.aws-dev.veritone.com:5432/audience?sslmode=disable"
+    },
+    "cms": {
+      "read":
+        "postgres://foo:bar@0001.pg-media.aws-dev.veritone.com:5432/cms?sslmode=disable",
+      "write":
+        "postgres://foo:bar@0001.pg-media.aws-dev.veritone.com:5432/cms?sslmode=disable"
+    },
+    "core": {
+      "read":
+        "postgres://foo:bar@0001.pg-core.aws-dev.veritone.com:5432/platform?sslmode=disable",
+      "write":
+        "postgres://foo:bar@0001.pg-core.aws-dev.veritone.com:5432/platform?sslmode=disable"
+    },
+    "core_gqm": {
+      "queryMonitor": true,
+      "max": 2,
+      "write":
+        "postgres://core_graphql_server:Hnadev1@0.pg-core.aws-dev.veritone.com:5432/platform?sslmode=disable"
+    },
+
+    "media_platform": {
+      "read":
+        "postgres://foo:bar@0001.pg-media.aws-dev.veritone.com:5432/media_platform?sslmode=disable",
+      "write":
+        "postgres://foo:bar@0001.pg-media.aws-dev.veritone.com:5432/media_platform?sslmode=disable"
+    },
+    "media_platform_gqm": {
+      "queryMonitor": true,
+      "max": 2,
+      "write":
+        "postgres://core_graphql_server:Hnadev1@0.pg-media.aws-dev.veritone.com:5432/media_platform?sslmode=disable"
+    },
+
+    "sso": {
+      "read":
+        "postgres://foo:bar@0001.pg-media.aws-dev.veritone.com:5432/sso?sslmode=disable",
+      "write":
+        "postgres://foo:bar@0001.pg-media.aws-dev.veritone.com:5432/sso?sslmode=disable"
+    },
+    "subscription": {
+      "read":
+        "postgres://foo:bar@0001.pg-media.aws-dev.veritone.com:5432/subscription?sslmode=disable",
+      "write":
+        "postgres://foo:bar@0001.pg-media.aws-dev.veritone.com:5432/subscription?sslmode=disable"
+    },
+    "third_party": {
+      "read":
+        "postgres://foo:bar@0001.pg-thirdparty.aws-dev.veritone.com:5432/structured_data?sslmode=disable",
+      "write":
+        "postgres://foo:bar@0001.pg-thirdparty.aws-dev.veritone.com:5432/structured_data?sslmode=disable",
+      "pool": {
+        "max": 5,
+        "min": 0,
+        "idle": 10000
+      }
+    },
+    "third_party_gqm": {
+      "queryMonitor": true,
+      "max": 2,
+      "write":
+        "postgres://readaccess:readaccess@0.pg-thirdparty.aws-dev.veritone.com:5432/structured_data?sslmode=disable"
+    },
+
+    "constants": {
+      "customerSuccessOrgId": 7682
+    }
+  },
+  "dbSchema": "recording",
+  "cache": {
+    "stdTTLSec": 30,
+    "checkPeriodSec": 30
+  },
+  "services": {
+    "task-insert-server": {
+      "uri": "http://localhost/task-insert-server/"
+    },
+    "core-collection-server": {
+      "uri": "http://localhost/api/collection/"
+    },
+    "core-job-server": {
+      "uri": "https://localhost/v1/"
+    },
+    "core-search-server": {
+      "uri": "http://localhost/api/"
+    },
+    "transcript-streamer": {
+      "uri": "http://localhost/transcript/"
+    },
+    "media-streamer": {
+      "uri": "http://localhost/media-streamer/"
+    },
+    "coreAdminUri": "http://localhost/v1/admin/",
+    "loginPageUri": "http://localhost/login/#/",
+    "workflowBaseUri": "localhost",
+    "workflowManagementApiUri": "localhost"
+  },
+  "elastic": {
+    "connection": {
+      "host": "http://es-media-asg-data-lb.aws-dev.veritone.com:9200/",
+      "username": "username",
+      "password": "password",
+      "apiVersion": "7.0"
+    },
+    "headers": {
+      "accept": "application/vnd.elasticsearch+json;compatible-with=7",
+      "contentType": "application/vnd.elasticsearch+json;compatible-with=7"
+    },
+    "indexName": "library",
+    "indexType": "library-entity"
+  },
+  "maxSignedAssetUrls": 100,
+  "mandrillAPIKey": "RGkzMf-jlF57UZJslNPurQ",
+  "pageUris": {
+    "collectionsShareLinkUrl": "http://localhost/share/",
+    "discoveryShareLinkUrl":
+      "http://locahost/media-detail/#/sharedMention/enterprise/"
+  },
+  "allowedOriginHosts": [
+    "docs.aws-dev.veritone.com",
+    "admin.aws-dev.veritone.com",
+    "cms.aws-dev.veritone.com",
+    "developer.aws-dev.veritone.com",
+    "local.veritone.com:*",
+    "enterprise.local.veritone.com:*",
+    "politics.local.veritone.com:*"
+  ],
+  "schemas": {
+    "public": {
+      "enabledModules": ["v3DataModel"]
+    }
+  },
+  "dnsZone": {
+    "external": "localhost"
+  },
+  "aiware": {
+    "clusterMemoryLimit": 34359738368,
+    "defaultCluster": {
+      "name": "",
+      "memory": 4294967296,
+      "disk": 10737418240
+    }
+  },
+  "engineRuntime": {
+    "iron": {
+      "baseUri": "localhost",
+      "version": 2,
+      "clusterPath": "clusters",
+      "token": "nBo2HzBJS1TFnZZUmu1ZfVytOAA",
+      "projectId": "5570c45981b1f60006000089",
+      "defaultRuntime": {
+        "cluster": "58547f7a3053fe0007d769d3",
+        "priority": 0
+      }
+    },
+    "event": {},
+    "aiware": {
+      "baseUri": "",
+      "version": 1,
+      "defaultRuntime": {
+        "cluster": "58547f7a3053fe0007d769d3",
+        "priority": 0
+      }
+    },
+    "edge": {}
+  },
+  "taskTypeCacheRefreshIntervalMs": 10000,
+  "recordingIdParser": {
+    "prefix": "mri-",
+    "baseUri": "http://localhost/media-streamer"
+  },
+  "auth": {
+    "userTokenCookieName": "dev-veritone-session-id"
+  },
+  "messaging": {
+    "enable": false,
+    "name": "nsq",
+    "nsqdHost": "localhost",
+    "nsqdPort": 4150,
+    "nsqlookupds": ["localhost:4161"],
+    "nsqlookupdDiscovery": false,
+    "maxInFlight": 10,
+    "logLevel": "debug",
+    "msgTimeout": 60000,
+    "tls": false,
+    "tlsVerification": false
+  },
+  "minio": {
+    "enabled": false,
+    "accessKey": "${MINIO_ACCESS_KEY}",
+    "secretKey": "${MINIO_SECRET_KEY}",
+    "bucket": "aiware",
+    "path": "assets",
+    "maxRetry": 3,
+    "timeout": 30000,
+    "enableUrlSigning": true,
+    "signedUrlExpires": 604800,
+    "endPoint": "minio-1",
+    "port": 9101,
+    "secure": false
+  },
+  "legacyEngineToRealTimeEngines": {
+    "transcribe-speechmatics-container-en-us":
+      "c0e55cde-340b-44d7-bb42-2e0d65e98141",
+    "imagedetection-facerecognition-kairos":
+      "a7eff360-683a-43fd-bf74-6cf51a990cb0",
+    "imagedetection-logorecognition-google":
+      "361ae32c-4937-4d4c-9865-466fd3424bf9",
+    "imagedetection-ocr-google": "38afb67a-045b-43db-96db-9080073695ab",
+    "transcribe-nuance-containerized-eng-usa":
+      "c0e55cde-340b-44d7-bb42-2e0d65e98141",
+    "transcribe-voicebase": "c0e55cde-340b-44d7-bb42-2e0d65e98141"
+  },
+  "redis": {
+    "detect_buffers": true,
+    "host": "localhost",
+    "port": 6379,
+    "ttl": 10800
+  },
+  "stationPlayout": {
+    "wideOrbit": {
+      "playoutRegistryId": "c8444503-1dff-4ee4-a906-4341a6d2296d",
+      "advertiserRegistryId": "d3badf83-942d-445c-aae8-0f04ea903a72"
+    },
+    "csrdsAutomation": {
+      "playoutRegistryId": "40d873d3-98b2-46a1-a43d-cb9a3e7041b8"
+    },
+    "iMediaTouchAutomation": {
+      "playoutRegistryId": "16f0cff5-046e-44d0-b112-f20c75537040"
+    },
+    "audioVault": {
+      "playoutRegistryId": "0134636e-9c2c-4c00-9e21-4c8ef8a6685b"
+    }
+  },
+  "flyway": {
+    "rootOrgId": 7682
+  },
+  "openid": {
+		"keyCredential": "3i8nli:0a38799ef36e4175b54f926bf1a40c20b-4251-45f3-bd55-a78f071d00d6"
+  },
+  "system": {
+    "rootOrg": {
+      "roleIds.desc": "the default roles are Customer Service and Finance Admin",
+      "roleIds": [
+        "3459c3de-493f-443a-8ad0-ddb9f3f6c76d", 
+        "37b18322-74bf-4ae4-a46f-2cc407a9966c"
+      ]
+    }
+  },
+  "rbac": {
+    "permissions": {
+      "blacklist": [
+        "ADMIN_CREATE_APPLICATION_JWT",
+        "AIWARE_ADMIN_CREATE_APPLICATION_JWT",
+        "ADMIN_ORG_CREATE",
+        "ADMIN_ORG_UPDATE",
+        "ADMIN_ROLES_CREATE",
+        "ADMIN_ROLES_DELETE",
+        "ADMIN_ROLES_UPDATE",
+        "CMS_CUSTOMERSERVICE",
+        "INTERNAL_LOGIN_BY_EMAIL",
+        "SUPERADMIN",
+        "VERITONE_FINANCE_ADMIN",
+        "VERITONE_SUPERADMIN",
+        "AIWARE_ADMIN_INSTANCE_ADMIN"
+      ]
+    }
+  }
+}

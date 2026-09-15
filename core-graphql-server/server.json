@@ -1,0 +1,383 @@
+{
+  "flyway": {
+    "migrate": false,
+    "validateOnMigrate": false,
+    "validateOnMigrate.comment": "Once validateOnMigrate is true, the system will check validateOnMigrate for each DB, somthing is like flyway.db.sso.validateOnMigrate, ... (by default, validateOnMigrate for each DB is true)"
+  },
+  "featureFlags": {
+    "enableRBACFeature": true,
+    "v2FoldersAvailable": true,
+    "enablePackageGrantLogic": true,
+    "enableBatchActionsAPI": true,
+    "canExportLogsOlderThan12Months": true,
+    "enableDefaultDesktopApp": true,
+    "virtualAssetEnabled": true
+  },
+  "log": {
+    "level": "debug"
+  },
+  "taskTablePartitionActiveDate": "2018-07-29T00:00:00.000Z",
+  "jobTablePartitionActiveDate": "2018-07-29T00:00:00.000Z",
+  "recordingAssetTablePartitionActiveDate": "2018-10-22T00:00:00.000Z",
+  "sharedUrlPartitionActiveDate": "2018-12-16T00:00:00.000Z",
+  "recordingWeekConfig": {
+    "weeklyIdsDateActive": "2018-10-22T00:00:00.000Z",
+    "weekOffset": 20
+  },
+  "nodeEnv": "local",
+  "port": 3000,
+  "server": {
+    "rateLimit": {
+      "intervalRequestLimit": 1000,
+      "tokenRequestLimit": 100
+    },
+    "heartbeatEnabled": false,
+    "redisHeartbeatEnabled": false
+  },
+  "jwt": {
+    "secret": "{{JWT_SECRET}}",
+    "ttl": "7d",
+    "sdoTokenTtlSec": 3600
+  },
+  "auth": {
+    "jwtCookieName": "dev-veritone-jwt",
+    "jwtRefreshCookieName": "dev-veritone-jwt-refresh",
+    "userTokenCookieName": "dev-veritone-session-id",
+    "useInsecureCookie": true,
+    "domain": ""
+  },
+  "s3": {
+    "enabled": false,
+    "cloudProvider": "oci",
+    "buckets": [
+      {
+            "key": "api",
+            "name": "{{OCI_BUCKET}}",
+            "path": "signedUrl",
+            "region": "{{OCI_REGION}}",
+            "fallback": {
+              "region": "us-east-1",
+              "bucketName": "stage-api.veritone.com",
+              "cloudProvider": "aws"
+            },
+            "signedUrlExpires": 86400
+          },
+          {
+            "key": "prod-api",
+            "name": "{{OCI_BUCKET}}",
+            "path": "signedUrl",
+            "region": "{{OCI_REGION}}",
+            "fallback": {
+              "region": "us-east-1",
+              "bucketName": "prod-api.veritone.com",
+              "cloudProvider": "aws"
+            },
+            "signedUrlExpires": 1200
+          },
+          {
+            "key": "library",
+            "name": "{{OCI_BUCKET}}",
+            "path": "library",
+            "region": "{{OCI_REGION}}",
+            "fallback": {
+              "region": "us-east-1",
+              "bucketName": "stage-veritone-library",
+              "cloudProvider": "aws"
+            },
+            "signedUrlExpires": 10800
+          },
+          {
+            "key": "dataset",
+            "name": "{{OCI_BUCKET}}",
+            "path": "dataset",
+            "region": "{{OCI_REGION}}",
+            "fallback": {
+              "region": "us-east-1",
+              "bucketName": "stage-veritone-dataset",
+              "cloudProvider": "aws"
+            },
+            "signedUrlExpires": 10800
+          },
+          {
+            "key": "tasklog",
+            "name": "{{OCI_BUCKET}}",
+            "region": "{{OCI_REGION}}",
+            "path": "tasklog",
+            "fallback": {
+              "bucketName": "veritone-task-logs-stage",
+              "cloudProvider": "aws",
+              "region": "us-east-1"
+            },
+            "signedUrlExpires": 10800
+          },
+          {
+            "key": "inspirent",
+            "name": "{{OCI_BUCKET}}",
+            "region": "{{OCI_REGION}}",
+            "path": "legacy",
+            "fallback": {
+              "region": "us-east-1",
+              "bucketName": "inspirent",
+              "cloudProvider": "aws"
+            },
+            "signedUrlExpires": 10800
+          },
+          {
+            "key": "ugc",
+            "name": "{{OCI_BUCKET}}",
+            "region": "{{OCI_REGION}}",
+            "path": "ugc",
+            "fallback": {
+              "region": "us-east-1",
+              "bucketName": "prod-veritone-ugc",
+              "cloudProvider": "aws"
+            },
+            "signedUrlExpires": 86400
+          },
+          {
+            "key": "face",
+            "name": "{{OCI_BUCKET}}",
+            "region": "{{OCI_REGION}}",
+            "path": "face",
+            "fallback": {
+              "region": "us-east-1",
+              "bucketName": "stage-veritone-face-2",
+              "cloudProvider": "aws"
+            },
+            "signedUrlExpires": 86400,
+            "preventS3SignerReuse": true
+          },
+          {
+            "key": "export",
+            "name": "{{OCI_BUCKET}}",
+            "path": "export",
+            "region": "{{OCI_REGION}}",
+            "fallback": {
+              "region": "us-east-1",
+              "bucketName": "transcript-export-stage",
+              "cloudProvider": "aws"
+            },
+            "signedUrlExpires": 86400
+          },
+          {
+            "key": "s3-t3m-previewpriv-or-1",
+            "name": "{{OCI_BUCKET}}",
+            "path": "previewpriv",
+            "region": "{{OCI_REGION}}",
+            "fallback": {
+              "region": "us-east-1",
+              "bucketName": "s3-t3m-previewpriv-or-1",
+              "cloudProvider": "aws"
+            }
+          },
+          {
+            "key": "s3-t3m-previewpub-or-1",
+            "name": "{{OCI_BUCKET}}",
+            "path": "previewpub",
+            "region": "{{OCI_REGION}}",
+            "fallback": {
+              "region": "us-east-1",
+              "bucketName": "s3-t3m-previewpub-or-1",
+              "cloudProvider": "aws"
+            }
+          },
+          {
+            "key": "vt-stage-haystack-processed",
+            "name": "{{OCI_BUCKET}}",
+            "path": "haystack-processed",
+            "region": "{{OCI_REGION}}",
+            "fallback": {
+              "region": "us-east-1",
+              "bucketName": "vt-stage-haystack-processed",
+              "cloudProvider": "aws"
+            },
+            "signedUrlExpires": 1200
+          },
+          {
+            "key": "prod-evidence-2024-east",
+            "name": "{{OCI_BUCKET}}",
+            "path": "evidence",
+            "region": "{{OCI_REGION}}",
+            "fallback": {
+              "region": "us-east-1",
+              "bucketName": "prod-evidence-2024-east",
+              "cloudProvider": "aws"
+            },
+            "signedUrlExpires": 86400
+          }
+    ],
+    "buildTestReportBucket": "vda-build-test-reports-dev",
+    "buildManifestBucket": "vda-engine-config-dev"
+  },
+  "oci": {
+    "enabled": true,
+    "namespace": "{{OCI_NAMESPACE}}",
+    "region": "{{OCI_REGION}}",
+    "bucket": "{{OCI_BUCKET}}",
+    "path":"assets",
+    "accessCredentialId": "{{OCI_ACCESS_CREDENTIAL_ID}}",
+    "enableUrlSigning": true,
+    "signedUrlExpires": 3600,
+    "timeout": 30000,
+    "maxRetry": 3
+  },
+
+  "queryMonitor": {
+    "enableKill": true
+  },
+  "db": {
+    "audience": {
+      "read": "postgres://{{PG_READ_USER}}:{{PG_READ_PASS}}@0.pg-media.{{ENVIRONMENT}}.veritone.com:5432/audience?sslmode=disable",
+      "write": "postgres://{{PG_WRITE_USER}}:{{PG_WRITE_PASS}}@0.pg-media.{{ENVIRONMENT}}.veritone.com:5432/audience?sslmode=disable"
+    },
+    "cms": {
+      "read": "postgres://{{PG_READ_USER}}:{{PG_READ_PASS}}@0.pg-media.{{ENVIRONMENT}}.veritone.com:5432/cms?sslmode=disable",
+      "write": "postgres://{{PG_WRITE_USER}}:{{PG_WRITE_PASS}}@0.pg-media.{{ENVIRONMENT}}.veritone.com:5432/cms?sslmode=disable"
+    },
+    "core": {
+      "read": "postgres://{{PG_READ_USER}}:{{PG_READ_PASS}}@0.pg-core.{{ENVIRONMENT}}.veritone.com:5432/platform?sslmode=disable",
+      "write": "postgres://{{PG_WRITE_USER}}:{{PG_WRITE_PASS}}@0.pg-core.{{ENVIRONMENT}}.veritone.com:5432/platform?sslmode=disable"
+    },
+    "media_platform": {
+      "read": "postgres://{{PG_READ_USER}}:{{PG_READ_PASS}}@0.pg-media.{{ENVIRONMENT}}.veritone.com:5432/media_platform?sslmode=disable",
+      "write": "postgres://{{PG_WRITE_USER}}:{{PG_WRITE_PASS}}@0.pg-media.{{ENVIRONMENT}}.veritone.com:5432/media_platform?sslmode=disable"
+    },
+    "sso": {
+      "read": "postgres://{{PG_READ_USER}}:{{PG_READ_PASS}}@0.pg-media.{{ENVIRONMENT}}.veritone.com:5432/sso?sslmode=disable",
+      "write": "postgres://{{PG_WRITE_USER}}:{{PG_WRITE_PASS}}@0.pg-media.{{ENVIRONMENT}}.veritone.com:5432/sso?sslmode=disable"
+    },
+    "subscription": {
+      "read": "postgres://{{PG_READ_USER}}:{{PG_READ_PASS}}@0.pg-media.{{ENVIRONMENT}}.veritone.com:5432/subscription?sslmode=disable",
+      "write": "postgres://{{PG_WRITE_USER}}:{{PG_WRITE_PASS}}@0.pg-media.{{ENVIRONMENT}}.veritone.com:5432/subscription?sslmode=disable"
+    },
+    "third_party": {
+      "read": "postgres://{{PG_READ_USER}}:{{PG_READ_PASS}}@0.pg-thirdparty.{{ENVIRONMENT}}.veritone.com:5432/structured_data?sslmode=disable",
+      "write": "postgres://{{PG_WRITE_USER}}:{{PG_WRITE_PASS}}@0.pg-thirdparty.{{ENVIRONMENT}}.veritone.com:5432/structured_data?sslmode=disable",
+      "pool": {
+        "max": 5
+      }
+    },
+    "constants": {
+      "customerSuccessOrgId": 7682
+    }
+  },
+  "services": {
+    "core-job-server": {
+      "uri": "https://api.{{ENVIRONMENT}}.veritone.com/v1/"
+    },
+    "core-search-server": {
+      "uri": "https://api.{{EXTERNAL_DOMAIN_NAME}}.veritone.com/api/"
+    },
+    "media-streamer": {
+      "uri": "https://api.{{EXTERNAL_DOMAIN_NAME}}.veritone.com/media-streamer/"
+    },
+    "coreAdminUri": "https://api.{{EXTERNAL_DOMAIN_NAME}}.veritone.com/v1/admin/",
+    "loginPageUri": "https://www.{{EXTERNAL_DOMAIN_NAME}}.veritone.com/login/#/",
+    "elasticLogClusterUri": "https://kibana.{{ENVIRONMENT}}.veritone.com/elasticsearch/",
+    "workflowBaseUri": "localhost",
+    "workflowManagementApiUri": "localhost",
+    "resetPasswordUri": "https://login.dev.veritone.com/reset-password"
+  },
+  "elastic": {
+    "connection": {
+      "host": "http://es-media-asg-data-lb.{{ENVIRONMENT}}.veritone.com:9200/",
+      "username": "{{ELASTIC_USERNAME}}",
+      "password": "{{ELASTIC_PASSWORD}}",
+      "apiVersion": "7.0"
+    }
+  },
+  "mandrillAPIKey": "MANDRILL_API_KEY",
+  "decryptKeyDefault": "{{DECRYPT_KEY_DEFAULT}}",
+  "pageUris": {
+    "collectionsShareLinkUrl": "https://collections.{{ENVIRONMENT}}.veritone.com/share/",
+    "discoveryShareLinkUrl": "https://enterprise.{{ENVIRONMENT}}.veritone.com/media-detail/#/sharedMention/enterprise/"
+  },
+  "allowedOriginHosts": [
+    "cms.{{ENVIRONMENT_NEW}}.veritone.com",
+    "admin.{{ENVIRONMENT_NEW}}.veritone.com",
+    "cms.{{ENVIRONMENT_NEW}}.veritone.com",
+    "developer.{{ENVIRONMENT_NEW}}.veritone.com",
+    "local.veritone.com:*",
+    "enterprise.local.veritone.com:*"
+  ],
+  "seatLimitDomainIgnoreList": [
+		"veritone.com",
+		"setacinq.vn"
+  ],
+  "loginRoute": "https://login.{{EXTERNAL_DOMAIN_NAME}}.veritone.com/#",
+  "mediaDetailsRoute": "https://cms.{{EXTERNAL_DOMAIN_NAME}}.veritone.com/#/media-details",
+  "switchAppRoute": "https://aiware.{{EXTERNAL_DOMAIN_NAME}}.veritone.com/switch-app",
+  "dnsZone": {
+    "external": "{{EXTERNAL_DOMAIN_NAME}}.veritone.com"
+  },
+  "publicDnsZoneName": "{{ENVIRONMENT_NEW}}.veritone.com",
+  "apiRoot": "https://api.{{ENVIRONMENT_NEW}}.veritone.com",
+  "veritone-api": {
+    "baseUri": "https://api.{{ENVIRONMENT_NEW}}.veritone.com"
+  },
+  "messaging": {
+    "nsqdHost": "{{NSQD_HOST}}",
+    "nsqdPort": 4150,
+    "nsqlookupds": ["{{NSQD_HOST}}:4161"],
+    "nsqlookupdDiscovery": false,
+    "maxInFlight": 10,
+    "tls": false,
+    "tlsVerification": false,
+    "idleTimeout": 1800,
+    "connectionTimeout": 7200
+  },
+  "minio": {
+    "enabled": false,
+    "accessKey": "{{MINIO_ACCESS_KEY}}",
+    "secretKey": "{{MINIO_SECRET_KEY}}",
+    "bucket": "aiware",
+    "path": "assets",
+    "enableUrlSigning": true,
+    "signedUrlExpires": 604800,
+    "endPoint": "minio-1",
+    "port": 9101,
+    "secure": false
+  },
+  "redis": {
+    "host": "redis32.{{ENVIRONMENT}}.veritone.com",
+    "port": 6379
+  },
+  "coreAdminRedis": {
+    "host": "redis32.{{ENVIRONMENT}}.veritone.com",
+    "port": 6379
+  },
+  "oktaAuth": {
+    "oktaCallbackUrl": "http://local.veritone.com:3000/auth/authorization-code-callback"
+  },
+  "storageEndpoint": "http://localhost:3000/storage",
+  "engineRuntime": {
+    "iron": {
+      "token": "nBo2HzBJS1TFnZZUmu1ZfVytOAA",
+      "projectId": "56afcfd5428876000a000205",
+      "defaultRuntime": {
+        "cluster": "58547f7a3053fe0007d769d3"
+      }
+    }
+  },
+  "rateLimit": {
+    "tokenType": {
+      "default": 5000
+    }
+  },
+  "adminApiVersionPath": "/api",
+  "organizationInvite": {
+    "expirationDate": 7
+  },
+  "instanceAuditLog": {
+    "maximumTimeWindowLengthDays": 365,
+    "defaultTimeWindowLengthDays": 7,
+    "elasticSearchSink": {
+      "requestRetryCount": 3
+    }
+  },
+  "mailbox": {
+    "reservedNames": {
+      "exportStatusMailbox": "Export Request Status Mailbox"
+    }
+  }
+}

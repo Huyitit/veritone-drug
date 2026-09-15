@@ -1,0 +1,6 @@
+---
+deployment:
+  terraform:
+    services:
+      - "fastcore-api"
+release_package: "aiware-core"

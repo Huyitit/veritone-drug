@@ -1,0 +1,1 @@
+alter TYPE public.cluster_preference_type add value 'org_always_run';

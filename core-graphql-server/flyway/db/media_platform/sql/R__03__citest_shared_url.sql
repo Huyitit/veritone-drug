@@ -1,0 +1,22 @@
+-- CREATE TABLE share.shared_url_2019_12_49 (
+-- )
+-- INHERITS (public.shared_url);
+
+-- ALTER TABLE share.shared_url_2019_12_49 OWNER TO postgres;
+-- ALTER TABLE ONLY share.shared_url_2019_12_49 ALTER COLUMN source_id SET DEFAULT ''::text;
+-- ALTER TABLE ONLY share.shared_url_2019_12_49 ALTER COLUMN tdo_id SET DEFAULT ''::text;
+-- ALTER TABLE ONLY share.shared_url_2019_12_49 ALTER COLUMN start_date_time SET DEFAULT '1970-01-01 00:00:00+00'::timestamp with time zone;
+-- ALTER TABLE ONLY share.shared_url_2019_12_49 ALTER COLUMN stop_date_time SET DEFAULT '1970-01-01 00:00:00+00'::timestamp with time zone;
+-- ALTER TABLE ONLY share.shared_url_2019_12_49 ALTER COLUMN start_offset_ms SET DEFAULT 0;
+-- ALTER TABLE ONLY share.shared_url_2019_12_49 ALTER COLUMN stop_offset_ms SET DEFAULT 0;
+-- ALTER TABLE ONLY share.shared_url_2019_12_49 ALTER COLUMN settings SET DEFAULT '{}'::jsonb;
+-- ALTER TABLE ONLY share.shared_url_2019_12_49 ALTER COLUMN scheduled_job_id SET DEFAULT ''::text;
+-- ALTER TABLE ONLY share.shared_url_2019_12_49 ALTER COLUMN created_date_time SET DEFAULT now();
+-- ALTER TABLE ONLY share.shared_url_2019_12_49 ALTER COLUMN modified_date_time SET DEFAULT now();
+-- ALTER TABLE ONLY share.shared_url_2019_12_49
+--     ADD CONSTRAINT shared_url_2019_12_49_no_duplicates UNIQUE (source_id, tdo_id, scheduled_job_id, start_date_time, stop_date_time, start_offset_ms, stop_offset_ms, settings, service_name, media_type);
+-- ALTER TABLE ONLY share.shared_url_2019_12_49
+--     ADD CONSTRAINT shared_url_2019_12_49_pkey PRIMARY KEY (id);
+
+-- CREATE INDEX idx_shared_url_2019_12_49_created_date_time ON share.shared_url_2019_12_49 USING btree (created_date_time);
+-- CREATE TRIGGER update_date_modified BEFORE UPDATE ON share.shared_url_2019_12_49 FOR EACH ROW EXECUTE PROCEDURE public.modified_date_time_modified_column();

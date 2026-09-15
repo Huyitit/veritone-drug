@@ -1,0 +1,42 @@
+{
+  "authTokenType": "jwt",
+  "jwtToken": {
+    "contentApplicationId": "ed075985-bc94-406b-8639-44d1da42c3fb",
+    "contentOrganizationId": 7682,
+    "scope": [
+      {
+        "actions": ["asset:create", "asset:uri"],
+        "resources": {
+          "recordingIds": ["123"]
+        }
+      },
+      {
+        "actions": ["task:read", "task:update"],
+        "resources": {
+          "jobIds": ["20010101_job-123"],
+          "taskIds": ["20010101_task-job-123"]
+        }
+      }
+    ],
+    "iat": 1544733013,
+    "exp": 1544819413,
+    "sub": "engine-run",
+    "jti": "c93640df-1547-4ab1-ac8b-fdfcbcb132a3"
+  },
+  "authenticationOption": "optional",
+  "authToken":
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb250ZW50QXBwbGljYXRpb25JZCI6ImVkMDc1OTg1LWJjOTQtNDA2Yi04NjM5LTQ0ZDFkYTQyYzNmYiIsImNvbnRlbnRPcmdhbml6YXRpb25JZCI6NzY4Miwic2NvcGUiOlt7ImFjdGlvbnMiOlsiYXNzZXQ6Y3JlYXRlIiwiYXNzZXQ6dXJpIl0sInJlc291cmNlcyI6eyJyZWNvcmRpbmdJZHMiOlsiMTIzIl19fSx7ImFjdGlvbnMiOlsidGFzazpyZWFkIiwidGFzazp1cGRhdGUiXSwicmVzb3VyY2VzIjp7ImpvYklkcyI6WyJqb2ItMTIzIl0sInRhc2tJZHMiOlsidGFzay1qb2ItMTIzIl19fV0sImlhdCI6MTU0NDczMzAxMywiZXhwIjoxNTQ0ODE5NDEzLCJzdWIiOiJlbmdpbmUtcnVuIiwianRpIjoiYzkzNjQwZGYtMTU0Ny00YWIxLWFjOGItZmRmY2JjYjEzMmEzIn0.IB5AtjXFgC7KaJJBIQ65pW_9lQdH47lYlxkVvgzuhnA",
+  "tokenInfo": {
+    "applicationId": "ed075985-bc94-406b-8639-44d1da42c3fb",
+    "json": {
+      "applicationId": "ed075985-bc94-406b-8639-44d1da42c3fb",
+      "isRevoked": false,
+      "rights": ["asset:uri", "task:update", "task:read", "asset:create"],
+      "tokenLabel": "auth2 generated"
+    },
+    "organization": {}
+  },
+  "requestInfo": {
+    "httpUrl": "https://api.aws-dev.veritone.com/v3/graphql"
+  }
+}

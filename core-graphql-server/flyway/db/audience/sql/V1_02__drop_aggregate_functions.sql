@@ -1,0 +1,1 @@
+DROP AGGREGATE IF EXISTS public.array_agg_mult(anyarray);

@@ -1,0 +1,2 @@
+ALTER TABLE IF EXISTS public.application
+ADD COLUMN IF NOT EXISTS metadata_version INT NOT NULL DEFAULT 1;
