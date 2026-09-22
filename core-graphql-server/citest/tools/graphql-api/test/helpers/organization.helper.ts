@@ -10,8 +10,14 @@ type SetupResult = {
   org: any;
   listOptions: any[];
 };
-
-export async function setupTestOrgAndUser(
+/**
+ * 
+ * @param gqlClient 
+ * @param orgAndUserInput 
+ * @param filterOrgs 
+ * @returns User: their information, hearders for queries
+ */
+export async function setupTestfOrgAndUser(
   gqlClient: GraphqlClient,
   orgAndUserInput: SetupInput,
   filterOrgs?: any

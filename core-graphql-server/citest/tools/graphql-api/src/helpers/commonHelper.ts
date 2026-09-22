@@ -17,7 +17,13 @@ export interface ImpersonateResult {
   token: string;
   requestOptions: Record<string, string>;
 }
-
+/**
+ * 
+ * @param superAdminToken 
+ * @param userId 
+ * @param organizationGuid 
+ * @returns headers of specific user
+ */
 export async function impersonateUser(
   superAdminToken: string,
   userId: string,

@@ -587,6 +587,7 @@ function folderTestOLP(version: string, ctx: OlpTestContext) {
       });
 
       it('FO6 - Add folder read permission for restricted user', async () => {
+        // admin create new authGroup
         const authGroupRes = await gqlClient.sdk.CreateAuthGroup(
           {
             input: {
@@ -604,7 +605,7 @@ function folderTestOLP(version: string, ctx: OlpTestContext) {
         );
         expect(authGroupRes?.data?.authGroupCreate).toBeDefined();
         ctx.rbac.authGroupId = authGroupRes?.data?.authGroupCreate?.id;
-
+        // admin creates permission set
         const permSetRes = await gqlClient.sdk.authPermissionSetCreate(
           {
             input: {
@@ -619,6 +620,7 @@ function folderTestOLP(version: string, ctx: OlpTestContext) {
         ctx.rbac.authPermissionSetId =
           permSetRes?.data?.authPermissionSetCreate?.id;
 
+        // admin create ACE - Access control entry
         await gqlClient.sdk.addACEsToResources(
           {
             resourceType: AuthResourceType.Folder,

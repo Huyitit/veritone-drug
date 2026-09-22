@@ -41197,6 +41197,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     createFolder(variables: CreateFolderMutationVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: CreateFolderMutation; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<CreateFolderMutation>(CreateFolderDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createFolder', 'mutation', variables);
     },
+    /**
+     * 
+     * @param variables 
+     * @param requestHeaders 
+     * @returns get Folder information
+     */
     folderBasic(variables: FolderBasicQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<{ data: FolderBasicQuery; errors?: GraphQLError[]; extensions?: any; headers: Headers; status: number; }> {
         return withWrapper((wrappedRequestHeaders) => client.rawRequest<FolderBasicQuery>(FolderBasicDocumentString, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'folderBasic', 'query', variables);
     },
