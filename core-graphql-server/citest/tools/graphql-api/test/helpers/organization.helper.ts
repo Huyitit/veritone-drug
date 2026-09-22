@@ -17,7 +17,7 @@ type SetupResult = {
  * @param filterOrgs 
  * @returns User: their information, hearders for queries
  */
-export async function setupTestfOrgAndUser(
+export async function setupTestOrgAndUser(
   gqlClient: GraphqlClient,
   orgAndUserInput: SetupInput,
   filterOrgs?: any

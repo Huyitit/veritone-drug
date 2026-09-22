@@ -8,7 +8,7 @@ import {
   AuthType,
   GraphqlClient
 } from '@api/src/graphqlUtil';
-import { setupTestfOrgAndUser } from '@api/test/helpers/organization.helper';
+import { setupTestOrgAndUser } from '@api/test/helpers/organization.helper';
 import { createIsolatedSuperadmin } from '@api/test/helpers/superadminSession';
 import {
   AuthGroupMemberType,
@@ -17,6 +17,7 @@ import {
   OrganizationStatus,
   RootFolderType
 } from '@api/src/gql';
+import { strictEqual } from 'node:assert';
 
 const config = helpers.config;
 const citestMarker = (global as any).citestMarker ?? 'citest-should-delete';
@@ -475,7 +476,26 @@ function getOrg2AndUserInput(version: string) {
     ]
   };
 }
-
+/**
+ * @Returns
+ * testSetup
+ * testSetup: 
+ * testSetup2: any;
+ * testOrg: any;
+ * testOrg2: any;
+ * adminUser: any;
+ * adminUser2: any;
+ * regularUser: any;
+  restrictedUser: any;
+  adminOptions: any;
+  adminOptions2: any;
+  regularOptions: any;
+  restrictedOptions: any;
+  adminOrg2Options: any;
+  regularUserOrg2Options: any;
+  testFolderData: any;
+  rbac: any;
+ */
 interface OlpTestContext {
   testSetup: any;
   testSetup2: any;
@@ -537,16 +557,166 @@ function folderTestOLP(version: string, ctx: OlpTestContext) {
        */
       it('FO1 - owner can get folder and child folder', async () => {
         // TODO QA: Use gqlClient.sdk.folderBasic to query parentFolderId with adminOptions (owner context)
+        const parentFolderRes = await gqlClient.sdk.folderBasic({
+          id: ctx.testFolderData.parentFolderid
+        }, ctx.adminOptions)
+
         // Assert: folder is defined and folder.id equals parentFolderId
+        expect(parentFolderRes.data?.folder).toBeDefined();
+        expect(parentFolderRes.data?.folder?.id).toBe(ctx.testFolderData.parentFolderid)
         // TODO QA: Use gqlClient.sdk.folderBasic to query childFolderId with adminOptions
+
+        const childFolderRes = await gqlClient.sdk.folderBasic({id: ctx.testFolderData.childFolderId})
         // Assert: child folder is defined and folder.id equals childFolderId
+        expect(childFolderRes.data?.folder).toBeDefined();
+        expect(childFolderRes.data?.folder?.id).toBe(ctx.testFolderData.childFolderId);
       });
 
       // TODO QA: FO2 - admin can get folder and child folder
+      it('FO2 - admin can get folder and child folder', async () => {
+        // TODO QA: Use gqlClient.sdk.folderBasic to query parentFolderId with adminOptions (owner context)
+        const parentFolderRes = await gqlClient.sdk.folderBasic({
+          id: ctx.testFolderData.parentFolderid
+        }, ctx.adminOptions2)
+
+        // Assert: folder is defined and folder.id equals parentFolderId
+        expect(parentFolderRes.data?.folder).toBeDefined();
+        expect(parentFolderRes.data?.folder?.id).toBe(ctx.testFolderData.parentFolderid)
+        // TODO QA: Use gqlClient.sdk.folderBasic to query childFolderId with adminOptions
+
+        const childFolderRes = await gqlClient.sdk.folderBasic(
+          {id: ctx.testFolderData.childFolderId},
+          ctx.adminOptions2
+        )
+        // Assert: child folder is defined and folder.id equals childFolderId
+        expect(childFolderRes.data?.folder).toBeDefined();
+        expect(childFolderRes.data?.folder?.id).toBe(ctx.testFolderData.childFolderId);
+      });
       // TODO QA: FO3 - cms user can get parent and child folder
+      it('FO3 - cms user can get parent and child folder', async () => {
+        // TODO QA: Use gqlClient.sdk.folderBasic to query parentFolderId with adminOptions (owner context)
+        const parentFolderRes = await gqlClient.sdk.folderBasic({
+          id: ctx.testFolderData.parentFolderid
+        }, ctx.regularOptions)
+
+        // Assert: folder is defined and folder.id equals parentFolderId
+        expect(parentFolderRes.data?.folder).toBeDefined();
+        expect(parentFolderRes.data?.folder?.id).toBe(ctx.testFolderData.parentFolderid)
+        // TODO QA: Use gqlClient.sdk.folderBasic to query childFolderId with adminOptions
+
+        const childFolderRes = await gqlClient.sdk.folderBasic(
+          {id: ctx.testFolderData.childFolderId},
+          ctx.regularOptions
+        )
+        // Assert: child folder is defined and folder.id equals childFolderId
+        expect(childFolderRes.data?.folder).toBeDefined();
+        expect(childFolderRes.data?.folder?.id).toBe(ctx.testFolderData.childFolderId);
+      });
       // TODO QA: FO4 - cms user can get folder content and child content (TDO, App, watch list)
+
+      it('FO4 - cms user can get folder content and child content (TDO, App, watch list)', async () => {
+        const tdoContentRes = await gqlClient.sdk.temporalDataObject(
+          {id: ctx.testFolderData.tdoId}, 
+          ctx.regularOptions
+        )
+        expect(tdoContentRes?.data?.temporalDataObject).toBeDefined();
+        expect(tdoContentRes?.data?.temporalDataObject?.id).toBe(ctx.testFolderData.tdoId);
+
+        const childTdoContentRes = await gqlClient.sdk.temporalDataObject(
+          {id: ctx.testFolderData.childTdoId}, 
+          ctx.regularOptions
+        )
+        expect(childTdoContentRes?.data?.temporalDataObject).toBeDefined();
+        expect(childTdoContentRes?.data?.temporalDataObject?.id).toBe(ctx.testFolderData.childTdoId);
+      });
       // TODO QA: FO5 - restricted user can not get folder
+      it('FO5 - restricted user can not get folder', async () => {
+        // Get root folder
+        const rootFolderRes = await gqlClient.sdk.folderBasic(
+          {id: ctx.testFolderData.rootFolderId},
+          ctx.restrictedOptions
+        )
+        expect(rootFolderRes?.data?.folder).toBeNull();
+
+        // get parent folder 
+        const parentFolderRes = await gqlClient.sdk.folderBasic(
+          {id: ctx.testFolderData.parentFolderId},
+          ctx.restrictedOptions
+        )
+        expect(parentFolderRes?.data?.folder).toBeNull();
+
+        // get child folder
+        const childFolderRes = gqlClient.sdk.folderBasic(
+          {id: ctx.testFolderData.childFolderId},
+          ctx.restrictedOptions
+        )
+        await expect(childFolderRes).rejects.toThrow('sfasdfasdfas');
+      });
       // TODO QA: FO6 - Add folder read permission for restricted user
+      it('FO6 - Add folder read permission for restricted user', async () => {
+        // admin creates auth group and add restricted user into auth group
+        const authGroupRes = await gqlClient.sdk.CreateAuthGroup(
+          {
+            input: {
+              name: `${citestMarker}-auth-group-${uuidv4()}`,
+              description: 'citest',
+              members: [
+                { 
+                  id: ctx.restrictedUser.userId, 
+                  memberType: AuthGroupMemberType.User 
+                }
+              ]
+            }
+          },
+          ctx.adminOptions
+        )
+
+        // assert that authGroupt is created
+        expect(authGroupRes.data?.authGroupCreate).toBeDefined();
+        // add authGroupId into context rbac 
+        ctx.rbac.authGroupId = authGroupRes.data?.authGroupCreate?.id;
+
+        // admin create permission set
+        const permissionSetRes = await gqlClient.sdk.authPermissionSetCreate(
+          {
+            input: {
+              name: `${citestMarker}-permission-set-${uuidv4()}`,
+              description: 'citest',
+              permissions: [
+                AuthPermissionType.AiwareFolderRead
+              ]
+            }
+          }, ctx.adminOptions
+        )
+
+        // assert that permissionSet is created
+        expect(permissionSetRes.data?.authPermissionSetCreate).toBeDefined();
+        // add permissionSetId into context rbac 
+        ctx.rbac.permissionSetId = permissionSetRes.data?.authPermissionSetCreate?.id;
+
+        // admin create ace entry. map authgroup+permission set -> particular object
+        const addACERes = await gqlClient.sdk.addACEsToResources({
+          ids: [
+            ctx.testFolderData.parentFolderId,
+            ctx.testFolderData.parentFolderId2
+          ],
+          entries:
+            {
+              member: {
+                id: ctx.restrictedUser.userId,
+              }, 
+              permissionSetID: ctx.rbac.permissionSetId,
+            }
+        })
+          
+        expect(addACERes.data?.addACEsToResources).toBeDefined()
+        
+        // relogin for restricted user
+        ctx.restrictedOptions = await ctx.relogin(
+          ctx.restrictedUser.userId,
+          ctx.adminOptions
+        );
+      });
       // TODO QA: FO7 - restricted user can get parent folder
       // TODO QA: FO8 - restricted user can not get current child folder
       // TODO QA: FO9 - restricted user can not get current folder content
@@ -602,7 +772,7 @@ function folderTestOLP(version: string, ctx: OlpTestContext) {
         const isoClient = isolatedSuperadmin.client;
         const createSecondOrgAndUserInput = getOrg2AndUserInput(version);
 
-        const setup2 = await setupTestfOrgAndUser(
+        const setup2 = await setupTestOrgAndUser(
           isoClient,
           createSecondOrgAndUserInput
         );
